@@ -33,18 +33,32 @@ class AnalyticsService:
             # Count registrations
             created_at_str = data.get("createdAt")
             if created_at_str:
-                created_at = datetime.fromisoformat(created_at_str)
-                if created_at >= cutoff_date:
-                    date_key = created_at.date().isoformat()
-                    registrations_by_date[date_key] += 1
+                try:
+                    created_at = datetime.fromisoformat(created_at_str)
+                    # Ensure timezone awareness for comparison
+                    if created_at.tzinfo is None:
+                        created_at = created_at.replace(tzinfo=timezone.utc)
+                    if created_at >= cutoff_date:
+                        date_key = created_at.date().isoformat()
+                        registrations_by_date[date_key] += 1
+                except (ValueError, TypeError):
+                    # Skip invalid datetime strings
+                    pass
             
             # Count verifications
             verified_at_str = data.get("verifiedAt")
             if verified_at_str:
-                verified_at = datetime.fromisoformat(verified_at_str)
-                if verified_at >= cutoff_date:
-                    date_key = verified_at.date().isoformat()
-                    verifications_by_date[date_key] += 1
+                try:
+                    verified_at = datetime.fromisoformat(verified_at_str)
+                    # Ensure timezone awareness for comparison
+                    if verified_at.tzinfo is None:
+                        verified_at = verified_at.replace(tzinfo=timezone.utc)
+                    if verified_at >= cutoff_date:
+                        date_key = verified_at.date().isoformat()
+                        verifications_by_date[date_key] += 1
+                except (ValueError, TypeError):
+                    # Skip invalid datetime strings
+                    pass
         
         # Convert to sorted lists
         daily_data = []
@@ -116,15 +130,27 @@ class AnalyticsService:
             
             created_at_str = data.get("createdAt")
             if created_at_str:
-                created_at = datetime.fromisoformat(created_at_str)
-                if created_at >= today_start:
-                    users_today += 1
+                try:
+                    created_at = datetime.fromisoformat(created_at_str)
+                    # Ensure timezone awareness for comparison
+                    if created_at.tzinfo is None:
+                        created_at = created_at.replace(tzinfo=timezone.utc)
+                    if created_at >= today_start:
+                        users_today += 1
+                except (ValueError, TypeError):
+                    pass
             
             verified_at_str = data.get("verifiedAt")
             if verified_at_str:
-                verified_at = datetime.fromisoformat(verified_at_str)
-                if verified_at >= today_start:
-                    verified_today += 1
+                try:
+                    verified_at = datetime.fromisoformat(verified_at_str)
+                    # Ensure timezone awareness for comparison
+                    if verified_at.tzinfo is None:
+                        verified_at = verified_at.replace(tzinfo=timezone.utc)
+                    if verified_at >= today_start:
+                        verified_today += 1
+                except (ValueError, TypeError):
+                    pass
         
         # OTP requests today
         otp_requests_today = 0
@@ -135,12 +161,18 @@ class AnalyticsService:
             
             created_at_str = data.get("createdAt")
             if created_at_str:
-                created_at = datetime.fromisoformat(created_at_str)
-                if created_at >= today_start:
-                    otp_requests_today += 1
-                    
-                    if data.get("used", False):
-                        otp_verified_today += 1
+                try:
+                    created_at = datetime.fromisoformat(created_at_str)
+                    # Ensure timezone awareness for comparison
+                    if created_at.tzinfo is None:
+                        created_at = created_at.replace(tzinfo=timezone.utc)
+                    if created_at >= today_start:
+                        otp_requests_today += 1
+                        
+                        if data.get("used", False):
+                            otp_verified_today += 1
+                except (ValueError, TypeError):
+                    pass
         
         return {
             "date": now.date().isoformat(),
@@ -168,15 +200,27 @@ class AnalyticsService:
             
             created_at_str = data.get("createdAt")
             if created_at_str:
-                created_at = datetime.fromisoformat(created_at_str)
-                if created_at >= week_start:
-                    users_this_week += 1
+                try:
+                    created_at = datetime.fromisoformat(created_at_str)
+                    # Ensure timezone awareness for comparison
+                    if created_at.tzinfo is None:
+                        created_at = created_at.replace(tzinfo=timezone.utc)
+                    if created_at >= week_start:
+                        users_this_week += 1
+                except (ValueError, TypeError):
+                    pass
             
             verified_at_str = data.get("verifiedAt")
             if verified_at_str:
-                verified_at = datetime.fromisoformat(verified_at_str)
-                if verified_at >= week_start:
-                    verified_this_week += 1
+                try:
+                    verified_at = datetime.fromisoformat(verified_at_str)
+                    # Ensure timezone awareness for comparison
+                    if verified_at.tzinfo is None:
+                        verified_at = verified_at.replace(tzinfo=timezone.utc)
+                    if verified_at >= week_start:
+                        verified_this_week += 1
+                except (ValueError, TypeError):
+                    pass
         
         otp_requests_this_week = 0
         otp_verified_this_week = 0
@@ -186,12 +230,18 @@ class AnalyticsService:
             
             created_at_str = data.get("createdAt")
             if created_at_str:
-                created_at = datetime.fromisoformat(created_at_str)
-                if created_at >= week_start:
-                    otp_requests_this_week += 1
-                    
-                    if data.get("used", False):
-                        otp_verified_this_week += 1
+                try:
+                    created_at = datetime.fromisoformat(created_at_str)
+                    # Ensure timezone awareness for comparison
+                    if created_at.tzinfo is None:
+                        created_at = created_at.replace(tzinfo=timezone.utc)
+                    if created_at >= week_start:
+                        otp_requests_this_week += 1
+                        
+                        if data.get("used", False):
+                            otp_verified_this_week += 1
+                except (ValueError, TypeError):
+                    pass
         
         return {
             "weekStart": week_start.date().isoformat(),

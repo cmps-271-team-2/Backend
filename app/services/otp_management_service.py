@@ -24,18 +24,30 @@ class OTPManagementService:
         
         for doc in otp_docs:
             data = doc.to_dict()
-            expires_at = datetime.fromisoformat(data.get("expiresAt"))
+            expires_at_str = data.get("expiresAt")
             
-            # Only include non-expired requests
-            if expires_at > now:
-                pending_requests.append({
-                    "uid": doc.id,
-                    "email": data.get("email"),
-                    "createdAt": data.get("createdAt"),
-                    "expiresAt": data.get("expiresAt"),
-                    "verifyAttempts": data.get("verifyAttempts", 0),
-                    "resendCount": data.get("resendCount", 0),
-                })
+            if not expires_at_str:
+                continue
+                
+            try:
+                expires_at = datetime.fromisoformat(expires_at_str)
+                # Ensure timezone awareness for comparison
+                if expires_at.tzinfo is None:
+                    expires_at = expires_at.replace(tzinfo=timezone.utc)
+                
+                # Only include non-expired requests
+                if expires_at > now:
+                    pending_requests.append({
+                        "uid": doc.id,
+                        "email": data.get("email"),
+                        "createdAt": data.get("createdAt"),
+                        "expiresAt": data.get("expiresAt"),
+                        "verifyAttempts": data.get("verifyAttempts", 0),
+                        "resendCount": data.get("resendCount", 0),
+                    })
+            except (ValueError, TypeError):
+                # Skip invalid datetime strings
+                continue
         
         return pending_requests
     
@@ -72,13 +84,22 @@ class OTPManagementService:
             data = doc.to_dict()
             expires_at_str = data.get("expiresAt")
             
-            if expires_at_str:
+            if not expires_at_str:
+                continue
+            
+            try:
                 expires_at = datetime.fromisoformat(expires_at_str)
+                # Ensure timezone awareness for comparison
+                if expires_at.tzinfo is None:
+                    expires_at = expires_at.replace(tzinfo=timezone.utc)
                 
                 # Delete if expired
                 if expires_at < now:
                     doc.reference.delete()
                     deleted_count += 1
+            except (ValueError, TypeError):
+                # Skip invalid datetime strings
+                continue
         
         return {
             "deletedCount": deleted_count,

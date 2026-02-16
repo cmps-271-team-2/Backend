@@ -179,9 +179,16 @@ class UserManagementService:
         for doc in all_users:
             created_at = doc.to_dict().get("createdAt")
             if created_at:
-                created_dt = datetime.fromisoformat(created_at)
-                if (now - created_dt).total_seconds() < 86400:  # 24 hours
-                    recent_users += 1
+                try:
+                    created_dt = datetime.fromisoformat(created_at)
+                    # Ensure timezone awareness for comparison
+                    if created_dt.tzinfo is None:
+                        created_dt = created_dt.replace(tzinfo=timezone.utc)
+                    if (now - created_dt).total_seconds() < 86400:  # 24 hours
+                        recent_users += 1
+                except (ValueError, TypeError):
+                    # Skip invalid datetime strings
+                    continue
         
         return {
             "totalUsers": total_users,
