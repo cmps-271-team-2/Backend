@@ -8,6 +8,8 @@ from pydantic import BaseModel
 
 TargetTypeDTO = Literal["profile", "cafeteria", "other"]
 
+AdminStatusDTO = Literal["active", "banned"]
+
 JobStatusDTO = Literal["queued", "running", "succeeded", "failed", "canceled"]
 JobKindDTO = Literal["ai", "etl", "indexing", "cron", "other"]
 
@@ -20,6 +22,8 @@ class AdminProfileDTO(BaseModel):
     location: str | None = None
     ratingAvg: float = 0
     ratingCount: int = 0
+    reports: int = 0
+    status: AdminStatusDTO = "active"
     createdAt: str
 
 
@@ -31,6 +35,17 @@ class AdminPostDTO(BaseModel):
     targetType: str
     text: str
     rating: int = 0
+    reports: int = 0
+    createdAt: str
+
+
+class AdminUserDTO(BaseModel):
+    """An auth user profile from Firestore `users` collection."""
+
+    id: str
+    email: str
+    isVerified: bool = False
+    status: AdminStatusDTO = "active"
     createdAt: str
 
 
@@ -74,6 +89,9 @@ class PagedResponseDTO(BaseModel, Generic[TItem]):
 class ListProfilesQueryDTO(BaseModel):
     search: str | None = Query(default=None, description="Searches name/location/id")
     location: str | Literal["all"] = Query(default="all")
+    status: AdminStatusDTO | Literal["all"] = Query(default="all")
+    minReports: int | None = Query(default=None, ge=0)
+    maxReports: int | None = Query(default=None, ge=0)
     offset: int = Query(default=0, ge=0)
     limit: int = Query(default=100, ge=1, le=500)
 
@@ -83,6 +101,16 @@ class ListPostsQueryDTO(BaseModel):
     targetType: str | Literal["all"] = Query(default="all")
     minRating: int | None = Query(default=None, ge=0, le=5)
     maxRating: int | None = Query(default=None, ge=0, le=5)
+    minReports: int | None = Query(default=None, ge=0)
+    maxReports: int | None = Query(default=None, ge=0)
+    offset: int = Query(default=0, ge=0)
+    limit: int = Query(default=100, ge=1, le=500)
+
+
+class ListUsersQueryDTO(BaseModel):
+    search: str | None = Query(default=None, description="Searches email/id")
+    verified: bool | Literal["all"] = Query(default="all")
+    status: AdminStatusDTO | Literal["all"] = Query(default="all")
     offset: int = Query(default=0, ge=0)
     limit: int = Query(default=100, ge=1, le=500)
 
@@ -93,3 +121,19 @@ class ListJobsQueryDTO(BaseModel):
     kind: JobKindDTO | Literal["all"] = Query(default="all")
     offset: int = Query(default=0, ge=0)
     limit: int = Query(default=100, ge=1, le=500)
+
+
+class DeleteResultDTO(BaseModel):
+    ok: bool
+    id: str
+
+
+class SetBannedBodyDTO(BaseModel):
+    banned: bool
+
+
+class SetBannedResultDTO(BaseModel):
+    ok: bool
+    id: str
+    banned: bool
+    status: AdminStatusDTO

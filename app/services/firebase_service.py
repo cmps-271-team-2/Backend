@@ -5,8 +5,8 @@ from typing import Any
 
 from dotenv import load_dotenv
 
-from app.admin.dtos import AdminPostDTO, AdminProfileDTO, AnalyticsDTO, SeriesPointDTO
-from app.core.firebase_admin import init_firebase_admin
+from app.admin.dtos import AdminPostDTO, AdminProfileDTO, AdminStatusDTO, AdminUserDTO, AnalyticsDTO, SeriesPointDTO
+from app.core.firebase_admin import get_firebase_auth, init_firebase_admin
 from app.core.firestore import get_db
 
 
@@ -48,6 +48,8 @@ class FirebaseService:
 
             rating_avg = _to_float(data.get("RatingAvg") or data.get("ratingAvg") or 0)
             rating_count = _to_int(data.get("RatingCount") or data.get("ratingCount") or 0)
+            reports = _to_int(data.get("reports") or data.get("Reports") or data.get("reportCount") or 0)
+            status = _to_status(data.get("status"), data.get("banned"))
 
             out.append(
                 AdminProfileDTO(
@@ -56,6 +58,8 @@ class FirebaseService:
                     location=str(location) if location is not None else None,
                     ratingAvg=rating_avg,
                     ratingCount=rating_count,
+                    reports=reports,
+                    status=status,
                     createdAt=created_at,
                 )
             )
@@ -78,6 +82,7 @@ class FirebaseService:
 
             rating_raw = data.get("Rating")
             rating = _to_int(rating_raw)
+            reports = _to_int(data.get("reports") or data.get("Reports") or data.get("reportCount") or 0)
 
             out.append(
                 AdminPostDTO(
@@ -86,12 +91,67 @@ class FirebaseService:
                     targetType=target_type,
                     text=text,
                     rating=rating,
+                    reports=reports,
                     createdAt=created_at,
                 )
             )
 
         out.sort(key=lambda p: p.createdAt, reverse=True)
         return out
+
+    def list_admin_users(self) -> list[AdminUserDTO]:
+        docs = self._db.collection("users").limit(5000).stream()
+        out: list[AdminUserDTO] = []
+        for d in docs:
+            data = d.to_dict() or {}
+            email = str(data.get("email") or "")
+            created_at = _to_iso(data.get("createdAt") or data.get("CreatedAt"))
+            is_verified = bool(data.get("isVerified") is True)
+            status = _to_status(data.get("status"), data.get("banned"))
+            out.append(
+                AdminUserDTO(
+                    id=d.id,
+                    email=email,
+                    isVerified=is_verified,
+                    status=status,
+                    createdAt=created_at,
+                )
+            )
+
+        out.sort(key=lambda u: u.createdAt, reverse=True)
+        return out
+
+    def delete_post(self, post_id: str) -> None:
+        self._db.collection("posts").document(post_id).delete()
+
+    def delete_user(self, user_id: str) -> None:
+        # 1) Delete from Firebase Auth (best-effort)
+        try:
+            firebase_auth = get_firebase_auth()
+            firebase_auth.delete_user(user_id)
+        except Exception:
+            # Keep going: we still want to delete the Firestore doc.
+            pass
+
+        # 2) Delete Firestore user doc
+        self._db.collection("users").document(user_id).delete()
+
+    def set_user_banned(self, user_id: str, banned: bool) -> None:
+        status = "banned" if banned else "active"
+
+        # Update Firebase Auth user disabled flag (best-effort)
+        try:
+            firebase_auth = get_firebase_auth()
+            firebase_auth.update_user(user_id, disabled=banned)
+        except Exception:
+            pass
+
+        # Update Firestore user status
+        self._db.collection("users").document(user_id).set({"status": status, "banned": banned}, merge=True)
+
+    def set_profile_banned(self, profile_id: str, banned: bool) -> None:
+        status = "banned" if banned else "active"
+        self._db.collection("profiles").document(profile_id).set({"status": status, "banned": banned}, merge=True)
 
     def admin_analytics(self) -> AnalyticsDTO:
         now = datetime.now(timezone.utc)
@@ -175,3 +235,13 @@ def _safe_day(iso_or_str: str) -> str:
         return datetime.fromisoformat(iso_or_str.replace("Z", "+00:00")).date().isoformat()
     except Exception:
         return ""
+
+
+def _to_status(status_value: Any, banned_value: Any) -> AdminStatusDTO:
+    if isinstance(status_value, str):
+        v = status_value.strip().lower()
+        if v in ("active", "banned"):
+            return v  # type: ignore[return-value]
+    if banned_value is True:
+        return "banned"
+    return "active"
