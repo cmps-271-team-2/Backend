@@ -3,41 +3,38 @@ from __future__ import annotations
 from typing import Generic, Literal, TypeVar
 
 from fastapi import Query
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
-ProfileRoleDTO = Literal["student", "staff", "faculty", "admin"]
-ProfileStatusDTO = Literal["active", "suspended", "pending"]
-PostStatusDTO = Literal["published", "draft", "flagged"]
+TargetTypeDTO = Literal["profile", "cafeteria", "other"]
 
 
-class ProfileDTO(BaseModel):
+class AdminProfileDTO(BaseModel):
+    """A rateable profile/target from Firestore `profiles` collection."""
+
     id: str
-    displayName: str
-    email: str
-    role: ProfileRoleDTO
-    status: ProfileStatusDTO
+    name: str
+    location: str | None = None
+    ratingAvg: float = 0
+    ratingCount: int = 0
     createdAt: str
-    lastActiveAt: str
 
 
-class PostDTO(BaseModel):
+class AdminPostDTO(BaseModel):
+    """A rating post from Firestore `posts` collection."""
+
     id: str
-    title: str
-    authorId: str
-    authorName: str
-    status: PostStatusDTO
-    tags: list[str] = Field(default_factory=list)
+    targetId: str
+    targetType: str
+    text: str
+    rating: int = 0
     createdAt: str
-    likeCount: int
-    reportCount: int
 
 
 class SeriesPointDTO(BaseModel):
     day: str
-    signups: int
+    users: int
     posts: int
-    reports: int
 
 
 class AnalyticsDTO(BaseModel):
@@ -58,16 +55,16 @@ class PagedResponseDTO(BaseModel, Generic[TItem]):
 
 
 class ListProfilesQueryDTO(BaseModel):
-    search: str | None = Query(default=None, description="Searches displayName/email/id")
-    role: ProfileRoleDTO | Literal["all"] = Query(default="all")
-    status: ProfileStatusDTO | Literal["all"] = Query(default="all")
+    search: str | None = Query(default=None, description="Searches name/location/id")
+    location: str | Literal["all"] = Query(default="all")
     offset: int = Query(default=0, ge=0)
     limit: int = Query(default=100, ge=1, le=500)
 
 
 class ListPostsQueryDTO(BaseModel):
-    search: str | None = Query(default=None, description="Searches title/author/tags/id")
-    status: PostStatusDTO | Literal["all"] = Query(default="all")
-    tag: str | Literal["all"] = Query(default="all")
+    search: str | None = Query(default=None, description="Searches text/targetType/targetId/id")
+    targetType: str | Literal["all"] = Query(default="all")
+    minRating: int | None = Query(default=None, ge=0, le=5)
+    maxRating: int | None = Query(default=None, ge=0, le=5)
     offset: int = Query(default=0, ge=0)
     limit: int = Query(default=100, ge=1, le=500)
