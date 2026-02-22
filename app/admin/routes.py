@@ -2,53 +2,21 @@ from __future__ import annotations
 
 import random
 from datetime import datetime, timedelta, timezone
-from typing import Literal
 
-from fastapi import APIRouter, Query
-from pydantic import BaseModel, Field
+from typing import TypeVar
+
+from fastapi import APIRouter, Depends
+
+from app.admin.dtos import (
+    AnalyticsDTO,
+    ListPostsQueryDTO,
+    ListProfilesQueryDTO,
+    PagedResponseDTO,
+    PostDTO,
+    ProfileDTO,
+)
 
 router = APIRouter(tags=["admin"])
-
-
-ProfileRole = Literal["student", "staff", "faculty", "admin"]
-ProfileStatus = Literal["active", "suspended", "pending"]
-PostStatus = Literal["published", "draft", "flagged"]
-
-
-class Profile(BaseModel):
-    id: str
-    displayName: str
-    email: str
-    role: ProfileRole
-    status: ProfileStatus
-    createdAt: str
-    lastActiveAt: str
-
-
-class Post(BaseModel):
-    id: str
-    title: str
-    authorId: str
-    authorName: str
-    status: PostStatus
-    tags: list[str] = Field(default_factory=list)
-    createdAt: str
-    likeCount: int
-    reportCount: int
-
-
-class PagedResponse(BaseModel):
-    total: int
-    items: list
-    offset: int
-    limit: int
-    nextOffset: int | None = None
-
-
-class Analytics(BaseModel):
-    generatedAt: str
-    totals: dict[str, int]
-    series7d: list[dict[str, int | str]]
 
 
 _rng = random.Random(1337)
@@ -59,13 +27,16 @@ def _iso(dt: datetime) -> str:
     return dt.astimezone(timezone.utc).isoformat()
 
 
-def _pick[T](values: list[T], weights: list[int] | None = None) -> T:
+TPick = TypeVar("TPick")
+
+
+def _pick(values: list[TPick], weights: list[int] | None = None) -> TPick:
     if weights is None:
         return _rng.choice(values)
     return _rng.choices(values, weights=weights, k=1)[0]
 
 
-def _get_mock_profiles() -> list[Profile]:
+def _get_mock_profiles() -> list[ProfileDTO]:
     cached = _cache.get("profiles")
     if isinstance(cached, list):
         return cached  # type: ignore[return-value]
@@ -101,12 +72,13 @@ def _get_mock_profiles() -> list[Profile]:
         "Saad",
         "Aoun",
         "Sader",
+        "Lahad"
     ]
 
-    roles: list[ProfileRole] = ["student", "staff", "faculty", "admin"]
-    statuses: list[ProfileStatus] = ["active", "pending", "suspended"]
+    roles = ["student", "staff", "faculty", "admin"]
+    statuses = ["active", "pending", "suspended"]
 
-    profiles: list[Profile] = []
+    profiles: list[ProfileDTO] = []
     for i in range(1, 151):
         fn = _pick(first_names)
         ln = _pick(last_names)
@@ -120,7 +92,7 @@ def _get_mock_profiles() -> list[Profile]:
         email_local = f"{fn}.{ln}.{i}".lower()
 
         profiles.append(
-            Profile(
+            ProfileDTO(
                 id=f"u_{i:04d}",
                 displayName=display_name,
                 email=f"{email_local}@mail.aub.edu",
@@ -135,7 +107,7 @@ def _get_mock_profiles() -> list[Profile]:
     return profiles
 
 
-def _get_mock_posts() -> list[Post]:
+def _get_mock_posts() -> list[PostDTO]:
     cached = _cache.get("posts")
     if isinstance(cached, list):
         return cached  # type: ignore[return-value]
@@ -157,9 +129,9 @@ def _get_mock_posts() -> list[Post]:
     ]
     tags_pool = ["campus", "events", "housing", "books", "food", "clubs", "jobs", "help", "lost"]
 
-    statuses: list[PostStatus] = ["published", "draft", "flagged"]
+    statuses = ["published", "draft", "flagged"]
 
-    posts: list[Post] = []
+    posts: list[PostDTO] = []
     for i in range(1, 281):
         author = _pick(profiles)
         status = _pick(statuses, weights=[78, 15, 7])
@@ -173,7 +145,7 @@ def _get_mock_posts() -> list[Post]:
             report_count = _rng.randint(1, 12)
 
         posts.append(
-            Post(
+            PostDTO(
                 id=f"p_{i:05d}",
                 title=f"{_pick(titles)} #{_rng.randint(1, 999)}",
                 authorId=author.id,
@@ -190,23 +162,17 @@ def _get_mock_posts() -> list[Post]:
     return posts
 
 
-@router.get("/mock/profiles", response_model=PagedResponse)
-def list_mock_profiles(
-    search: str | None = Query(default=None, description="Searches displayName/email/id"),
-    role: ProfileRole | Literal["all"] = Query(default="all"),
-    status: ProfileStatus | Literal["all"] = Query(default="all"),
-    offset: int = Query(default=0, ge=0),
-    limit: int = Query(default=100, ge=1, le=500),
-):
+@router.get("/mock/profiles", response_model=PagedResponseDTO[ProfileDTO])
+def list_mock_profiles(q: ListProfilesQueryDTO = Depends()):
     profiles = _get_mock_profiles()
 
-    filtered: list[Profile] = []
-    search_norm = (search or "").strip().lower()
+    filtered: list[ProfileDTO] = []
+    search_norm = (q.search or "").strip().lower()
 
     for p in profiles:
-        if role != "all" and p.role != role:
+        if q.role != "all" and p.role != q.role:
             continue
-        if status != "all" and p.status != status:
+        if q.status != "all" and p.status != q.status:
             continue
         if search_norm:
             hay = f"{p.id} {p.displayName} {p.email}".lower()
@@ -215,34 +181,28 @@ def list_mock_profiles(
         filtered.append(p)
 
     total = len(filtered)
-    items = filtered[offset : offset + limit]
-    next_offset = offset + limit if offset + limit < total else None
+    items = filtered[q.offset : q.offset + q.limit]
+    next_offset = q.offset + q.limit if q.offset + q.limit < total else None
 
     return {
         "total": total,
         "items": items,
-        "offset": offset,
-        "limit": limit,
+        "offset": q.offset,
+        "limit": q.limit,
         "nextOffset": next_offset,
     }
 
 
-@router.get("/mock/posts", response_model=PagedResponse)
-def list_mock_posts(
-    search: str | None = Query(default=None, description="Searches title/author/tags/id"),
-    status: PostStatus | Literal["all"] = Query(default="all"),
-    tag: str | Literal["all"] = Query(default="all"),
-    offset: int = Query(default=0, ge=0),
-    limit: int = Query(default=100, ge=1, le=500),
-):
+@router.get("/mock/posts", response_model=PagedResponseDTO[PostDTO])
+def list_mock_posts(q: ListPostsQueryDTO = Depends()):
     posts = _get_mock_posts()
 
-    filtered: list[Post] = []
-    search_norm = (search or "").strip().lower()
-    tag_norm = tag.strip().lower() if isinstance(tag, str) else "all"
+    filtered: list[PostDTO] = []
+    search_norm = (q.search or "").strip().lower()
+    tag_norm = q.tag.strip().lower() if isinstance(q.tag, str) else "all"
 
     for p in posts:
-        if status != "all" and p.status != status:
+        if q.status != "all" and p.status != q.status:
             continue
         if tag_norm != "all" and tag_norm not in [t.lower() for t in p.tags]:
             continue
@@ -253,19 +213,19 @@ def list_mock_posts(
         filtered.append(p)
 
     total = len(filtered)
-    items = filtered[offset : offset + limit]
-    next_offset = offset + limit if offset + limit < total else None
+    items = filtered[q.offset : q.offset + q.limit]
+    next_offset = q.offset + q.limit if q.offset + q.limit < total else None
 
     return {
         "total": total,
         "items": items,
-        "offset": offset,
-        "limit": limit,
+        "offset": q.offset,
+        "limit": q.limit,
         "nextOffset": next_offset,
     }
 
 
-@router.get("/mock/analytics", response_model=Analytics)
+@router.get("/mock/analytics", response_model=AnalyticsDTO)
 def get_mock_analytics():
     now = datetime.now(timezone.utc)
 
