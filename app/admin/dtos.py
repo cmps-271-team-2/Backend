@@ -8,6 +8,9 @@ from pydantic import BaseModel
 
 TargetTypeDTO = Literal["profile", "cafeteria", "other"]
 
+JobStatusDTO = Literal["queued", "running", "succeeded", "failed", "canceled"]
+JobKindDTO = Literal["ai", "etl", "indexing", "cron", "other"]
+
 
 class AdminProfileDTO(BaseModel):
     """A rateable profile/target from Firestore `profiles` collection."""
@@ -29,6 +32,20 @@ class AdminPostDTO(BaseModel):
     text: str
     rating: int = 0
     createdAt: str
+
+
+class AdminJobDTO(BaseModel):
+    """A compute job for admin observability (mock for now)."""
+
+    id: str
+    name: str
+    kind: JobKindDTO
+    status: JobStatusDTO
+    progress: int = 0  # 0..100
+    createdAt: str
+    startedAt: str | None = None
+    updatedAt: str
+    etaSeconds: int | None = None
 
 
 class SeriesPointDTO(BaseModel):
@@ -66,5 +83,13 @@ class ListPostsQueryDTO(BaseModel):
     targetType: str | Literal["all"] = Query(default="all")
     minRating: int | None = Query(default=None, ge=0, le=5)
     maxRating: int | None = Query(default=None, ge=0, le=5)
+    offset: int = Query(default=0, ge=0)
+    limit: int = Query(default=100, ge=1, le=500)
+
+
+class ListJobsQueryDTO(BaseModel):
+    search: str | None = Query(default=None, description="Searches name/kind/status/id")
+    status: JobStatusDTO | Literal["all"] = Query(default="all")
+    kind: JobKindDTO | Literal["all"] = Query(default="all")
     offset: int = Query(default=0, ge=0)
     limit: int = Query(default=100, ge=1, le=500)
