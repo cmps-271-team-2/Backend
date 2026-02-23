@@ -38,3 +38,36 @@ If you didn’t request this, ignore this email.
         server.starttls()
         server.login(smtp_user, smtp_pass)
         server.send_message(msg)
+
+
+def send_password_reset_otp_email(to_email: str, otp: str) -> None:
+    """
+    Sends a plain-text password reset OTP email via SMTP.
+    """
+
+    smtp_host = os.getenv("SMTP_HOST")
+    smtp_port = int(os.getenv("SMTP_PORT", "587"))
+    smtp_user = os.getenv("SMTP_USER")
+    smtp_pass = os.getenv("SMTP_PASS")
+    smtp_from = os.getenv("SMTP_FROM") or os.getenv("EMAIL_FROM") or smtp_user
+
+    if not all([smtp_host, smtp_user, smtp_pass, smtp_from]):
+        raise RuntimeError("Missing SMTP env vars. Check backend/.env")
+
+    msg = EmailMessage()
+    msg["Subject"] = "Your password reset code"
+    msg["From"] = smtp_from
+    msg["To"] = to_email
+
+    msg.set_content(
+        f"""Your password reset code is: {otp}
+
+This code expires in 10 minutes.
+If you didn’t request this, ignore this email.
+"""
+    )
+
+    with smtplib.SMTP(smtp_host, smtp_port) as server:
+        server.starttls()
+        server.login(smtp_user, smtp_pass)
+        server.send_message(msg)
