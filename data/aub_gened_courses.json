@@ -1,0 +1,4907 @@
+[
+  {
+    "code": "AGBU 211",
+    "dept": "AGBU",
+    "number": "211",
+    "cross_listed": [],
+    "title": "Introduction to Agricultural Issues and Policies",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "AGBU 213",
+    "dept": "AGBU",
+    "number": "213",
+    "cross_listed": [],
+    "title": "Legal Aspects of Agribusiness",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "AGBU 215",
+    "dept": "AGBU",
+    "number": "215",
+    "cross_listed": [],
+    "title": "Principles of Agribusiness Enterprise Social Sciences List I Societies and Individuals Management",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AGBU 255",
+    "dept": "AGBU",
+    "number": "255",
+    "cross_listed": [],
+    "title": "Field Study of Rural Agro-Econ",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": "Community-Engaged Learning"
+  },
+  {
+    "code": "AGBU 256",
+    "dept": "AGBU",
+    "number": "256",
+    "cross_listed": [],
+    "title": "Summer Internship Community-Engaged Learning Agricultural Sciences (AGSC):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AGSC 203",
+    "dept": "AGSC",
+    "number": "203",
+    "cross_listed": [],
+    "title": "Crop Production and Protection",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "AGSC 204",
+    "dept": "AGSC",
+    "number": "204",
+    "cross_listed": [],
+    "title": "Natural Sciences for Agribusiness",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "AGSC 205",
+    "dept": "AGSC",
+    "number": "205",
+    "cross_listed": [],
+    "title": "The Food Odyssey Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AGSC 212",
+    "dept": "AGSC",
+    "number": "212",
+    "cross_listed": [],
+    "title": "Microeconomics Theory of Food and Farming Social Sciences List I Societies and Individuals Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AGSC 235",
+    "dept": "AGSC",
+    "number": "235",
+    "cross_listed": [],
+    "title": "Agricultural Extension in Development Community-Engaged Learning American Studies (AMST):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AMST 215",
+    "dept": "AMST",
+    "number": "215",
+    "cross_listed": [],
+    "title": "Introduction to American Studies Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AMST 240",
+    "dept": "AMST",
+    "number": "240",
+    "cross_listed": [],
+    "title": "America in the Middle East Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AMST 265D/PSPA 288K",
+    "dept": "AMST",
+    "number": "265D",
+    "cross_listed": [
+      "PSPA 288K"
+    ],
+    "title": "Sports and Politics Social Sciences List I Societies and Individuals AMST 275AF ST: Introduction to American Popular Culture Humanities List I Cultures and Histories AMST 275AK/ENGL 225 American Literature (1900-1960) Humanities List I Cultures and Histories AMST 275AO/ENGL 209 Survey of American Literature Humanities List I Cultures and Histories AMST 275AP/ENGL 250 Poetry Writing Humanities List I Cultures and Histories AMST 275AS/ENGL 258F Feminism in Ethnic American Literature Humanities List I Cultures and Histories AMST 275AU Sex, Gender, Revolution Humanities List I Cultures and Histories AMST 275AY/ENGL 226 Contemporary American Literature Humanities List I Cultures and Histories AMST 275BA/CVSP 212 Modern and Contemporary World Theatre Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AMST 275M/ENGL 216",
+    "dept": "AMST",
+    "number": "275M",
+    "cross_listed": [
+      "ENGL 216"
+    ],
+    "title": "Drama Humanities List I Cultures and Histories AMST 275AI U.S. Politics on America’s Big & Small Screens Humanities List II Cultures and Histories AMST 275BC/HIST 258BZ Arab American Studies Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AMST 276Y/CHLA 210D",
+    "dept": "AMST",
+    "number": "276Y",
+    "cross_listed": [
+      "CHLA 210D"
+    ],
+    "title": "Race and Gender in Literature Humanities List I History of Ideas Cultures and Histories Social Inequalities Animal and Veterinary Sciences (AVSC):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AVSC 220",
+    "dept": "AVSC",
+    "number": "220",
+    "cross_listed": [],
+    "title": "Livestock Production",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "AVSC 224",
+    "dept": "AVSC",
+    "number": "224",
+    "cross_listed": [],
+    "title": "Agricultural Microbiology",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "AVSC 281",
+    "dept": "AVSC",
+    "number": "281",
+    "cross_listed": [],
+    "title": "Production of Novel Avian Species Natural Sciences Understanding the World Arabic and Near Eastern Languages (ARAB):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 201",
+    "dept": "ARAB",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Questions in Contemporary Arab Culture Arabic Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 202",
+    "dept": "ARAB",
+    "number": "202",
+    "cross_listed": [],
+    "title": "Arabic Technical Writing Arabic Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 203",
+    "dept": "ARAB",
+    "number": "203",
+    "cross_listed": [],
+    "title": "Arabic as Foreign Language I Arabic Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 204",
+    "dept": "ARAB",
+    "number": "204",
+    "cross_listed": [],
+    "title": "Beginning Arabic as Foreign Language II Arabic Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 205",
+    "dept": "ARAB",
+    "number": "205",
+    "cross_listed": [],
+    "title": "Beginning Arabic as Foreign Language III Arabic Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 206",
+    "dept": "ARAB",
+    "number": "206",
+    "cross_listed": [],
+    "title": "Intermediate Arabic as Foreign Language IV Arabic Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 207",
+    "dept": "ARAB",
+    "number": "207",
+    "cross_listed": [],
+    "title": "Advanced Arabic I Arabic Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 209",
+    "dept": "ARAB",
+    "number": "209",
+    "cross_listed": [],
+    "title": "Advanced Arabic as a Foreign Language III Arabic Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 210A",
+    "dept": "ARAB",
+    "number": "210A",
+    "cross_listed": [],
+    "title": "Arabic Creative Writing (Prose) Arabic Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 211",
+    "dept": "ARAB",
+    "number": "211",
+    "cross_listed": [],
+    "title": "Survey of the Arabic Grammar Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 212",
+    "dept": "ARAB",
+    "number": "212",
+    "cross_listed": [],
+    "title": "Survey of the Arabic Grammar Humanities List II Cultures and Histories ARAB 213/214 Introductory Biblical Hebrew Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 215",
+    "dept": "ARAB",
+    "number": "215",
+    "cross_listed": [],
+    "title": "Introductory Syriac Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 217",
+    "dept": "ARAB",
+    "number": "217",
+    "cross_listed": [],
+    "title": "Introduction to Syriac Literature Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 222",
+    "dept": "ARAB",
+    "number": "222",
+    "cross_listed": [],
+    "title": "Introduction to Semitic Studies Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 223",
+    "dept": "ARAB",
+    "number": "223",
+    "cross_listed": [],
+    "title": "Arabic in Modern Media Arabic Communications Skills Understanding Communication 1 | P a ge",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 224",
+    "dept": "ARAB",
+    "number": "224",
+    "cross_listed": [],
+    "title": "Arabic Stylistics & Metrics Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 225",
+    "dept": "ARAB",
+    "number": "225",
+    "cross_listed": [],
+    "title": "Translation Arabic Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 227",
+    "dept": "ARAB",
+    "number": "227",
+    "cross_listed": [],
+    "title": "Arabic Linguistics Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 228",
+    "dept": "ARAB",
+    "number": "228",
+    "cross_listed": [],
+    "title": "Arabic Linguistics Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 229",
+    "dept": "ARAB",
+    "number": "229",
+    "cross_listed": [],
+    "title": "Arabs in Late Antiquity Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 230",
+    "dept": "ARAB",
+    "number": "230",
+    "cross_listed": [],
+    "title": "Questions, Themes and Genres of Arabic Arabic Communications Skills Understanding Communication Literature Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 231",
+    "dept": "ARAB",
+    "number": "231",
+    "cross_listed": [],
+    "title": "The Ode Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 232",
+    "dept": "ARAB",
+    "number": "232",
+    "cross_listed": [],
+    "title": "Arabic Poetry: The Making of the Early Canon Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 233",
+    "dept": "ARAB",
+    "number": "233",
+    "cross_listed": [],
+    "title": "Competing Networks and Courts of Patronage Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories Writing in the Discipline",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 235",
+    "dept": "ARAB",
+    "number": "235",
+    "cross_listed": [],
+    "title": "Readers of al-Andalus Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 236",
+    "dept": "ARAB",
+    "number": "236",
+    "cross_listed": [],
+    "title": "Qur’anic Studies Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 237",
+    "dept": "ARAB",
+    "number": "237",
+    "cross_listed": [],
+    "title": "Arabic Poetry and Modernity Arabic Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 238",
+    "dept": "ARAB",
+    "number": "238",
+    "cross_listed": [],
+    "title": "Arabic Poetry and Modernity Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 239",
+    "dept": "ARAB",
+    "number": "239",
+    "cross_listed": [],
+    "title": "The Arabic Novel Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 240",
+    "dept": "ARAB",
+    "number": "240",
+    "cross_listed": [],
+    "title": "Arabic Drama Arabic Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 241",
+    "dept": "ARAB",
+    "number": "241",
+    "cross_listed": [],
+    "title": "Literary Theory and Criticism Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 243",
+    "dept": "ARAB",
+    "number": "243",
+    "cross_listed": [],
+    "title": "Arabic Rhetoric Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 244",
+    "dept": "ARAB",
+    "number": "244",
+    "cross_listed": [],
+    "title": "Muslim School of Theology Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 245",
+    "dept": "ARAB",
+    "number": "245",
+    "cross_listed": [],
+    "title": "The Lexicon of the Nahda Arabic Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 246",
+    "dept": "ARAB",
+    "number": "246",
+    "cross_listed": [],
+    "title": "The Lexicon of the Nahda Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 247",
+    "dept": "ARAB",
+    "number": "247",
+    "cross_listed": [],
+    "title": "/ ENGL 244W Beyond the Canon Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 248",
+    "dept": "ARAB",
+    "number": "248",
+    "cross_listed": [],
+    "title": "Christian-Muslim Encounters Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 249",
+    "dept": "ARAB",
+    "number": "249",
+    "cross_listed": [],
+    "title": "Sufi Literature Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories ARAB 251AA Society in Literature Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories ARAB 251AB Love in Classical Arabic Literature Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories ARAB 251AE Advice Literature Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories ARAB 251AF ST History in Literature Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories ARAB 251AH The Caliphate and the Arts Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories ARAB 251AL Time Travel in Modern Arabic Fiction Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories ARAB 251AN/ENGL 262A ST: Translation of Poetry Humanities List I Cultures and Histories ARAB 251AR Satire in Arab Literature Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories 2 | P a ge ARAB 251AT A History of Iranian Literature: From Pre- Humanities List I Cultures and Histories Islamic inspirations to creative prosperity ARAB 251AU Personification and Existentialism: From pre- Humanities List I Cultures and Histories Islamic Jahilyya to Parvin Etesami ARAB 251AW Reading in Judeo-Arabic Literature Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories ARAB 251AZ Khadīja bt. Khuwayli Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories ARAB 251BA Modern Hebrew Language Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 251O",
+    "dept": "ARAB",
+    "number": "251O",
+    "cross_listed": [],
+    "title": "Creative Writing Poetry Arabic Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 251P",
+    "dept": "ARAB",
+    "number": "251P",
+    "cross_listed": [],
+    "title": "Arab Feminist Literature Arabic Communications Skills Understanding Communication Humanities List II Cultures and Histories Social Inequalities ARAB 251Q/HIST 258BF Lebanese History through the Novel Arabic Communications Skills Understanding Communication Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 251T/ENGL 262C",
+    "dept": "ARAB",
+    "number": "251T",
+    "cross_listed": [
+      "ENGL 262C"
+    ],
+    "title": "Literary Translation as Preserver of Identity of Humanities List I Cultures and Histories Creative Writing Texts",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 251W",
+    "dept": "ARAB",
+    "number": "251W",
+    "cross_listed": [],
+    "title": "Nahda in Periodicals Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 251Y",
+    "dept": "ARAB",
+    "number": "251Y",
+    "cross_listed": [],
+    "title": "Modern Arab Thought Arabic Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 253",
+    "dept": "ARAB",
+    "number": "253",
+    "cross_listed": [],
+    "title": "Literature in Times of Change Arabic Communications Skills Understanding Communication Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 254",
+    "dept": "ARAB",
+    "number": "254",
+    "cross_listed": [],
+    "title": "The City in Arabic Literature Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARAB 258",
+    "dept": "ARAB",
+    "number": "258",
+    "cross_listed": [],
+    "title": "Arabic Language and Identity Arabic Communications Skills Understanding Communication Humanities List I Cultures and Histories Architecture (ARCH):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARCH 061",
+    "dept": "ARCH",
+    "number": "061",
+    "cross_listed": [],
+    "title": "Design-Impact Laboratory (Summer Workshop)",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": "Community-Engaged Learning"
+  },
+  {
+    "code": "ARCH 121",
+    "dept": "ARCH",
+    "number": "121",
+    "cross_listed": [],
+    "title": "History of Art and Architecture I: From Caves to Humanities List I Cultures and Histories Catacombs",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARCH 122",
+    "dept": "ARCH",
+    "number": "122",
+    "cross_listed": [],
+    "title": "History of Medieval Art and Architecture Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARCH 151",
+    "dept": "ARCH",
+    "number": "151",
+    "cross_listed": [],
+    "title": "Statistics and Mechanics of Solids",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "ARCH 432",
+    "dept": "ARCH",
+    "number": "432",
+    "cross_listed": [],
+    "title": "Urbanism Social Sciences List I Societies and Individuals Writing in the Discipline Archaeology and Design (ARDS):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ARDS 030",
+    "dept": "ARDS",
+    "number": "030",
+    "cross_listed": [],
+    "title": "Politics of/in Design",
+    "preFall2023Attribute": "Social Sciences List II",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "ARDS 060",
+    "dept": "ARDS",
+    "number": "060",
+    "cross_listed": [],
+    "title": "/ ENMG 664 Introduction to Human-Centered Design Community-Engaged Learning Archaeology (AROL):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 201",
+    "dept": "AROL",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Archaeology in Lebanon Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 211",
+    "dept": "AROL",
+    "number": "211",
+    "cross_listed": [],
+    "title": "Methodology Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 212",
+    "dept": "AROL",
+    "number": "212",
+    "cross_listed": [],
+    "title": "Methodology Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 213",
+    "dept": "AROL",
+    "number": "213",
+    "cross_listed": [],
+    "title": "The Human History: The Old Stone Age (Up to Humanities List II Cultures and Histories 10.000 BC)",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 214",
+    "dept": "AROL",
+    "number": "214",
+    "cross_listed": [],
+    "title": "The Human Story II: The New Stone Age or Humanities List II Cultures and Histories Neolithic Period",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 215",
+    "dept": "AROL",
+    "number": "215",
+    "cross_listed": [],
+    "title": "The Near East Bronze Ages I Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 216",
+    "dept": "AROL",
+    "number": "216",
+    "cross_listed": [],
+    "title": "The New East Bronze Ages II Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 217",
+    "dept": "AROL",
+    "number": "217",
+    "cross_listed": [],
+    "title": "Phoenicia and the Phoenicians Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 218",
+    "dept": "AROL",
+    "number": "218",
+    "cross_listed": [],
+    "title": "Phoenician Expansion in Mediterranean Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 219",
+    "dept": "AROL",
+    "number": "219",
+    "cross_listed": [],
+    "title": "Ancient Mesopotamia Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 220",
+    "dept": "AROL",
+    "number": "220",
+    "cross_listed": [],
+    "title": "Ancient Mesopotamia II Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 221",
+    "dept": "AROL",
+    "number": "221",
+    "cross_listed": [],
+    "title": "Archaeology of Greek World I Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 222",
+    "dept": "AROL",
+    "number": "222",
+    "cross_listed": [],
+    "title": "The Archeology of the Greek World Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 223",
+    "dept": "AROL",
+    "number": "223",
+    "cross_listed": [],
+    "title": "Archaeology of the Hellenistic World Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 224",
+    "dept": "AROL",
+    "number": "224",
+    "cross_listed": [],
+    "title": "Introduction to the Roman World Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 225",
+    "dept": "AROL",
+    "number": "225",
+    "cross_listed": [],
+    "title": "The Roman and Byzantine Near East Humanities List I Cultures and Histories 3 | P a ge",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 226",
+    "dept": "AROL",
+    "number": "226",
+    "cross_listed": [],
+    "title": "The World of the Philistines, Israelites and Humanities List I Cultures and Histories Aramaeans",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 227",
+    "dept": "AROL",
+    "number": "227",
+    "cross_listed": [],
+    "title": "The Archaeology of Anatolia I: From the Neolithic Humanities List I Cultures and Histories to the Middle Bronze Age (10,000 - 1600 BC)",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 228",
+    "dept": "AROL",
+    "number": "228",
+    "cross_listed": [],
+    "title": "ST: The Archaeology of the Hittites Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 230/GEOL 290A",
+    "dept": "AROL",
+    "number": "230",
+    "cross_listed": [
+      "GEOL 290A"
+    ],
+    "title": "Water in a Changing World Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "AROL 231",
+    "dept": "AROL",
+    "number": "231",
+    "cross_listed": [],
+    "title": "Ancient Near Eastern Religions Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 232",
+    "dept": "AROL",
+    "number": "232",
+    "cross_listed": [],
+    "title": "Animals in Archaeology Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 235A",
+    "dept": "AROL",
+    "number": "235A",
+    "cross_listed": [],
+    "title": "Money in the Ancient World Humanities List I Cultures and Histories AROL 235AD Introduction to Early Islamic Archaeology Humanities List I Cultures and Histories AROL 235AG War and Warfare in the Ancient Near East Humanities List I Cultures and Histories AROL 235AI Farming in Ancient World Humanities List I Cultures and Histories AROL 235AJ/GEOL 290B Climate and Human Societies Humanities List I Cultures and Histories Natural Sciences Understanding the World AROL 235AK Museum Conservation Humanities List I Cultures and Histories AROL 235AL Introduction to Bioarchaeology Natural Sciences Understanding the World AROL 235AM Burial and Memory in Lebanon Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 236E",
+    "dept": "AROL",
+    "number": "236E",
+    "cross_listed": [],
+    "title": "ST: Introduction to Environmental Archeology Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 237",
+    "dept": "AROL",
+    "number": "237",
+    "cross_listed": [],
+    "title": "Plants and People in the Past Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 238",
+    "dept": "AROL",
+    "number": "238",
+    "cross_listed": [],
+    "title": "The Origins and Growth of Agriculture Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 240",
+    "dept": "AROL",
+    "number": "240",
+    "cross_listed": [],
+    "title": "Introduction to Ancient Egypt Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 241",
+    "dept": "AROL",
+    "number": "241",
+    "cross_listed": [],
+    "title": "Daily Life in Ancient Egypt Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AROL 242",
+    "dept": "AROL",
+    "number": "242",
+    "cross_listed": [],
+    "title": "Ancient Egyptian Towns (prev. AROL 235Y: Humanities List I Cultures and Histories Ancient Egyptian Settlement Archeology) Art History (AHIS):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 203",
+    "dept": "AHIS",
+    "number": "203",
+    "cross_listed": [],
+    "title": "Ancient and Classical Art Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 204",
+    "dept": "AHIS",
+    "number": "204",
+    "cross_listed": [],
+    "title": "Medieval Art Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 205",
+    "dept": "AHIS",
+    "number": "205",
+    "cross_listed": [],
+    "title": "The Art of Medieval Manuscripts Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 207",
+    "dept": "AHIS",
+    "number": "207",
+    "cross_listed": [],
+    "title": "ST: Early Islam Art and Architecture Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 208",
+    "dept": "AHIS",
+    "number": "208",
+    "cross_listed": [],
+    "title": "Italian Renaissance Art Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 209",
+    "dept": "AHIS",
+    "number": "209",
+    "cross_listed": [],
+    "title": "ST: Ottomans, Mughals, and Safavids Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 210",
+    "dept": "AHIS",
+    "number": "210",
+    "cross_listed": [],
+    "title": "Enlightenment and Art Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 221",
+    "dept": "AHIS",
+    "number": "221",
+    "cross_listed": [],
+    "title": "Modern Art and Culture Humanities List I Cultures and Histories AHIS 224/SOAN 290BG Visualizing Modernity: 19th-Century Islamic Humanities List I Cultures and Histories Art, Architecture and Material Culture",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 225",
+    "dept": "AHIS",
+    "number": "225",
+    "cross_listed": [],
+    "title": "Art Now Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 226",
+    "dept": "AHIS",
+    "number": "226",
+    "cross_listed": [],
+    "title": "Art After the Lebanese Wars Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 227",
+    "dept": "AHIS",
+    "number": "227",
+    "cross_listed": [],
+    "title": "Sound in Visual Culture Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 228",
+    "dept": "AHIS",
+    "number": "228",
+    "cross_listed": [],
+    "title": "Art of the Modern Middle East: 20th Century Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 230",
+    "dept": "AHIS",
+    "number": "230",
+    "cross_listed": [],
+    "title": "Portraiture Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 244",
+    "dept": "AHIS",
+    "number": "244",
+    "cross_listed": [],
+    "title": "Phenomenology and Art Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 249E",
+    "dept": "AHIS",
+    "number": "249E",
+    "cross_listed": [],
+    "title": "ST: History of the Film Essay Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 249M/CHLA 214F",
+    "dept": "AHIS",
+    "number": "249M",
+    "cross_listed": [
+      "CHLA 214F"
+    ],
+    "title": "Mapping Capital in Art and Cinema Humanities List I Cultures and Histories History of Ideas Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 249G",
+    "dept": "AHIS",
+    "number": "249G",
+    "cross_listed": [],
+    "title": "Image-Making and Religion Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 249I",
+    "dept": "AHIS",
+    "number": "249I",
+    "cross_listed": [],
+    "title": "Feminist Art History Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 249L",
+    "dept": "AHIS",
+    "number": "249L",
+    "cross_listed": [],
+    "title": "From Thought to Script: Manuscript Culture in Humanities List I Cultures and Histories Islamic and Arab History (7th-19th ce.)",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 251",
+    "dept": "AHIS",
+    "number": "251",
+    "cross_listed": [],
+    "title": "Theories of Moden Art Humanities List I Cultures and Histories Writing in the Discipline",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 252",
+    "dept": "AHIS",
+    "number": "252",
+    "cross_listed": [],
+    "title": "Contemporary Art and Theory Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 261",
+    "dept": "AHIS",
+    "number": "261",
+    "cross_listed": [],
+    "title": "Methods in Art History Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 262",
+    "dept": "AHIS",
+    "number": "262",
+    "cross_listed": [],
+    "title": "Seeing Rude and Erudite Humanities List I Cultures and Histories 4 | P a ge",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 263",
+    "dept": "AHIS",
+    "number": "263",
+    "cross_listed": [],
+    "title": "Art and Labor Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 281",
+    "dept": "AHIS",
+    "number": "281",
+    "cross_listed": [],
+    "title": "Collect & exhibit: Islamic Art Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "AHIS 282/CHLA 212D",
+    "dept": "AHIS",
+    "number": "282",
+    "cross_listed": [
+      "CHLA 212D"
+    ],
+    "title": "Art and Cultural Criticism Humanities List I Cultures and Histories History of Ideas Social Inequalities Human Values Biology (BIOL):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "BIOL 200",
+    "dept": "BIOL",
+    "number": "200",
+    "cross_listed": [],
+    "title": "Diversity of Life",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "BIOL 209",
+    "dept": "BIOL",
+    "number": "209",
+    "cross_listed": [],
+    "title": "Concepts and Connections",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "BIOL 210",
+    "dept": "BIOL",
+    "number": "210",
+    "cross_listed": [],
+    "title": "Human Biology",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "BIOL 250",
+    "dept": "BIOL",
+    "number": "250",
+    "cross_listed": [],
+    "title": "Biosphere Natural Sciences Understanding the World Business (BUSS):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "BUSS 215",
+    "dept": "BUSS",
+    "number": "215",
+    "cross_listed": [],
+    "title": "Business Ethics Humanities List I Cultures and Histories Human Values Writing in the Discipline",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "BUSS 220",
+    "dept": "BUSS",
+    "number": "220",
+    "cross_listed": [],
+    "title": "Personal Financial Planning",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "BUSS 224",
+    "dept": "BUSS",
+    "number": "224",
+    "cross_listed": [],
+    "title": "Business and Sustainability Community-Engaged Learning Chemistry (CHEM):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHEM 200",
+    "dept": "CHEM",
+    "number": "200",
+    "cross_listed": [],
+    "title": "Basic Chemistry and Applications",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "CHEM 201",
+    "dept": "CHEM",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Chemical Principles",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "CHEM 202",
+    "dept": "CHEM",
+    "number": "202",
+    "cross_listed": [],
+    "title": "Introduction to Environmental Chemistry",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "CHEM 204",
+    "dept": "CHEM",
+    "number": "204",
+    "cross_listed": [],
+    "title": "Physical Chemistry for Chemical Engineer",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "CHEM 205",
+    "dept": "CHEM",
+    "number": "205",
+    "cross_listed": [],
+    "title": "Introductory Chemistry Laboratory",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "CHEM 207",
+    "dept": "CHEM",
+    "number": "207",
+    "cross_listed": [],
+    "title": "Survey of Organic Chemistry and Petrochemicals",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "CHEM 208",
+    "dept": "CHEM",
+    "number": "208",
+    "cross_listed": [],
+    "title": "Brief Survey of Organic Chemistry",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "CHEM 209",
+    "dept": "CHEM",
+    "number": "209",
+    "cross_listed": [],
+    "title": "Introductory Organic Laboratory Natural Sciences Understanding the World Civilization Sequence Program (CVSP):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 201",
+    "dept": "CVSP",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Ancient Near East and Classical Civilizations Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 202",
+    "dept": "CVSP",
+    "number": "202",
+    "cross_listed": [],
+    "title": "Medieval, Islamic and Renaissance Civilizations Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 203",
+    "dept": "CVSP",
+    "number": "203",
+    "cross_listed": [],
+    "title": "The Making of the Modern World Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 204",
+    "dept": "CVSP",
+    "number": "204",
+    "cross_listed": [],
+    "title": "Contemporary Studies Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 205",
+    "dept": "CVSP",
+    "number": "205",
+    "cross_listed": [],
+    "title": "Ancient, Medieval and Renaissance Civilizations Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 206",
+    "dept": "CVSP",
+    "number": "206",
+    "cross_listed": [],
+    "title": "Crossroads of Modern Thought Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 207C",
+    "dept": "CVSP",
+    "number": "207C",
+    "cross_listed": [],
+    "title": "Utopian Thought I Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 207D",
+    "dept": "CVSP",
+    "number": "207D",
+    "cross_listed": [],
+    "title": "Human Values Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 208C",
+    "dept": "CVSP",
+    "number": "208C",
+    "cross_listed": [],
+    "title": "Modern and Contemporary Studies: Utopian Humanities List I Cultures and Histories Thought II",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 208G",
+    "dept": "CVSP",
+    "number": "208G",
+    "cross_listed": [],
+    "title": "Modern and Contemporary Studies: Gender and Humanities List I Cultures and Histories Cultural Production (pre-modern to modern)",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 208N",
+    "dept": "CVSP",
+    "number": "208N",
+    "cross_listed": [],
+    "title": "The Normal and the Pathological Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 208O",
+    "dept": "CVSP",
+    "number": "208O",
+    "cross_listed": [],
+    "title": "Social Inequalities Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 208Q",
+    "dept": "CVSP",
+    "number": "208Q",
+    "cross_listed": [],
+    "title": "Extinction Humanities List I Cultures and Histories CVSP 212/AMST 275BA Modern and Contemporary World Theatre Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 216",
+    "dept": "CVSP",
+    "number": "216",
+    "cross_listed": [],
+    "title": "A Survey of Twentieth-Century French Humanities List I Cultures and Histories Literature (in English)",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 230",
+    "dept": "CVSP",
+    "number": "230",
+    "cross_listed": [],
+    "title": "Introduction to Feminist Theory Humanities List I Cultures and Histories CVSP 295AR Earth Architecture Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 295S",
+    "dept": "CVSP",
+    "number": "295S",
+    "cross_listed": [],
+    "title": "ST: Classical Theories of Space from Antiquity to Humanities List I Cultures and Histories the Renaissance",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CVSP 295Y",
+    "dept": "CVSP",
+    "number": "295Y",
+    "cross_listed": [],
+    "title": "Archetypes across Texts and Traditions Humanities List I Cultures and Histories Computer Science (CMPS):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CMPS 201",
+    "dept": "CMPS",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Introduction to Programming Quantitative Thought Quantitative Reasoning",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CMPS 203",
+    "dept": "CMPS",
+    "number": "203",
+    "cross_listed": [],
+    "title": "Programming for Everyone Quantitative Thought Quantitative Reasoning",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CMPS 206",
+    "dept": "CMPS",
+    "number": "206",
+    "cross_listed": [],
+    "title": "Computers and Programming for the Arts Quantitative Thought Quantitative Reasoning",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CMPS 207",
+    "dept": "CMPS",
+    "number": "207",
+    "cross_listed": [],
+    "title": "Programming for Digital Art Quantitative Thought Quantitative Reasoning 5 | P a ge",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CMPS 209",
+    "dept": "CMPS",
+    "number": "209",
+    "cross_listed": [],
+    "title": "Computers and Programming for the Sciences Quantitative Thought Quantitative Reasoning",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CMPS 269",
+    "dept": "CMPS",
+    "number": "269",
+    "cross_listed": [],
+    "title": "AI Ethics (prev. CMPS 297T/PHIL 208A: Ethics Humanities List I Cultures and Histories of Artificial Intelligence) Human Values Critical Humanities for the Liberal Arts (CHLA):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 201",
+    "dept": "CHLA",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Ancient Near East and Classical Civilizations Humanities List I History of Ideas Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 202",
+    "dept": "CHLA",
+    "number": "202",
+    "cross_listed": [],
+    "title": "Medieval, Islamic and Renaissance Civilizations Humanities List I History of Ideas Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 204",
+    "dept": "CHLA",
+    "number": "204",
+    "cross_listed": [],
+    "title": "Contemporary Studies Humanities List I History of Ideas Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 206",
+    "dept": "CHLA",
+    "number": "206",
+    "cross_listed": [],
+    "title": "Modern and Contemporary Studies Humanities List I History of Ideas Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 209A",
+    "dept": "CHLA",
+    "number": "209A",
+    "cross_listed": [],
+    "title": "Introduction to the Critical Humanities Humanities List I History of Ideas Cultures and Histories Human Values Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 209B",
+    "dept": "CHLA",
+    "number": "209B",
+    "cross_listed": [],
+    "title": "What is Criticism? Humanities List I History of Ideas Cultures and Histories Human Values Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 209C",
+    "dept": "CHLA",
+    "number": "209C",
+    "cross_listed": [],
+    "title": "Critical Theories and Methods Humanities List I History of Ideas Cultures and Histories Human Values Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 210",
+    "dept": "CHLA",
+    "number": "210",
+    "cross_listed": [],
+    "title": "Social Inequalities (gender, race, class) Humanities List I History of Ideas Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 210A",
+    "dept": "CHLA",
+    "number": "210A",
+    "cross_listed": [],
+    "title": "Representations Women in Literature Humanities List I History of Ideas Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 210B",
+    "dept": "CHLA",
+    "number": "210B",
+    "cross_listed": [],
+    "title": "Feminist Thought Humanities List I History of Ideas Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 210C",
+    "dept": "CHLA",
+    "number": "210C",
+    "cross_listed": [],
+    "title": "Introduction to Gender and Global Inequalities Humanities List I History of Ideas Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 210D/AMST 276Y",
+    "dept": "CHLA",
+    "number": "210D",
+    "cross_listed": [
+      "AMST 276Y"
+    ],
+    "title": "Race and Gender in Literature Humanities List I History of Ideas Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 210E",
+    "dept": "CHLA",
+    "number": "210E",
+    "cross_listed": [],
+    "title": "Apartheid and Refuge Cities Humanities List I History of Ideas Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 210F",
+    "dept": "CHLA",
+    "number": "210F",
+    "cross_listed": [],
+    "title": "The “Class” Class Humanities List I History of Ideas Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 211",
+    "dept": "CHLA",
+    "number": "211",
+    "cross_listed": [],
+    "title": "The Normal and the Pathological Humanities List I History of Ideas Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 211A",
+    "dept": "CHLA",
+    "number": "211A",
+    "cross_listed": [],
+    "title": "Introduction to Normal & Pathological Humanities List I History of Ideas Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 212A",
+    "dept": "CHLA",
+    "number": "212A",
+    "cross_listed": [],
+    "title": "Critical Approaches to AI Humanities List I History of Ideas Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 212B",
+    "dept": "CHLA",
+    "number": "212B",
+    "cross_listed": [],
+    "title": "History of Resistance Humanities List I History of Ideas Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 212D/AHIS 282",
+    "dept": "CHLA",
+    "number": "212D",
+    "cross_listed": [
+      "AHIS 282"
+    ],
+    "title": "Art and Cultural Criticism Humanities List I History of Ideas Cultures and Histories 6 | P a ge Social Inequalities Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 212E",
+    "dept": "CHLA",
+    "number": "212E",
+    "cross_listed": [],
+    "title": "Civil War in Cinema Humanities List I History of Ideas Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 212F",
+    "dept": "CHLA",
+    "number": "212F",
+    "cross_listed": [],
+    "title": "What is Authority? Humanities List I History of Ideas Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 213B",
+    "dept": "CHLA",
+    "number": "213B",
+    "cross_listed": [],
+    "title": "Apocalypse and Extinction Humanities List I History of Ideas Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 214",
+    "dept": "CHLA",
+    "number": "214",
+    "cross_listed": [],
+    "title": "Human Values Humanities List I History of Ideas Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 214A",
+    "dept": "CHLA",
+    "number": "214A",
+    "cross_listed": [],
+    "title": "Utopian Thought I Greek to Thom Humanities List I History of Ideas Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 214B",
+    "dept": "CHLA",
+    "number": "214B",
+    "cross_listed": [],
+    "title": "Human Values Through Time Humanities List I History of Ideas Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 214C",
+    "dept": "CHLA",
+    "number": "214C",
+    "cross_listed": [],
+    "title": "World Turned Upside Down Humanities List I History of Ideas Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 214D",
+    "dept": "CHLA",
+    "number": "214D",
+    "cross_listed": [],
+    "title": "Utopian Thought II Humanities List I Cultures and Histories History of Ideas Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 214E",
+    "dept": "CHLA",
+    "number": "214E",
+    "cross_listed": [],
+    "title": "Ancient Med Civilizations Humanities List I Cultures and Histories History of Ideas Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 214F/AHS 249M",
+    "dept": "CHLA",
+    "number": "214F",
+    "cross_listed": [
+      "AHS 249M"
+    ],
+    "title": "Mapping Capital in Art and Cinema Humanities List I Cultures and Histories History of Ideas Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 214G",
+    "dept": "CHLA",
+    "number": "214G",
+    "cross_listed": [],
+    "title": "History and Other Fictions Humanities List I Cultures and Histories History of Ideas Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 214H",
+    "dept": "CHLA",
+    "number": "214H",
+    "cross_listed": [],
+    "title": "Political Imagination Humanities List I Cultures and Histories History of Ideas Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 215",
+    "dept": "CHLA",
+    "number": "215",
+    "cross_listed": [],
+    "title": "Introduction to Medical Humanities Humanities List I Cultures and Histories History of Ideas Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 261",
+    "dept": "CHLA",
+    "number": "261",
+    "cross_listed": [],
+    "title": "Civilization Through the Arts I Humanities List I History of Ideas Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 262",
+    "dept": "CHLA",
+    "number": "262",
+    "cross_listed": [],
+    "title": "Civilization Through the Arts II Humanities List I History of Ideas Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 263",
+    "dept": "CHLA",
+    "number": "263",
+    "cross_listed": [],
+    "title": "Modern and Contemporary World Theatre Humanities List I History of Ideas Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 270",
+    "dept": "CHLA",
+    "number": "270",
+    "cross_listed": [],
+    "title": "A Survey of 19th Century Humanities List I History of Ideas Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 271",
+    "dept": "CHLA",
+    "number": "271",
+    "cross_listed": [],
+    "title": "A Survey of 20th Century Humanities List I History of Ideas Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 272",
+    "dept": "CHLA",
+    "number": "272",
+    "cross_listed": [],
+    "title": "Modern Russian Literature Humanities List I History of Ideas Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "CHLA 295A",
+    "dept": "CHLA",
+    "number": "295A",
+    "cross_listed": [],
+    "title": "ST: Nature and Society: Extinction Humanities List I History of Ideas Cultures and Histories Earth Sciences (GEOL):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "GEOL 201",
+    "dept": "GEOL",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Physical Geology",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "GEOL 204",
+    "dept": "GEOL",
+    "number": "204",
+    "cross_listed": [],
+    "title": "Dinosaurs and Life History",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "GEOL 205",
+    "dept": "GEOL",
+    "number": "205",
+    "cross_listed": [],
+    "title": "Earth Resources and Energy",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "GEOL 206",
+    "dept": "GEOL",
+    "number": "206",
+    "cross_listed": [],
+    "title": "Planetary Geology",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "GEOL 209",
+    "dept": "GEOL",
+    "number": "209",
+    "cross_listed": [],
+    "title": "Building and Deconstruction of Mountains Natural Sciences Understanding the World 7 | P a ge",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "GEOL 227",
+    "dept": "GEOL",
+    "number": "227",
+    "cross_listed": [],
+    "title": "Alternative Energy and Climate Change Natural Sciences Understanding the World GEOL 290A/AROL 235AH Water in a Changing World Humanities List I Cultures and Histories Natural Sciences Understanding the World GEOL 290B/ AROL 235AJ Climate and Human Societies Humanities List I Cultures and Histories Natural Sciences Understanding the World Economics (ECON):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ECON 203",
+    "dept": "ECON",
+    "number": "203",
+    "cross_listed": [],
+    "title": "Survey of Economics",
+    "preFall2023Attribute": "Social Sciences List II",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "ECON 211",
+    "dept": "ECON",
+    "number": "211",
+    "cross_listed": [],
+    "title": "Elementary Microeconomics Theory",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "ECON 212",
+    "dept": "ECON",
+    "number": "212",
+    "cross_listed": [],
+    "title": "Elementary Macroeconomics Theory",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "ECON 217",
+    "dept": "ECON",
+    "number": "217",
+    "cross_listed": [],
+    "title": "Intermediate Price Theory",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "ECON 221",
+    "dept": "ECON",
+    "number": "221",
+    "cross_listed": [],
+    "title": "History of Economic Thought Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ECON 222",
+    "dept": "ECON",
+    "number": "222",
+    "cross_listed": [],
+    "title": "Labor Economics Social Sciences List I Societies and Individuals Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ECON 223",
+    "dept": "ECON",
+    "number": "223",
+    "cross_listed": [],
+    "title": "Economics of the Middle East Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ECON 230",
+    "dept": "ECON",
+    "number": "230",
+    "cross_listed": [],
+    "title": "Economic History Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ECON 237",
+    "dept": "ECON",
+    "number": "237",
+    "cross_listed": [],
+    "title": "Economic Development I Social Sciences List I Societies and Individuals Social Inequalities Education (EDUC):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "EDUC 211",
+    "dept": "EDUC",
+    "number": "211",
+    "cross_listed": [],
+    "title": "The School and the Social Order",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "EDUC 213",
+    "dept": "EDUC",
+    "number": "213",
+    "cross_listed": [],
+    "title": "Introduction to Educational Administration",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "EDUC 215",
+    "dept": "EDUC",
+    "number": "215",
+    "cross_listed": [],
+    "title": "Learning and Human Development",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "EDUC 218",
+    "dept": "EDUC",
+    "number": "218",
+    "cross_listed": [],
+    "title": "Children's Literature",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "EDUC 230",
+    "dept": "EDUC",
+    "number": "230",
+    "cross_listed": [],
+    "title": "Instructional Procedures",
+    "preFall2023Attribute": "Social Sciences List II",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "EDUC 231",
+    "dept": "EDUC",
+    "number": "231",
+    "cross_listed": [],
+    "title": "Reading Instruction in Elementary School",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "EDUC 268A",
+    "dept": "EDUC",
+    "number": "268A",
+    "cross_listed": [],
+    "title": "Practicum in Elementary School (Homeroom Community-Engaged Learning Teaching)",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "EDUC 268B",
+    "dept": "EDUC",
+    "number": "268B",
+    "cross_listed": [],
+    "title": "Practicum in Elementary School (Homeroom Community-Engaged Learning Teaching)",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "EDUC 268C",
+    "dept": "EDUC",
+    "number": "268C",
+    "cross_listed": [],
+    "title": "Practicum in Elementary School (Language Community-Engaged Learning Arts/Social Studies)",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "EDUC 268D",
+    "dept": "EDUC",
+    "number": "268D",
+    "cross_listed": [],
+    "title": "Practicum in Elementary School Community-Engaged Learning (Mathematics/Science)",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "EDUC 271",
+    "dept": "EDUC",
+    "number": "271",
+    "cross_listed": [],
+    "title": "Problem Solving in Arithmetic and Algebra Quantitative Thought Quantitative Reasoning",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "EDUC 273",
+    "dept": "EDUC",
+    "number": "273",
+    "cross_listed": [],
+    "title": "Sciences for Elementary Teachers 1",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "EDUC 274",
+    "dept": "EDUC",
+    "number": "274",
+    "cross_listed": [],
+    "title": "Sciences for Elementary Teachers 2",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "EDUC 290D",
+    "dept": "EDUC",
+    "number": "290D",
+    "cross_listed": [],
+    "title": "Theories and Approaches in Early Childhood Social Sciences I Societies and Individuals Education",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "EDUC 290E",
+    "dept": "EDUC",
+    "number": "290E",
+    "cross_listed": [],
+    "title": "Play Education in ECE Programs Social Sciences II Societies and Individuals Electrical and Computer Engineering (EECE):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "EECE 230",
+    "dept": "EECE",
+    "number": "230",
+    "cross_listed": [],
+    "title": "Introduction to Programming Quantitative Thought Quantitative Reasoning English (ENGL):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 203",
+    "dept": "ENGL",
+    "number": "203",
+    "cross_listed": [],
+    "title": "Academic English English Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 204",
+    "dept": "ENGL",
+    "number": "204",
+    "cross_listed": [],
+    "title": "Advanced Academic English English Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 205",
+    "dept": "ENGL",
+    "number": "205",
+    "cross_listed": [],
+    "title": "English Literature I Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 206",
+    "dept": "ENGL",
+    "number": "206",
+    "cross_listed": [],
+    "title": "Technical English English Communications Skills Understanding Communication",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 207",
+    "dept": "ENGL",
+    "number": "207",
+    "cross_listed": [],
+    "title": "English Literature II Humanities List I Cultures and Histories ENGL 209/AMST 275AO Survey of American Literature Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 211A",
+    "dept": "ENGL",
+    "number": "211A",
+    "cross_listed": [],
+    "title": "Milton and Epic Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 212",
+    "dept": "ENGL",
+    "number": "212",
+    "cross_listed": [],
+    "title": "Shakespeare Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 214",
+    "dept": "ENGL",
+    "number": "214",
+    "cross_listed": [],
+    "title": "Victorian Literature Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 215A/THTR 218C",
+    "dept": "ENGL",
+    "number": "215A",
+    "cross_listed": [
+      "THTR 218C"
+    ],
+    "title": "Modern and Contemporary British and Irish Humanities List I Cultures and Histories Literature",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 216/AMST 275M",
+    "dept": "ENGL",
+    "number": "216",
+    "cross_listed": [
+      "AMST 275M"
+    ],
+    "title": "Drama Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 218",
+    "dept": "ENGL",
+    "number": "218",
+    "cross_listed": [],
+    "title": "Poetry Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 219",
+    "dept": "ENGL",
+    "number": "219",
+    "cross_listed": [],
+    "title": "Film as Text Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 220B",
+    "dept": "ENGL",
+    "number": "220B",
+    "cross_listed": [],
+    "title": "Contemporary Anglophone Lebanese Fiction Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 224",
+    "dept": "ENGL",
+    "number": "224",
+    "cross_listed": [],
+    "title": "Early American Literature Humanities List I Cultures and Histories 8 | P a ge ENGL 225/AMST 275AK American Literature (1900-1960) Humanities List I Cultures and Histories ENGL 226/AMST 275AY Contemporary American Literature Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 227",
+    "dept": "ENGL",
+    "number": "227",
+    "cross_listed": [],
+    "title": "Introduction to Language Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 228",
+    "dept": "ENGL",
+    "number": "228",
+    "cross_listed": [],
+    "title": "Phonetics Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 229",
+    "dept": "ENGL",
+    "number": "229",
+    "cross_listed": [],
+    "title": "History of the English Language Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 230",
+    "dept": "ENGL",
+    "number": "230",
+    "cross_listed": [],
+    "title": "Language in Society",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "ENGL 233",
+    "dept": "ENGL",
+    "number": "233",
+    "cross_listed": [],
+    "title": "Introduction to Translation Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 234",
+    "dept": "ENGL",
+    "number": "234",
+    "cross_listed": [],
+    "title": "Gender and Language Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 235",
+    "dept": "ENGL",
+    "number": "235",
+    "cross_listed": [],
+    "title": "Politics of Language",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "ENGL 236",
+    "dept": "ENGL",
+    "number": "236",
+    "cross_listed": [],
+    "title": "Introduction to Creative Writing Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 239",
+    "dept": "ENGL",
+    "number": "239",
+    "cross_listed": [],
+    "title": "/ MCOM 293O Screenwriting Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 242B",
+    "dept": "ENGL",
+    "number": "242B",
+    "cross_listed": [],
+    "title": "The Iliad Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 242C",
+    "dept": "ENGL",
+    "number": "242C",
+    "cross_listed": [],
+    "title": "Global Modernism Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 242F",
+    "dept": "ENGL",
+    "number": "242F",
+    "cross_listed": [],
+    "title": "War Literature Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 242G",
+    "dept": "ENGL",
+    "number": "242G",
+    "cross_listed": [],
+    "title": "Black Oil, Empire and Storytelling Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 244R",
+    "dept": "ENGL",
+    "number": "244R",
+    "cross_listed": [],
+    "title": "Introduction to Women and Gender Studies Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 244V",
+    "dept": "ENGL",
+    "number": "244V",
+    "cross_listed": [],
+    "title": "Literary Worlds of Childhoods Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 244W",
+    "dept": "ENGL",
+    "number": "244W",
+    "cross_listed": [],
+    "title": "/ ARAB 247 Beyond the Canon Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 244X",
+    "dept": "ENGL",
+    "number": "244X",
+    "cross_listed": [],
+    "title": "The Bible as Literature Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 249",
+    "dept": "ENGL",
+    "number": "249",
+    "cross_listed": [],
+    "title": "Fiction Writing Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 250",
+    "dept": "ENGL",
+    "number": "250",
+    "cross_listed": [],
+    "title": "/ AMST 275AP Poetry Writing Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 251",
+    "dept": "ENGL",
+    "number": "251",
+    "cross_listed": [],
+    "title": "Playwriting Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 252",
+    "dept": "ENGL",
+    "number": "252",
+    "cross_listed": [],
+    "title": "Creative Non-fiction Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 254A",
+    "dept": "ENGL",
+    "number": "254A",
+    "cross_listed": [],
+    "title": "/ MCOM 293N Short Video Writing and Production Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 254F",
+    "dept": "ENGL",
+    "number": "254F",
+    "cross_listed": [],
+    "title": "Narratives of the Ordinary Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 254H",
+    "dept": "ENGL",
+    "number": "254H",
+    "cross_listed": [],
+    "title": "City as Character Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 254I",
+    "dept": "ENGL",
+    "number": "254I",
+    "cross_listed": [],
+    "title": "The Personal Essay Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 254J",
+    "dept": "ENGL",
+    "number": "254J",
+    "cross_listed": [],
+    "title": "Writing Short Prose Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 254K",
+    "dept": "ENGL",
+    "number": "254K",
+    "cross_listed": [],
+    "title": "Writing War Stories Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 254L",
+    "dept": "ENGL",
+    "number": "254L",
+    "cross_listed": [],
+    "title": "The Lyric Essay: From Poetry to Prose Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 254M",
+    "dept": "ENGL",
+    "number": "254M",
+    "cross_listed": [],
+    "title": "After Zionism: Imagining the Rebirth of Humanities List I Cultures and Histories Palestine",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 254N",
+    "dept": "ENGL",
+    "number": "254N",
+    "cross_listed": [],
+    "title": "Directing Actors for Film Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 254O",
+    "dept": "ENGL",
+    "number": "254O",
+    "cross_listed": [],
+    "title": "Documentary Film in the Making Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 256B",
+    "dept": "ENGL",
+    "number": "256B",
+    "cross_listed": [],
+    "title": "Digital Culture: Introduction to Digital Humanities List I Cultures and Histories Humanities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 256E",
+    "dept": "ENGL",
+    "number": "256E",
+    "cross_listed": [],
+    "title": "Digital Platforms and Publics Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 257C",
+    "dept": "ENGL",
+    "number": "257C",
+    "cross_listed": [],
+    "title": "Visual Culture: Poetry in Motion Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 257G",
+    "dept": "ENGL",
+    "number": "257G",
+    "cross_listed": [],
+    "title": "World Literature, Comparative Melodrama and Humanities List I Cultures and Histories the Sources of Dissent",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 257H",
+    "dept": "ENGL",
+    "number": "257H",
+    "cross_listed": [],
+    "title": "Geo-Politics of Adaptation Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 257I",
+    "dept": "ENGL",
+    "number": "257I",
+    "cross_listed": [],
+    "title": "Visual Culture: When Words Paint Pictures Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 258F",
+    "dept": "ENGL",
+    "number": "258F",
+    "cross_listed": [],
+    "title": "/ AMST 275AS Feminism in Ethnic American Literature Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 258L",
+    "dept": "ENGL",
+    "number": "258L",
+    "cross_listed": [],
+    "title": "Women in Creating Writing Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 259E",
+    "dept": "ENGL",
+    "number": "259E",
+    "cross_listed": [],
+    "title": "Decolonizing the Archives: Rhetorical Ethics and Humanities List I Cultures and Histories Literacy Sponsors in the Preservation of the Levantine Narrative",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 260E",
+    "dept": "ENGL",
+    "number": "260E",
+    "cross_listed": [],
+    "title": "Introduction to Teaching Composition Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 262A",
+    "dept": "ENGL",
+    "number": "262A",
+    "cross_listed": [],
+    "title": "/ ARAB 251AN Translation of Poetry Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 262C",
+    "dept": "ENGL",
+    "number": "262C",
+    "cross_listed": [],
+    "title": "/ ARAB 251T Literary Translation as Preserver of Identity of Humanities List I Cultures and Histories Creative Writing Texts",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 263",
+    "dept": "ENGL",
+    "number": "263",
+    "cross_listed": [],
+    "title": "Tutoring Writing Humanities List I Cultures and Histories 9 | P a ge",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 264",
+    "dept": "ENGL",
+    "number": "264",
+    "cross_listed": [],
+    "title": "Fiction Writing for Video Games Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENGL 294D",
+    "dept": "ENGL",
+    "number": "294D",
+    "cross_listed": [],
+    "title": "Corpus Linguists Social Sciences List I Societies and Individuals Engineering Management (ENMG):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENMG 504/INDE 410",
+    "dept": "ENMG",
+    "number": "504",
+    "cross_listed": [
+      "INDE 410"
+    ],
+    "title": "Engineering Ethics Humanities List I Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENMG 664",
+    "dept": "ENMG",
+    "number": "664",
+    "cross_listed": [],
+    "title": "/ ARCH 060 Introduction to Human-Centered Design Community-Engaged Learning Entrepreneurship (ENTM):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENTM 220",
+    "dept": "ENTM",
+    "number": "220",
+    "cross_listed": [],
+    "title": "Entrepreneurship and Business Planning Social Sciences List I Societies and Individuals Environmental Health (ENHL):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "ENHL 220",
+    "dept": "ENHL",
+    "number": "220",
+    "cross_listed": [],
+    "title": "Fundamentals of Environmental Health Sciences",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "ENHL 221",
+    "dept": "ENHL",
+    "number": "221",
+    "cross_listed": [],
+    "title": "Management of Domestic and Hazardous Waste Natural Sciences Understanding the World Epidemiology and Population Health (EPHD):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "EPHD 203",
+    "dept": "EPHD",
+    "number": "203",
+    "cross_listed": [],
+    "title": "Epidemiology and Biostatics Quantitative Thought Quantitative Reasoning",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "EPHD 213",
+    "dept": "EPHD",
+    "number": "213",
+    "cross_listed": [],
+    "title": "Survey Methods Quantitative Thought Quantitative Reasoning Faculty of Engineering and Architecture (FEAA):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "FEAA 300",
+    "dept": "FEAA",
+    "number": "300",
+    "cross_listed": [],
+    "title": "Functional Biology for Engineers and Natural Sciences Understanding the World Designers",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "FEAA 400",
+    "dept": "FEAA",
+    "number": "400",
+    "cross_listed": [],
+    "title": "/ LDEM 203 Planetary Systems Thinking Social Sciences List I Societies and Individuals Community-Engaged Learning Graphic Design (GRDS):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "GRDS 203",
+    "dept": "GRDS",
+    "number": "203",
+    "cross_listed": [],
+    "title": "Design in the Community",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": "Community-Engaged Learning"
+  },
+  {
+    "code": "GRDS 231",
+    "dept": "GRDS",
+    "number": "231",
+    "cross_listed": [],
+    "title": "Introduction to Visual Theory Social Sciences I Societies and Individuals Health Management and Policy (HMPD):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HMPD 204",
+    "dept": "HMPD",
+    "number": "204",
+    "cross_listed": [],
+    "title": "Introduction to Health Services Administration Social Sciences List I Societies and Individuals Community-Engaged Learning Health Promotion and Community Health (HPCH):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HPCH 200",
+    "dept": "HPCH",
+    "number": "200",
+    "cross_listed": [],
+    "title": "Global Public Health Social Sciences List I Societies and Individuals Writing in the Discipline",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HPCH 201",
+    "dept": "HPCH",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Health Awareness",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "HPCH 202",
+    "dept": "HPCH",
+    "number": "202",
+    "cross_listed": [],
+    "title": "Sexuality and Health",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "HPCH 205",
+    "dept": "HPCH",
+    "number": "205",
+    "cross_listed": [],
+    "title": "Introduction to Public Health Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HPCH 207",
+    "dept": "HPCH",
+    "number": "207",
+    "cross_listed": [],
+    "title": "Risk Communication in Public Health Practice",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": "Community-Engaged Learning"
+  },
+  {
+    "code": "HPCH 208",
+    "dept": "HPCH",
+    "number": "208",
+    "cross_listed": [],
+    "title": "Advocacy and Activism for Social Change",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": "Community-Engaged Learning"
+  },
+  {
+    "code": "HPCH 237",
+    "dept": "HPCH",
+    "number": "237",
+    "cross_listed": [],
+    "title": "Theories & Practice of Health Promotion Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HPCH 250",
+    "dept": "HPCH",
+    "number": "250",
+    "cross_listed": [],
+    "title": "Practicum Community-Engaged Learning History (HIST):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 201",
+    "dept": "HIST",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Introduction to the Study of History Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 202",
+    "dept": "HIST",
+    "number": "202",
+    "cross_listed": [],
+    "title": "Introduction to Modern History the Arab East Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 210",
+    "dept": "HIST",
+    "number": "210",
+    "cross_listed": [],
+    "title": "Late Antiquity: Faith and Empire Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 211",
+    "dept": "HIST",
+    "number": "211",
+    "cross_listed": [],
+    "title": "Muhammad and the Origins of Islam Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 212",
+    "dept": "HIST",
+    "number": "212",
+    "cross_listed": [],
+    "title": "Islamic History: Origins and Empire, 600-750 Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 213",
+    "dept": "HIST",
+    "number": "213",
+    "cross_listed": [],
+    "title": "The Rise and Fall of the Abbasids Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 214",
+    "dept": "HIST",
+    "number": "214",
+    "cross_listed": [],
+    "title": "Islamic History: Military Society in the Middle Humanities List I Cultures and Histories East, 1055- 1500",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 215",
+    "dept": "HIST",
+    "number": "215",
+    "cross_listed": [],
+    "title": "Rise and Development of Islam (prev. HIST Humanities List I Cultures and Histories 258BU: The Near East, 1450-1550)",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 217",
+    "dept": "HIST",
+    "number": "217",
+    "cross_listed": [],
+    "title": "Slaves and Soldiers: The Mamluk Sultanate, Humanities List I Cultures and Histories 1250-1517",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 219",
+    "dept": "HIST",
+    "number": "219",
+    "cross_listed": [],
+    "title": "The Formation of Islamic Thought Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 220D",
+    "dept": "HIST",
+    "number": "220D",
+    "cross_listed": [],
+    "title": "Local Histories: The University, the City and the Humanities List I Cultures and Histories World: AUB at 150",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 220E",
+    "dept": "HIST",
+    "number": "220E",
+    "cross_listed": [],
+    "title": "Local Histories: Ottoman Constantinople, from Humanities List I Cultures and Histories the Conquest to the Dawn of Modernity",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 227",
+    "dept": "HIST",
+    "number": "227",
+    "cross_listed": [],
+    "title": "Cultures in Contact: The Crusades Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 237",
+    "dept": "HIST",
+    "number": "237",
+    "cross_listed": [],
+    "title": "Ottoman State and Society, 1300-1600 Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 238",
+    "dept": "HIST",
+    "number": "238",
+    "cross_listed": [],
+    "title": "Ottoman State and Society, 1600-1923 Humanities List I Cultures and Histories 10 | P a ge",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 239",
+    "dept": "HIST",
+    "number": "239",
+    "cross_listed": [],
+    "title": "The Arab East and Egypt from 1516 to 1798: Humanities List I Cultures and Histories The Ottoman Era",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 240",
+    "dept": "HIST",
+    "number": "240",
+    "cross_listed": [],
+    "title": "Confronting Modernity: The Arab East and Humanities List I Cultures and Histories Egypt from 1798 to 1920",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 241",
+    "dept": "HIST",
+    "number": "241",
+    "cross_listed": [],
+    "title": "Encounter and Exchange in the Early Modern Humanities List I Cultures and Histories Mediterranean",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 243",
+    "dept": "HIST",
+    "number": "243",
+    "cross_listed": [],
+    "title": "History of the Arab East and Egypt Since 1920 Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 245",
+    "dept": "HIST",
+    "number": "245",
+    "cross_listed": [],
+    "title": "History of Lebanon from 634 to 1920 A.D. Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 246",
+    "dept": "HIST",
+    "number": "246",
+    "cross_listed": [],
+    "title": "History of Modern Lebanon: From Grand Liban Humanities List I Cultures and Histories to the Taif Accord (prev. HIST 258BM)",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 250",
+    "dept": "HIST",
+    "number": "250",
+    "cross_listed": [],
+    "title": "Modern Turkey Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 251",
+    "dept": "HIST",
+    "number": "251",
+    "cross_listed": [],
+    "title": "History of North Africa and Spain in the Middle Humanities List I Cultures and Histories Ages",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 252",
+    "dept": "HIST",
+    "number": "252",
+    "cross_listed": [],
+    "title": "Medieval Europe Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 257",
+    "dept": "HIST",
+    "number": "257",
+    "cross_listed": [],
+    "title": "Contemporary World Since 1914 Humanities List I Cultures and Histories HIST 258AB Revolutions in the Modern Arab East Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 258B",
+    "dept": "HIST",
+    "number": "258B",
+    "cross_listed": [],
+    "title": "The Palestine Problem, 1917- 1948 Humanities List I Cultures and Histories HIST 258BF/ARAB 251Q Lebanese History through the Novel Humanities List I Cultures and Histories HIST 258BN The Cultural Context of Arabic / Islamic Science Humanities List I Cultures and Histories HIST 258BT The City in Modern Middle Eastern History Humanities List I Cultures and Histories HIST 258BV Arab Urbanism Humanities List I Cultures and Histories HIST 258BW Colonial North Africa 1830-1956 Humanities List I Humanities List I Social Inequalities HIST 258BX Shaping the Eastern Mediterranean: Commerce, Humanities List I Cultures and Histories Capital, and Culture HIST 258BZ/ AMST 275BC Arab American Studies Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 263/AROL 263",
+    "dept": "HIST",
+    "number": "263",
+    "cross_listed": [
+      "AROL 263"
+    ],
+    "title": "Islamic Cities, 600-1500 Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 273",
+    "dept": "HIST",
+    "number": "273",
+    "cross_listed": [],
+    "title": "The United States and the Middle East Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HIST 292",
+    "dept": "HIST",
+    "number": "292",
+    "cross_listed": [],
+    "title": "Senior Seminar in Arab and Middle Eastern Humanities List I Cultures and Histories History Humanitarian Engineering and Public Health Innovation (HEHI):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HEHI 201",
+    "dept": "HEHI",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Foundations of Humanitarian Engineering and Social Sciences List I Societies and Individuals Public Health Innovation",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "HEHI 202",
+    "dept": "HEHI",
+    "number": "202",
+    "cross_listed": [],
+    "title": "Capstone Course Social Sciences List I Societies and Individuals",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": "Community-Engaged Learning"
+  },
+  {
+    "code": "HEHI 202A",
+    "dept": "HEHI",
+    "number": "202A",
+    "cross_listed": [],
+    "title": "Capstone Course Social Sciences List I Societies and Individuals",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": "Community-Engaged Learning"
+  },
+  {
+    "code": "HEHI 202B",
+    "dept": "HEHI",
+    "number": "202B",
+    "cross_listed": [],
+    "title": "Capstone Course Social Sciences List I Societies and Individuals Community-Engaged Learning Industrial Engineering (INDE):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "INDE 410/ENMG 504",
+    "dept": "INDE",
+    "number": "410",
+    "cross_listed": [
+      "ENMG 504"
+    ],
+    "title": "Engineering Ethics Humanities List I Cultures and Histories Human Values Landscape Design and Ecosystem Management (LDEM):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "LDEM 203",
+    "dept": "LDEM",
+    "number": "203",
+    "cross_listed": [],
+    "title": "/ FEAA 400 Planetary Systems Thinking Social Sciences List I Societies and Individuals",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": "Community-Engaged Learning"
+  },
+  {
+    "code": "LDEM 207",
+    "dept": "LDEM",
+    "number": "207",
+    "cross_listed": [],
+    "title": "Landscape Architecture History I Humanities List I Cultures and Histories Writing in the Discipline",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "LDEM 217",
+    "dept": "LDEM",
+    "number": "217",
+    "cross_listed": [],
+    "title": "Soils in the Landscape",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "LDEM 208",
+    "dept": "LDEM",
+    "number": "208",
+    "cross_listed": [],
+    "title": "Landscape Architecture History II Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "LDEM 230",
+    "dept": "LDEM",
+    "number": "230",
+    "cross_listed": [],
+    "title": "Water and the Environment",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "LDEM 260",
+    "dept": "LDEM",
+    "number": "260",
+    "cross_listed": [],
+    "title": "Contemporary Issues in Landscape Architecture Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "LDEM 262",
+    "dept": "LDEM",
+    "number": "262",
+    "cross_listed": [],
+    "title": "Healing Nature: Theoretical Perspectives and Social Sciences List I Societies and Individuals Applications",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "LDEM 263",
+    "dept": "LDEM",
+    "number": "263",
+    "cross_listed": [],
+    "title": "Landscape Appreciation and Site Analysis",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": "Community-Engaged Learning"
+  },
+  {
+    "code": "LDEM 267",
+    "dept": "LDEM",
+    "number": "267",
+    "cross_listed": [],
+    "title": "Introduction to Restoration Ecology",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "LDEM 268",
+    "dept": "LDEM",
+    "number": "268",
+    "cross_listed": [],
+    "title": "Introduction to Permaculture Natural Sciences Understanding the World Management (MNGT): 11 | P a ge",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MNGT 215",
+    "dept": "MNGT",
+    "number": "215",
+    "cross_listed": [],
+    "title": "Fundamentals of Management and organizational Social Sciences List I Societies and Individuals Behavior Marine Sciences and Culture (MSCU):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MSCU 201",
+    "dept": "MSCU",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Coastal and Marine Environments: Introductory Humanities List II Cultures and Histories Course",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MSCU 202",
+    "dept": "MSCU",
+    "number": "202",
+    "cross_listed": [],
+    "title": "Marine Techniques, Prospecting and Mapping",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "MSUC 204",
+    "dept": "MSUC",
+    "number": "204",
+    "cross_listed": [],
+    "title": "Coastal and Marine Environments: Maritime Natural Sciences Understanding the World Cultural Heritage",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MSCU 211",
+    "dept": "MSCU",
+    "number": "211",
+    "cross_listed": [],
+    "title": "Maritime Empires and Markets Humanities List I Cultures and Histories Mathematics (MATH):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MATH 201",
+    "dept": "MATH",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Calculus and Analytical Geometry III Quantitative Thought Quantitative Reasoning",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MATH 203",
+    "dept": "MATH",
+    "number": "203",
+    "cross_listed": [],
+    "title": "Mathematics for Social Sciences I Quantitative Thought Quantitative Reasoning",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MATH 204",
+    "dept": "MATH",
+    "number": "204",
+    "cross_listed": [],
+    "title": "Mathematics for Social Sciences II Quantitative Thought Quantitative Reasoning",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MATH 211",
+    "dept": "MATH",
+    "number": "211",
+    "cross_listed": [],
+    "title": "Discrete Structures Quantitative Thought Quantitative Reasoning",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MATH 218",
+    "dept": "MATH",
+    "number": "218",
+    "cross_listed": [],
+    "title": "Elementary Linear Algebra with Applications Quantitative Thought Quantitative Reasoning Media and Communication (MCOM):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 203",
+    "dept": "MCOM",
+    "number": "203",
+    "cross_listed": [],
+    "title": "Arab Media and Society",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "MCOM 204",
+    "dept": "MCOM",
+    "number": "204",
+    "cross_listed": [],
+    "title": "From Telegraph to Twitter Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 207",
+    "dept": "MCOM",
+    "number": "207",
+    "cross_listed": [],
+    "title": "Film Criticism Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 216",
+    "dept": "MCOM",
+    "number": "216",
+    "cross_listed": [],
+    "title": "Public Opinion",
+    "preFall2023Attribute": "Social Sciences List II",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "MCOM 217",
+    "dept": "MCOM",
+    "number": "217",
+    "cross_listed": [],
+    "title": "Political Communication Campaigns",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "MCOM 218",
+    "dept": "MCOM",
+    "number": "218",
+    "cross_listed": [],
+    "title": "Media Activism for Social Change Social Sciences List I Societies and Individuals Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": "Community-Engaged Learning"
+  },
+  {
+    "code": "MCOM 219",
+    "dept": "MCOM",
+    "number": "219",
+    "cross_listed": [],
+    "title": "Media Depictions of Society Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 219A",
+    "dept": "MCOM",
+    "number": "219A",
+    "cross_listed": [],
+    "title": "Race and/in the Media Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 221",
+    "dept": "MCOM",
+    "number": "221",
+    "cross_listed": [],
+    "title": "War and Media Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 224",
+    "dept": "MCOM",
+    "number": "224",
+    "cross_listed": [],
+    "title": "World Cinemas Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 224B",
+    "dept": "MCOM",
+    "number": "224B",
+    "cross_listed": [],
+    "title": "World Cinema: Bollywood Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 227",
+    "dept": "MCOM",
+    "number": "227",
+    "cross_listed": [],
+    "title": "Media and the Environment Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 234",
+    "dept": "MCOM",
+    "number": "234",
+    "cross_listed": [],
+    "title": "Labor, Media, and Gender Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 235",
+    "dept": "MCOM",
+    "number": "235",
+    "cross_listed": [],
+    "title": "Children’s Media (prev. MCOM 290M) Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 252",
+    "dept": "MCOM",
+    "number": "252",
+    "cross_listed": [],
+    "title": "Digital Media Practices",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "MCOM 253",
+    "dept": "MCOM",
+    "number": "253",
+    "cross_listed": [],
+    "title": "Social Media Strategies",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "MCOM 290S",
+    "dept": "MCOM",
+    "number": "290S",
+    "cross_listed": [],
+    "title": "Decolonizing Global News Reporting Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 290T",
+    "dept": "MCOM",
+    "number": "290T",
+    "cross_listed": [],
+    "title": "Film Authorship Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 292F",
+    "dept": "MCOM",
+    "number": "292F",
+    "cross_listed": [],
+    "title": "Arab Spring, Arab Media",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "MCOM 292I",
+    "dept": "MCOM",
+    "number": "292I",
+    "cross_listed": [],
+    "title": "Gender and Communication Social Sciences List I Societies and Individuals Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 292J",
+    "dept": "MCOM",
+    "number": "292J",
+    "cross_listed": [],
+    "title": "Gender, Communication, and Conflict Social Sciences List I Societies and Individuals Resolution Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 293H",
+    "dept": "MCOM",
+    "number": "293H",
+    "cross_listed": [],
+    "title": "Film and TV Criticism Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 293I",
+    "dept": "MCOM",
+    "number": "293I",
+    "cross_listed": [],
+    "title": "Online Community Management Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 293N",
+    "dept": "MCOM",
+    "number": "293N",
+    "cross_listed": [],
+    "title": "/ ENGL 254A Short Video Writing and Production Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MCOM 293O",
+    "dept": "MCOM",
+    "number": "293O",
+    "cross_listed": [],
+    "title": "/ ENGL 239 Screenwriting Humanities List I Cultures and Histories Music (MUSC):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MUSC 200",
+    "dept": "MUSC",
+    "number": "200",
+    "cross_listed": [],
+    "title": "Notation, Analysis and Audiation Quantitative Thought Quantitative Reasoning",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MUSC 205",
+    "dept": "MUSC",
+    "number": "205",
+    "cross_listed": [],
+    "title": "Harmony Form and Composition Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MUSC 220",
+    "dept": "MUSC",
+    "number": "220",
+    "cross_listed": [],
+    "title": "History of Western Music I Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MUSC 221",
+    "dept": "MUSC",
+    "number": "221",
+    "cross_listed": [],
+    "title": "History of Western Music II Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MUSC 230",
+    "dept": "MUSC",
+    "number": "230",
+    "cross_listed": [],
+    "title": "An Introduction to the World of Opera Humanities List II Cultures and Histories 12 | P a ge",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MUSC 231F",
+    "dept": "MUSC",
+    "number": "231F",
+    "cross_listed": [],
+    "title": "Philosophy and Music Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MUSC 235",
+    "dept": "MUSC",
+    "number": "235",
+    "cross_listed": [],
+    "title": "Listening to Jazz Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MUSC 239E",
+    "dept": "MUSC",
+    "number": "239E",
+    "cross_listed": [],
+    "title": "History of Rock and Pop Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MUSC 239F",
+    "dept": "MUSC",
+    "number": "239F",
+    "cross_listed": [],
+    "title": "Modern Brazilian Music Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MUSC 250",
+    "dept": "MUSC",
+    "number": "250",
+    "cross_listed": [],
+    "title": "Arabic and Middle Eastern Music Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MUSC 263",
+    "dept": "MUSC",
+    "number": "263",
+    "cross_listed": [],
+    "title": "Western Musical Ensemble: Chamber Music Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MUSC 265",
+    "dept": "MUSC",
+    "number": "265",
+    "cross_listed": [],
+    "title": "Western Voice Performance Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MUSC 266",
+    "dept": "MUSC",
+    "number": "266",
+    "cross_listed": [],
+    "title": "Arabic Voice Performance Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MUSC 269B",
+    "dept": "MUSC",
+    "number": "269B",
+    "cross_listed": [],
+    "title": "Special Topics: Digital Audio Workstation Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "MUSC 269C",
+    "dept": "MUSC",
+    "number": "269C",
+    "cross_listed": [],
+    "title": "Special Topic: Percussion Ensemble Humanities I Cultures and Histories Nursing (NURS):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "NURS 203",
+    "dept": "NURS",
+    "number": "203",
+    "cross_listed": [],
+    "title": "Biostatics for Nursing Quantitative Thought Quantitative Reasoning Nutrition and Food Science (NFSC):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "NFSC 210",
+    "dept": "NFSC",
+    "number": "210",
+    "cross_listed": [],
+    "title": "Statistics in Nutrition and Food Sciences Quantitative Thought Quantitative Reasoning",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "NFSC 220",
+    "dept": "NFSC",
+    "number": "220",
+    "cross_listed": [],
+    "title": "Food and Nutrition Awareness (excluding FAS Natural Sciences Understanding the World students)",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "NFSC 222",
+    "dept": "NFSC",
+    "number": "222",
+    "cross_listed": [],
+    "title": "Community Nutrition",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": "Community-Engaged Learning"
+  },
+  {
+    "code": "NFSC 223",
+    "dept": "NFSC",
+    "number": "223",
+    "cross_listed": [],
+    "title": "Nutrition and Physical Activity",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "NFSC 252",
+    "dept": "NFSC",
+    "number": "252",
+    "cross_listed": [],
+    "title": "The Making of Food: Introduction to Food Natural Sciences Understanding the World Processing",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "NFSC 272",
+    "dept": "NFSC",
+    "number": "272",
+    "cross_listed": [],
+    "title": "Introduction to Food Service and Industries",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": "Community-Engaged Learning"
+  },
+  {
+    "code": "NFSC 280",
+    "dept": "NFSC",
+    "number": "280",
+    "cross_listed": [],
+    "title": "Summer Training in Food Establishments Community-Engaged Learning Philosophy (PHIL):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 200A",
+    "dept": "PHIL",
+    "number": "200A",
+    "cross_listed": [],
+    "title": "CEL- Fundamentals in Civic Engagement",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": "Community-Engaged Learning"
+  },
+  {
+    "code": "PHIL 200B",
+    "dept": "PHIL",
+    "number": "200B",
+    "cross_listed": [],
+    "title": "CEL- Volunteering Rotations",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": "Community-Engaged Learning"
+  },
+  {
+    "code": "PHIL 200C",
+    "dept": "PHIL",
+    "number": "200C",
+    "cross_listed": [],
+    "title": "CEL- Community Service Project",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": "Community-Engaged Learning"
+  },
+  {
+    "code": "PHIL 200D",
+    "dept": "PHIL",
+    "number": "200D",
+    "cross_listed": [],
+    "title": "CEL- Community-Based Internship",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": "Community-Engaged Learning"
+  },
+  {
+    "code": "PHIL 201",
+    "dept": "PHIL",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Introduction to Philosophy Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 202A",
+    "dept": "PHIL",
+    "number": "202A",
+    "cross_listed": [],
+    "title": "Philosophy of Food Humanities List I Cultures and Histories Human Values Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 202B",
+    "dept": "PHIL",
+    "number": "202B",
+    "cross_listed": [],
+    "title": "Philosophy and social media Humanities List I Cultures and Histories Human Values Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 202C",
+    "dept": "PHIL",
+    "number": "202C",
+    "cross_listed": [],
+    "title": "Philosophy of Music Humanities List I Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 205",
+    "dept": "PHIL",
+    "number": "205",
+    "cross_listed": [],
+    "title": "Bio-Medical Ethics Humanities List I Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 208A/CMPS 297T",
+    "dept": "PHIL",
+    "number": "208A",
+    "cross_listed": [
+      "CMPS 297T"
+    ],
+    "title": "Ethics of Artificial Intelligence Humanities List I Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 208C",
+    "dept": "PHIL",
+    "number": "208C",
+    "cross_listed": [],
+    "title": "Ethics of War and Peace Humanities List I Cultures and Histories Social Inequalities Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 209",
+    "dept": "PHIL",
+    "number": "209",
+    "cross_listed": [],
+    "title": "Environmental Ethics Humanities List I Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 210",
+    "dept": "PHIL",
+    "number": "210",
+    "cross_listed": [],
+    "title": "Ethics Humanities List I Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 211",
+    "dept": "PHIL",
+    "number": "211",
+    "cross_listed": [],
+    "title": "Introduction to Logic Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 212",
+    "dept": "PHIL",
+    "number": "212",
+    "cross_listed": [],
+    "title": "Ancient Greek and Roman Philosophy Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 213",
+    "dept": "PHIL",
+    "number": "213",
+    "cross_listed": [],
+    "title": "Medieval Philosophy Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 214",
+    "dept": "PHIL",
+    "number": "214",
+    "cross_listed": [],
+    "title": "History of Modern Philosophy Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 215",
+    "dept": "PHIL",
+    "number": "215",
+    "cross_listed": [],
+    "title": "9th-Century Philosophy Humanities List I Cultures and Histories Writing in the Discipline Social Inequalities Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 216",
+    "dept": "PHIL",
+    "number": "216",
+    "cross_listed": [],
+    "title": "Political Philosophy Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 217",
+    "dept": "PHIL",
+    "number": "217",
+    "cross_listed": [],
+    "title": "Aesthetics Humanities List I Cultures and Histories 13 | P a ge",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 218",
+    "dept": "PHIL",
+    "number": "218",
+    "cross_listed": [],
+    "title": "Metaphysics and Epistemology Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 219",
+    "dept": "PHIL",
+    "number": "219",
+    "cross_listed": [],
+    "title": "Existentialism Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 221",
+    "dept": "PHIL",
+    "number": "221",
+    "cross_listed": [],
+    "title": "Philosophy of Mind Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 222",
+    "dept": "PHIL",
+    "number": "222",
+    "cross_listed": [],
+    "title": "Philosophy of Science Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 223",
+    "dept": "PHIL",
+    "number": "223",
+    "cross_listed": [],
+    "title": "Philosophy of Language Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 224",
+    "dept": "PHIL",
+    "number": "224",
+    "cross_listed": [],
+    "title": "Philosophy of Religion Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 225",
+    "dept": "PHIL",
+    "number": "225",
+    "cross_listed": [],
+    "title": "History of Moral Philosophy Humanities List I Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 226",
+    "dept": "PHIL",
+    "number": "226",
+    "cross_listed": [],
+    "title": "Ethical Theory Humanities List I Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 227",
+    "dept": "PHIL",
+    "number": "227",
+    "cross_listed": [],
+    "title": "Marx and Philosophy Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 230",
+    "dept": "PHIL",
+    "number": "230",
+    "cross_listed": [],
+    "title": "Philosophy of Plato Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 231",
+    "dept": "PHIL",
+    "number": "231",
+    "cross_listed": [],
+    "title": "Philosophy of Aristotle Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 232",
+    "dept": "PHIL",
+    "number": "232",
+    "cross_listed": [],
+    "title": "Islamic Philosophy Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 249",
+    "dept": "PHIL",
+    "number": "249",
+    "cross_listed": [],
+    "title": "Philosophy of Feminism Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 251G",
+    "dept": "PHIL",
+    "number": "251G",
+    "cross_listed": [],
+    "title": "Theories in Environmental Ethics Humanities List I Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 251H",
+    "dept": "PHIL",
+    "number": "251H",
+    "cross_listed": [],
+    "title": "Adam Smith Humanities List I Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 251L",
+    "dept": "PHIL",
+    "number": "251L",
+    "cross_listed": [],
+    "title": "Seminar in Islamic Ethics Humanities List I Writing in the Discipline",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 252K",
+    "dept": "PHIL",
+    "number": "252K",
+    "cross_listed": [],
+    "title": "Global Ethics Humanities List I Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 252P",
+    "dept": "PHIL",
+    "number": "252P",
+    "cross_listed": [],
+    "title": "Political Philosophy in Classical Islam Humanities List I Cultures and Histories Human Values Writing in the Discipline",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 252Q",
+    "dept": "PHIL",
+    "number": "252Q",
+    "cross_listed": [],
+    "title": "Philosophy and the Question of Palestine Humanities List I Cultures and Histories Social Inequalities Human Values PHIL 252R/SOAN 290BK Liberalism and Religion Humanities List I Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 254A",
+    "dept": "PHIL",
+    "number": "254A",
+    "cross_listed": [],
+    "title": "Free Will Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 254E",
+    "dept": "PHIL",
+    "number": "254E",
+    "cross_listed": [],
+    "title": "Emergentism Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 254F",
+    "dept": "PHIL",
+    "number": "254F",
+    "cross_listed": [],
+    "title": "Monism and Divisibles Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 256C",
+    "dept": "PHIL",
+    "number": "256C",
+    "cross_listed": [],
+    "title": "Philosophy of Math Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 256D",
+    "dept": "PHIL",
+    "number": "256D",
+    "cross_listed": [],
+    "title": "Philosophy of Physics Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 257D",
+    "dept": "PHIL",
+    "number": "257D",
+    "cross_listed": [],
+    "title": "Wittgenstein Humanities List I Cultures and Histories Writing in the Discipline",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 257E",
+    "dept": "PHIL",
+    "number": "257E",
+    "cross_listed": [],
+    "title": "Philosophy of Language and AI Humanities List I Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 258A",
+    "dept": "PHIL",
+    "number": "258A",
+    "cross_listed": [],
+    "title": "Philosophy of Psychology",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "PHIL 260K",
+    "dept": "PHIL",
+    "number": "260K",
+    "cross_listed": [],
+    "title": "Hume Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 260L",
+    "dept": "PHIL",
+    "number": "260L",
+    "cross_listed": [],
+    "title": "Leibniz's Metaphysics Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 261B",
+    "dept": "PHIL",
+    "number": "261B",
+    "cross_listed": [],
+    "title": "Stoicism Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHIL 262G",
+    "dept": "PHIL",
+    "number": "262G",
+    "cross_listed": [],
+    "title": "Contemporary Arabic Philosophy Humanities List I Cultures and Histories Human Values Social Inequalities Physics (PHYS):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHYS 200",
+    "dept": "PHYS",
+    "number": "200",
+    "cross_listed": [],
+    "title": "Understanding the Universe",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "PHYS 204",
+    "dept": "PHYS",
+    "number": "204",
+    "cross_listed": [],
+    "title": "Classical Physics for Life Sciences",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "PHYS 205",
+    "dept": "PHYS",
+    "number": "205",
+    "cross_listed": [],
+    "title": "Modern Physics for Life Sciences",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "PHYS 205L",
+    "dept": "PHYS",
+    "number": "205L",
+    "cross_listed": [],
+    "title": "Modern Physics for Life Sciences Lab",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "PHYS 210",
+    "dept": "PHYS",
+    "number": "210",
+    "cross_listed": [],
+    "title": "Introductory Physics II",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "PHYS 211",
+    "dept": "PHYS",
+    "number": "211",
+    "cross_listed": [],
+    "title": "Electricity and Magnetism",
+    "preFall2023Attribute": "Natural Sciences",
+    "fall2023Attribute": "Understanding the World"
+  },
+  {
+    "code": "PHYS 212",
+    "dept": "PHYS",
+    "number": "212",
+    "cross_listed": [],
+    "title": "Modern Physics Natural Sciences Understanding the World Physiology (PHYL):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PHYL 246",
+    "dept": "PHYL",
+    "number": "246",
+    "cross_listed": [],
+    "title": "Human Physiology for Paramedical Natural Sciences Understanding the World 14 | P a ge Political Studies and Public Administration (PSPA):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PSPA 201",
+    "dept": "PSPA",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Introduction to Political Science",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "PSPA 202",
+    "dept": "PSPA",
+    "number": "202",
+    "cross_listed": [],
+    "title": "Introduction to Public Administration",
+    "preFall2023Attribute": "Social Sciences List II",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "PSPA 210",
+    "dept": "PSPA",
+    "number": "210",
+    "cross_listed": [],
+    "title": "Introduction to Public Thought Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PSPA 211",
+    "dept": "PSPA",
+    "number": "211",
+    "cross_listed": [],
+    "title": "Introduction to Comparative Politics",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "PSPA 212",
+    "dept": "PSPA",
+    "number": "212",
+    "cross_listed": [],
+    "title": "Contemporary Trends in Public Administration Social Sciences List II Societies and Individuals and Management",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PSPA 213",
+    "dept": "PSPA",
+    "number": "213",
+    "cross_listed": [],
+    "title": "Introduction to International Politics",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "PSPA 217",
+    "dept": "PSPA",
+    "number": "217",
+    "cross_listed": [],
+    "title": "Modern and Postmodern Western Political Humanities List I Cultures and Histories Thought",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PSPA 220",
+    "dept": "PSPA",
+    "number": "220",
+    "cross_listed": [],
+    "title": "Globalization and Culture",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "PSPA 221",
+    "dept": "PSPA",
+    "number": "221",
+    "cross_listed": [],
+    "title": "Theories and History of the State",
+    "preFall2023Attribute": "Social Sciences List II",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "PSPA 222",
+    "dept": "PSPA",
+    "number": "222",
+    "cross_listed": [],
+    "title": "Democracy, Civic Engagement, and Leadership Social Sciences List I Societies and Individuals Writing in the Discipline",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PSPA 238",
+    "dept": "PSPA",
+    "number": "238",
+    "cross_listed": [],
+    "title": "International Political Economy: From Social Sciences List I Societies and Individuals Imperialism to Globalization",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PSPA 250",
+    "dept": "PSPA",
+    "number": "250",
+    "cross_listed": [],
+    "title": "Global South Rising: Politics of Emerging Social Sciences List I Societies and Individuals Countries",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PSPA 251",
+    "dept": "PSPA",
+    "number": "251",
+    "cross_listed": [],
+    "title": "Politics and Government: United States of Social Sciences List II Societies and Individuals America",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PSPA 259",
+    "dept": "PSPA",
+    "number": "259",
+    "cross_listed": [],
+    "title": "Public Administration in Lebanon",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "PSPA 272",
+    "dept": "PSPA",
+    "number": "272",
+    "cross_listed": [],
+    "title": "The Non-Profit Sector: Formation, Leadership, Social Sciences List I Societies and Individuals and Governance",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PSPA 273",
+    "dept": "PSPA",
+    "number": "273",
+    "cross_listed": [],
+    "title": "Human Resources and Personnel Social Sciences List I Societies and Individuals Administration: Special Emphasis on Gender Issues PSPA 288AF The Crisis of Democracy Social Sciences List I Societies and Individuals PSPA 288AH/SOAN 290BI Sea, Society, and Politics Social Sciences List I Societies and Individuals PSPA 288AJ Gender, Economic Rights, and Empowerment Social Sciences List I Societies and Individuals Social Inequalities PSPA 288AM Feminist Social Movements in the MENA Region Social Sciences List I Societies and Individuals Social Inequalities PSPA 288AO Introduction to Global Citizenship Social Sciences List I Societies and Individuals Community-Engaged Learning PSPA 288AP Introduction to Critical Ecologies Social Sciences List I Societies and Individuals PSPA 288AQ Writing History Humanities II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PSPA 288K/AMST 265D",
+    "dept": "PSPA",
+    "number": "288K",
+    "cross_listed": [
+      "AMST 265D"
+    ],
+    "title": "Sports and Politics",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "PSPA 289R",
+    "dept": "PSPA",
+    "number": "289R",
+    "cross_listed": [],
+    "title": "Gender, Politics and Policy Social Sciences List I Societies and Individuals Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PSPA 289S",
+    "dept": "PSPA",
+    "number": "289S",
+    "cross_listed": [],
+    "title": "Global Feminism and Transformative Mobilizing Social Sciences List I Societies and Individuals Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PSPA 289T",
+    "dept": "PSPA",
+    "number": "289T",
+    "cross_listed": [],
+    "title": "Gender, Conflict and Peace building Social Sciences List I Societies and Individuals Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PSPA 289U",
+    "dept": "PSPA",
+    "number": "289U",
+    "cross_listed": [],
+    "title": "Disaster Management, Corruption and Gender Social Sciences List I Societies and Individuals Issues Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PSPA 289V",
+    "dept": "PSPA",
+    "number": "289V",
+    "cross_listed": [],
+    "title": "Inclusion, Gender, and State Feminism Social Sciences List I Societies and Individuals Social Inequalities Psychology (PSYC):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "PSYC 201",
+    "dept": "PSYC",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Introduction to Psychological Sciences Social Sciences List I Societies and Individuals Sociology and Anthropology (SOAN):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 201",
+    "dept": "SOAN",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Introduction to Sociology Social Sciences List I Societies and Individuals Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 203",
+    "dept": "SOAN",
+    "number": "203",
+    "cross_listed": [],
+    "title": "Introduction to Anthropology Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 210",
+    "dept": "SOAN",
+    "number": "210",
+    "cross_listed": [],
+    "title": "Research Methods Social Sciences List I Societies and Individuals Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 211",
+    "dept": "SOAN",
+    "number": "211",
+    "cross_listed": [],
+    "title": "Analysis of Social Data Quantitative Thought Quantitative Reasoning 15 | P a ge Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 212",
+    "dept": "SOAN",
+    "number": "212",
+    "cross_listed": [],
+    "title": "History and Theory in Anthropology Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 213",
+    "dept": "SOAN",
+    "number": "213",
+    "cross_listed": [],
+    "title": "Sociological Theory Social Sciences List I Societies and Individuals Social Inequalities Writing in the Discipline",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 215",
+    "dept": "SOAN",
+    "number": "215",
+    "cross_listed": [],
+    "title": "Anthropology of America Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 217",
+    "dept": "SOAN",
+    "number": "217",
+    "cross_listed": [],
+    "title": "Anthropology of the Body Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 218",
+    "dept": "SOAN",
+    "number": "218",
+    "cross_listed": [],
+    "title": "Medicine, Disease and Society Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 219",
+    "dept": "SOAN",
+    "number": "219",
+    "cross_listed": [],
+    "title": "Intro to Development Studies Social Sciences List I Societies and Individuals Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 220",
+    "dept": "SOAN",
+    "number": "220",
+    "cross_listed": [],
+    "title": "City and Society Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 221",
+    "dept": "SOAN",
+    "number": "221",
+    "cross_listed": [],
+    "title": "Political Anthropology",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "SOAN 222",
+    "dept": "SOAN",
+    "number": "222",
+    "cross_listed": [],
+    "title": "Family and Kinship Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 223",
+    "dept": "SOAN",
+    "number": "223",
+    "cross_listed": [],
+    "title": "Social Inequality Social Sciences List I Societies and Individuals Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 224",
+    "dept": "SOAN",
+    "number": "224",
+    "cross_listed": [],
+    "title": "Arabs, Sex, and Modernity",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "SOAN 225",
+    "dept": "SOAN",
+    "number": "225",
+    "cross_listed": [],
+    "title": "Gender and Culture Humanities List II Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 227",
+    "dept": "SOAN",
+    "number": "227",
+    "cross_listed": [],
+    "title": "Cultural Boundaries and Identities",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "SOAN 230",
+    "dept": "SOAN",
+    "number": "230",
+    "cross_listed": [],
+    "title": "Political Sociology",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "SOAN 232",
+    "dept": "SOAN",
+    "number": "232",
+    "cross_listed": [],
+    "title": "Conflict Analysis and Resolution",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "SOAN 237",
+    "dept": "SOAN",
+    "number": "237",
+    "cross_listed": [],
+    "title": "Arab Culture and Society",
+    "preFall2023Attribute": "Social Sciences List I",
+    "fall2023Attribute": "Societies and Individuals"
+  },
+  {
+    "code": "SOAN 238G",
+    "dept": "SOAN",
+    "number": "238G",
+    "cross_listed": [],
+    "title": "Disease, Epidemics, and Society Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 242",
+    "dept": "SOAN",
+    "number": "242",
+    "cross_listed": [],
+    "title": "Seminar in Globalization and Migration Social Sciences List I Societies and Individuals Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 244",
+    "dept": "SOAN",
+    "number": "244",
+    "cross_listed": [],
+    "title": "Digital Worlds and Societies Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 250",
+    "dept": "SOAN",
+    "number": "250",
+    "cross_listed": [],
+    "title": "Seminar in Art and Culture Humanities List I Cultures and Histories Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 252",
+    "dept": "SOAN",
+    "number": "252",
+    "cross_listed": [],
+    "title": "Seminar in Controversies: Ethics and Humanities List I Cultures and Histories Epistemology SOAN 290BF Animals and Societies Social Sciences List II Societies and Individuals Social Inequalities SOAN 290BG/AHIS 224 Visualizing Modernity: 19th-Century Islamic Humanities List I Cultures and Histories Art, Architecture and Material Culture SOAN 290BI/PSPA 288AH Sea, Society, and Politics Social Sciences List I Societies and Individuals SOAN 290BJ Anthropology of Capitalism Humanities List I Cultures and Histories SOAN 290BK/PHIL 252R Liberalism and Religion Humanities List I Cultures and Histories Human Values",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SOAN 290L",
+    "dept": "SOAN",
+    "number": "290L",
+    "cross_listed": [],
+    "title": "Social Movements Social Sciences List I Societies and Individuals Studio Art (SART):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SART 201",
+    "dept": "SART",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Painting I Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "SART 207",
+    "dept": "SART",
+    "number": "207",
+    "cross_listed": [],
+    "title": "The Digital Image Humanities List I Cultures and Histories Statistics (STAT):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "STAT 201",
+    "dept": "STAT",
+    "number": "201",
+    "cross_listed": [],
+    "title": "Elementary Statistics for the Social Sciences Quantitative Thought Quantitative Reasoning",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "STAT 203",
+    "dept": "STAT",
+    "number": "203",
+    "cross_listed": [],
+    "title": "Statistics for Gender Studies Quantitative Thought Quantitative Reasoning Social Inequalities",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "STAT 210",
+    "dept": "STAT",
+    "number": "210",
+    "cross_listed": [],
+    "title": "Elementary Statistics for the Sciences Quantitative Thought Quantitative Reasoning",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "STAT 231",
+    "dept": "STAT",
+    "number": "231",
+    "cross_listed": [],
+    "title": "Introductory Statistical Computing Quantitative Thought Quantitative Reasoning Theater (THTR):",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "THTR 200",
+    "dept": "THTR",
+    "number": "200",
+    "cross_listed": [],
+    "title": "Introduction to Theater Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "THTR 210",
+    "dept": "THTR",
+    "number": "210",
+    "cross_listed": [],
+    "title": "Theater History Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "THTR 218C/ENGL 215A",
+    "dept": "THTR",
+    "number": "218C",
+    "cross_listed": [
+      "ENGL 215A"
+    ],
+    "title": "Modern and Contemporary British and Irish Humanities List I Cultures and Histories Literature",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "THTR 221",
+    "dept": "THTR",
+    "number": "221",
+    "cross_listed": [],
+    "title": "Workshop in Stage Acting Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "THTR 240",
+    "dept": "THTR",
+    "number": "240",
+    "cross_listed": [],
+    "title": "Design in Theater Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "THTR 250",
+    "dept": "THTR",
+    "number": "250",
+    "cross_listed": [],
+    "title": "Workshop in Stage Directing Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "THTR 259",
+    "dept": "THTR",
+    "number": "259",
+    "cross_listed": [],
+    "title": "Workshop in Theatre Production Humanities List I Cultures and Histories 16 | P a ge",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "THTR 260A",
+    "dept": "THTR",
+    "number": "260A",
+    "cross_listed": [],
+    "title": "Theater and Society Humanities List I Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "THTR 260C",
+    "dept": "THTR",
+    "number": "260C",
+    "cross_listed": [],
+    "title": "Documentary Theater Humanities List II Cultures and Histories",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "THTR 260E",
+    "dept": "THTR",
+    "number": "260E",
+    "cross_listed": [],
+    "title": "Special Topics: Applied Theater - Participatory Humanities List I Cultures and Histories Theater for Community Development, Education and Social Change (prev. THTR 260D: Applied Theater)",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  },
+  {
+    "code": "THTR 282B",
+    "dept": "THTR",
+    "number": "282B",
+    "cross_listed": [],
+    "title": "Body, Space and the Interplay Humanities List I Cultures and Histories 17 | P a ge",
+    "preFall2023Attribute": "",
+    "fall2023Attribute": ""
+  }
+]
