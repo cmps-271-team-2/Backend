@@ -23,3 +23,30 @@ class ResendOtpBody(BaseModel):
 
 class ResendOtpResponse(BaseModel):
     message: str
+
+
+class ForgotPasswordBody(BaseModel):
+    email: EmailStr
+
+
+class ForgotPasswordResponse(BaseModel):
+    message: str
+
+
+class ResetPasswordBody(BaseModel):
+    email: EmailStr
+    otp: str = Field(min_length=6, max_length=6)
+    new_password: str = Field(min_length=8, max_length=72)
+
+
+class ResetPasswordResponse(BaseModel):
+    message: str
+
+
+class ChangePasswordBody(BaseModel):
+    current_password: str = Field(min_length=8, max_length=72)
+    new_password: str = Field(min_length=8, max_length=72)
+
+
+class ChangePasswordResponse(BaseModel):
+    message: str
