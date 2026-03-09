@@ -1,13 +1,17 @@
+from datetime import date, datetime, timezone
+from collections import defaultdict, deque
+import os
+import random
+
+import firebase_admin
+from dotenv import load_dotenv
 from fastapi import APIRouter, FastAPI, Request
 from fastapi.responses import JSONResponse
-import os
-from dotenv import load_dotenv
-import firebase_admin
 from firebase_admin import credentials, firestore
 
-from collections import defaultdict, deque
-import random
-from datetime import date
+from app.jobs.index_posts import upload_post
+from app.services.moderation_service import get_moderation_service
+from app.services.semantic_service import get_semantic_service
 
 # Load environment variables
 load_dotenv()
@@ -284,9 +288,68 @@ async def create_post(request: Request):
         return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
 
     doc_ref = db.collection("posts").document()
-    doc_ref.set(data)
+    doc_ref.set(
+        {
+            **data,
+            "moderation": {
+                "status": "pending",
+                "allowed": False,
+                "violations": [],
+                "explanation": "Moderation pending.",
+                "model": None,
+                "checkedAt": None,
+            },
+        }
+    )
 
-    return JSONResponse(content={"id": doc_ref.id}, status_code=201)
+    try:
+        index_result = upload_post(doc_ref.id)
+    except Exception:
+        return JSONResponse(
+            content={"error": "Post indexing failed.", "id": doc_ref.id},
+            status_code=503,
+        )
+
+    try:
+        decision = get_moderation_service().moderate_post(data)
+    except Exception:
+        return JSONResponse(
+            content={"error": "Post moderation is currently unavailable.", "id": doc_ref.id},
+            status_code=503,
+        )
+
+    moderation_payload = {
+        "status": decision.status,
+        "allowed": decision.allowed,
+        "violations": decision.violations,
+        "explanation": decision.explanation,
+        "model": decision.model,
+        "checkedAt": datetime.now(timezone.utc).isoformat(),
+    }
+
+    if not decision.allowed:
+        get_semantic_service().delete(doc_ref.id)
+        doc_ref.set({"moderation": moderation_payload}, merge=True)
+        return JSONResponse(
+            content={
+                "error": "Post violates moderation guidelines.",
+                "id": doc_ref.id,
+                "indexing": index_result,
+                "moderation": moderation_payload,
+            },
+            status_code=400,
+        )
+
+    doc_ref.set({"moderation": moderation_payload}, merge=True)
+
+    return JSONResponse(
+        content={
+            "id": doc_ref.id,
+            "indexing": index_result,
+            "moderation": moderation_payload,
+        },
+        status_code=201,
+    )
 
 
 app = FastAPI()
