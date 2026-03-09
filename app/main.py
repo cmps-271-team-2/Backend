@@ -16,7 +16,7 @@ app = FastAPI()
 
 origins_env = os.getenv(
     "FRONTEND_ORIGINS",
-    "http://localhost:3000,http://127.0.0.1:3000,https://unitok.app",
+    "http://localhost:3000,http://127.0.0.1:3000,https://unitok.app,https://www.unitok.app,https://unitok-rouge.vercel.app",
 )
 origins = [
     origin.strip().rstrip("/")
