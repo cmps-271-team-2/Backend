@@ -1,5 +1,10 @@
 import os, json, time
-from app import db
+
+from app.core.firebase_admin import init_firebase_admin
+from app.core.firestore import get_db
+
+init_firebase_admin()
+db = get_db()
 
 print("✅ Starting seed_courses.py ...")
 
@@ -11,7 +16,7 @@ def format_id(code: str) -> str:
     return code.strip().replace(" ", "_").replace("/", "_")
 
 def seed_courses():
-    path = os.path.join("data", "aub_gened_courses.json")
+    path = os.path.join("app", "data", "aub_gened_courses.json")
     print("📄 Loading:", path)
 
     if not os.path.exists(path):

@@ -1,4 +1,7 @@
-from flask import Flask, jsonify, request
+from fastapi import APIRouter, FastAPI, Request
+from fastapi.responses import JSONResponse
+import os
+from dotenv import load_dotenv
 import firebase_admin
 from firebase_admin import credentials, firestore
 
@@ -6,9 +9,31 @@ from collections import defaultdict, deque
 import random
 from datetime import date
 
-app = Flask(__name__)
-cred = credentials.Certificate("serviceAccountKey.json")
-firebase_admin.initialize_app(cred)
+# Load environment variables
+load_dotenv()
+
+router = APIRouter()
+
+# Initialize Firebase Admin with environment variables
+if not firebase_admin._apps:
+    private_key = os.environ["FIREBASE_PRIVATE_KEY"].replace("\\n", "\n")
+    
+    service_account_info = {
+        "type": os.environ["FIREBASE_TYPE"],
+        "project_id": os.environ["FIREBASE_PROJECT_ID"],
+        "private_key_id": os.environ["FIREBASE_PRIVATE_KEY_ID"],
+        "private_key": private_key,
+        "client_email": os.environ["FIREBASE_CLIENT_EMAIL"],
+        "client_id": os.environ["FIREBASE_CLIENT_ID"],
+        "auth_uri": os.environ["FIREBASE_AUTH_URI"],
+        "token_uri": os.environ["FIREBASE_TOKEN_URI"],
+        "auth_provider_x509_cert_url": os.environ["FIREBASE_AUTH_PROVIDER_X509_CERT_URL"],
+        "client_x509_cert_url": os.environ["FIREBASE_CLIENT_X509_CERT_URL"],
+        "universe_domain": os.environ["FIREBASE_UNIVERSE_DOMAIN"],
+    }
+    
+    cred = credentials.Certificate(service_account_info)
+    firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 
@@ -112,7 +137,7 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
 # Routes
 # -------------------------------
 
-@app.get("/")
+@router.get("/")
 def home():
     return {
         "status": "ok",
@@ -120,7 +145,7 @@ def home():
     }
 
 
-@app.get("/profiles")
+@router.get("/profiles")
 def get_profiles():
     docs = db.collection("profiles").stream()
     profiles = []
@@ -131,10 +156,10 @@ def get_profiles():
             **doc.to_dict()
         })
 
-    return jsonify(profiles), 200
+    return JSONResponse(content=profiles, status_code=200)
 
 
-@app.get("/cafeterias")
+@router.get("/cafeterias")
 def get_cafeterias():
     docs = db.collection("cafeterias").stream()
     cafeterias = []
@@ -145,10 +170,10 @@ def get_cafeterias():
             **doc.to_dict()
         })
 
-    return jsonify(cafeterias), 200
+    return JSONResponse(content=cafeterias, status_code=200)
 
 
-@app.get("/posts")
+@router.get("/posts")
 def get_posts():
     docs = db.collection("posts").stream()
     posts = []
@@ -159,14 +184,14 @@ def get_posts():
             **doc.to_dict()
         })
 
-    return jsonify(posts), 200
+    return JSONResponse(content=posts, status_code=200)
 
 
 # -------------------------------
 # NEW: Mixed Random Feed Endpoint
 # -------------------------------
-@app.get("/feed")
-def get_feed():
+@router.get("/feed")
+def get_feed(request: Request):
     """
     Returns a mixed randomized feed from your collections.
     Query params:
@@ -174,9 +199,9 @@ def get_feed():
       - user_id (optional; used to seed randomness so it stays stable per day)
       - include_posts (0/1, default 1)
     """
-    limit = int(request.args.get("limit", 20))
-    user_id = request.args.get("user_id", "guest")
-    include_posts = request.args.get("include_posts", "1") == "1"
+    limit = int(request.query_params.get("limit", 20))
+    user_id = request.query_params.get("user_id", "guest")
+    include_posts = request.query_params.get("include_posts", "1") == "1"
 
     # Stable "random" per user per day (so refresh doesn't reshuffle constantly)
     seed = hash(f"{user_id}-{date.today().isoformat()}")
@@ -207,56 +232,70 @@ def get_feed():
         seed=seed
     )
 
-    return jsonify(mixed), 200
+    return JSONResponse(content=mixed, status_code=200)
 
 
 # -------------------------------
 # Create endpoints (for later users adding data)
 # -------------------------------
 
-@app.post("/profiles")
-def create_profile():
-    data = request.get_json()
+@router.post("/profiles")
+async def create_profile(request: Request):
+    try:
+        data = await request.json()
+    except Exception:
+        data = None
 
     if not data or "type" not in data or "name" not in data:
-        return jsonify({"error": "Missing required fields"}), 400
+        return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
 
     doc_ref = db.collection("profiles").document()
     doc_ref.set(data)
 
-    return jsonify({"id": doc_ref.id}), 201
+    return JSONResponse(content={"id": doc_ref.id}, status_code=201)
 
 
-@app.post("/cafeterias")
-def create_cafeteria():
-    data = request.get_json()
+@router.post("/cafeterias")
+async def create_cafeteria(request: Request):
+    try:
+        data = await request.json()
+    except Exception:
+        data = None
 
     if not data or "name" not in data:
-        return jsonify({"error": "Missing required field: name"}), 400
+        return JSONResponse(content={"error": "Missing required field: name"}, status_code=400)
 
     doc_ref = db.collection("cafeterias").document()
     doc_ref.set(data)
 
-    return jsonify({"id": doc_ref.id}), 201
+    return JSONResponse(content={"id": doc_ref.id}, status_code=201)
 
 
-@app.post("/posts")
-def create_post():
-    data = request.get_json()
+@router.post("/posts")
+async def create_post(request: Request):
+    try:
+        data = await request.json()
+    except Exception:
+        data = None
 
     required_fields = ["rating", "text", "targetId", "targetType"]
 
     if not data or not all(field in data for field in required_fields):
-        return jsonify({"error": "Missing required fields"}), 400
+        return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
 
     doc_ref = db.collection("posts").document()
     doc_ref.set(data)
 
-    return jsonify({"id": doc_ref.id}), 201
+    return JSONResponse(content={"id": doc_ref.id}, status_code=201)
+
+
+app = FastAPI()
+app.include_router(router)
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    import uvicorn
+    uvicorn.run("app.feed.routes:app", host="127.0.0.1", port=8000, reload=True)
 
 # Call GET /feed?limit=20&user_id=XYZ
 # It returns a mixed list.
