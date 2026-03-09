@@ -16,9 +16,13 @@ app = FastAPI()
 
 origins_env = os.getenv(
     "FRONTEND_ORIGINS",
-    "http://localhost:3000,http://127.0.0.1:3000,https://unitok-rouge.vercel.app/",
+    "http://localhost:3000,http://127.0.0.1:3000,https://unitok-rouge.vercel.app",
 )
-origins = [origin.strip() for origin in origins_env.split(",") if origin.strip()]
+origins = [
+    origin.strip().rstrip("/")
+    for origin in origins_env.split(",")
+    if origin.strip().rstrip("/")
+]
 
 app.add_middleware(
     CORSMiddleware,
