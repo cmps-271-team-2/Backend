@@ -12,3 +12,5 @@ passlib[bcrypt]==1.7.4
 
 email_validator
 resend==2.23.0
+
+openai
