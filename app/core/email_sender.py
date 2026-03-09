@@ -1,97 +1,123 @@
 import os
-import ssl
-import smtplib
 import logging
-from email.message import EmailMessage
+import resend
 
 
 logger = logging.getLogger(__name__)
 
 
-def _get_smtp_config() -> tuple[str, int, int, str, str, str, bool]:
-    smtp_host = os.getenv("SMTP_HOST")
-    smtp_user = os.getenv("SMTP_USER")
-    smtp_pass = os.getenv("SMTP_PASS")
-    smtp_from = os.getenv("SMTP_FROM") or os.getenv("EMAIL_FROM") or smtp_user
+def _get_resend_config() -> tuple[str, str]:
+    """
+    Get Resend API configuration from environment variables.
+    Returns: (api_key, from_email)
+    """
+    api_key = os.getenv("RESEND_API_KEY")
+    from_email = os.getenv("RESEND_FROM_EMAIL")
 
-    smtp_port_raw = os.getenv("SMTP_PORT", "587")
-    smtp_timeout_raw = os.getenv("SMTP_TIMEOUT", "15")
+    if not api_key:
+        raise RuntimeError("Missing RESEND_API_KEY environment variable")
+    if not from_email:
+        raise RuntimeError("Missing RESEND_FROM_EMAIL environment variable")
 
+    return api_key, from_email
+
+
+def _send_email_resend(to_email: str, subject: str, body_text: str, body_html: str = None) -> None:
+    """
+    Send email using Resend API over HTTPS.
+    Raises RuntimeError if sending fails.
+    """
+    api_key, from_email = _get_resend_config()
+    
+    logger.info("Email sending started: provider=Resend to=%s subject=%s", to_email, subject)
+    
+    # Configure Resend with API key
+    resend.api_key = api_key
+    
     try:
-        smtp_port = int(smtp_port_raw)
-    except ValueError as exc:
-        raise RuntimeError(f"Invalid SMTP_PORT value: {smtp_port_raw}") from exc
-
-    try:
-        smtp_timeout = int(smtp_timeout_raw)
-    except ValueError as exc:
-        raise RuntimeError(f"Invalid SMTP_TIMEOUT value: {smtp_timeout_raw}") from exc
-
-    if not all([smtp_host, smtp_user, smtp_pass, smtp_from]):
-        raise RuntimeError("Missing SMTP env vars. Check SMTP_HOST/SMTP_USER/SMTP_PASS/SMTP_FROM")
-
-    starttls_env = os.getenv("SMTP_USE_STARTTLS")
-    if starttls_env is None:
-        use_starttls = smtp_port == 587
-    else:
-        use_starttls = starttls_env.strip().lower() in {"1", "true", "yes", "on"}
-
-    return smtp_host, smtp_port, smtp_timeout, smtp_user, smtp_pass, smtp_from, use_starttls
-
-
-def _send_email(to_email: str, subject: str, body: str) -> None:
-    smtp_host, smtp_port, smtp_timeout, smtp_user, smtp_pass, smtp_from, use_starttls = _get_smtp_config()
-
-    logger.info("Email sending started: to=%s host=%s port=%s", to_email, smtp_host, smtp_port)
-
-    msg = EmailMessage()
-    msg["Subject"] = subject
-    msg["From"] = smtp_from
-    msg["To"] = to_email
-    msg.set_content(body)
-
-    try:
-        with smtplib.SMTP(smtp_host, smtp_port, timeout=smtp_timeout) as server:
-            server.ehlo()
-            if use_starttls:
-                server.starttls(context=ssl.create_default_context())
-                server.ehlo()
-            server.login(smtp_user, smtp_pass)
-            server.send_message(msg)
-        logger.info("Email sending success: to=%s", to_email)
+        # Prepare email parameters
+        params = {
+            "from": from_email,
+            "to": [to_email],
+            "subject": subject,
+            "text": body_text,
+        }
+        
+        # Add HTML body if provided
+        if body_html:
+            params["html"] = body_html
+        
+        # Send email via Resend API
+        response = resend.Emails.send(params)
+        
+        logger.info("Email sending success: provider=Resend to=%s email_id=%s", to_email, response.get("id", "unknown"))
+        
     except Exception as exc:
-        logger.exception("Email sending failed: to=%s host=%s port=%s error=%s", to_email, smtp_host, smtp_port, str(exc))
-        raise RuntimeError(f"Email send failed: {str(exc)}") from exc
+        logger.exception("Email sending failed: provider=Resend to=%s error=%s", to_email, str(exc))
+        raise RuntimeError(f"Resend email send failed: {str(exc)}") from exc
 
 
 def send_otp_email(to_email: str, otp: str) -> None:
     """
-    Sends a plain-text OTP email via SMTP.
+    Sends OTP email via Resend API over HTTPS.
     Raises an exception if sending fails.
     """
-
-    _send_email(
-        to_email=to_email,
-        subject="Your AUB Rate verification code",
-        body=f"""Your verification code is: {otp}
+    subject = "Your Unitok OTP Code"
+    
+    # Plain text version
+    body_text = f"""Your Unitok verification code is: {otp}
 
 This code expires in 10 minutes.
-If you didn’t request this, ignore this email.
-"""
-    )
+If you didn't request this, please ignore this email.
+
+- Unitok Team"""
+    
+    # HTML version for better presentation
+    body_html = f"""
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <h2 style="color: #8B5CF6;">Your Unitok Verification Code</h2>
+        <p style="font-size: 16px; color: #333;">Your verification code is:</p>
+        <div style="background-color: #F3F4F6; padding: 20px; border-radius: 8px; text-align: center; margin: 20px 0;">
+            <span style="font-size: 32px; font-weight: bold; color: #8B5CF6; letter-spacing: 8px;">{otp}</span>
+        </div>
+        <p style="font-size: 14px; color: #666;">This code expires in 10 minutes.</p>
+        <p style="font-size: 14px; color: #666;">If you didn't request this, please ignore this email.</p>
+        <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 30px 0;">
+        <p style="font-size: 12px; color: #999;">- Unitok Team</p>
+    </div>
+    """
+    
+    _send_email_resend(to_email, subject, body_text, body_html)
 
 
 def send_password_reset_otp_email(to_email: str, otp: str) -> None:
     """
-    Sends a plain-text password reset OTP email via SMTP.
+    Sends password reset OTP email via Resend API over HTTPS.
+    Raises an exception if sending fails.
     """
-
-    _send_email(
-        to_email=to_email,
-        subject="Your password reset code",
-        body=f"""Your password reset code is: {otp}
+    subject = "Your Unitok Password Reset OTP"
+    
+    # Plain text version
+    body_text = f"""Your Unitok password reset code is: {otp}
 
 This code expires in 10 minutes.
-If you didn’t request this, ignore this email.
-"""
-    )
+If you didn't request this, please ignore this email and your password will remain unchanged.
+
+- Unitok Team"""
+    
+    # HTML version for better presentation
+    body_html = f"""
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <h2 style="color: #8B5CF6;">Password Reset Request</h2>
+        <p style="font-size: 16px; color: #333;">Your password reset code is:</p>
+        <div style="background-color: #F3F4F6; padding: 20px; border-radius: 8px; text-align: center; margin: 20px 0;">
+            <span style="font-size: 32px; font-weight: bold; color: #8B5CF6; letter-spacing: 8px;">{otp}</span>
+        </div>
+        <p style="font-size: 14px; color: #666;">This code expires in 10 minutes.</p>
+        <p style="font-size: 14px; color: #666;">If you didn't request this, please ignore this email and your password will remain unchanged.</p>
+        <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 30px 0;">
+        <p style="font-size: 12px; color: #999;">- Unitok Team</p>
+    </div>
+    """
+    
+    _send_email_resend(to_email, subject, body_text, body_html)
