@@ -8,6 +8,7 @@ from fastapi import APIRouter, Depends, Header
 from fastapi import HTTPException
 
 from app.core.firebase_admin import get_firebase_auth
+from app.core.firestore import get_db
 from app.services.firebase_service import get_firebase_service
 
 from app.admin.dtos import (
@@ -29,8 +30,9 @@ from app.admin.dtos import (
 
 def require_admin(authorization: Optional[str] = Header(default=None)):
     """Dependency that verifies the request carries a valid Firebase ID token
-    whose custom claims include ``admin: True``.  Raises:
-    - 401 if the token is missing or invalid.
+    and that the corresponding Firestore ``users/{uid}`` document has
+    ``isAdmin: true``.  Raises:
+    - 401 if the token is missing or invalid (not logged in).
     - 403 if the authenticated user is not an admin.
     """
     if not authorization:
@@ -46,7 +48,16 @@ def require_admin(authorization: Optional[str] = Header(default=None)):
     except Exception:
         raise HTTPException(status_code=401, detail="Invalid or expired token.")
 
-    if not decoded.get("admin"):
+    uid = decoded.get("uid") or decoded.get("user_id")
+    if not uid:
+        raise HTTPException(status_code=401, detail="Invalid token: missing uid.")
+
+    db = get_db()
+    user_doc = db.collection("users").document(uid).get()
+    if not user_doc.exists:
+        raise HTTPException(status_code=403, detail="Admin access required.")
+    user_data = user_doc.to_dict() or {}
+    if not user_data.get("isAdmin"):
         raise HTTPException(status_code=403, detail="Admin access required.")
 
     return decoded
