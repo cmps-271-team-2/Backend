@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import datetime, timezone
 from typing import Any, cast
 
 from dotenv import load_dotenv
@@ -10,12 +11,20 @@ from app.services.openai_service import get_openai_service
 from app.services.semantic_service import get_semantic_service
 
 
-COURSE_TARGET_TYPES = {"course", "courses"}
 INDEXING_VERSION = 1
+TARGET_COLLECTIONS = {
+	"course": "courses",
+	"courses": "courses",
+	"professor": "profiles",
+	"profile": "profiles",
+	"study-spot": "cafeterias",
+	"food-spot": "cafeterias",
+	"cafeteria": "cafeterias",
+}
 
 
 def update_posts_index() -> dict[str, int]:
-	"""Rebuild the in-memory semantic index from Firestore course posts."""
+	"""Rebuild the Pinecone semantic index from Firestore course posts."""
 	load_dotenv()
 	init_firebase_admin()
 
@@ -26,9 +35,8 @@ def update_posts_index() -> dict[str, int]:
 
 	scanned = 0
 	indexed = 0
-	skipped_non_course = 0
 	skipped_missing_target = 0
-	skipped_missing_course = 0
+	skipped_missing_text = 0
 
 	documents_to_index: list[tuple[Any, str, str, dict[str, Any]]] = []
 
@@ -37,14 +45,12 @@ def update_posts_index() -> dict[str, int]:
 		candidate = _prepare_post_for_indexing(post_snapshot=post_snapshot, db=db)
 		if candidate is None:
 			post_data = post_snapshot.to_dict() or {}
-			target_type = str(post_data.get("targetType") or post_data.get("targettype") or "").strip().lower()
 			target_id = str(post_data.get("targetId") or post_data.get("targetid") or "").strip()
-			if target_type not in COURSE_TARGET_TYPES:
-				skipped_non_course += 1
-			elif not target_id:
+			document_text = _build_document_text(post_data, None)
+			if not target_id:
 				skipped_missing_target += 1
 			else:
-				skipped_missing_course += 1
+				skipped_missing_text += 1 if not document_text.strip() else 0
 			continue
 
 		documents_to_index.append(candidate)
@@ -62,14 +68,13 @@ def update_posts_index() -> dict[str, int]:
 	return {
 		"scanned": scanned,
 		"indexed": indexed,
-		"skipped_non_course": skipped_non_course,
 		"skipped_missing_target": skipped_missing_target,
-		"skipped_missing_course": skipped_missing_course,
+		"skipped_missing_text": skipped_missing_text,
 	}
 
 
 def upload_post(post_id: str) -> dict[str, Any]:
-	"""Index a single Firestore post into the in-memory semantic store."""
+	"""Index a single Firestore post into the Pinecone semantic store."""
 	load_dotenv()
 	init_firebase_admin()
 
@@ -108,29 +113,31 @@ def fetch_relevant_posts(query_text: str, limit: int = 20) -> list[dict[str, Any
 def _prepare_post_for_indexing(post_snapshot: Any, db: Any) -> tuple[Any, str, str, dict[str, Any]] | None:
 	post_data = post_snapshot.to_dict() or {}
 	post_reference = post_snapshot.reference
-	target_type = str(post_data.get("targetType") or post_data.get("targettype") or "").strip().lower()
-	if target_type not in COURSE_TARGET_TYPES:
-		_set_post_index_status(post_reference, indexed=False)
-		return None
-
 	target_id = str(post_data.get("targetId") or post_data.get("targetid") or "").strip()
 	if not target_id:
 		_set_post_index_status(post_reference, indexed=False)
 		return None
 
-	course_snapshot = cast(Any, db.collection("courses").document(target_id).get())
-	if not course_snapshot.exists:
+	target_type = str(post_data.get("targetType") or post_data.get("targettype") or "").strip().lower()
+	target_data = _load_target_data(db=db, target_type=target_type, target_id=target_id)
+	document_text = _build_document_text(post_data, target_data)
+	if not document_text.strip():
 		_set_post_index_status(post_reference, indexed=False)
 		return None
 
-	course_data = course_snapshot.to_dict() or {}
 	metadata = {
 		"postId": post_snapshot.id,
-		"courseId": course_snapshot.id,
+		"targetId": target_id,
+		"targetType": target_type,
 		"post": post_data,
-		"course": course_data,
-		"documentText": _build_document_text(post_data, course_data),
+		"documentText": document_text,
+		"indexedAt": datetime.now(timezone.utc).isoformat(),
 	}
+	if target_data is not None:
+		metadata["target"] = target_data
+		if target_type in {"course", "courses"}:
+			metadata["courseId"] = target_id
+			metadata["course"] = target_data
 	return post_reference, post_snapshot.id, metadata["documentText"], metadata
 
 
@@ -138,10 +145,23 @@ def _set_post_index_status(post_reference: Any, indexed: bool) -> None:
 	post_reference.set({"indexed": indexed, "indexing_version": INDEXING_VERSION}, merge=True)
 
 
-def _build_document_text(post_data: dict[str, Any], course_data: dict[str, Any]) -> str:
+def _load_target_data(db: Any, target_type: str, target_id: str) -> dict[str, Any] | None:
+	collection_name = TARGET_COLLECTIONS.get(target_type)
+	if not collection_name:
+		return None
+
+	target_snapshot = cast(Any, db.collection(collection_name).document(target_id).get())
+	if not target_snapshot.exists:
+		return None
+
+	data = target_snapshot.to_dict() or {}
+	return {"id": target_snapshot.id, **data}
+
+
+def _build_document_text(post_data: dict[str, Any], target_data: dict[str, Any] | None) -> str:
 	parts = [
 		_stringify_mapping("Post", post_data),
-		_stringify_mapping("Course", course_data),
+		_stringify_mapping("Target", target_data or {}),
 	]
 	return "\n\n".join(part for part in parts if part)
 

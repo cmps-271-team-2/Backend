@@ -8,6 +8,8 @@ from dotenv import load_dotenv
 from app.admin.dtos import AdminPostDTO, AdminProfileDTO, AdminStatusDTO, AdminUserDTO, AnalyticsDTO, SeriesPointDTO
 from app.core.firebase_admin import get_firebase_auth, init_firebase_admin
 from app.core.firestore import get_db
+from app.jobs.index_posts import upload_post
+from app.services.semantic_service import get_semantic_service
 
 
 _singleton: "FirebaseService | None" = None
@@ -80,9 +82,10 @@ class FirebaseService:
             target_type = str(data.get("targetType") or "")
             created_at = _to_iso(data.get("createdAt") or data.get("CreatedAt"))
 
-            rating_raw = data.get("Rating")
+            rating_raw = data.get("rating") if data.get("rating") is not None else data.get("Rating")
             rating = _to_int(rating_raw)
             reports = _to_int(data.get("reports") or data.get("Reports") or data.get("reportCount") or 0)
+            moderation = data.get("moderation") if isinstance(data.get("moderation"), dict) else {}
 
             out.append(
                 AdminPostDTO(
@@ -92,6 +95,13 @@ class FirebaseService:
                     text=text,
                     rating=rating,
                     reports=reports,
+                    moderationStatus=_to_moderation_status(moderation.get("status")),
+                    moderationAllowed=bool(moderation.get("allowed") is True),
+                    moderationExplanation=_to_optional_str(moderation.get("explanation")),
+                    moderationViolations=_to_str_list(moderation.get("violations")),
+                    forcedByAdmin=bool(moderation.get("forcedByAdmin") is True),
+                    indexed=bool(data.get("indexed") is True),
+                    indexingVersion=_to_optional_int(data.get("indexing_version") or data.get("indexingVersion")),
                     createdAt=created_at,
                 )
             )
@@ -122,7 +132,42 @@ class FirebaseService:
         return out
 
     def delete_post(self, post_id: str) -> None:
+        get_semantic_service().delete(post_id)
         self._db.collection("posts").document(post_id).delete()
+
+    def set_post_moderation(self, post_id: str, accepted: bool) -> AdminPostDTO:
+        post_ref = self._db.collection("posts").document(post_id)
+        snapshot = post_ref.get()
+        if not snapshot.exists:
+            raise ValueError(f"Post '{post_id}' was not found.")
+
+        checked_at = datetime.now(timezone.utc).isoformat()
+        moderation_payload = {
+            "status": "approved" if accepted else "rejected",
+            "allowed": accepted,
+            "violations": [] if accepted else ["admin-rejected"],
+            "explanation": "Approved by admin." if accepted else "Rejected by admin.",
+            "checkedAt": checked_at,
+            "forcedByAdmin": True,
+        }
+
+        indexed = False
+        if accepted:
+            index_result = upload_post(post_id)
+            indexed = bool(index_result.get("indexed"))
+        else:
+            get_semantic_service().delete(post_id)
+
+        post_ref.set(
+            {
+                "moderation": moderation_payload,
+                "indexed": indexed,
+            },
+            merge=True,
+        )
+
+        refreshed = post_ref.get()
+        return self._to_admin_post(refreshed.id, refreshed.to_dict() or {})
 
     def delete_user(self, user_id: str) -> None:
         # 1) Delete from Firebase Auth (best-effort)
@@ -198,6 +243,25 @@ class FirebaseService:
             series7d=series,
         )
 
+    def _to_admin_post(self, post_id: str, data: dict[str, Any]) -> AdminPostDTO:
+        moderation = data.get("moderation") if isinstance(data.get("moderation"), dict) else {}
+        return AdminPostDTO(
+            id=post_id,
+            targetId=str(data.get("targetId") or ""),
+            targetType=str(data.get("targetType") or ""),
+            text=str(data.get("text") or ""),
+            rating=_to_int(data.get("rating") if data.get("rating") is not None else data.get("Rating")),
+            reports=_to_int(data.get("reports") or data.get("Reports") or data.get("reportCount") or 0),
+            moderationStatus=_to_moderation_status(moderation.get("status")),
+            moderationAllowed=bool(moderation.get("allowed") is True),
+            moderationExplanation=_to_optional_str(moderation.get("explanation")),
+            moderationViolations=_to_str_list(moderation.get("violations")),
+            forcedByAdmin=bool(moderation.get("forcedByAdmin") is True),
+            indexed=bool(data.get("indexed") is True),
+            indexingVersion=_to_optional_int(data.get("indexing_version") or data.get("indexingVersion")),
+            createdAt=_to_iso(data.get("createdAt") or data.get("CreatedAt")),
+        )
+
 
 def _to_iso(value: Any) -> str:
     if isinstance(value, datetime):
@@ -245,3 +309,33 @@ def _to_status(status_value: Any, banned_value: Any) -> AdminStatusDTO:
     if banned_value is True:
         return "banned"
     return "active"
+
+
+def _to_moderation_status(value: Any) -> str:
+    if isinstance(value, str):
+        normalized = value.strip().lower()
+        if normalized in {"pending", "approved", "rejected", "review"}:
+            return normalized
+    return "pending"
+
+
+def _to_optional_str(value: Any) -> str | None:
+    if value is None:
+        return None
+    text = str(value).strip()
+    return text or None
+
+
+def _to_str_list(value: Any) -> list[str]:
+    if not isinstance(value, list):
+        return []
+    return [str(item) for item in value if str(item).strip()]
+
+
+def _to_optional_int(value: Any) -> int | None:
+    try:
+        if value is None:
+            return None
+        return int(value)
+    except Exception:
+        return None
