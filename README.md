@@ -45,9 +45,21 @@ FIREBASE_WEB_API_KEY=your-web-api-key
 
 # OTP expiry
 OTP_EXP_MINUTES=10
+
+# OpenAI embeddings
+OPENAI_API_KEY=your_openai_api_key
+
+# Pinecone vector store
+PINECONE_API_KEY=your_pinecone_api_key
+PINECONE_INDEX_NAME=unitok-posts
+PINECONE_NAMESPACE=dev
+PINECONE_CLOUD=aws
+PINECONE_REGION=us-east-1
 ```
 
 > **Note**: OTP emails are sent via Resend API over HTTPS (not SMTP). This ensures reliable delivery from cloud platforms like Render. See `.env.example` for all required variables.
+
+Semantic post search now stores vectors and post metadata in Pinecone. The backend will create the configured Pinecone index automatically if it does not exist yet.
 
 4) Start the API
 

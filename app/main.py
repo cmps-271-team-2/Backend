@@ -7,6 +7,7 @@ from app.core.firebase_admin import init_firebase_admin
 from app.auth.routes import router as auth_router
 from app.admin.routes import router as admin_router
 from app.feed.routes import router as feed_router
+from app.jobs.routes import router as jobs_router
 
 load_dotenv()
 
@@ -35,3 +36,4 @@ app.add_middleware(
 app.include_router(auth_router, prefix="/auth")
 app.include_router(admin_router, prefix="/admin")
 app.include_router(feed_router)
+app.include_router(jobs_router)

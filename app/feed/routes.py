@@ -1,13 +1,17 @@
+from datetime import date, datetime, timezone
+from collections import defaultdict, deque
+import os
+import random
+
+import firebase_admin
+from dotenv import load_dotenv
 from fastapi import APIRouter, FastAPI, Request
 from fastapi.responses import JSONResponse
-import os
-from dotenv import load_dotenv
-import firebase_admin
 from firebase_admin import credentials, firestore
 
-from collections import defaultdict, deque
-import random
-from datetime import date
+from app.jobs.index_posts import upload_post
+from app.services.moderation_service import get_moderation_service
+from app.services.semantic_service import get_semantic_service
 
 # Load environment variables
 load_dotenv()
@@ -284,9 +288,94 @@ async def create_post(request: Request):
         return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
 
     doc_ref = db.collection("posts").document()
-    doc_ref.set(data)
+    pending_moderation = {
+        "status": "pending",
+        "allowed": False,
+        "violations": [],
+        "explanation": "Moderation pending.",
+        "model": None,
+        "checkedAt": None,
+        "forcedByAdmin": False,
+    }
+    doc_ref.set({**data, "indexed": False, "moderation": pending_moderation})
 
-    return JSONResponse(content={"id": doc_ref.id}, status_code=201)
+    try:
+        decision = get_moderation_service().moderate_post(data)
+    except Exception:
+        return JSONResponse(
+            content={"error": "Post moderation is currently unavailable.", "id": doc_ref.id},
+            status_code=503,
+        )
+
+    moderation_payload = {
+        "status": decision.status,
+        "allowed": decision.allowed,
+        "violations": decision.violations,
+        "explanation": decision.explanation,
+        "model": decision.model,
+        "checkedAt": datetime.now(timezone.utc).isoformat(),
+        "forcedByAdmin": False,
+    }
+
+    doc_ref.set({"moderation": moderation_payload}, merge=True)
+
+    index_result = {
+        "postId": doc_ref.id,
+        "indexed": False,
+        "indexing_version": None,
+    }
+
+    if decision.allowed:
+        try:
+            index_result = upload_post(doc_ref.id)
+        except Exception:
+            doc_ref.set(
+                {
+                    "indexed": False,
+                    "moderation": {
+                        **moderation_payload,
+                        "status": "review",
+                        "allowed": False,
+                        "explanation": "Automatic indexing failed and post needs manual review.",
+                    },
+                },
+                merge=True,
+            )
+            return JSONResponse(
+                content={
+                    "id": doc_ref.id,
+                    "indexing": index_result,
+                    "moderation": {
+                        **moderation_payload,
+                        "status": "review",
+                        "allowed": False,
+                        "explanation": "Automatic indexing failed and post needs manual review.",
+                    },
+                    "message": "Post created but needs admin review before it can appear in semantic search.",
+                },
+                status_code=202,
+            )
+
+    if not decision.allowed:
+        return JSONResponse(
+            content={
+                "id": doc_ref.id,
+                "indexing": index_result,
+                "moderation": moderation_payload,
+                "message": "Post created but is not accepted yet. An admin can review it from the dashboard.",
+            },
+            status_code=201,
+        )
+
+    return JSONResponse(
+        content={
+            "id": doc_ref.id,
+            "indexing": index_result,
+            "moderation": moderation_payload,
+            "message": "Post created and indexed successfully.",
+        },
+        status_code=201,
+    )
 
 
 app = FastAPI()
