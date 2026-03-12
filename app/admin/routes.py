@@ -2,10 +2,13 @@ from __future__ import annotations
 
 import random
 from datetime import datetime, timedelta, timezone
+from typing import Optional
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Header
 from fastapi import HTTPException
 
+from app.core.firebase_admin import get_firebase_auth
+from app.core.firestore import get_db
 from app.services.firebase_service import get_firebase_service
 
 from app.admin.dtos import (
@@ -26,7 +29,43 @@ from app.admin.dtos import (
     PagedResponseDTO,
 )
 
-router = APIRouter(tags=["admin"])
+
+def require_admin(authorization: Optional[str] = Header(default=None)):
+    """Dependency that verifies the request carries a valid Firebase ID token
+    and that the corresponding Firestore ``users/{uid}`` document has
+    ``isAdmin: true``.  Raises:
+    - 401 if the token is missing or invalid (not logged in).
+    - 403 if the authenticated user is not an admin.
+    """
+    if not authorization:
+        raise HTTPException(status_code=401, detail="Missing Authorization header.")
+    parts = authorization.split(" ", 1)
+    if len(parts) != 2 or parts[0].lower() != "bearer":
+        raise HTTPException(status_code=401, detail="Invalid Authorization header.")
+    token = parts[1].strip()
+
+    firebase_auth = get_firebase_auth()
+    try:
+        decoded = firebase_auth.verify_id_token(token)
+    except Exception:
+        raise HTTPException(status_code=401, detail="Invalid or expired token.")
+
+    uid = decoded.get("uid") or decoded.get("user_id")
+    if not uid:
+        raise HTTPException(status_code=401, detail="Invalid token: missing uid.")
+
+    db = get_db()
+    user_doc = db.collection("users").document(uid).get()
+    if not user_doc.exists:
+        raise HTTPException(status_code=403, detail="Admin access required.")
+    user_data = user_doc.to_dict() or {}
+    if not user_data.get("isAdmin"):
+        raise HTTPException(status_code=403, detail="Admin access required.")
+
+    return decoded
+
+
+router = APIRouter(tags=["admin"], dependencies=[Depends(require_admin)])
 
 
 _jobs_rng = random.Random(20260222)
