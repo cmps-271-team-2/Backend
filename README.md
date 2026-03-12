@@ -26,11 +26,28 @@ Or via Makefile:
 make install
 ```
 
-3) Ensure `.env` is present and includes CORS origins
+3) Ensure `.env` is present and includes required configuration
 
 ```bash
+# CORS origins
 FRONTEND_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+
+# Resend API (for OTP email delivery)
+RESEND_API_KEY=your_resend_api_key
+RESEND_FROM_EMAIL=noreply@yourdomain.com
+
+# Firebase configuration
+FIREBASE_PROJECT_ID=your-project-id
+FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
+FIREBASE_CLIENT_EMAIL=your-service-account@your-project.iam.gserviceaccount.com
+FIREBASE_WEB_API_KEY=your-web-api-key
+# ... (see .env.example for complete list)
+
+# OTP expiry
+OTP_EXP_MINUTES=10
 ```
+
+> **Note**: OTP emails are sent via Resend API over HTTPS (not SMTP). This ensures reliable delivery from cloud platforms like Render. See `.env.example` for all required variables.
 
 4) Start the API
 

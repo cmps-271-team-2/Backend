@@ -1,5 +1,6 @@
 import json
 import os
+import logging
 from datetime import datetime, timezone
 from typing import Optional
 from urllib import request, error
@@ -26,6 +27,7 @@ from app.core.firebase_admin import get_firebase_auth
 from app.core.firestore import get_db
 
 router = APIRouter()
+logger = logging.getLogger(__name__)
 
 
 def normalize_email(email: str) -> str:
@@ -100,6 +102,7 @@ def request_otp(body: RequestOtpBody):
     try:
         now_iso = datetime.now(timezone.utc).isoformat()
 
+        logger.info("request_otp: OTP generation started for email=%s", email)
         otp = generate_otp()
         otp_hash = hash_otp(otp)
         expires_at_iso = otp_expiry_time().isoformat()
@@ -124,7 +127,13 @@ def request_otp(body: RequestOtpBody):
             "existingUid": existing_user.uid if existing_user else None,
         }, merge=True)
 
-        send_otp_email(email, otp)
+        logger.info("request_otp: email sending started for email=%s", email)
+        try:
+            send_otp_email(email, otp)
+            logger.info("request_otp: email sending success for email=%s", email)
+        except Exception as e:
+            logger.error("request_otp: email sending failed for email=%s error=%s", email, str(e))
+            raise HTTPException(status_code=502, detail="Failed to send OTP email. Please try again.")
 
         if pending_doc.exists:
             return RequestOtpResponse(message="PENDING_VERIFICATION")
@@ -132,6 +141,9 @@ def request_otp(body: RequestOtpBody):
         return RequestOtpResponse(message="OTP sent to your email.")
 
     except Exception as e:
+        logger.error("request_otp failed for email=%s error=%s", email, str(e))
+        if isinstance(e, HTTPException):
+            raise e
         raise HTTPException(status_code=400, detail=f"Request OTP failed: {str(e)}")
 
 @router.post("/register/verify-otp", response_model=VerifyOtpResponse)
@@ -259,6 +271,7 @@ def resend_otp(body: ResendOtpBody):
         if (now - last_sent_dt).total_seconds() < 30:
             raise HTTPException(status_code=429, detail="Please wait 30 seconds before resending.")
 
+    logger.info("resend_otp: OTP generation started for email=%s", email)
     otp = generate_otp()
     otp_hash = hash_otp(otp)
     expires_at_iso = otp_expiry_time().isoformat()
@@ -272,7 +285,13 @@ def resend_otp(body: ResendOtpBody):
         "lastSentAt": now.isoformat(),
     })
 
-    send_otp_email(email, otp)
+    logger.info("resend_otp: email sending started for email=%s", email)
+    try:
+        send_otp_email(email, otp)
+        logger.info("resend_otp: email sending success for email=%s", email)
+    except Exception as e:
+        logger.error("resend_otp: email sending failed for email=%s error=%s", email, str(e))
+        raise HTTPException(status_code=502, detail="Failed to send OTP email. Please try again.")
 
     return ResendOtpResponse(message="OTP resent. Check your email.")
 
@@ -297,6 +316,7 @@ def forgot_password(body: ForgotPasswordBody):
     uid = user.uid
     now_iso = datetime.now(timezone.utc).isoformat()
 
+    logger.info("forgot_password: OTP generation started for email=%s", email)
     otp = generate_otp()
     otp_hash = hash_otp(otp)
     expires_at_iso = otp_expiry_time().isoformat()
@@ -311,10 +331,13 @@ def forgot_password(body: ForgotPasswordBody):
         "used": False,
     })
 
+    logger.info("forgot_password: email sending started for email=%s", email)
     try:
         send_password_reset_otp_email(email, otp)
-    except Exception:
-        pass
+        logger.info("forgot_password: email sending success for email=%s", email)
+    except Exception as e:
+        logger.error("forgot_password: email sending failed for email=%s error=%s", email, str(e))
+        raise HTTPException(status_code=502, detail="Failed to send reset email. Please try again.")
 
     return ForgotPasswordResponse(
         message="If the email exists, a reset code has been sent."
