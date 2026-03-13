@@ -1,8 +1,10 @@
 import os
 
 from fastapi import FastAPI
-from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
+from app.routes import reviews 
+
+from dotenv import load_dotenv
 from app.core.firebase_admin import init_firebase_admin
 from app.auth.routes import router as auth_router
 from app.admin.routes import router as admin_router
@@ -29,6 +31,8 @@ app.add_middleware(
 
 app.include_router(auth_router, prefix="/auth")
 app.include_router(admin_router, prefix="/admin")
+
+app.include_router(reviews.router)
 
 @app.get("/")
 def health():
