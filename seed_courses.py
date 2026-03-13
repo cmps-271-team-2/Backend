@@ -1,5 +1,5 @@
 import os, json, time
-from app import db
+from main import db
 
 print("✅ Starting seed_courses.py ...")
 
