@@ -53,7 +53,7 @@ def submit_term_and_get_subjects(session: requests.Session, term_code: str):
     print("DEBUG first 200 chars:", r.text[:200])
 
     with open("debug_proc_term.html", "w", encoding="utf-8") as f:
-    f.write(r.text)
+        f.write(r.text)
 
     print("✅ Wrote debug_proc_term.html (open it in your browser)")
 
