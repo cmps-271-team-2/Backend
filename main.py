@@ -1,14 +1,9 @@
-<<<<<<<< HEAD:main.py
-from fastapi import FastAPI, Query, HTTPException
-========
-from fastapi import APIRouter, FastAPI, Request
+from fastapi import APIRouter, FastAPI, Query, HTTPException, Request
 from fastapi.responses import JSONResponse
 import os
 from dotenv import load_dotenv
 import firebase_admin
->>>>>>>> dev:app/feed/routes.py
 from firebase_admin import credentials, firestore
-import firebase_admin
 
 from pydantic import BaseModel
 from typing import Optional, Literal
@@ -16,48 +11,43 @@ from collections import defaultdict, deque
 import random
 from datetime import date
 
-<<<<<<<< HEAD:main.py
-app = FastAPI()
+        app = FastAPI()
 
-# -------------------------------
-# Firebase Init
-# -------------------------------
-if not firebase_admin._apps:
-    cred = credentials.Certificate("serviceAccountKey.json")
-========
-# Load environment variables
-load_dotenv()
+        # -------------------------------
+        # Firebase Init
+        # -------------------------------
+        # Load environment variables
+        load_dotenv()
 
-router = APIRouter()
+        router = APIRouter()
 
-# Initialize Firebase Admin with environment variables
-if not firebase_admin._apps:
-    private_key = os.environ["FIREBASE_PRIVATE_KEY"].replace("\\n", "\n")
-    
-    service_account_info = {
-        "type": os.environ["FIREBASE_TYPE"],
-        "project_id": os.environ["FIREBASE_PROJECT_ID"],
-        "private_key_id": os.environ["FIREBASE_PRIVATE_KEY_ID"],
-        "private_key": private_key,
-        "client_email": os.environ["FIREBASE_CLIENT_EMAIL"],
-        "client_id": os.environ["FIREBASE_CLIENT_ID"],
-        "auth_uri": os.environ["FIREBASE_AUTH_URI"],
-        "token_uri": os.environ["FIREBASE_TOKEN_URI"],
-        "auth_provider_x509_cert_url": os.environ["FIREBASE_AUTH_PROVIDER_X509_CERT_URL"],
-        "client_x509_cert_url": os.environ["FIREBASE_CLIENT_X509_CERT_URL"],
-        "universe_domain": os.environ["FIREBASE_UNIVERSE_DOMAIN"],
-    }
-    
-    cred = credentials.Certificate(service_account_info)
->>>>>>>> dev:app/feed/routes.py
-    firebase_admin.initialize_app(cred)
+        # Initialize Firebase Admin with environment variables
+        if not firebase_admin._apps:
+            private_key = os.environ["FIREBASE_PRIVATE_KEY"].replace("\\n", "\n")
 
-db = firestore.client()
+            service_account_info = {
+                "type": os.environ["FIREBASE_TYPE"],
+                "project_id": os.environ["FIREBASE_PROJECT_ID"],
+                "private_key_id": os.environ["FIREBASE_PRIVATE_KEY_ID"],
+                "private_key": private_key,
+                "client_email": os.environ["FIREBASE_CLIENT_EMAIL"],
+                "client_id": os.environ["FIREBASE_CLIENT_ID"],
+                "auth_uri": os.environ["FIREBASE_AUTH_URI"],
+                "token_uri": os.environ["FIREBASE_TOKEN_URI"],
+                "auth_provider_x509_cert_url": os.environ["FIREBASE_AUTH_PROVIDER_X509_CERT_URL"],
+                "client_x509_cert_url": os.environ["FIREBASE_CLIENT_X509_CERT_URL"],
+                "universe_domain": os.environ["FIREBASE_UNIVERSE_DOMAIN"],
+            }
+
+            cred = credentials.Certificate(service_account_info)
+            firebase_admin.initialize_app(cred)
+
+        db = firestore.client()
 
 
-# -------------------------------
-# Pydantic Models
-# -------------------------------
+        # -------------------------------
+        # Pydantic Models
+        # -------------------------------
 class ProfileCreate(BaseModel):
     type: str
     name: str
