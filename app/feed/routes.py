@@ -7,6 +7,7 @@ from typing import Optional, Literal
 from collections import defaultdict, deque
 import random
 from datetime import date
+import hashlib
 
 router = APIRouter()
 
@@ -295,7 +296,8 @@ def get_feed(request: Request):
 
     # Stable "random" per user per day (so refresh doesn't reshuffle constantly)
 >>>>>>>> dev:app/feed/routes.py
-    seed = hash(f"{user_id}-{date.today().isoformat()}")
+    stable_key = f"{user_id}-{date.today().isoformat()}".encode("utf-8")
+    seed = int.from_bytes(hashlib.sha256(stable_key).digest()[:8], "big", signed=False)
 
     prof_docs = db.collection("profiles").limit(100).stream()
     cafe_docs = db.collection("cafeterias").limit(100).stream()
