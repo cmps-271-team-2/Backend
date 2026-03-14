@@ -7,44 +7,42 @@ import firebase_admin
 from dotenv import load_dotenv
 from fastapi import APIRouter, FastAPI, Request
 from fastapi.responses import JSONResponse
-from firebase_admin import credentials, firestore
+from firebase_admin import firestore
 
-from app.jobs.index_posts import upload_post
-from app.services.moderation_service import get_moderation_service
-from app.services.semantic_service import get_semantic_service
-
-# Load environment variables
-load_dotenv()
+from pydantic import BaseModel
+from typing import Optional, Literal
+from collections import defaultdict, deque
+import random
+from datetime import date
+import hashlib
 
 router = APIRouter()
 
-# Initialize Firebase Admin with environment variables
-if not firebase_admin._apps:
-    private_key = os.environ["FIREBASE_PRIVATE_KEY"].replace("\\n", "\n")
-    
-    service_account_info = {
-        "type": os.environ["FIREBASE_TYPE"],
-        "project_id": os.environ["FIREBASE_PROJECT_ID"],
-        "private_key_id": os.environ["FIREBASE_PRIVATE_KEY_ID"],
-        "private_key": private_key,
-        "client_email": os.environ["FIREBASE_CLIENT_EMAIL"],
-        "client_id": os.environ["FIREBASE_CLIENT_ID"],
-        "auth_uri": os.environ["FIREBASE_AUTH_URI"],
-        "token_uri": os.environ["FIREBASE_TOKEN_URI"],
-        "auth_provider_x509_cert_url": os.environ["FIREBASE_AUTH_PROVIDER_X509_CERT_URL"],
-        "client_x509_cert_url": os.environ["FIREBASE_CLIENT_X509_CERT_URL"],
-        "universe_domain": os.environ["FIREBASE_UNIVERSE_DOMAIN"],
-    }
-    
-    cred = credentials.Certificate(service_account_info)
-    firebase_admin.initialize_app(cred)
-
 db = firestore.client()
+
+
+# -------------------------------
+# Pydantic Models
+# -------------------------------
+class ProfileCreate(BaseModel):
+    type: str
+    name: str
+
+
+class CafeteriaCreate(BaseModel):
+    name: str
+
+
+class PostCreate(BaseModel):
+    rating: int
+    text: str
+    targetId: str
+    targetType: str
+
 
 # -------------------------------
 # Feed Algorithm Helpers
 # -------------------------------
-
 def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None):
     """
     Mixed randomized feed:
@@ -72,7 +70,7 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
     # Convert to queues
     queues = {t: deque(buckets.get(t, [])) for t in weights.keys()}
 
-    # 3) Build weighted pattern: e.g. profile, profile, cafeteria, post...
+    # 3) Build weighted pattern
     pattern = []
     for t, w in weights.items():
         pattern.extend([t] * max(0, int(w)))
@@ -97,18 +95,15 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
                 return False
             return True
 
-        # Try preferred type first
         if ok(preferred):
             return preferred
 
-        # Otherwise try alternatives (random order so fallback isn't biased)
         types = list(weights.keys())
         rng.shuffle(types)
         for t in types:
             if ok(t):
                 return t
 
-        # If everything violates streak, relax streak rule as last resort
         for t in types:
             if len(queues[t]) > 0:
                 return t
@@ -127,7 +122,6 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
         item = queues[chosen].popleft()
         feed.append(item)
 
-        # Update streak
         if chosen == last_type:
             streak += 1
         else:
@@ -138,17 +132,112 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
 
 
 # -------------------------------
+# Sorting Helper
+# -------------------------------
+def fetch_sorted_collection(collection_name, allowed_sort_fields, sort_by, order):
+    if sort_by not in allowed_sort_fields:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid sort_by. Allowed fields: {allowed_sort_fields}"
+        )
+
+    if order not in ["asc", "desc"]:
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid order. Use 'asc' or 'desc'"
+        )
+
+    direction = firestore.Query.ASCENDING if order == "asc" else firestore.Query.DESCENDING
+    docs = db.collection(collection_name).order_by(sort_by, direction=direction).stream()
+
+    items = []
+    for doc in docs:
+        items.append({
+            "id": doc.id,
+            **(doc.to_dict() or {})
+        })
+
+    return items
+
+
+# -------------------------------
 # Routes
 # -------------------------------
+<<<<<<<< HEAD:main.py
+@app.get("/")
+========
 
 @router.get("/")
+>>>>>>>> dev:app/feed/routes.py
 def home():
     return {
         "status": "ok",
-        "message": "Flask is connected to Firestore"
+        "message": "FastAPI is connected to Firestore"
     }
 
 
+<<<<<<<< HEAD:main.py
+@app.get("/profiles")
+def get_profiles(
+    sort_by: str = Query("name"),
+    order: Literal["asc", "desc"] = Query("asc")
+):
+    return fetch_sorted_collection(
+        collection_name="profiles",
+        allowed_sort_fields=["name", "type"],
+        sort_by=sort_by,
+        order=order
+    )
+
+
+@app.get("/cafeterias")
+def get_cafeterias(
+    sort_by: str = Query("name"),
+    order: Literal["asc", "desc"] = Query("asc")
+):
+    return fetch_sorted_collection(
+        collection_name="cafeterias",
+        allowed_sort_fields=["name"],
+        sort_by=sort_by,
+        order=order
+    )
+
+
+@app.get("/posts")
+def get_posts(
+    sort_by: str = Query("createdAt"),
+    order: Literal["asc", "desc"] = Query("desc")
+):
+    return fetch_sorted_collection(
+        collection_name="posts",
+        allowed_sort_fields=["rating", "createdAt", "targetType"],
+        sort_by=sort_by,
+        order=order
+    )
+
+
+@app.get("/courses")
+def get_courses(
+    sort_by: str = Query("code"),
+    order: Literal["asc", "desc"] = Query("asc")
+):
+    return fetch_sorted_collection(
+        collection_name="courses",
+        allowed_sort_fields=["code", "title", "department", "number", "ratingAvg", "ratingCount"],
+        sort_by=sort_by,
+        order=order
+    )
+
+
+@app.get("/feed")
+def get_feed(
+    limit: int = Query(20),
+    user_id: str = Query("guest"),
+    include_posts: bool = Query(True),
+    sort_by: Optional[str] = Query(None),
+    order: Literal["asc", "desc"] = Query("desc")
+):
+========
 @router.get("/profiles")
 def get_profiles():
     docs = db.collection("profiles").stream()
@@ -196,21 +285,27 @@ def get_posts():
 # -------------------------------
 @router.get("/feed")
 def get_feed(request: Request):
+>>>>>>>> dev:app/feed/routes.py
     """
     Returns a mixed randomized feed from your collections.
     Query params:
-      - limit (default 20)
-      - user_id (optional; used to seed randomness so it stays stable per day)
-      - include_posts (0/1, default 1)
+      - limit
+      - user_id
+      - include_posts
+      - sort_by (optional: rating, name)
+      - order (asc/desc)
     """
+<<<<<<<< HEAD:main.py
+========
     limit = int(request.query_params.get("limit", 20))
     user_id = request.query_params.get("user_id", "guest")
     include_posts = request.query_params.get("include_posts", "1") == "1"
 
     # Stable "random" per user per day (so refresh doesn't reshuffle constantly)
-    seed = hash(f"{user_id}-{date.today().isoformat()}")
+>>>>>>>> dev:app/feed/routes.py
+    stable_key = f"{user_id}-{date.today().isoformat()}".encode("utf-8")
+    seed = int.from_bytes(hashlib.sha256(stable_key).digest()[:8], "big", signed=False)
 
-    # Fetch candidates (limit to keep it fast)
     prof_docs = db.collection("profiles").limit(100).stream()
     cafe_docs = db.collection("cafeterias").limit(100).stream()
 
@@ -224,8 +319,6 @@ def get_feed(request: Request):
         posts = [{"id": d.id, "type": "post", **(d.to_dict() or {})} for d in post_docs]
         items += posts
 
-    # Weights: controls how frequently each type appears
-    # Tweak these to your liking.
     weights = {"profile": 3, "cafeteria": 2, "post": 2} if include_posts else {"profile": 3, "cafeteria": 2}
 
     mixed = build_mixed_feed(
@@ -236,12 +329,41 @@ def get_feed(request: Request):
         seed=seed
     )
 
+<<<<<<<< HEAD:main.py
+    reverse = (order == "desc")
+
+    if sort_by == "rating":
+        mixed.sort(key=lambda x: x.get("rating", 0), reverse=reverse)
+    elif sort_by == "name":
+        mixed.sort(key=lambda x: str(x.get("name", "")).lower(), reverse=reverse)
+
+    return mixed
+========
     return JSONResponse(content=mixed, status_code=200)
+>>>>>>>> dev:app/feed/routes.py
 
 
 # -------------------------------
-# Create endpoints (for later users adding data)
+# Create endpoints
 # -------------------------------
+<<<<<<<< HEAD:main.py
+@app.post("/profiles")
+def create_profile(data: ProfileCreate):
+    doc_ref = db.collection("profiles").document()
+    doc_ref.set(data.dict())
+    return {"id": doc_ref.id}
+
+
+@app.post("/cafeterias")
+def create_cafeteria(data: CafeteriaCreate):
+    doc_ref = db.collection("cafeterias").document()
+    doc_ref.set(data.dict())
+    return {"id": doc_ref.id}
+
+
+@app.post("/posts")
+def create_post(data: PostCreate):
+========
 
 @router.post("/profiles")
 async def create_profile(request: Request):
@@ -287,95 +409,21 @@ async def create_post(request: Request):
     if not data or not all(field in data for field in required_fields):
         return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
 
+>>>>>>>> dev:app/feed/routes.py
     doc_ref = db.collection("posts").document()
-    pending_moderation = {
-        "status": "pending",
-        "allowed": False,
-        "violations": [],
-        "explanation": "Moderation pending.",
-        "model": None,
-        "checkedAt": None,
-        "forcedByAdmin": False,
-    }
-    doc_ref.set({**data, "indexed": False, "moderation": pending_moderation})
 
-    try:
-        decision = get_moderation_service().moderate_post(data)
-    except Exception:
-        return JSONResponse(
-            content={"error": "Post moderation is currently unavailable.", "id": doc_ref.id},
-            status_code=503,
-        )
+<<<<<<<< HEAD:main.py
+    doc_ref.set({
+        "rating": data.rating,
+        "text": data.text,
+        "targetId": data.targetId,
+        "targetType": data.targetType,
+        "createdAt": firestore.SERVER_TIMESTAMP
+    })
 
-    moderation_payload = {
-        "status": decision.status,
-        "allowed": decision.allowed,
-        "violations": decision.violations,
-        "explanation": decision.explanation,
-        "model": decision.model,
-        "checkedAt": datetime.now(timezone.utc).isoformat(),
-        "forcedByAdmin": False,
-    }
-
-    doc_ref.set({"moderation": moderation_payload}, merge=True)
-
-    index_result = {
-        "postId": doc_ref.id,
-        "indexed": False,
-        "indexing_version": None,
-    }
-
-    if decision.allowed:
-        try:
-            index_result = upload_post(doc_ref.id)
-        except Exception:
-            doc_ref.set(
-                {
-                    "indexed": False,
-                    "moderation": {
-                        **moderation_payload,
-                        "status": "review",
-                        "allowed": False,
-                        "explanation": "Automatic indexing failed and post needs manual review.",
-                    },
-                },
-                merge=True,
-            )
-            return JSONResponse(
-                content={
-                    "id": doc_ref.id,
-                    "indexing": index_result,
-                    "moderation": {
-                        **moderation_payload,
-                        "status": "review",
-                        "allowed": False,
-                        "explanation": "Automatic indexing failed and post needs manual review.",
-                    },
-                    "message": "Post created but needs admin review before it can appear in semantic search.",
-                },
-                status_code=202,
-            )
-
-    if not decision.allowed:
-        return JSONResponse(
-            content={
-                "id": doc_ref.id,
-                "indexing": index_result,
-                "moderation": moderation_payload,
-                "message": "Post created but is not accepted yet. An admin can review it from the dashboard.",
-            },
-            status_code=201,
-        )
-
-    return JSONResponse(
-        content={
-            "id": doc_ref.id,
-            "indexing": index_result,
-            "moderation": moderation_payload,
-            "message": "Post created and indexed successfully.",
-        },
-        status_code=201,
-    )
+    return {"id": doc_ref.id}
+========
+    return JSONResponse(content={"id": doc_ref.id}, status_code=201)
 
 
 app = FastAPI()
@@ -390,3 +438,4 @@ if __name__ == "__main__":
 # It returns a mixed list.
 # Each item contains a type field.
 # Render based on type.
+>>>>>>>> dev:app/feed/routes.py
