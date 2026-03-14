@@ -1,4 +1,12 @@
+<<<<<<<< HEAD:main.py
 from fastapi import FastAPI, Query, HTTPException
+========
+from fastapi import APIRouter, FastAPI, Request
+from fastapi.responses import JSONResponse
+import os
+from dotenv import load_dotenv
+import firebase_admin
+>>>>>>>> dev:app/feed/routes.py
 from firebase_admin import credentials, firestore
 import firebase_admin
 
@@ -8,6 +16,7 @@ from collections import defaultdict, deque
 import random
 from datetime import date
 
+<<<<<<<< HEAD:main.py
 app = FastAPI()
 
 # -------------------------------
@@ -15,6 +24,32 @@ app = FastAPI()
 # -------------------------------
 if not firebase_admin._apps:
     cred = credentials.Certificate("serviceAccountKey.json")
+========
+# Load environment variables
+load_dotenv()
+
+router = APIRouter()
+
+# Initialize Firebase Admin with environment variables
+if not firebase_admin._apps:
+    private_key = os.environ["FIREBASE_PRIVATE_KEY"].replace("\\n", "\n")
+    
+    service_account_info = {
+        "type": os.environ["FIREBASE_TYPE"],
+        "project_id": os.environ["FIREBASE_PROJECT_ID"],
+        "private_key_id": os.environ["FIREBASE_PRIVATE_KEY_ID"],
+        "private_key": private_key,
+        "client_email": os.environ["FIREBASE_CLIENT_EMAIL"],
+        "client_id": os.environ["FIREBASE_CLIENT_ID"],
+        "auth_uri": os.environ["FIREBASE_AUTH_URI"],
+        "token_uri": os.environ["FIREBASE_TOKEN_URI"],
+        "auth_provider_x509_cert_url": os.environ["FIREBASE_AUTH_PROVIDER_X509_CERT_URL"],
+        "client_x509_cert_url": os.environ["FIREBASE_CLIENT_X509_CERT_URL"],
+        "universe_domain": os.environ["FIREBASE_UNIVERSE_DOMAIN"],
+    }
+    
+    cred = credentials.Certificate(service_account_info)
+>>>>>>>> dev:app/feed/routes.py
     firebase_admin.initialize_app(cred)
 
 db = firestore.client()
@@ -162,7 +197,12 @@ def fetch_sorted_collection(collection_name, allowed_sort_fields, sort_by, order
 # -------------------------------
 # Routes
 # -------------------------------
+<<<<<<<< HEAD:main.py
 @app.get("/")
+========
+
+@router.get("/")
+>>>>>>>> dev:app/feed/routes.py
 def home():
     return {
         "status": "ok",
@@ -170,6 +210,7 @@ def home():
     }
 
 
+<<<<<<<< HEAD:main.py
 @app.get("/profiles")
 def get_profiles(
     sort_by: str = Query("name"),
@@ -230,6 +271,55 @@ def get_feed(
     sort_by: Optional[str] = Query(None),
     order: Literal["asc", "desc"] = Query("desc")
 ):
+========
+@router.get("/profiles")
+def get_profiles():
+    docs = db.collection("profiles").stream()
+    profiles = []
+
+    for doc in docs:
+        profiles.append({
+            "id": doc.id,
+            **doc.to_dict()
+        })
+
+    return JSONResponse(content=profiles, status_code=200)
+
+
+@router.get("/cafeterias")
+def get_cafeterias():
+    docs = db.collection("cafeterias").stream()
+    cafeterias = []
+
+    for doc in docs:
+        cafeterias.append({
+            "id": doc.id,
+            **doc.to_dict()
+        })
+
+    return JSONResponse(content=cafeterias, status_code=200)
+
+
+@router.get("/posts")
+def get_posts():
+    docs = db.collection("posts").stream()
+    posts = []
+
+    for doc in docs:
+        posts.append({
+            "id": doc.id,
+            **doc.to_dict()
+        })
+
+    return JSONResponse(content=posts, status_code=200)
+
+
+# -------------------------------
+# NEW: Mixed Random Feed Endpoint
+# -------------------------------
+@router.get("/feed")
+def get_feed(request: Request):
+>>>>>>>> dev:app/feed/routes.py
     """
     Returns a mixed randomized feed from your collections.
     Query params:
@@ -239,6 +329,14 @@ def get_feed(
       - sort_by (optional: rating, name)
       - order (asc/desc)
     """
+<<<<<<<< HEAD:main.py
+========
+    limit = int(request.query_params.get("limit", 20))
+    user_id = request.query_params.get("user_id", "guest")
+    include_posts = request.query_params.get("include_posts", "1") == "1"
+
+    # Stable "random" per user per day (so refresh doesn't reshuffle constantly)
+>>>>>>>> dev:app/feed/routes.py
     seed = hash(f"{user_id}-{date.today().isoformat()}")
 
     prof_docs = db.collection("profiles").limit(100).stream()
@@ -264,6 +362,7 @@ def get_feed(
         seed=seed
     )
 
+<<<<<<<< HEAD:main.py
     reverse = (order == "desc")
 
     if sort_by == "rating":
@@ -272,11 +371,15 @@ def get_feed(
         mixed.sort(key=lambda x: str(x.get("name", "")).lower(), reverse=reverse)
 
     return mixed
+========
+    return JSONResponse(content=mixed, status_code=200)
+>>>>>>>> dev:app/feed/routes.py
 
 
 # -------------------------------
 # Create endpoints
 # -------------------------------
+<<<<<<<< HEAD:main.py
 @app.post("/profiles")
 def create_profile(data: ProfileCreate):
     doc_ref = db.collection("profiles").document()
@@ -293,8 +396,56 @@ def create_cafeteria(data: CafeteriaCreate):
 
 @app.post("/posts")
 def create_post(data: PostCreate):
+========
+
+@router.post("/profiles")
+async def create_profile(request: Request):
+    try:
+        data = await request.json()
+    except Exception:
+        data = None
+
+    if not data or "type" not in data or "name" not in data:
+        return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
+
+    doc_ref = db.collection("profiles").document()
+    doc_ref.set(data)
+
+    return JSONResponse(content={"id": doc_ref.id}, status_code=201)
+
+
+@router.post("/cafeterias")
+async def create_cafeteria(request: Request):
+    try:
+        data = await request.json()
+    except Exception:
+        data = None
+
+    if not data or "name" not in data:
+        return JSONResponse(content={"error": "Missing required field: name"}, status_code=400)
+
+    doc_ref = db.collection("cafeterias").document()
+    doc_ref.set(data)
+
+    return JSONResponse(content={"id": doc_ref.id}, status_code=201)
+
+
+@router.post("/posts")
+async def create_post(request: Request):
+    try:
+        data = await request.json()
+    except Exception:
+        data = None
+
+    required_fields = ["rating", "text", "targetId", "targetType"]
+
+    if not data or not all(field in data for field in required_fields):
+        return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
+
+>>>>>>>> dev:app/feed/routes.py
     doc_ref = db.collection("posts").document()
 
+<<<<<<<< HEAD:main.py
     doc_ref.set({
         "rating": data.rating,
         "text": data.text,
@@ -304,3 +455,20 @@ def create_post(data: PostCreate):
     })
 
     return {"id": doc_ref.id}
+========
+    return JSONResponse(content={"id": doc_ref.id}, status_code=201)
+
+
+app = FastAPI()
+app.include_router(router)
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("app.feed.routes:app", host="127.0.0.1", port=8000, reload=True)
+
+# Call GET /feed?limit=20&user_id=XYZ
+# It returns a mixed list.
+# Each item contains a type field.
+# Render based on type.
+>>>>>>>> dev:app/feed/routes.py
