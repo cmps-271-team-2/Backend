@@ -2,7 +2,11 @@ import time
 import re
 import requests
 from bs4 import BeautifulSoup
-from app import db  # Firestore client from your app.py
+from app.core.firebase_admin import init_firebase_admin
+from app.core.firestore import get_db
+
+init_firebase_admin()
+db = get_db()
 
 BASE = "https://www-banner.aub.edu.lb/pls/weba"
 TERM_PAGE = f"{BASE}/bwckschd.p_disp_dyn_sched"
