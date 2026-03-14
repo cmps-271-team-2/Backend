@@ -1,10 +1,14 @@
 import os, json, time
+<<<<<<< HEAD:seed_courses.py
+from main import db
+=======
 
 from app.core.firebase_admin import init_firebase_admin
 from app.core.firestore import get_db
 
 init_firebase_admin()
 db = get_db()
+>>>>>>> dev:app/scripts/seed_courses.py
 
 print("✅ Starting seed_courses.py ...")
 
