@@ -1,44 +1,16 @@
-from fastapi import APIRouter, FastAPI, Query, HTTPException, Request
-from fastapi.responses import JSONResponse
-import os
-from dotenv import load_dotenv
-import firebase_admin
-from firebase_admin import credentials, firestore
-
-from pydantic import BaseModel
-from typing import Optional, Literal
+from datetime import date
 from collections import defaultdict, deque
 import random
-from datetime import date
+import hashlib
 
-# -------------------------------
-# Firebase Init
-# -------------------------------
-load_dotenv()
+from fastapi import APIRouter, HTTPException, Request
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel
+
+from app.core.firebase import db
+from firebase_admin import firestore
 
 router = APIRouter()
-
-if not firebase_admin._apps:
-    private_key = os.environ["FIREBASE_PRIVATE_KEY"].replace("\\n", "\n")
-
-    service_account_info = {
-        "type": os.environ["FIREBASE_TYPE"],
-        "project_id": os.environ["FIREBASE_PROJECT_ID"],
-        "private_key_id": os.environ["FIREBASE_PRIVATE_KEY_ID"],
-        "private_key": private_key,
-        "client_email": os.environ["FIREBASE_CLIENT_EMAIL"],
-        "client_id": os.environ["FIREBASE_CLIENT_ID"],
-        "auth_uri": os.environ["FIREBASE_AUTH_URI"],
-        "token_uri": os.environ["FIREBASE_TOKEN_URI"],
-        "auth_provider_x509_cert_url": os.environ["FIREBASE_AUTH_PROVIDER_X509_CERT_URL"],
-        "client_x509_cert_url": os.environ["FIREBASE_CLIENT_X509_CERT_URL"],
-        "universe_domain": os.environ["FIREBASE_UNIVERSE_DOMAIN"],
-    }
-
-    cred = credentials.Certificate(service_account_info)
-    firebase_admin.initialize_app(cred)
-
-db = firestore.client()
 
 
 # -------------------------------
@@ -252,7 +224,8 @@ def get_feed(request: Request):
     include_posts = request.query_params.get("include_posts", "1") == "1"
 
     # Stable "random" per user per day (so refresh doesn't reshuffle constantly)
-    seed = hash(f"{user_id}-{date.today().isoformat()}")
+    stable_key = f"{user_id}-{date.today().isoformat()}".encode("utf-8")
+    seed = int.from_bytes(hashlib.sha256(stable_key).digest()[:8], "big", signed=False)
 
     prof_docs = db.collection("profiles").limit(100).stream()
     cafe_docs = db.collection("cafeterias").limit(100).stream()
@@ -331,12 +304,3 @@ async def create_post(request: Request):
     doc_ref.set(data)
 
     return JSONResponse(content={"id": doc_ref.id}, status_code=201)
-
-
-app = FastAPI()
-app.include_router(router)
-
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
