@@ -39,7 +39,7 @@ app.include_router(admin_router, prefix="/admin")
 
 app.include_router(reviews.router)
 
-@app.get("/")
+@app.get("/health")
 def health():
     return {"Status": "Backend running"}
 app.include_router(feed_router)
