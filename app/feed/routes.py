@@ -288,16 +288,27 @@ async def create_post(request: Request):
         return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
 
     doc_ref = db.collection("posts").document()
-    pending_moderation = {
-        "status": "pending",
-        "allowed": False,
-        "violations": [],
-        "explanation": "Moderation pending.",
-        "model": None,
-        "checkedAt": None,
-        "forcedByAdmin": False,
-    }
-    doc_ref.set({**data, "indexed": False, "moderation": pending_moderation})
+    doc_ref.set(
+        {
+            **data,
+            "moderation": {
+                "status": "pending",
+                "allowed": False,
+                "violations": [],
+                "explanation": "Moderation pending.",
+                "model": None,
+                "checkedAt": None,
+            },
+        }
+    )
+
+    try:
+        index_result = upload_post(doc_ref.id)
+    except Exception:
+        return JSONResponse(
+            content={"error": "Post indexing failed.", "id": doc_ref.id},
+            status_code=503,
+        )
 
     try:
         decision = get_moderation_service().moderate_post(data)
@@ -314,65 +325,28 @@ async def create_post(request: Request):
         "explanation": decision.explanation,
         "model": decision.model,
         "checkedAt": datetime.now(timezone.utc).isoformat(),
-        "forcedByAdmin": False,
     }
-
-    doc_ref.set({"moderation": moderation_payload}, merge=True)
-
-    index_result = {
-        "postId": doc_ref.id,
-        "indexed": False,
-        "indexing_version": None,
-    }
-
-    if decision.allowed:
-        try:
-            index_result = upload_post(doc_ref.id)
-        except Exception:
-            doc_ref.set(
-                {
-                    "indexed": False,
-                    "moderation": {
-                        **moderation_payload,
-                        "status": "review",
-                        "allowed": False,
-                        "explanation": "Automatic indexing failed and post needs manual review.",
-                    },
-                },
-                merge=True,
-            )
-            return JSONResponse(
-                content={
-                    "id": doc_ref.id,
-                    "indexing": index_result,
-                    "moderation": {
-                        **moderation_payload,
-                        "status": "review",
-                        "allowed": False,
-                        "explanation": "Automatic indexing failed and post needs manual review.",
-                    },
-                    "message": "Post created but needs admin review before it can appear in semantic search.",
-                },
-                status_code=202,
-            )
 
     if not decision.allowed:
+        get_semantic_service().delete(doc_ref.id)
+        doc_ref.set({"moderation": moderation_payload}, merge=True)
         return JSONResponse(
             content={
+                "error": "Post violates moderation guidelines.",
                 "id": doc_ref.id,
                 "indexing": index_result,
                 "moderation": moderation_payload,
-                "message": "Post created but is not accepted yet. An admin can review it from the dashboard.",
             },
-            status_code=201,
+            status_code=400,
         )
+
+    doc_ref.set({"moderation": moderation_payload}, merge=True)
 
     return JSONResponse(
         content={
             "id": doc_ref.id,
             "indexing": index_result,
             "moderation": moderation_payload,
-            "message": "Post created and indexed successfully.",
         },
         status_code=201,
     )
