@@ -1,6 +1,6 @@
 # Makefile for Backend project
 
-.PHONY: install run lint test clean
+.PHONY: install run lint test clean vps-up vps-down
 
 install:
 	pip install -r requirements.txt
@@ -37,6 +37,12 @@ docker-down-main:
 
 docker-down-dev:
 	docker compose -f infra/docker-compose.dev.yml down
+
+vps-up:
+	set -a; . ./.env; set +a; bash infra/vps-up.sh
+
+vps-down:
+	set -a; . ./.env; set +a; bash infra/vps-down.sh
 
 clean:
 	rm -rf __pycache__
