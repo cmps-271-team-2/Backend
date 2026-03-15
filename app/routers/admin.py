@@ -21,6 +21,8 @@ from app.admin.dtos import (
     DeleteResultDTO,
     SetBannedBodyDTO,
     SetBannedResultDTO,
+    SetPostModerationBodyDTO,
+    SetPostModerationResultDTO,
     PagedResponseDTO,
 )
 
@@ -216,6 +218,25 @@ def delete_post(post_id: str):
         return {"ok": True, "id": post_id}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Delete post failed: {str(e)}")
+
+
+@router.patch("/posts/{post_id}/moderation", response_model=SetPostModerationResultDTO)
+def set_post_moderation(post_id: str, body: SetPostModerationBodyDTO):
+    if post_id.startswith("__"):
+        raise HTTPException(status_code=400, detail="Invalid post id.")
+    try:
+        post = _service().set_post_moderation(post_id, body.accepted)
+        return {
+            "ok": True,
+            "id": post.id,
+            "moderationStatus": post.moderationStatus,
+            "moderationAllowed": post.moderationAllowed,
+            "indexed": post.indexed,
+        }
+    except ValueError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Set post moderation failed: {str(e)}")
 
 
 @router.delete("/users/{user_id}", response_model=DeleteResultDTO)

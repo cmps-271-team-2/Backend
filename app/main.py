@@ -1,23 +1,30 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 import os
 
-from fastapi import FastAPI
 from dotenv import load_dotenv
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.core.firebase_admin import init_firebase_admin
-from app.auth.routes import router as auth_router
-from app.admin.routes import router as admin_router
 
 load_dotenv()
 
-init_firebase_admin()
+from app.core import firebase as firebase_core
+from app.routers import admin, auth, feed, jobs, reviews
+
+firebase_core.init_firebase()
 
 app = FastAPI()
 
 origins_env = os.getenv(
     "FRONTEND_ORIGINS",
-    "http://localhost:3000,http://127.0.0.1:3000",
+    "http://localhost:3000,http://127.0.0.1:3000,https://unitok.app,https://www.unitok.app,https://unitok-rouge.vercel.app",
 )
-origins = [origin.strip() for origin in origins_env.split(",") if origin.strip()]
+origins = [
+    origin.strip().rstrip("/")
+    for origin in origins_env.split(",")
+    if origin.strip().rstrip("/")
+]
 
 app.add_middleware(
     CORSMiddleware,
@@ -27,9 +34,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(auth_router, prefix="/auth")
-app.include_router(admin_router, prefix="/admin")
+app.include_router(auth.router, prefix="/auth")
+app.include_router(admin.router, prefix="/admin")
 
-@app.get("/")
+app.include_router(reviews.router)
+
+@app.get("/health")
 def health():
     return {"Status": "Backend running"}
+
+
+app.include_router(feed.router)
+app.include_router(jobs.router)

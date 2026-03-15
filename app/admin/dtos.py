@@ -9,6 +9,7 @@ from pydantic import BaseModel
 TargetTypeDTO = Literal["profile", "cafeteria", "other"]
 
 AdminStatusDTO = Literal["active", "banned"]
+AdminModerationStatusDTO = Literal["pending", "approved", "rejected", "review"]
 
 JobStatusDTO = Literal["queued", "running", "succeeded", "failed", "canceled"]
 JobKindDTO = Literal["ai", "etl", "indexing", "cron", "other"]
@@ -36,6 +37,13 @@ class AdminPostDTO(BaseModel):
     text: str
     rating: int = 0
     reports: int = 0
+    moderationStatus: AdminModerationStatusDTO = "pending"
+    moderationAllowed: bool = False
+    moderationExplanation: str | None = None
+    moderationViolations: list[str] = []
+    forcedByAdmin: bool = False
+    indexed: bool = False
+    indexingVersion: int | None = None
     createdAt: str
 
 
@@ -137,3 +145,15 @@ class SetBannedResultDTO(BaseModel):
     id: str
     banned: bool
     status: AdminStatusDTO
+
+
+class SetPostModerationBodyDTO(BaseModel):
+    accepted: bool
+
+
+class SetPostModerationResultDTO(BaseModel):
+    ok: bool
+    id: str
+    moderationStatus: AdminModerationStatusDTO
+    moderationAllowed: bool
+    indexed: bool
