@@ -17,6 +17,27 @@ lint:
 test:
 	pytest
 
+worker:
+	celery -A app.jobs.celery_app.celery_app worker --loglevel=info --pool=threads --concurrency=3
+
+docker-up:
+	docker compose -f infra/docker-compose.dev.yml up --build -d --scale celery-worker=4
+
+docker-up-main:
+	docker compose -f infra/docker-compose.main.yml up --build -d --scale celery-worker=4
+
+docker-up-dev:
+	docker compose -f infra/docker-compose.dev.yml up --build -d --scale celery-worker=4
+
+docker-down:
+	docker compose -f infra/docker-compose.dev.yml down
+
+docker-down-main:
+	docker compose -f infra/docker-compose.main.yml down
+
+docker-down-dev:
+	docker compose -f infra/docker-compose.dev.yml down
+
 clean:
 	rm -rf __pycache__
 	find . -type d -name '__pycache__' -exec rm -rf {} +
