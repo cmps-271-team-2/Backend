@@ -1,16 +1,13 @@
 from datetime import date
 from collections import defaultdict, deque
 import random
-<<<<<<< Updated upstream:app/routers/feed.py
 import hashlib
-=======
-from fastapi.encoders import jsonable_encoder
-from datetime import date
->>>>>>> Stashed changes:app/feed/routes.py
 
-from fastapi import APIRouter, HTTPException, Request
+from fastapi import APIRouter, HTTPException, Request, Query
 from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
+from typing import Literal
 
 from app.core.firebase import db
 from firebase_admin import firestore
@@ -53,21 +50,17 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
 
     rng = random.Random(seed)
 
-    # 1) Bucket items by type
     buckets = defaultdict(list)
     for it in items:
         t = it.get("type")
         if t in weights:
             buckets[t].append(it)
 
-    # 2) Shuffle each bucket
     for t in buckets:
         rng.shuffle(buckets[t])
 
-    # Convert to queues
     queues = {t: deque(buckets.get(t, [])) for t in weights.keys()}
 
-    # 3) Build weighted pattern
     pattern = []
     for t, w in weights.items():
         pattern.extend([t] * max(0, int(w)))
@@ -107,7 +100,6 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
 
         return None
 
-    # 4) Fill feed
     while len(feed) < page_size and any_left():
         preferred = pattern[i % len(pattern)]
         i += 1
@@ -144,8 +136,14 @@ def fetch_sorted_collection(collection_name, allowed_sort_fields, sort_by, order
             detail="Invalid order. Use 'asc' or 'desc'"
         )
 
-    direction = firestore.Query.ASCENDING if order == "asc" else firestore.Query.DESCENDING
-    docs = db.collection(collection_name).order_by(sort_by, direction=direction).stream()
+    direction = (
+        firestore.Query.ASCENDING
+        if order == "asc"
+        else firestore.Query.DESCENDING
+    )
+    docs = db.collection(collection_name).order_by(
+        sort_by, direction=direction
+    ).stream()
 
     items = []
     for doc in docs:
@@ -197,17 +195,6 @@ def get_cafeterias():
 
 
 @router.get("/posts")
-<<<<<<< Updated upstream:app/routers/feed.py
-def get_posts():
-    docs = db.collection("posts").stream()
-    posts = []
-
-    for doc in docs:
-        posts.append({
-            "id": doc.id,
-            **doc.to_dict()
-        })
-=======
 def get_posts(
     sort_by: str = Query("createdAt"),
     order: Literal["asc", "desc"] = Query("desc")
@@ -222,7 +209,6 @@ def get_posts(
     for post in posts:
         if "createdAt" in post and post["createdAt"] is not None:
             post["createdAt"] = post["createdAt"].isoformat()
->>>>>>> Stashed changes:app/feed/routes.py
 
     return JSONResponse(content=posts, status_code=200)
 
@@ -238,14 +224,15 @@ def get_feed(request: Request):
       - limit
       - user_id
       - include_posts
-      - sort_by (optional: rating, name)
+      - sort_by (optional: rating, createdAt)
       - order (asc/desc)
     """
     limit = int(request.query_params.get("limit", 20))
     user_id = request.query_params.get("user_id", "guest")
     include_posts = request.query_params.get("include_posts", "1") == "1"
+    sort_by = request.query_params.get("sort_by")
+    order = request.query_params.get("order", "desc")
 
-    # Stable "random" per user per day (so refresh doesn't reshuffle constantly)
     stable_key = f"{user_id}-{date.today().isoformat()}".encode("utf-8")
     seed = int.from_bytes(hashlib.sha256(stable_key).digest()[:8], "big", signed=False)
 
@@ -272,9 +259,6 @@ def get_feed(request: Request):
         seed=seed
     )
 
-<<<<<<< Updated upstream:app/routers/feed.py
-    return JSONResponse(content=mixed, status_code=200)
-=======
     reverse = (order == "desc")
 
     if sort_by == "rating":
@@ -291,7 +275,6 @@ def get_feed(request: Request):
             item["createdAt"] = item["createdAt"].isoformat()
 
     return JSONResponse(content=jsonable_encoder(mixed), status_code=200)
->>>>>>> Stashed changes:app/feed/routes.py
 
 
 # -------------------------------
@@ -342,6 +325,12 @@ async def create_post(request: Request):
         return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
 
     doc_ref = db.collection("posts").document()
-    doc_ref.set(data)
+    doc_ref.set({
+        "rating": data["rating"],
+        "text": data["text"],
+        "targetId": data["targetId"],
+        "targetType": data["targetType"],
+        "createdAt": firestore.SERVER_TIMESTAMP
+    })
 
     return JSONResponse(content={"id": doc_ref.id}, status_code=201)
