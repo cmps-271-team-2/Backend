@@ -15,3 +15,6 @@ resend==2.23.0
 
 openai
 pinecone>=5.0.0,<6.0.0
+celery[redis]==5.4.0
+redis==5.2.1
+pytest==8.3.5

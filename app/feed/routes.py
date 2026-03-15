@@ -1,45 +1,24 @@
 from datetime import date, datetime, timezone
 from collections import defaultdict, deque
-import os
 import random
+from typing import Any, cast
 
-import firebase_admin
 from dotenv import load_dotenv
 from fastapi import APIRouter, FastAPI, Request
 from fastapi.responses import JSONResponse
-from firebase_admin import credentials, firestore
 
-from app.jobs.index_posts import upload_post
-from app.services.moderation_service import get_moderation_service
-from app.services.semantic_service import get_semantic_service
+from app.core.firebase_admin import init_firebase_admin
+from app.core.firestore import get_db
+from app.jobs.tasks import process_post_task
 
 # Load environment variables
 load_dotenv()
 
 router = APIRouter()
 
-# Initialize Firebase Admin with environment variables
-if not firebase_admin._apps:
-    private_key = os.environ["FIREBASE_PRIVATE_KEY"].replace("\\n", "\n")
-    
-    service_account_info = {
-        "type": os.environ["FIREBASE_TYPE"],
-        "project_id": os.environ["FIREBASE_PROJECT_ID"],
-        "private_key_id": os.environ["FIREBASE_PRIVATE_KEY_ID"],
-        "private_key": private_key,
-        "client_email": os.environ["FIREBASE_CLIENT_EMAIL"],
-        "client_id": os.environ["FIREBASE_CLIENT_ID"],
-        "auth_uri": os.environ["FIREBASE_AUTH_URI"],
-        "token_uri": os.environ["FIREBASE_TOKEN_URI"],
-        "auth_provider_x509_cert_url": os.environ["FIREBASE_AUTH_PROVIDER_X509_CERT_URL"],
-        "client_x509_cert_url": os.environ["FIREBASE_CLIENT_X509_CERT_URL"],
-        "universe_domain": os.environ["FIREBASE_UNIVERSE_DOMAIN"],
-    }
-    
-    cred = credentials.Certificate(service_account_info)
-    firebase_admin.initialize_app(cred)
-
-db = firestore.client()
+def get_db_client():
+    init_firebase_admin()
+    return get_db()
 
 # -------------------------------
 # Feed Algorithm Helpers
@@ -151,13 +130,14 @@ def home():
 
 @router.get("/profiles")
 def get_profiles():
+    db = get_db_client()
     docs = db.collection("profiles").stream()
     profiles = []
 
     for doc in docs:
         profiles.append({
             "id": doc.id,
-            **doc.to_dict()
+            **(doc.to_dict() or {})
         })
 
     return JSONResponse(content=profiles, status_code=200)
@@ -165,13 +145,14 @@ def get_profiles():
 
 @router.get("/cafeterias")
 def get_cafeterias():
+    db = get_db_client()
     docs = db.collection("cafeterias").stream()
     cafeterias = []
 
     for doc in docs:
         cafeterias.append({
             "id": doc.id,
-            **doc.to_dict()
+            **(doc.to_dict() or {})
         })
 
     return JSONResponse(content=cafeterias, status_code=200)
@@ -179,13 +160,14 @@ def get_cafeterias():
 
 @router.get("/posts")
 def get_posts():
+    db = get_db_client()
     docs = db.collection("posts").stream()
     posts = []
 
     for doc in docs:
         posts.append({
             "id": doc.id,
-            **doc.to_dict()
+            **(doc.to_dict() or {})
         })
 
     return JSONResponse(content=posts, status_code=200)
@@ -203,6 +185,8 @@ def get_feed(request: Request):
       - user_id (optional; used to seed randomness so it stays stable per day)
       - include_posts (0/1, default 1)
     """
+    db = get_db_client()
+
     limit = int(request.query_params.get("limit", 20))
     user_id = request.query_params.get("user_id", "guest")
     include_posts = request.query_params.get("include_posts", "1") == "1"
@@ -245,6 +229,7 @@ def get_feed(request: Request):
 
 @router.post("/profiles")
 async def create_profile(request: Request):
+    db = get_db_client()
     try:
         data = await request.json()
     except Exception:
@@ -261,6 +246,7 @@ async def create_profile(request: Request):
 
 @router.post("/cafeterias")
 async def create_cafeteria(request: Request):
+    db = get_db_client()
     try:
         data = await request.json()
     except Exception:
@@ -277,6 +263,7 @@ async def create_cafeteria(request: Request):
 
 @router.post("/posts")
 async def create_post(request: Request):
+    db = get_db_client()
     try:
         data = await request.json()
     except Exception:
@@ -287,10 +274,12 @@ async def create_post(request: Request):
     if not data or not all(field in data for field in required_fields):
         return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
 
+    created_at = datetime.now(timezone.utc).isoformat()
     doc_ref = db.collection("posts").document()
     doc_ref.set(
         {
             **data,
+            "createdAt": created_at,
             "moderation": {
                 "status": "pending",
                 "allowed": False,
@@ -299,56 +288,23 @@ async def create_post(request: Request):
                 "model": None,
                 "checkedAt": None,
             },
+            "indexed": False,
         }
     )
 
-    try:
-        index_result = upload_post(doc_ref.id)
-    except Exception:
-        return JSONResponse(
-            content={"error": "Post indexing failed.", "id": doc_ref.id},
-            status_code=503,
-        )
-
-    try:
-        decision = get_moderation_service().moderate_post(data)
-    except Exception:
-        return JSONResponse(
-            content={"error": "Post moderation is currently unavailable.", "id": doc_ref.id},
-            status_code=503,
-        )
-
-    moderation_payload = {
-        "status": decision.status,
-        "allowed": decision.allowed,
-        "violations": decision.violations,
-        "explanation": decision.explanation,
-        "model": decision.model,
-        "checkedAt": datetime.now(timezone.utc).isoformat(),
-    }
-
-    if not decision.allowed:
-        get_semantic_service().delete(doc_ref.id)
-        doc_ref.set({"moderation": moderation_payload}, merge=True)
-        return JSONResponse(
-            content={
-                "error": "Post violates moderation guidelines.",
-                "id": doc_ref.id,
-                "indexing": index_result,
-                "moderation": moderation_payload,
-            },
-            status_code=400,
-        )
-
-    doc_ref.set({"moderation": moderation_payload}, merge=True)
+    task = cast(Any, process_post_task).delay(doc_ref.id)
 
     return JSONResponse(
         content={
             "id": doc_ref.id,
-            "indexing": index_result,
-            "moderation": moderation_payload,
+            "status": "queued",
+            "taskId": task.id,
+            "moderation": {
+                "status": "pending",
+                "allowed": False,
+            },
         },
-        status_code=201,
+        status_code=202,
     )
 
 
