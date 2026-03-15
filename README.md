@@ -5,13 +5,8 @@
 1) Create and activate a virtual environment
 
 ```bash
-python -m venv venv
-
-# Windows (PowerShell)
-venv\Scripts\Activate.ps1
-
-# Windows (cmd)
-venv\Scripts\activate.bat
+python -m venv .venv
+source .venv/bin/activate
 ```
 
 2) Install dependencies
@@ -20,73 +15,94 @@ venv\Scripts\activate.bat
 pip install -r requirements.txt
 ```
 
-Or via Makefile:
-
-```bash
-make install
-```
-
 3) Ensure `.env` is present and includes required configuration
 
-```bash
-# CORS origins
-FRONTEND_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+See `.env.example` for all required fields. Key groups:
 
-# Resend API (for OTP email delivery)
-RESEND_API_KEY=your_resend_api_key
-RESEND_FROM_EMAIL=noreply@yourdomain.com
+- Firebase admin credentials and web API key
+- Resend email variables
+- OpenAI + Pinecone variables for semantic indexing
+- Redis URL for Celery broker/result backend
+- Gemini API key/model for moderation
 
-# Firebase configuration
-FIREBASE_PROJECT_ID=your-project-id
-FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
-FIREBASE_CLIENT_EMAIL=your-service-account@your-project.iam.gserviceaccount.com
-FIREBASE_WEB_API_KEY=your-web-api-key
-# ... (see .env.example for complete list)
-
-# OTP expiry
-OTP_EXP_MINUTES=10
-
-# OpenAI embeddings
-OPENAI_API_KEY=your_openai_api_key
-
-# Pinecone vector store
-PINECONE_API_KEY=your_pinecone_api_key
-PINECONE_INDEX_NAME=unitok-posts
-PINECONE_NAMESPACE=dev
-PINECONE_CLOUD=aws
-PINECONE_REGION=us-east-1
-```
-
-> **Note**: OTP emails are sent via Resend API over HTTPS (not SMTP). This ensures reliable delivery from cloud platforms like Render. See `.env.example` for all required variables.
-
-Semantic post search now stores vectors and post metadata in Pinecone. The backend will create the configured Pinecone index automatically if it does not exist yet.
-
-4) Start the API
+4) Start API + worker
 
 ```bash
 uvicorn app.main:app --reload --port 8000
+celery -A app.jobs.celery_app.celery_app worker --loglevel=info --pool=threads --concurrency=3
 ```
 
-Or via Makefile:
+## Redis + Celery flow
+
+- `POST /posts` now creates the post and queues moderation/indexing asynchronously.
+- `POST /process_post` queues moderation + indexing for an existing post id.
+- `POST /upload_post` queues single-post indexing.
+- `POST /update_posts_index` queues full re-index.
+- `GET /tasks/{task_id}` returns Celery task status/result.
+
+## Docker (Alpine)
+
+Build and run API + Redis + Celery workers locally:
 
 ```bash
-make run
+docker compose -f infra/docker-compose.dev.yml up --build -d --scale celery-worker=4
 ```
 
-Install + run in one step:
+Each worker runs with thread pool concurrency of 3.
+Scaling to 4 replicas gives the requested 4 workers with 3 threads each.
+
+## VPS deployment via GitHub Actions
+
+Use separate workflows:
+
+- `.github/workflows/deploy-vps-main.yml` (branch `main`, environment `production`)
+- `.github/workflows/deploy-vps-dev.yml` (branch `recommendation_algorithm`, environment `development`)
+
+Set these GitHub repository settings:
+
+- Variables (`Settings > Secrets and variables > Actions > Variables`):
+	- `VPS_HOST`
+	- `VPS_USER`
+	- `VPS_PORT` (optional, default 22)
+	- `VPS_APP_PATH` (for example `/opt/backend`)
+	- `FRONTEND_ORIGINS`
+	- `OTP_EXP_MINUTES`
+	- `PINECONE_INDEX_NAME`
+	- `PINECONE_NAMESPACE`
+	- `PINECONE_CLOUD`
+	- `PINECONE_REGION`
+	- `REDIS_URL`
+	- `GEMINI_MODEL`
+
+- Secrets (`Settings > Secrets and variables > Actions > Secrets`):
+	- `VPS_SSH_KEY`
+	- `FIREBASE_TYPE`
+	- `FIREBASE_PROJECT_ID`
+	- `FIREBASE_PRIVATE_KEY_ID`
+	- `FIREBASE_PRIVATE_KEY`
+	- `FIREBASE_CLIENT_EMAIL`
+	- `FIREBASE_CLIENT_ID`
+	- `FIREBASE_AUTH_URI`
+	- `FIREBASE_TOKEN_URI`
+	- `FIREBASE_AUTH_PROVIDER_X509_CERT_URL`
+	- `FIREBASE_CLIENT_X509_CERT_URL`
+	- `FIREBASE_UNIVERSE_DOMAIN`
+	- `FIREBASE_WEB_API_KEY`
+	- `RESEND_API_KEY`
+	- `RESEND_FROM_EMAIL`
+	- `OPENAI_API_KEY`
+	- `PINECONE_API_KEY`
+	- `GEMINI_API_KEY`
+
+Each workflow writes these values into `.env` on the VPS and starts services with:
 
 ```bash
-make dev
+docker compose -f infra/docker-compose.main.yml up -d --build --scale celery-worker=4 --remove-orphans
 ```
 
-Health check:
-- http://127.0.0.1:8000/
+For dev deployments, the workflow uses `infra/docker-compose.dev.yml`.
 
 ## Seeding courses
-
-The seed script now lives under `app/scripts` and the dataset under `app/data`.
-
-From `Backend/`:
 
 ```bash
 python app/scripts/seed_courses.py
