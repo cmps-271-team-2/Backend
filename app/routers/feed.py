@@ -1,53 +1,26 @@
-from fastapi import APIRouter, FastAPI, Query, HTTPException, Request
-from fastapi.responses import JSONResponse
-import os
-from dotenv import load_dotenv
-import firebase_admin
-from firebase_admin import credentials, firestore
-
-from pydantic import BaseModel
-from typing import Optional, Literal
+from datetime import date
 from collections import defaultdict, deque
 import random
+<<<<<<< Updated upstream:app/routers/feed.py
+import hashlib
+=======
+from fastapi.encoders import jsonable_encoder
 from datetime import date
+>>>>>>> Stashed changes:app/feed/routes.py
 
-        app = FastAPI()
+from fastapi import APIRouter, HTTPException, Request
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel
 
-        # -------------------------------
-        # Firebase Init
-        # -------------------------------
-        # Load environment variables
-        load_dotenv()
+from app.core.firebase import db
+from firebase_admin import firestore
 
-        router = APIRouter()
-
-        # Initialize Firebase Admin with environment variables
-        if not firebase_admin._apps:
-            private_key = os.environ["FIREBASE_PRIVATE_KEY"].replace("\\n", "\n")
-
-            service_account_info = {
-                "type": os.environ["FIREBASE_TYPE"],
-                "project_id": os.environ["FIREBASE_PROJECT_ID"],
-                "private_key_id": os.environ["FIREBASE_PRIVATE_KEY_ID"],
-                "private_key": private_key,
-                "client_email": os.environ["FIREBASE_CLIENT_EMAIL"],
-                "client_id": os.environ["FIREBASE_CLIENT_ID"],
-                "auth_uri": os.environ["FIREBASE_AUTH_URI"],
-                "token_uri": os.environ["FIREBASE_TOKEN_URI"],
-                "auth_provider_x509_cert_url": os.environ["FIREBASE_AUTH_PROVIDER_X509_CERT_URL"],
-                "client_x509_cert_url": os.environ["FIREBASE_CLIENT_X509_CERT_URL"],
-                "universe_domain": os.environ["FIREBASE_UNIVERSE_DOMAIN"],
-            }
-
-            cred = credentials.Certificate(service_account_info)
-            firebase_admin.initialize_app(cred)
-
-        db = firestore.client()
+router = APIRouter()
 
 
-        # -------------------------------
-        # Pydantic Models
-        # -------------------------------
+# -------------------------------
+# Pydantic Models
+# -------------------------------
 class ProfileCreate(BaseModel):
     type: str
     name: str
@@ -187,12 +160,7 @@ def fetch_sorted_collection(collection_name, allowed_sort_fields, sort_by, order
 # -------------------------------
 # Routes
 # -------------------------------
-<<<<<<<< HEAD:main.py
-@app.get("/")
-========
-
 @router.get("/")
->>>>>>>> dev:app/feed/routes.py
 def home():
     return {
         "status": "ok",
@@ -200,68 +168,6 @@ def home():
     }
 
 
-<<<<<<<< HEAD:main.py
-@app.get("/profiles")
-def get_profiles(
-    sort_by: str = Query("name"),
-    order: Literal["asc", "desc"] = Query("asc")
-):
-    return fetch_sorted_collection(
-        collection_name="profiles",
-        allowed_sort_fields=["name", "type"],
-        sort_by=sort_by,
-        order=order
-    )
-
-
-@app.get("/cafeterias")
-def get_cafeterias(
-    sort_by: str = Query("name"),
-    order: Literal["asc", "desc"] = Query("asc")
-):
-    return fetch_sorted_collection(
-        collection_name="cafeterias",
-        allowed_sort_fields=["name"],
-        sort_by=sort_by,
-        order=order
-    )
-
-
-@app.get("/posts")
-def get_posts(
-    sort_by: str = Query("createdAt"),
-    order: Literal["asc", "desc"] = Query("desc")
-):
-    return fetch_sorted_collection(
-        collection_name="posts",
-        allowed_sort_fields=["rating", "createdAt", "targetType"],
-        sort_by=sort_by,
-        order=order
-    )
-
-
-@app.get("/courses")
-def get_courses(
-    sort_by: str = Query("code"),
-    order: Literal["asc", "desc"] = Query("asc")
-):
-    return fetch_sorted_collection(
-        collection_name="courses",
-        allowed_sort_fields=["code", "title", "department", "number", "ratingAvg", "ratingCount"],
-        sort_by=sort_by,
-        order=order
-    )
-
-
-@app.get("/feed")
-def get_feed(
-    limit: int = Query(20),
-    user_id: str = Query("guest"),
-    include_posts: bool = Query(True),
-    sort_by: Optional[str] = Query(None),
-    order: Literal["asc", "desc"] = Query("desc")
-):
-========
 @router.get("/profiles")
 def get_profiles():
     docs = db.collection("profiles").stream()
@@ -291,6 +197,7 @@ def get_cafeterias():
 
 
 @router.get("/posts")
+<<<<<<< Updated upstream:app/routers/feed.py
 def get_posts():
     docs = db.collection("posts").stream()
     posts = []
@@ -300,6 +207,22 @@ def get_posts():
             "id": doc.id,
             **doc.to_dict()
         })
+=======
+def get_posts(
+    sort_by: str = Query("createdAt"),
+    order: Literal["asc", "desc"] = Query("desc")
+):
+    posts = fetch_sorted_collection(
+        collection_name="posts",
+        allowed_sort_fields=["rating", "createdAt", "targetType"],
+        sort_by=sort_by,
+        order=order
+    )
+
+    for post in posts:
+        if "createdAt" in post and post["createdAt"] is not None:
+            post["createdAt"] = post["createdAt"].isoformat()
+>>>>>>> Stashed changes:app/feed/routes.py
 
     return JSONResponse(content=posts, status_code=200)
 
@@ -309,7 +232,6 @@ def get_posts():
 # -------------------------------
 @router.get("/feed")
 def get_feed(request: Request):
->>>>>>>> dev:app/feed/routes.py
     """
     Returns a mixed randomized feed from your collections.
     Query params:
@@ -319,15 +241,13 @@ def get_feed(request: Request):
       - sort_by (optional: rating, name)
       - order (asc/desc)
     """
-<<<<<<<< HEAD:main.py
-========
     limit = int(request.query_params.get("limit", 20))
     user_id = request.query_params.get("user_id", "guest")
     include_posts = request.query_params.get("include_posts", "1") == "1"
 
     # Stable "random" per user per day (so refresh doesn't reshuffle constantly)
->>>>>>>> dev:app/feed/routes.py
-    seed = hash(f"{user_id}-{date.today().isoformat()}")
+    stable_key = f"{user_id}-{date.today().isoformat()}".encode("utf-8")
+    seed = int.from_bytes(hashlib.sha256(stable_key).digest()[:8], "big", signed=False)
 
     prof_docs = db.collection("profiles").limit(100).stream()
     cafe_docs = db.collection("cafeterias").limit(100).stream()
@@ -352,42 +272,31 @@ def get_feed(request: Request):
         seed=seed
     )
 
-<<<<<<<< HEAD:main.py
+<<<<<<< Updated upstream:app/routers/feed.py
+    return JSONResponse(content=mixed, status_code=200)
+=======
     reverse = (order == "desc")
 
     if sort_by == "rating":
         mixed.sort(key=lambda x: x.get("rating", 0), reverse=reverse)
-    elif sort_by == "name":
-        mixed.sort(key=lambda x: str(x.get("name", "")).lower(), reverse=reverse)
 
-    return mixed
-========
-    return JSONResponse(content=mixed, status_code=200)
->>>>>>>> dev:app/feed/routes.py
+    elif sort_by == "createdAt":
+        mixed.sort(
+            key=lambda x: x.get("createdAt") or "",
+            reverse=reverse
+        )
+
+    for item in mixed:
+        if "createdAt" in item and item["createdAt"] is not None:
+            item["createdAt"] = item["createdAt"].isoformat()
+
+    return JSONResponse(content=jsonable_encoder(mixed), status_code=200)
+>>>>>>> Stashed changes:app/feed/routes.py
 
 
 # -------------------------------
 # Create endpoints
 # -------------------------------
-<<<<<<<< HEAD:main.py
-@app.post("/profiles")
-def create_profile(data: ProfileCreate):
-    doc_ref = db.collection("profiles").document()
-    doc_ref.set(data.dict())
-    return {"id": doc_ref.id}
-
-
-@app.post("/cafeterias")
-def create_cafeteria(data: CafeteriaCreate):
-    doc_ref = db.collection("cafeterias").document()
-    doc_ref.set(data.dict())
-    return {"id": doc_ref.id}
-
-
-@app.post("/posts")
-def create_post(data: PostCreate):
-========
-
 @router.post("/profiles")
 async def create_profile(request: Request):
     try:
@@ -432,33 +341,7 @@ async def create_post(request: Request):
     if not data or not all(field in data for field in required_fields):
         return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
 
->>>>>>>> dev:app/feed/routes.py
     doc_ref = db.collection("posts").document()
+    doc_ref.set(data)
 
-<<<<<<<< HEAD:main.py
-    doc_ref.set({
-        "rating": data.rating,
-        "text": data.text,
-        "targetId": data.targetId,
-        "targetType": data.targetType,
-        "createdAt": firestore.SERVER_TIMESTAMP
-    })
-
-    return {"id": doc_ref.id}
-========
     return JSONResponse(content={"id": doc_ref.id}, status_code=201)
-
-
-app = FastAPI()
-app.include_router(router)
-
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("app.feed.routes:app", host="127.0.0.1", port=8000, reload=True)
-
-# Call GET /feed?limit=20&user_id=XYZ
-# It returns a mixed list.
-# Each item contains a type field.
-# Render based on type.
->>>>>>>> dev:app/feed/routes.py

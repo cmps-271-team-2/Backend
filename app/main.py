@@ -1,18 +1,18 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 import os
 
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import reviews 
-
-from dotenv import load_dotenv
-from app.core.firebase_admin import init_firebase_admin
-from app.auth.routes import router as auth_router
-from app.admin.routes import router as admin_router
-from app.feed.routes import router as feed_router
 
 load_dotenv()
 
-init_firebase_admin()
+from app.core import firebase as firebase_core
+from app.routers import admin, auth, feed, jobs, reviews
+
+firebase_core.init_firebase()
 
 app = FastAPI()
 
@@ -34,12 +34,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(auth_router, prefix="/auth")
-app.include_router(admin_router, prefix="/admin")
+app.include_router(auth.router, prefix="/auth")
+app.include_router(admin.router, prefix="/admin")
 
 app.include_router(reviews.router)
 
 @app.get("/health")
 def health():
     return {"Status": "Backend running"}
-app.include_router(feed_router)
+
+
+app.include_router(feed.router)
+app.include_router(jobs.router)
