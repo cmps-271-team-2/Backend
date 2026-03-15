@@ -1,7 +1,12 @@
 from datetime import date
 from collections import defaultdict, deque
 import random
+<<<<<<< Updated upstream:app/routers/feed.py
 import hashlib
+=======
+from fastapi.encoders import jsonable_encoder
+from datetime import date
+>>>>>>> Stashed changes:app/feed/routes.py
 
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse
@@ -192,6 +197,7 @@ def get_cafeterias():
 
 
 @router.get("/posts")
+<<<<<<< Updated upstream:app/routers/feed.py
 def get_posts():
     docs = db.collection("posts").stream()
     posts = []
@@ -201,6 +207,22 @@ def get_posts():
             "id": doc.id,
             **doc.to_dict()
         })
+=======
+def get_posts(
+    sort_by: str = Query("createdAt"),
+    order: Literal["asc", "desc"] = Query("desc")
+):
+    posts = fetch_sorted_collection(
+        collection_name="posts",
+        allowed_sort_fields=["rating", "createdAt", "targetType"],
+        sort_by=sort_by,
+        order=order
+    )
+
+    for post in posts:
+        if "createdAt" in post and post["createdAt"] is not None:
+            post["createdAt"] = post["createdAt"].isoformat()
+>>>>>>> Stashed changes:app/feed/routes.py
 
     return JSONResponse(content=posts, status_code=200)
 
@@ -250,7 +272,26 @@ def get_feed(request: Request):
         seed=seed
     )
 
+<<<<<<< Updated upstream:app/routers/feed.py
     return JSONResponse(content=mixed, status_code=200)
+=======
+    reverse = (order == "desc")
+
+    if sort_by == "rating":
+        mixed.sort(key=lambda x: x.get("rating", 0), reverse=reverse)
+
+    elif sort_by == "createdAt":
+        mixed.sort(
+            key=lambda x: x.get("createdAt") or "",
+            reverse=reverse
+        )
+
+    for item in mixed:
+        if "createdAt" in item and item["createdAt"] is not None:
+            item["createdAt"] = item["createdAt"].isoformat()
+
+    return JSONResponse(content=jsonable_encoder(mixed), status_code=200)
+>>>>>>> Stashed changes:app/feed/routes.py
 
 
 # -------------------------------
