@@ -5,10 +5,12 @@ import os
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Literal
-from urllib import error, parse, request
+
+from google import genai
+from google.genai import types
 
 ModerationStatus = Literal["approved", "rejected", "review"]
-DEFAULT_GEMINI_MODEL = "gemini-1.5-flash"
+DEFAULT_GEMINI_MODEL = "gemini-2.5-flash"
 
 
 @dataclass(slots=True)
@@ -36,10 +38,17 @@ def get_moderation_service() -> "ModerationService":
 class ModerationService:
     def __init__(self) -> None:
         self._guidelines = _load_guidelines()
-        self._api_key = os.getenv("GEMINI_API_KEY")
+        self._api_key = (
+            os.getenv("GCP_GEMINI_API_KEY")
+            or os.getenv("GOOGLE_API_KEY")
+            or os.getenv("GEMINI_API_KEY")
+        )
         if not self._api_key:
-            raise ValueError("GEMINI_API_KEY not set in environment.")
+            raise ValueError(
+                "GCP_GEMINI_API_KEY, GOOGLE_API_KEY, or GEMINI_API_KEY not set in environment."
+            )
         self._model = os.getenv("GEMINI_MODEL", DEFAULT_GEMINI_MODEL)
+        self._client = genai.Client(api_key=self._api_key)
 
     def moderate_post(self, post_data: dict[str, Any]) -> ModerationDecision:
         payload = json.dumps(post_data, ensure_ascii=True, sort_keys=True)
@@ -56,7 +65,7 @@ class ModerationService:
             f"{payload}\n\n"
             "Return JSON only."
         )
-        response = _call_gemini(prompt=prompt, api_key=self._api_key, model=self._model)
+        response = _call_gemini(prompt=prompt, client=self._client, model=self._model)
         return _parse_decision(response=response, model=self._model)
 
 
@@ -97,52 +106,33 @@ def _parse_decision(response: str, model: str) -> ModerationDecision:
     )
 
 
-def _call_gemini(prompt: str, api_key: str, model: str) -> str:
-    url = (
-        f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?"
-        + parse.urlencode({"key": api_key})
-    )
-    payload = {
-        "contents": [
-            {
-                "parts": [
-                    {
-                        "text": prompt,
-                    }
-                ]
-            }
-        ],
-        "generationConfig": {
-            "temperature": 0.1,
-            "responseMimeType": "application/json",
-        },
-    }
-    req = request.Request(
-        url,
-        data=json.dumps(payload).encode("utf-8"),
-        headers={"Content-Type": "application/json"},
-        method="POST",
-    )
-
+def _call_gemini(prompt: str, client: genai.Client, model: str) -> str:
     try:
-        with request.urlopen(req, timeout=30) as response:
-            body = response.read().decode("utf-8")
-    except error.HTTPError as exc:
-        detail = exc.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"Gemini API request failed: {exc.code} {detail}") from exc
-    except error.URLError as exc:
-        raise RuntimeError(f"Gemini API request failed: {exc.reason}") from exc
+        response = client.models.generate_content(
+            model=model,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                temperature=0.1,
+                response_mime_type="application/json",
+            ),
+        )
+    except Exception as exc:
+        raise RuntimeError(f"Gemini API request failed: {exc}") from exc
 
-    parsed = json.loads(body)
-    candidates = parsed.get("candidates") or []
+    text = str(getattr(response, "text", "") or "").strip()
+    if text:
+        return text
+
+    candidates = getattr(response, "candidates", None) or []
     if not candidates:
         raise RuntimeError("Gemini API response did not include candidates.")
 
-    parts = (((candidates[0] or {}).get("content") or {}).get("parts") or [])
+    content = getattr(candidates[0], "content", None)
+    parts = getattr(content, "parts", None) or []
     if not parts:
         raise RuntimeError("Gemini API response did not include content parts.")
 
-    text = str((parts[0] or {}).get("text") or "").strip()
-    if not text:
+    fallback_text = str(getattr(parts[0], "text", "") or "").strip()
+    if not fallback_text:
         raise RuntimeError("Gemini API response returned empty moderation content.")
-    return text
+    return fallback_text

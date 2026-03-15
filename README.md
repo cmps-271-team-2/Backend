@@ -92,6 +92,8 @@ Set these GitHub repository settings:
 	- `RESEND_FROM_EMAIL`
 	- `OPENAI_API_KEY`
 	- `PINECONE_API_KEY`
+	- `GCP_GEMINI_API_KEY` (preferred for Gemini moderation)
+	- `GOOGLE_API_KEY`
 	- `GEMINI_API_KEY`
 
 Each workflow writes these values into `.env` on the VPS and starts services with:
@@ -101,6 +103,34 @@ docker compose -f infra/docker-compose.main.yml up -d --build --scale celery-wor
 ```
 
 For dev deployments, the workflow uses `infra/docker-compose.dev.yml`.
+
+## Local deploy to VPS (manual test)
+
+You can deploy directly from your machine (without GitHub Actions):
+
+```bash
+export VPS_HOST=your.server.ip
+export VPS_USER=root
+export VPS_PORT=22
+export VPS_APP_PATH=/opt/backend
+export SSH_KEY="$(cat .ssh/unitok)"
+export DEPLOY_ENV=dev
+export CELERY_WORKER_SCALE=4
+
+make vps-up
+```
+
+This command:
+
+- syncs your project to the VPS via `rsync`
+- uploads local `.env` to the VPS app path
+- runs `docker compose down` then `docker compose up -d --build` remotely
+
+To stop services on the VPS:
+
+```bash
+make vps-down
+```
 
 ## Seeding courses
 
