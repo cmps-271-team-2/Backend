@@ -39,10 +39,14 @@ docker-down-dev:
 	docker compose -f infra/docker-compose.dev.yml down
 
 vps-up:
-	set -a; . ./.env; set +a; bash infra/vps-up.sh
+	set -a; . ./.env; set +a; \
+	export VPS_HOST="$$VPS_HOST" VPS_USER="$$VPS_USER" SSH_KEY="$$SSH_KEY"; \
+	bash infra/vps-up.sh
 
 vps-down:
-	set -a; . ./.env; set +a; bash infra/vps-down.sh
+	set -a; . ./.env; set +a; \
+	export VPS_HOST="$$VPS_HOST" VPS_USER="$$VPS_USER" SSH_KEY="$$SSH_KEY"; \
+	bash infra/vps-down.sh
 
 clean:
 	rm -rf __pycache__

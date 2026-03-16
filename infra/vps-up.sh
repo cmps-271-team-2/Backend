@@ -57,6 +57,12 @@ SSH_OPTS=(
   -o StrictHostKeyChecking=accept-new
 )
 
+SCP_OPTS=(
+  -i "$TMP_SSH_KEY_FILE"
+  -P "$VPS_PORT"
+  -o StrictHostKeyChecking=accept-new
+)
+
 echo "Creating remote app directory: $VPS_APP_PATH"
 ssh "${SSH_OPTS[@]}" "$VPS_USER@$VPS_HOST" "mkdir -p '$VPS_APP_PATH'"
 
@@ -70,7 +76,7 @@ rsync -az --delete \
   ./ "$VPS_USER@$VPS_HOST:$VPS_APP_PATH/"
 
 echo "Uploading .env to VPS..."
-scp "${SSH_OPTS[@]}" .env "$VPS_USER@$VPS_HOST:$VPS_APP_PATH/.env"
+scp "${SCP_OPTS[@]}" .env "$VPS_USER@$VPS_HOST:$VPS_APP_PATH/.env"
 
 echo "Deploying with Docker Compose on VPS..."
 ssh "${SSH_OPTS[@]}" "$VPS_USER@$VPS_HOST" "
