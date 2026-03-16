@@ -131,7 +131,7 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
 def home():
     return {
         "status": "ok",
-        "message": "FastAPI is connected to Firestore"
+        "message": "FastAPI is connected to Firestore",
     }
 
 
@@ -144,7 +144,7 @@ def get_profiles():
     for doc in docs:
         profiles.append({
             "id": doc.id,
-            **(doc.to_dict() or {})
+            **(doc.to_dict() or {}),
         })
 
     return JSONResponse(content=profiles, status_code=200)
@@ -159,7 +159,7 @@ def get_cafeterias():
     for doc in docs:
         cafeterias.append({
             "id": doc.id,
-            **(doc.to_dict() or {})
+            **(doc.to_dict() or {}),
         })
 
     return JSONResponse(content=cafeterias, status_code=200)
@@ -228,7 +228,7 @@ def get_feed(request: Request):
         page_size=limit,
         weights=weights,
         max_streak=2,
-        seed=seed
+        seed=seed,
     )
 
     return JSONResponse(content=mixed, status_code=200)

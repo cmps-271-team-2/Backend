@@ -21,7 +21,7 @@ See `.env.example` for all required fields. Key groups:
 
 - Firebase admin credentials and web API key
 - Resend email variables
-- OpenAI + Pinecone variables for semantic indexing
+- Pinecone variables for semantic indexing
 - Redis URL for Celery broker/result backend
 - Gemini API key/model for moderation
 
@@ -71,6 +71,7 @@ Set these GitHub repository settings:
 	- `PINECONE_NAMESPACE`
 	- `PINECONE_CLOUD`
 	- `PINECONE_REGION`
+	- `PINECONE_VECTOR_DIMENSION` (optional, default 1024)
 	- `REDIS_URL`
 	- `GEMINI_MODEL`
 
@@ -90,7 +91,6 @@ Set these GitHub repository settings:
 	- `FIREBASE_WEB_API_KEY`
 	- `RESEND_API_KEY`
 	- `RESEND_FROM_EMAIL`
-	- `OPENAI_API_KEY`
 	- `PINECONE_API_KEY`
 	- `GCP_GEMINI_API_KEY`
 

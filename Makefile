@@ -1,5 +1,7 @@
 # Makefile for Backend project
 
+PYTHON := $(shell if [ -x .venv/bin/python ]; then echo .venv/bin/python; else echo python3; fi)
+
 .PHONY: install run lint test clean vps-up vps-down
 
 install:
@@ -15,7 +17,7 @@ lint:
 	flake8 app/
 
 test:
-	pytest
+	PYTHONPATH=. $(PYTHON) -m pytest
 
 worker:
 	celery -A app.jobs.celery_app.celery_app worker --loglevel=info --pool=threads --concurrency=3
