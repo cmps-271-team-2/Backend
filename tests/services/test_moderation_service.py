@@ -26,18 +26,21 @@ def test_parse_decision_defaults_to_review():
 
 def test_constructor_requires_gcp_key(monkeypatch):
     monkeypatch.delenv("GCP_GEMINI_API_KEY", raising=False)
-    with pytest.raises(ValueError, match="GCP_GEMINI_API_KEY"):
-        moderation.ModerationService()
+    monkeypatch.delenv("GOOGLE_API_KEY", raising=False)
+
+    service = moderation.ModerationService()
+
+    assert service._enabled is False
+    result = service.moderate_post({"text": "hello"})
+    assert result.status == "review"
+    assert result.allowed is False
 
 
 def test_call_gemini_uses_text_field():
-    class FakeModels:
+    class FakeModel:
         @staticmethod
-        def generate_content(model, contents, config):
+        def generate_content(contents, generation_config):
             return type("Resp", (), {"text": "{\"status\":\"approved\",\"allowed\":true,\"violations\":[],\"explanation\":\"ok\"}"})()
 
-    class FakeClient:
-        models = FakeModels()
-
-    out = moderation._call_gemini("p", FakeClient(), "m")
+    out = moderation._call_gemini("p", FakeModel())
     assert "approved" in out

@@ -55,7 +55,7 @@ class SemanticService:
             raise ValueError("PINECONE_API_KEY not set in environment.")
 
         self._index_name = os.getenv("PINECONE_INDEX_NAME", "unitok-posts")
-        self._namespace = os.getenv("PINECONE_NAMESPACE") or None
+        self._namespace = _normalize_namespace(os.getenv("PINECONE_NAMESPACE"))
         self._cloud = os.getenv("PINECONE_CLOUD", "aws")
         self._region = os.getenv("PINECONE_REGION", "us-east-1")
 
@@ -287,6 +287,20 @@ def _is_supported_metadata_value(value: Any) -> bool:
         return all(isinstance(item, str) for item in value)
 
     return False
+
+
+def _normalize_namespace(value: str | None) -> str | None:
+    if value is None:
+        return None
+
+    normalized = value.strip()
+    if not normalized:
+        return None
+
+    if normalized == "__default__":
+        return None
+
+    return normalized
 
 
 _TOKEN_PATTERN = re.compile(r"[a-z0-9]+")
