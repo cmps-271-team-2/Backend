@@ -11,21 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     environment: development
     env:
-      VPS_HOST: ${{ vars.VPS_HOST }}
-      VPS_USER: ${{ vars.VPS_USER }}
-      VPS_PORT: ${{ vars.VPS_PORT || '22' }}
-      VPS_APP_PATH: ${{ vars.VPS_APP_PATH }}
+      VPS_HOST: ${{ secrets.VPS_HOST }}
+      VPS_USER: ${{ secrets.VPS_USER }}
+      VPS_PORT: ${{ secrets.VPS_PORT || '22' }}
+      VPS_APP_PATH: ${{ secrets.VPS_APP_PATH }}
       DEPLOY_ENV: dev
-      CELERY_WORKER_SCALE: ${{ vars.CELERY_WORKER_SCALE || '4' }}
+      CELERY_WORKER_SCALE: ${{ secrets.CELERY_WORKER_SCALE || '4' }}
 
-      FRONTEND_ORIGINS: ${{ vars.FRONTEND_ORIGINS }}
-      OTP_EXP_MINUTES: ${{ vars.OTP_EXP_MINUTES }}
-      PINECONE_INDEX_NAME: ${{ vars.PINECONE_INDEX_NAME }}
-      PINECONE_NAMESPACE: ${{ vars.PINECONE_NAMESPACE }}
-      PINECONE_CLOUD: ${{ vars.PINECONE_CLOUD }}
-      PINECONE_REGION: ${{ vars.PINECONE_REGION }}
-      REDIS_URL: ${{ vars.REDIS_URL }}
-      GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+      FRONTEND_ORIGINS: ${{ secrets.FRONTEND_ORIGINS }}
+      OTP_EXP_MINUTES: ${{ secrets.OTP_EXP_MINUTES }}
+      PINECONE_INDEX_NAME: ${{ secrets.PINECONE_INDEX_NAME }}
+      PINECONE_NAMESPACE: ${{ secrets.PINECONE_NAMESPACE }}
+      PINECONE_CLOUD: ${{ secrets.PINECONE_CLOUD }}
+      PINECONE_REGION: ${{ secrets.PINECONE_REGION }}
+      REDIS_URL: ${{ secrets.REDIS_URL }}
+      GEMINI_MODEL: ${{ secrets.GEMINI_MODEL }}
 
       FIREBASE_TYPE: ${{ secrets.FIREBASE_TYPE }}
       FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
