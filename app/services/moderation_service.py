@@ -1,16 +1,25 @@
 from __future__ import annotations
 
 import json
+import logging
 import os
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Literal
 
-from google import genai
-from google.genai import types
+try:
+    import google.generativeai as genai
+except ImportError:
+    genai = None  # type: ignore[assignment]
+    logging.getLogger(__name__).error(
+        "google-generativeai is not installed. Moderation will be disabled. "
+        "Run: pip install google-generativeai"
+    )
+
+_log = logging.getLogger(__name__)
 
 ModerationStatus = Literal["approved", "rejected", "review"]
-DEFAULT_GEMINI_MODEL = "gemini-2.5-flash"
+DEFAULT_GEMINI_MODEL = "gemini-1.5-flash"
 
 
 @dataclass(slots=True)
@@ -38,13 +47,37 @@ def get_moderation_service() -> "ModerationService":
 class ModerationService:
     def __init__(self) -> None:
         self._guidelines = _load_guidelines()
-        self._api_key = os.getenv("GCP_GEMINI_API_KEY")
-        if not self._api_key:
-            raise ValueError("GCP_GEMINI_API_KEY not set in environment.")
-        self._model = os.getenv("GEMINI_MODEL", DEFAULT_GEMINI_MODEL)
-        self._client = genai.Client(api_key=self._api_key)
+        self._model_name = os.getenv("GEMINI_MODEL", DEFAULT_GEMINI_MODEL)
+        self._generative_model: "genai.GenerativeModel | None" = None  # type: ignore[name-defined]
+        self._enabled = False
+
+        if genai is None:
+            _log.error("Moderation disabled: google-generativeai library not available.")
+            return
+
+        api_key = os.getenv("GCP_GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+        if not api_key:
+            _log.warning("GCP_GEMINI_API_KEY not set. Moderation will be disabled.")
+            return
+
+        try:
+            genai.configure(api_key=api_key)
+            self._generative_model = genai.GenerativeModel(self._model_name)
+            self._enabled = True
+            _log.info("ModerationService initialised with model %s.", self._model_name)
+        except Exception as exc:
+            _log.error("Failed to initialise Gemini client: %s. Moderation disabled.", exc)
 
     def moderate_post(self, post_data: dict[str, Any]) -> ModerationDecision:
+        if not self._enabled or self._generative_model is None:
+            return ModerationDecision(
+                status="review",
+                allowed=False,
+                violations=[],
+                explanation="Moderation service unavailable; post queued for manual review.",
+                model=self._model_name,
+            )
+
         payload = json.dumps(post_data, ensure_ascii=True, sort_keys=True)
         prompt = (
             "You are a content moderation assistant for a university social app. "
@@ -59,8 +92,8 @@ class ModerationService:
             f"{payload}\n\n"
             "Return JSON only."
         )
-        response = _call_gemini(prompt=prompt, client=self._client, model=self._model)
-        return _parse_decision(response=response, model=self._model)
+        response = _call_gemini(prompt=prompt, model=self._generative_model)
+        return _parse_decision(response=response, model=self._model_name)
 
 
 def _load_guidelines() -> str:
@@ -100,15 +133,11 @@ def _parse_decision(response: str, model: str) -> ModerationDecision:
     )
 
 
-def _call_gemini(prompt: str, client: genai.Client, model: str) -> str:
+def _call_gemini(prompt: str, model: "genai.GenerativeModel") -> str:  # type: ignore[name-defined]
     try:
-        response = client.models.generate_content(
-            model=model,
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                temperature=0.1,
-                response_mime_type="application/json",
-            ),
+        response = model.generate_content(
+            prompt,
+            generation_config={"temperature": 0.1},
         )
     except Exception as exc:
         raise RuntimeError(f"Gemini API request failed: {exc}") from exc
