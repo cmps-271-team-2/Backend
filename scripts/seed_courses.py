@@ -1,21 +1,34 @@
-import os, json, time
-from app.core.firebase_admin import init_firebase_admin
-from app.core.firestore import get_db
+import os
+import json
+import time
+import firebase_admin
+from firebase_admin import credentials, firestore
 
-init_firebase_admin()
+
+def get_db():
+    if not firebase_admin._apps:
+        cred = credentials.Certificate("serviceAccountKey.json")
+        firebase_admin.initialize_app(cred)
+    return firestore.client()
+
+
 db = get_db()
 
 print("✅ Starting seed_courses.py ...")
 
-# Must appear in Firestore if you're in the correct project
-db.collection("debug_seed").document("ping").set({"ping": True, "ts": time.time()})
+db.collection("debug_seed").document("ping").set({
+    "ping": True,
+    "ts": time.time()
+})
 print("✅ Wrote debug_seed/ping")
+
 
 def format_id(code: str) -> str:
     return code.strip().replace(" ", "_").replace("/", "_")
 
+
 def seed_courses():
-    path = os.path.join("app", "data", "aub_gened_courses.json")
+    path = "courses.json"
     print("📄 Loading:", path)
 
     if not os.path.exists(path):
@@ -33,14 +46,22 @@ def seed_courses():
     total = 0
 
     for c in courses:
-        doc_id = format_id(c["code"])
+        code = c.get("code")
+        subject = c.get("subject", "")
+        number = c.get("number", "")
+        title = c.get("title", "")
+
+        if not code:
+            continue
+
+        doc_id = format_id(code)
         ref = db.collection("courses").document(doc_id)
 
         batch.set(ref, {
-            "code": c["code"],
-            "title": c["title"],
-            "department": c["dept"],
-            "number": c["number"],
+            "code": code,
+            "title": title,
+            "department": subject,
+            "number": number,
             "ratingAvg": 0,
             "ratingCount": 0
         }, merge=True)
@@ -58,10 +79,10 @@ def seed_courses():
         batch.commit()
         print(f"✅ Final commit. Total {total}")
 
-    # verify at least 1 doc exists
     sample = db.collection("courses").limit(1).get()
     print("🔍 courses sample docs:", len(sample))
     print("✅ Done seeding courses!")
+
 
 if __name__ == "__main__":
     seed_courses()

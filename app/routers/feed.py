@@ -7,7 +7,8 @@ from fastapi import APIRouter, HTTPException, Request, Query
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
-from typing import Literal
+from typing import Optional, Literal
+
 
 from app.core.firebase import db
 from firebase_admin import firestore
@@ -217,22 +218,13 @@ def get_posts(
 # NEW: Mixed Random Feed Endpoint
 # -------------------------------
 @router.get("/feed")
-def get_feed(request: Request):
-    """
-    Returns a mixed randomized feed from your collections.
-    Query params:
-      - limit
-      - user_id
-      - include_posts
-      - sort_by (optional: rating, createdAt)
-      - order (asc/desc)
-    """
-    limit = int(request.query_params.get("limit", 20))
-    user_id = request.query_params.get("user_id", "guest")
-    include_posts = request.query_params.get("include_posts", "1") == "1"
-    sort_by = request.query_params.get("sort_by")
-    order = request.query_params.get("order", "desc")
-
+def get_feed(
+    limit: int = Query(20),
+    user_id: str = Query("guest"),
+    include_posts: bool = Query(True),
+    sort_by: Optional[str] = Query(None),
+    order: Literal["asc", "desc"] = Query("desc")
+):
     stable_key = f"{user_id}-{date.today().isoformat()}".encode("utf-8")
     seed = int.from_bytes(hashlib.sha256(stable_key).digest()[:8], "big", signed=False)
 
