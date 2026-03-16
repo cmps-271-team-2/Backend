@@ -4,8 +4,8 @@ import asyncio
 import json
 from typing import Any, cast
 
-from app.feed import routes as feed_routes
-from app.jobs import routes as job_routes
+from app.routers import feed as feed_routes
+from app.routers import jobs as job_routes
 
 
 class DummyTaskResult:
