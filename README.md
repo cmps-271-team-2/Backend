@@ -56,7 +56,7 @@ Scaling to 4 replicas gives the requested 4 workers with 3 threads each.
 Use separate workflows:
 
 - `.github/workflows/deploy-vps-main.yml` (branch `main`, environment `production`)
-- `.github/workflows/deploy-vps-dev.yml` (branch `recommendation_algorithm`, environment `development`)
+- `.github/workflows/deploy-vps-dev.yml` (branch `env`, environment `development`)
 
 Set these GitHub repository settings:
 
@@ -92,9 +92,7 @@ Set these GitHub repository settings:
 	- `RESEND_FROM_EMAIL`
 	- `OPENAI_API_KEY`
 	- `PINECONE_API_KEY`
-	- `GCP_GEMINI_API_KEY` (preferred for Gemini moderation)
-	- `GOOGLE_API_KEY`
-	- `GEMINI_API_KEY`
+	- `GCP_GEMINI_API_KEY`
 
 Each workflow writes these values into `.env` on the VPS and starts services with:
 

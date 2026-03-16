@@ -15,6 +15,8 @@ jobs:
       VPS_USER: ${{ vars.VPS_USER }}
       VPS_PORT: ${{ vars.VPS_PORT || '22' }}
       VPS_APP_PATH: ${{ vars.VPS_APP_PATH }}
+      DEPLOY_ENV: dev
+      CELERY_WORKER_SCALE: ${{ vars.CELERY_WORKER_SCALE || '4' }}
 
       FRONTEND_ORIGINS: ${{ vars.FRONTEND_ORIGINS }}
       OTP_EXP_MINUTES: ${{ vars.OTP_EXP_MINUTES }}
@@ -42,7 +44,7 @@ jobs:
       RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
-      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GCP_GEMINI_API_KEY: ${{ secrets.GCP_GEMINI_API_KEY }}
 
     steps:
       - uses: actions/checkout@v4
@@ -78,6 +80,8 @@ jobs:
           FIREBASE_UNIVERSE_DOMAIN=$FIREBASE_UNIVERSE_DOMAIN
           FIREBASE_WEB_API_KEY=$FIREBASE_WEB_API_KEY
 
+          DEPLOY_ENV=$DEPLOY_ENV
+
           FRONTEND_ORIGINS=$FRONTEND_ORIGINS
           OTP_EXP_MINUTES=$OTP_EXP_MINUTES
 
@@ -93,7 +97,7 @@ jobs:
 
           REDIS_URL=$REDIS_URL
 
-          GEMINI_API_KEY=$GEMINI_API_KEY
+          GCP_GEMINI_API_KEY=$GCP_GEMINI_API_KEY
           GEMINI_MODEL=$GEMINI_MODEL
           EOF"
 
@@ -102,5 +106,5 @@ jobs:
           ssh -p "$VPS_PORT" "$VPS_USER@$VPS_HOST" "
             cd $VPS_APP_PATH &&
             docker compose -f infra/docker-compose.dev.yml down --remove-orphans &&
-            docker compose -f infra/docker-compose.dev.yml up -d --build --scale celery-worker=4 --remove-orphans
+            docker compose -f infra/docker-compose.dev.yml up -d --build --scale celery-worker=$CELERY_WORKER_SCALE --remove-orphans
           "

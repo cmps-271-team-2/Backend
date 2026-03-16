@@ -12,11 +12,7 @@ load_dotenv()
 
 
 def _gemini_key() -> str | None:
-    return (
-        os.getenv("GCP_GEMINI_API_KEY")
-        or os.getenv("GOOGLE_API_KEY")
-        or os.getenv("GEMINI_API_KEY")
-    )
+    return os.getenv("GCP_GEMINI_API_KEY")
 
 
 @pytest.mark.integration

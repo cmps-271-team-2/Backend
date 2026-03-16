@@ -10,7 +10,7 @@ set -euo pipefail
 # Optional env vars:
 #   VPS_PORT (default: 22)
 #   VPS_APP_PATH (default: /opt/backend)
-#   DEPLOY_ENV (default: dev, allowed: dev|main)
+#   DEPLOY_ENV (default: dev, allowed: dev|prod|main)
 #   CELERY_WORKER_SCALE (default: 4)
 
 if [[ -z "${VPS_HOST:-}" || -z "${VPS_USER:-}" ]]; then
@@ -32,11 +32,11 @@ case "$DEPLOY_ENV" in
   dev)
     COMPOSE_FILE="infra/docker-compose.dev.yml"
     ;;
-  main)
+  prod|main)
     COMPOSE_FILE="infra/docker-compose.main.yml"
     ;;
   *)
-    echo "Error: DEPLOY_ENV must be 'dev' or 'main'."
+    echo "Error: DEPLOY_ENV must be 'dev' or 'prod' (legacy: 'main')."
     exit 1
     ;;
 esac

@@ -38,15 +38,9 @@ def get_moderation_service() -> "ModerationService":
 class ModerationService:
     def __init__(self) -> None:
         self._guidelines = _load_guidelines()
-        self._api_key = (
-            os.getenv("GCP_GEMINI_API_KEY")
-            or os.getenv("GOOGLE_API_KEY")
-            or os.getenv("GEMINI_API_KEY")
-        )
+        self._api_key = os.getenv("GCP_GEMINI_API_KEY")
         if not self._api_key:
-            raise ValueError(
-                "GCP_GEMINI_API_KEY, GOOGLE_API_KEY, or GEMINI_API_KEY not set in environment."
-            )
+            raise ValueError("GCP_GEMINI_API_KEY not set in environment.")
         self._model = os.getenv("GEMINI_MODEL", DEFAULT_GEMINI_MODEL)
         self._client = genai.Client(api_key=self._api_key)
 
