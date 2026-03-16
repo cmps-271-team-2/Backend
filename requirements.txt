@@ -13,7 +13,6 @@ passlib[bcrypt]==1.7.4
 email_validator
 resend==2.23.0
 
-openai
 pinecone>=5.0.0,<6.0.0
 celery[redis]==5.4.0
 redis==5.2.1

@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 
 from app.core.firebase_admin import init_firebase_admin
 from app.core.firestore import get_db
-from app.services.openai_service import get_openai_service
 from app.services.semantic_service import get_semantic_service
 
 
@@ -29,7 +28,6 @@ def update_posts_index() -> dict[str, int]:
 	init_firebase_admin()
 
 	db = get_db()
-	openai_service = get_openai_service()
 	semantic_service = get_semantic_service()
 	semantic_service.clear()
 
@@ -58,7 +56,7 @@ def update_posts_index() -> dict[str, int]:
 	for post_reference, _, _, _ in documents_to_index:
 		_set_post_index_status(post_reference, indexed=False)
 
-	embeddings = openai_service.get_embeddings([document_text for _, _, document_text, _ in documents_to_index])
+	embeddings = semantic_service.embed_texts([document_text for _, _, document_text, _ in documents_to_index])
 
 	for (post_reference, post_id, _, metadata), vector in zip(documents_to_index, embeddings):
 		semantic_service.upsert(vector=vector, metadata=metadata, item_id=post_id)
@@ -94,7 +92,7 @@ def upload_post(post_id: str) -> dict[str, Any]:
 
 	post_reference, resolved_post_id, document_text, metadata = candidate
 	_set_post_index_status(post_reference, indexed=False)
-	vector = get_openai_service().get_embedding(document_text)
+	vector = semantic_service.embed_text(document_text)
 	semantic_service.upsert(vector=vector, metadata=metadata, item_id=resolved_post_id)
 	_set_post_index_status(post_reference, indexed=True)
 

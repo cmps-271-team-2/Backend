@@ -7,14 +7,8 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Literal
 
-try:
-    import google.generativeai as genai
-except ImportError:
-    genai = None  # type: ignore[assignment]
-    logging.getLogger(__name__).error(
-        "google-generativeai is not installed. Moderation will be disabled. "
-        "Run: pip install google-generativeai"
-    )
+from google import genai
+from google.genai import types
 
 _log = logging.getLogger(__name__)
 
@@ -48,12 +42,8 @@ class ModerationService:
     def __init__(self) -> None:
         self._guidelines = _load_guidelines()
         self._model_name = os.getenv("GEMINI_MODEL", DEFAULT_GEMINI_MODEL)
-        self._generative_model: "genai.GenerativeModel | None" = None  # type: ignore[name-defined]
+        self._client: genai.Client | None = None
         self._enabled = False
-
-        if genai is None:
-            _log.error("Moderation disabled: google-generativeai library not available.")
-            return
 
         api_key = os.getenv("GCP_GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
         if not api_key:
@@ -61,15 +51,14 @@ class ModerationService:
             return
 
         try:
-            genai.configure(api_key=api_key)
-            self._generative_model = genai.GenerativeModel(self._model_name)
+            self._client = genai.Client(api_key=api_key)
             self._enabled = True
             _log.info("ModerationService initialised with model %s.", self._model_name)
         except Exception as exc:
             _log.error("Failed to initialise Gemini client: %s. Moderation disabled.", exc)
 
     def moderate_post(self, post_data: dict[str, Any]) -> ModerationDecision:
-        if not self._enabled or self._generative_model is None:
+        if not self._enabled or self._client is None:
             return ModerationDecision(
                 status="review",
                 allowed=False,
@@ -92,7 +81,7 @@ class ModerationService:
             f"{payload}\n\n"
             "Return JSON only."
         )
-        response = _call_gemini(prompt=prompt, model=self._generative_model)
+        response = _call_gemini(prompt=prompt, client=self._client, model=self._model_name)
         return _parse_decision(response=response, model=self._model_name)
 
 
@@ -133,11 +122,15 @@ def _parse_decision(response: str, model: str) -> ModerationDecision:
     )
 
 
-def _call_gemini(prompt: str, model: "genai.GenerativeModel") -> str:  # type: ignore[name-defined]
+def _call_gemini(prompt: str, client: genai.Client, model: str) -> str:
     try:
-        response = model.generate_content(
-            prompt,
-            generation_config={"temperature": 0.1},
+        response = client.models.generate_content(
+            model=model,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                temperature=0.1,
+                response_mime_type="application/json",
+            ),
         )
     except Exception as exc:
         raise RuntimeError(f"Gemini API request failed: {exc}") from exc
