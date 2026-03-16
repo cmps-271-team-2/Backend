@@ -138,3 +138,4 @@ node_modules/
 serviceAccountKey.json
 .env.local
 .env.prod
+/.ssh
