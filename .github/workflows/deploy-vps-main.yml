@@ -1,0 +1,118 @@
+name: Deploy to VPS Main
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      VPS_HOST: ${{ secrets.VPS_HOST }}
+      VPS_USER: ${{ secrets.VPS_USER }}
+      VPS_PORT: ${{ secrets.VPS_PORT || '22' }}
+      VPS_APP_PATH: ${{ secrets.VPS_APP_PATH }}
+      DEPLOY_ENV: prod
+      CELERY_WORKER_SCALE: ${{ secrets.CELERY_WORKER_SCALE || '4' }}
+
+      FRONTEND_ORIGINS: ${{ secrets.FRONTEND_ORIGINS }}
+      OTP_EXP_MINUTES: ${{ secrets.OTP_EXP_MINUTES }}
+      PINECONE_INDEX_NAME: ${{ secrets.PINECONE_INDEX_NAME }}
+      PINECONE_NAMESPACE: ${{ secrets.PINECONE_NAMESPACE }}
+      PINECONE_CLOUD: ${{ secrets.PINECONE_CLOUD }}
+      PINECONE_REGION: ${{ secrets.PINECONE_REGION }}
+      REDIS_URL: ${{ secrets.REDIS_URL }}
+      GEMINI_MODEL: ${{ secrets.GEMINI_MODEL }}
+
+      FIREBASE_TYPE: ${{ secrets.FIREBASE_TYPE }}
+      FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+      FIREBASE_PRIVATE_KEY_ID: ${{ secrets.FIREBASE_PRIVATE_KEY_ID }}
+      FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
+      FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }}
+      FIREBASE_CLIENT_ID: ${{ secrets.FIREBASE_CLIENT_ID }}
+      FIREBASE_AUTH_URI: ${{ secrets.FIREBASE_AUTH_URI }}
+      FIREBASE_TOKEN_URI: ${{ secrets.FIREBASE_TOKEN_URI }}
+      FIREBASE_AUTH_PROVIDER_X509_CERT_URL: ${{ secrets.FIREBASE_AUTH_PROVIDER_X509_CERT_URL }}
+      FIREBASE_CLIENT_X509_CERT_URL: ${{ secrets.FIREBASE_CLIENT_X509_CERT_URL }}
+      FIREBASE_UNIVERSE_DOMAIN: ${{ secrets.FIREBASE_UNIVERSE_DOMAIN }}
+      FIREBASE_WEB_API_KEY: ${{ secrets.FIREBASE_WEB_API_KEY }}
+
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
+      GCP_GEMINI_API_KEY: ${{ secrets.GCP_GEMINI_API_KEY }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.VPS_SSH_KEY }}" | sed 's/\r$//' > ~/.ssh/id_rsa
+          if grep -q '\\n' ~/.ssh/id_rsa; then
+            perl -pe 's/\\n/\n/g' ~/.ssh/id_rsa > ~/.ssh/id_rsa.tmp
+            mv ~/.ssh/id_rsa.tmp ~/.ssh/id_rsa
+          fi
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keygen -y -f ~/.ssh/id_rsa > /dev/null 2>&1 || {
+            echo "::error::Invalid VPS_SSH_KEY format. Ensure it is a valid PEM/OpenSSH private key."
+            exit 1
+          }
+          ssh-keyscan -p "$VPS_PORT" "$VPS_HOST" >> ~/.ssh/known_hosts
+
+      - name: Sync project files to VPS
+        run: |
+          rsync -az --delete \
+            --exclude ".git" \
+            --exclude ".venv" \
+            --exclude "__pycache__" \
+            ./ "$VPS_USER@$VPS_HOST:$VPS_APP_PATH/"
+
+      - name: Write environment file on VPS
+        run: |
+          ssh -p "$VPS_PORT" "$VPS_USER@$VPS_HOST" "cat > $VPS_APP_PATH/.env <<'EOF'
+          FIREBASE_TYPE=$FIREBASE_TYPE
+          FIREBASE_PROJECT_ID=$FIREBASE_PROJECT_ID
+          FIREBASE_PRIVATE_KEY_ID=$FIREBASE_PRIVATE_KEY_ID
+          FIREBASE_PRIVATE_KEY=$FIREBASE_PRIVATE_KEY
+          FIREBASE_CLIENT_EMAIL=$FIREBASE_CLIENT_EMAIL
+          FIREBASE_CLIENT_ID=$FIREBASE_CLIENT_ID
+          FIREBASE_AUTH_URI=$FIREBASE_AUTH_URI
+          FIREBASE_TOKEN_URI=$FIREBASE_TOKEN_URI
+          FIREBASE_AUTH_PROVIDER_X509_CERT_URL=$FIREBASE_AUTH_PROVIDER_X509_CERT_URL
+          FIREBASE_CLIENT_X509_CERT_URL=$FIREBASE_CLIENT_X509_CERT_URL
+          FIREBASE_UNIVERSE_DOMAIN=$FIREBASE_UNIVERSE_DOMAIN
+          FIREBASE_WEB_API_KEY=$FIREBASE_WEB_API_KEY
+
+          DEPLOY_ENV=$DEPLOY_ENV
+
+          FRONTEND_ORIGINS=$FRONTEND_ORIGINS
+          OTP_EXP_MINUTES=$OTP_EXP_MINUTES
+
+          RESEND_API_KEY=$RESEND_API_KEY
+          RESEND_FROM_EMAIL=$RESEND_FROM_EMAIL
+
+          OPENAI_API_KEY=$OPENAI_API_KEY
+          PINECONE_API_KEY=$PINECONE_API_KEY
+          PINECONE_INDEX_NAME=$PINECONE_INDEX_NAME
+          PINECONE_NAMESPACE=$PINECONE_NAMESPACE
+          PINECONE_CLOUD=$PINECONE_CLOUD
+          PINECONE_REGION=$PINECONE_REGION
+
+          REDIS_URL=$REDIS_URL
+
+          GCP_GEMINI_API_KEY=$GCP_GEMINI_API_KEY
+          GEMINI_MODEL=$GEMINI_MODEL
+          EOF"
+
+      - name: Deploy with Docker Compose
+        run: |
+          ssh -p "$VPS_PORT" "$VPS_USER@$VPS_HOST" "
+            cd $VPS_APP_PATH &&
+            docker compose -f infra/docker-compose.main.yml down --remove-orphans &&
+            docker compose -f infra/docker-compose.main.yml up -d --build --scale celery-worker=$CELERY_WORKER_SCALE --remove-orphans
+          "
