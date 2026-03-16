@@ -37,10 +37,13 @@ def test_constructor_requires_gcp_key(monkeypatch):
 
 
 def test_call_gemini_uses_text_field():
-    class FakeModel:
+    class FakeModels:
         @staticmethod
-        def generate_content(contents, generation_config):
+        def generate_content(model, contents, config):
             return type("Resp", (), {"text": "{\"status\":\"approved\",\"allowed\":true,\"violations\":[],\"explanation\":\"ok\"}"})()
 
-    out = moderation._call_gemini("p", FakeModel())
+    class FakeClient:
+        models = FakeModels()
+
+    out = moderation._call_gemini("p", FakeClient(), "gemini-test")
     assert "approved" in out
