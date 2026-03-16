@@ -18,6 +18,21 @@ def get_db_client():
     return get_db()
 
 
+def _to_json_safe(value: Any) -> Any:
+    if isinstance(value, datetime):
+        return value.isoformat()
+    if isinstance(value, date):
+        return value.isoformat()
+    if isinstance(value, dict):
+        return {str(key): _to_json_safe(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_to_json_safe(item) for item in value]
+    if isinstance(value, tuple):
+        return [_to_json_safe(item) for item in value]
+    if value is None or isinstance(value, (str, int, float, bool)):
+        return value
+    return str(value)
+
 # -------------------------------
 # Feed Algorithm Helpers
 # -------------------------------
@@ -157,9 +172,10 @@ def get_posts():
     posts = []
 
     for doc in docs:
+        raw_post = doc.to_dict() or {}
         posts.append({
             "id": doc.id,
-            **(doc.to_dict() or {}),
+            **_to_json_safe(raw_post)
         })
 
     return JSONResponse(content=posts, status_code=200)
