@@ -178,7 +178,12 @@ def get_posts():
             **_to_json_safe(raw_post)
         })
 
-    return JSONResponse(content=posts, status_code=200)
+    approved_posts = [
+        post for post in posts
+        if post.get("moderation", {}).get("allowed") is True
+    ]
+
+    return JSONResponse(content=approved_posts, status_code=200)
 
 
 # -------------------------------
