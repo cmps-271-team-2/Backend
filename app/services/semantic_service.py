@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import hashlib
 import json
+import math
 import os
+import re
 from dataclasses import dataclass
 from datetime import date, datetime
 from typing import Any
@@ -16,7 +19,7 @@ load_dotenv()
 
 Vector = list[float]
 Metadata = dict[str, Any]
-EMBEDDING_DIMENSION = 1536
+EMBEDDING_DIMENSION = int(os.getenv("PINECONE_VECTOR_DIMENSION", "1024"))
 
 
 @dataclass(slots=True)
@@ -136,10 +139,14 @@ class SemanticService:
         return results
 
     def query_text(self, query_text: str, top_k: int = 20) -> list[SemanticQueryResult]:
-        from app.services.openai_service import get_openai_service
-
-        query_vector = get_openai_service().get_embedding(query_text)
+        query_vector = self.embed_text(query_text)
         return self.query(query_vector, top_k=top_k)
+
+    def embed_text(self, text: str) -> Vector:
+        return _embed_text(text, dimension=EMBEDDING_DIMENSION)
+
+    def embed_texts(self, texts: list[str]) -> list[Vector]:
+        return [_embed_text(text, dimension=EMBEDDING_DIMENSION) for text in texts]
 
     def query_posts(self, query_text: str, top_k: int = 20) -> list[Metadata]:
         limit = max(0, min(top_k, 20))
@@ -280,3 +287,29 @@ def _is_supported_metadata_value(value: Any) -> bool:
         return all(isinstance(item, str) for item in value)
 
     return False
+
+
+_TOKEN_PATTERN = re.compile(r"[a-z0-9]+")
+
+
+def _embed_text(text: str, dimension: int) -> Vector:
+    if dimension <= 0:
+        raise ValueError("PINECONE_VECTOR_DIMENSION must be greater than zero.")
+
+    normalized = (text or "").lower()
+    tokens = _TOKEN_PATTERN.findall(normalized)
+    if not tokens:
+        tokens = ["_empty_"]
+
+    vector = [0.0] * dimension
+    for token in tokens:
+        digest = hashlib.sha256(token.encode("utf-8")).digest()
+        index = int.from_bytes(digest[:4], "big") % dimension
+        sign = 1.0 if digest[4] % 2 == 0 else -1.0
+        magnitude = 1.0 + (int.from_bytes(digest[5:7], "big") / 65535.0)
+        vector[index] += sign * magnitude
+
+    norm = math.sqrt(sum(value * value for value in vector))
+    if norm == 0:
+        return vector
+    return [value / norm for value in vector]
