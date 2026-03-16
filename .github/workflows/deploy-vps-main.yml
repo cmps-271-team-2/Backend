@@ -52,8 +52,16 @@ jobs:
       - name: Setup SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_rsa
+          printf '%s\n' "${{ secrets.VPS_SSH_KEY }}" | sed 's/\r$//' > ~/.ssh/id_rsa
+          if grep -q '\\n' ~/.ssh/id_rsa; then
+            perl -pe 's/\\n/\n/g' ~/.ssh/id_rsa > ~/.ssh/id_rsa.tmp
+            mv ~/.ssh/id_rsa.tmp ~/.ssh/id_rsa
+          fi
           chmod 600 ~/.ssh/id_rsa
+          ssh-keygen -y -f ~/.ssh/id_rsa > /dev/null 2>&1 || {
+            echo "::error::Invalid VPS_SSH_KEY format. Ensure it is a valid PEM/OpenSSH private key."
+            exit 1
+          }
           ssh-keyscan -p "$VPS_PORT" "$VPS_HOST" >> ~/.ssh/known_hosts
 
       - name: Sync project files to VPS
