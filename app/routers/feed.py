@@ -163,7 +163,6 @@ def get_posts():
 
     return JSONResponse(content=posts, status_code=200)
 
-
 # -------------------------------
 # NEW: Mixed Random Feed Endpoint
 # -------------------------------
