@@ -1,7 +1,6 @@
-from firebase_admin import firestore
+from app.core.firebase import db
+
 
 def get_db():
-    """
-    Returns the Firestore client for database operations.
-    """
-    return firestore.client()
+    """Return the shared Firestore client."""
+    return db

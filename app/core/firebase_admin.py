@@ -11,7 +11,13 @@ def init_firebase_admin() -> None:
     if firebase_admin._apps:
         return
 
-    private_key = os.environ["FIREBASE_PRIVATE_KEY"].replace("\\n", "\n")
+    private_key = os.getenv("FIREBASE_PRIVATE_KEY")
+
+    if not private_key:
+        firebase_admin.initialize_app()
+        return
+
+    private_key = private_key.replace("\\n", "\n")
 
     service_account_info = {
         "type": os.environ["FIREBASE_TYPE"],

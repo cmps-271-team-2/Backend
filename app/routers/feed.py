@@ -1,29 +1,25 @@
-from datetime import date, datetime, timezone
 from collections import defaultdict, deque
+from datetime import date, datetime, timezone
+import hashlib
 import random
 from typing import Any, cast
 
-from dotenv import load_dotenv
-from fastapi import APIRouter, FastAPI, Request
+from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
 
-from app.core.firebase_admin import init_firebase_admin
 from app.core.firestore import get_db
 from app.jobs.tasks import process_post_task
 
-# Load environment variables
-load_dotenv()
 
 router = APIRouter()
 
+
 def get_db_client():
-    init_firebase_admin()
     return get_db()
 
 # -------------------------------
 # Feed Algorithm Helpers
 # -------------------------------
-
 def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None):
     """
     Mixed randomized feed:
@@ -51,7 +47,7 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
     # Convert to queues
     queues = {t: deque(buckets.get(t, [])) for t in weights.keys()}
 
-    # 3) Build weighted pattern: e.g. profile, profile, cafeteria, post...
+    # 3) Build weighted pattern
     pattern = []
     for t, w in weights.items():
         pattern.extend([t] * max(0, int(w)))
@@ -76,18 +72,15 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
                 return False
             return True
 
-        # Try preferred type first
         if ok(preferred):
             return preferred
 
-        # Otherwise try alternatives (random order so fallback isn't biased)
         types = list(weights.keys())
         rng.shuffle(types)
         for t in types:
             if ok(t):
                 return t
 
-        # If everything violates streak, relax streak rule as last resort
         for t in types:
             if len(queues[t]) > 0:
                 return t
@@ -106,7 +99,6 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
         item = queues[chosen].popleft()
         feed.append(item)
 
-        # Update streak
         if chosen == last_type:
             streak += 1
         else:
@@ -119,12 +111,11 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
 # -------------------------------
 # Routes
 # -------------------------------
-
 @router.get("/")
 def home():
     return {
         "status": "ok",
-        "message": "Flask is connected to Firestore"
+        "message": "FastAPI is connected to Firestore"
     }
 
 
@@ -181,9 +172,9 @@ def get_feed(request: Request):
     """
     Returns a mixed randomized feed from your collections.
     Query params:
-      - limit (default 20)
-      - user_id (optional; used to seed randomness so it stays stable per day)
-      - include_posts (0/1, default 1)
+      - limit
+      - user_id
+      - include_posts
     """
     db = get_db_client()
 
@@ -192,9 +183,9 @@ def get_feed(request: Request):
     include_posts = request.query_params.get("include_posts", "1") == "1"
 
     # Stable "random" per user per day (so refresh doesn't reshuffle constantly)
-    seed = hash(f"{user_id}-{date.today().isoformat()}")
+    stable_key = f"{user_id}-{date.today().isoformat()}".encode("utf-8")
+    seed = int.from_bytes(hashlib.sha256(stable_key).digest()[:8], "big", signed=False)
 
-    # Fetch candidates (limit to keep it fast)
     prof_docs = db.collection("profiles").limit(100).stream()
     cafe_docs = db.collection("cafeterias").limit(100).stream()
 
@@ -208,8 +199,6 @@ def get_feed(request: Request):
         posts = [{"id": d.id, "type": "post", **(d.to_dict() or {})} for d in post_docs]
         items += posts
 
-    # Weights: controls how frequently each type appears
-    # Tweak these to your liking.
     weights = {"profile": 3, "cafeteria": 2, "post": 2} if include_posts else {"profile": 3, "cafeteria": 2}
 
     mixed = build_mixed_feed(
@@ -224,9 +213,8 @@ def get_feed(request: Request):
 
 
 # -------------------------------
-# Create endpoints (for later users adding data)
+# Create endpoints
 # -------------------------------
-
 @router.post("/profiles")
 async def create_profile(request: Request):
     db = get_db_client()
@@ -306,17 +294,3 @@ async def create_post(request: Request):
         },
         status_code=202,
     )
-
-
-app = FastAPI()
-app.include_router(router)
-
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("app.feed.routes:app", host="127.0.0.1", port=8000, reload=True)
-
-# Call GET /feed?limit=20&user_id=XYZ
-# It returns a mixed list.
-# Each item contains a type field.
-# Render based on type.

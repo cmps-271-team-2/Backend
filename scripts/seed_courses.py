@@ -1,5 +1,4 @@
 import os, json, time
-
 from app.core.firebase_admin import init_firebase_admin
 from app.core.firestore import get_db
 
