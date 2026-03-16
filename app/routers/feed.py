@@ -1,36 +1,21 @@
-from datetime import date
 from collections import defaultdict, deque
-import random
+from datetime import date, datetime, timezone
 import hashlib
+import random
+from typing import Any, cast
 
-from fastapi import APIRouter, HTTPException, Request
+from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel
 
-from app.core.firebase import db
-from firebase_admin import firestore
+from app.core.firestore import get_db
+from app.jobs.tasks import process_post_task
+
 
 router = APIRouter()
 
 
-# -------------------------------
-# Pydantic Models
-# -------------------------------
-class ProfileCreate(BaseModel):
-    type: str
-    name: str
-
-
-class CafeteriaCreate(BaseModel):
-    name: str
-
-
-class PostCreate(BaseModel):
-    rating: int
-    text: str
-    targetId: str
-    targetType: str
-
+def get_db_client():
+    return get_db()
 
 # -------------------------------
 # Feed Algorithm Helpers
@@ -124,35 +109,6 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
 
 
 # -------------------------------
-# Sorting Helper
-# -------------------------------
-def fetch_sorted_collection(collection_name, allowed_sort_fields, sort_by, order):
-    if sort_by not in allowed_sort_fields:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Invalid sort_by. Allowed fields: {allowed_sort_fields}"
-        )
-
-    if order not in ["asc", "desc"]:
-        raise HTTPException(
-            status_code=400,
-            detail="Invalid order. Use 'asc' or 'desc'"
-        )
-
-    direction = firestore.Query.ASCENDING if order == "asc" else firestore.Query.DESCENDING
-    docs = db.collection(collection_name).order_by(sort_by, direction=direction).stream()
-
-    items = []
-    for doc in docs:
-        items.append({
-            "id": doc.id,
-            **(doc.to_dict() or {})
-        })
-
-    return items
-
-
-# -------------------------------
 # Routes
 # -------------------------------
 @router.get("/")
@@ -165,13 +121,14 @@ def home():
 
 @router.get("/profiles")
 def get_profiles():
+    db = get_db_client()
     docs = db.collection("profiles").stream()
     profiles = []
 
     for doc in docs:
         profiles.append({
             "id": doc.id,
-            **doc.to_dict()
+            **(doc.to_dict() or {})
         })
 
     return JSONResponse(content=profiles, status_code=200)
@@ -179,13 +136,14 @@ def get_profiles():
 
 @router.get("/cafeterias")
 def get_cafeterias():
+    db = get_db_client()
     docs = db.collection("cafeterias").stream()
     cafeterias = []
 
     for doc in docs:
         cafeterias.append({
             "id": doc.id,
-            **doc.to_dict()
+            **(doc.to_dict() or {})
         })
 
     return JSONResponse(content=cafeterias, status_code=200)
@@ -193,13 +151,14 @@ def get_cafeterias():
 
 @router.get("/posts")
 def get_posts():
+    db = get_db_client()
     docs = db.collection("posts").stream()
     posts = []
 
     for doc in docs:
         posts.append({
             "id": doc.id,
-            **doc.to_dict()
+            **(doc.to_dict() or {})
         })
 
     return JSONResponse(content=posts, status_code=200)
@@ -216,9 +175,9 @@ def get_feed(request: Request):
       - limit
       - user_id
       - include_posts
-      - sort_by (optional: rating, name)
-      - order (asc/desc)
     """
+    db = get_db_client()
+
     limit = int(request.query_params.get("limit", 20))
     user_id = request.query_params.get("user_id", "guest")
     include_posts = request.query_params.get("include_posts", "1") == "1"
@@ -258,6 +217,7 @@ def get_feed(request: Request):
 # -------------------------------
 @router.post("/profiles")
 async def create_profile(request: Request):
+    db = get_db_client()
     try:
         data = await request.json()
     except Exception:
@@ -274,6 +234,7 @@ async def create_profile(request: Request):
 
 @router.post("/cafeterias")
 async def create_cafeteria(request: Request):
+    db = get_db_client()
     try:
         data = await request.json()
     except Exception:
@@ -290,6 +251,7 @@ async def create_cafeteria(request: Request):
 
 @router.post("/posts")
 async def create_post(request: Request):
+    db = get_db_client()
     try:
         data = await request.json()
     except Exception:
@@ -300,7 +262,35 @@ async def create_post(request: Request):
     if not data or not all(field in data for field in required_fields):
         return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
 
+    created_at = datetime.now(timezone.utc).isoformat()
     doc_ref = db.collection("posts").document()
-    doc_ref.set(data)
+    doc_ref.set(
+        {
+            **data,
+            "createdAt": created_at,
+            "moderation": {
+                "status": "pending",
+                "allowed": False,
+                "violations": [],
+                "explanation": "Moderation pending.",
+                "model": None,
+                "checkedAt": None,
+            },
+            "indexed": False,
+        }
+    )
 
-    return JSONResponse(content={"id": doc_ref.id}, status_code=201)
+    task = cast(Any, process_post_task).delay(doc_ref.id)
+
+    return JSONResponse(
+        content={
+            "id": doc_ref.id,
+            "status": "queued",
+            "taskId": task.id,
+            "moderation": {
+                "status": "pending",
+                "allowed": False,
+            },
+        },
+        status_code=202,
+    )
