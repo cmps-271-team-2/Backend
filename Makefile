@@ -1,6 +1,6 @@
 # Makefile for Backend project
 
-.PHONY: install run lint test clean
+.PHONY: install run lint test clean vps-up vps-down
 
 install:
 	pip install -r requirements.txt
@@ -16,6 +16,37 @@ lint:
 
 test:
 	pytest
+
+worker:
+	celery -A app.jobs.celery_app.celery_app worker --loglevel=info --pool=threads --concurrency=3
+
+docker-up:
+	docker compose -f infra/docker-compose.dev.yml up --build -d --scale celery-worker=4
+
+docker-up-main:
+	docker compose -f infra/docker-compose.main.yml up --build -d --scale celery-worker=4
+
+docker-up-dev:
+	docker compose -f infra/docker-compose.dev.yml up --build -d --scale celery-worker=4
+
+docker-down:
+	docker compose -f infra/docker-compose.dev.yml down
+
+docker-down-main:
+	docker compose -f infra/docker-compose.main.yml down
+
+docker-down-dev:
+	docker compose -f infra/docker-compose.dev.yml down
+
+vps-up:
+	set -a; . ./.env; set +a; \
+	export VPS_HOST="$$VPS_HOST" VPS_USER="$$VPS_USER" SSH_KEY="$$SSH_KEY"; \
+	bash infra/vps-up.sh
+
+vps-down:
+	set -a; . ./.env; set +a; \
+	export VPS_HOST="$$VPS_HOST" VPS_USER="$$VPS_USER" SSH_KEY="$$SSH_KEY"; \
+	bash infra/vps-down.sh
 
 clean:
 	rm -rf __pycache__

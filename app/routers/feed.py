@@ -1,36 +1,33 @@
-from datetime import date
 from collections import defaultdict, deque
+<<<<<<< HEAD
 import random
 import hashlib
 
-from fastapi import APIRouter, HTTPException, Request
+from fastapi import APIRouter, HTTPException, Request, Query
 from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
+from typing import Optional, Literal
 
-from app.core.firebase import db
-from firebase_admin import firestore
+=======
+from datetime import date, datetime, timezone
+import hashlib
+import random
+from typing import Any, cast
+
+from fastapi import APIRouter, Request
+from fastapi.responses import JSONResponse
+>>>>>>> origin/main
+
+from app.core.firestore import get_db
+from app.jobs.tasks import process_post_task
+
 
 router = APIRouter()
 
 
-# -------------------------------
-# Pydantic Models
-# -------------------------------
-class ProfileCreate(BaseModel):
-    type: str
-    name: str
-
-
-class CafeteriaCreate(BaseModel):
-    name: str
-
-
-class PostCreate(BaseModel):
-    rating: int
-    text: str
-    targetId: str
-    targetType: str
-
+def get_db_client():
+    return get_db()
 
 # -------------------------------
 # Feed Algorithm Helpers
@@ -48,21 +45,17 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
 
     rng = random.Random(seed)
 
-    # 1) Bucket items by type
     buckets = defaultdict(list)
     for it in items:
         t = it.get("type")
         if t in weights:
             buckets[t].append(it)
 
-    # 2) Shuffle each bucket
     for t in buckets:
         rng.shuffle(buckets[t])
 
-    # Convert to queues
     queues = {t: deque(buckets.get(t, [])) for t in weights.keys()}
 
-    # 3) Build weighted pattern
     pattern = []
     for t, w in weights.items():
         pattern.extend([t] * max(0, int(w)))
@@ -102,7 +95,6 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
 
         return None
 
-    # 4) Fill feed
     while len(feed) < page_size and any_left():
         preferred = pattern[i % len(pattern)]
         i += 1
@@ -124,6 +116,7 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
 
 
 # -------------------------------
+<<<<<<< HEAD
 # Sorting Helper
 # -------------------------------
 def fetch_sorted_collection(collection_name, allowed_sort_fields, sort_by, order):
@@ -139,8 +132,14 @@ def fetch_sorted_collection(collection_name, allowed_sort_fields, sort_by, order
             detail="Invalid order. Use 'asc' or 'desc'"
         )
 
-    direction = firestore.Query.ASCENDING if order == "asc" else firestore.Query.DESCENDING
-    docs = db.collection(collection_name).order_by(sort_by, direction=direction).stream()
+    direction = (
+        firestore.Query.ASCENDING
+        if order == "asc"
+        else firestore.Query.DESCENDING
+    )
+    docs = db.collection(collection_name).order_by(
+        sort_by, direction=direction
+    ).stream()
 
     items = []
     for doc in docs:
@@ -153,6 +152,8 @@ def fetch_sorted_collection(collection_name, allowed_sort_fields, sort_by, order
 
 
 # -------------------------------
+=======
+>>>>>>> origin/main
 # Routes
 # -------------------------------
 @router.get("/")
@@ -165,13 +166,14 @@ def home():
 
 @router.get("/profiles")
 def get_profiles():
+    db = get_db_client()
     docs = db.collection("profiles").stream()
     profiles = []
 
     for doc in docs:
         profiles.append({
             "id": doc.id,
-            **doc.to_dict()
+            **(doc.to_dict() or {})
         })
 
     return JSONResponse(content=profiles, status_code=200)
@@ -179,28 +181,47 @@ def get_profiles():
 
 @router.get("/cafeterias")
 def get_cafeterias():
+    db = get_db_client()
     docs = db.collection("cafeterias").stream()
     cafeterias = []
 
     for doc in docs:
         cafeterias.append({
             "id": doc.id,
-            **doc.to_dict()
+            **(doc.to_dict() or {})
         })
 
     return JSONResponse(content=cafeterias, status_code=200)
 
 
 @router.get("/posts")
+<<<<<<< HEAD
+def get_posts(
+    sort_by: str = Query("createdAt"),
+    order: Literal["asc", "desc"] = Query("desc")
+):
+    posts = fetch_sorted_collection(
+        collection_name="posts",
+        allowed_sort_fields=["rating", "createdAt", "targetType"],
+        sort_by=sort_by,
+        order=order
+    )
+
+    for post in posts:
+        if "createdAt" in post and post["createdAt"] is not None:
+            post["createdAt"] = post["createdAt"].isoformat()
+=======
 def get_posts():
+    db = get_db_client()
     docs = db.collection("posts").stream()
     posts = []
 
     for doc in docs:
         posts.append({
             "id": doc.id,
-            **doc.to_dict()
+            **(doc.to_dict() or {})
         })
+>>>>>>> origin/main
 
     return JSONResponse(content=posts, status_code=200)
 
@@ -208,6 +229,15 @@ def get_posts():
 # NEW: Mixed Random Feed Endpoint
 # -------------------------------
 @router.get("/feed")
+<<<<<<< HEAD
+def get_feed(
+    limit: int = Query(20),
+    user_id: str = Query("guest"),
+    include_posts: bool = Query(True),
+    sort_by: Optional[str] = Query(None),
+    order: Literal["asc", "desc"] = Query("desc")
+):
+=======
 def get_feed(request: Request):
     """
     Returns a mixed randomized feed from your collections.
@@ -215,14 +245,15 @@ def get_feed(request: Request):
       - limit
       - user_id
       - include_posts
-      - sort_by (optional: rating, name)
-      - order (asc/desc)
     """
+    db = get_db_client()
+
     limit = int(request.query_params.get("limit", 20))
     user_id = request.query_params.get("user_id", "guest")
     include_posts = request.query_params.get("include_posts", "1") == "1"
 
     # Stable "random" per user per day (so refresh doesn't reshuffle constantly)
+>>>>>>> origin/main
     stable_key = f"{user_id}-{date.today().isoformat()}".encode("utf-8")
     seed = int.from_bytes(hashlib.sha256(stable_key).digest()[:8], "big", signed=False)
 
@@ -249,7 +280,26 @@ def get_feed(request: Request):
         seed=seed
     )
 
+<<<<<<< HEAD
+    reverse = (order == "desc")
+
+    if sort_by == "rating":
+        mixed.sort(key=lambda x: x.get("rating", 0), reverse=reverse)
+
+    elif sort_by == "createdAt":
+        mixed.sort(
+            key=lambda x: x.get("createdAt") or "",
+            reverse=reverse
+        )
+
+    for item in mixed:
+        if "createdAt" in item and item["createdAt"] is not None:
+            item["createdAt"] = item["createdAt"].isoformat()
+
+    return JSONResponse(content=jsonable_encoder(mixed), status_code=200)
+=======
     return JSONResponse(content=mixed, status_code=200)
+>>>>>>> origin/main
 
 
 # -------------------------------
@@ -257,6 +307,7 @@ def get_feed(request: Request):
 # -------------------------------
 @router.post("/profiles")
 async def create_profile(request: Request):
+    db = get_db_client()
     try:
         data = await request.json()
     except Exception:
@@ -273,6 +324,7 @@ async def create_profile(request: Request):
 
 @router.post("/cafeterias")
 async def create_cafeteria(request: Request):
+    db = get_db_client()
     try:
         data = await request.json()
     except Exception:
@@ -289,6 +341,7 @@ async def create_cafeteria(request: Request):
 
 @router.post("/posts")
 async def create_post(request: Request):
+    db = get_db_client()
     try:
         data = await request.json()
     except Exception:
@@ -299,7 +352,47 @@ async def create_post(request: Request):
     if not data or not all(field in data for field in required_fields):
         return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
 
+    created_at = datetime.now(timezone.utc).isoformat()
     doc_ref = db.collection("posts").document()
-    doc_ref.set(data)
+<<<<<<< HEAD
+    doc_ref.set({
+        "rating": data["rating"],
+        "text": data["text"],
+        "targetId": data["targetId"],
+        "targetType": data["targetType"],
+        "createdAt": firestore.SERVER_TIMESTAMP
+    })
 
     return JSONResponse(content={"id": doc_ref.id}, status_code=201)
+=======
+    doc_ref.set(
+        {
+            **data,
+            "createdAt": created_at,
+            "moderation": {
+                "status": "pending",
+                "allowed": False,
+                "violations": [],
+                "explanation": "Moderation pending.",
+                "model": None,
+                "checkedAt": None,
+            },
+            "indexed": False,
+        }
+    )
+
+    task = cast(Any, process_post_task).delay(doc_ref.id)
+
+    return JSONResponse(
+        content={
+            "id": doc_ref.id,
+            "status": "queued",
+            "taskId": task.id,
+            "moderation": {
+                "status": "pending",
+                "allowed": False,
+            },
+        },
+        status_code=202,
+    )
+>>>>>>> origin/main
