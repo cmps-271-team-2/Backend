@@ -17,6 +17,22 @@ router = APIRouter()
 def get_db_client():
     return get_db()
 
+
+def _to_json_safe(value: Any) -> Any:
+    if isinstance(value, datetime):
+        return value.isoformat()
+    if isinstance(value, date):
+        return value.isoformat()
+    if isinstance(value, dict):
+        return {str(key): _to_json_safe(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_to_json_safe(item) for item in value]
+    if isinstance(value, tuple):
+        return [_to_json_safe(item) for item in value]
+    if value is None or isinstance(value, (str, int, float, bool)):
+        return value
+    return str(value)
+
 # -------------------------------
 # Feed Algorithm Helpers
 # -------------------------------
@@ -33,17 +49,21 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
 
     rng = random.Random(seed)
 
+    # 1) Bucket items by type
     buckets = defaultdict(list)
     for it in items:
         t = it.get("type")
         if t in weights:
             buckets[t].append(it)
 
+    # 2) Shuffle each bucket
     for t in buckets:
         rng.shuffle(buckets[t])
 
+    # Convert to queues
     queues = {t: deque(buckets.get(t, [])) for t in weights.keys()}
 
+    # 3) Build weighted pattern
     pattern = []
     for t, w in weights.items():
         pattern.extend([t] * max(0, int(w)))
@@ -83,6 +103,7 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
 
         return None
 
+    # 4) Fill feed
     while len(feed) < page_size and any_left():
         preferred = pattern[i % len(pattern)]
         i += 1
@@ -110,7 +131,7 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
 def home():
     return {
         "status": "ok",
-        "message": "FastAPI is connected to Firestore"
+        "message": "FastAPI is connected to Firestore",
     }
 
 
@@ -123,7 +144,7 @@ def get_profiles():
     for doc in docs:
         profiles.append({
             "id": doc.id,
-            **(doc.to_dict() or {})
+            **(doc.to_dict() or {}),
         })
 
     return JSONResponse(content=profiles, status_code=200)
@@ -138,13 +159,14 @@ def get_cafeterias():
     for doc in docs:
         cafeterias.append({
             "id": doc.id,
-            **(doc.to_dict() or {})
+            **(doc.to_dict() or {}),
         })
 
     return JSONResponse(content=cafeterias, status_code=200)
 
 
 @router.get("/posts")
+<<<<<<< HEAD
 def get_posts(
     sort_by: str = Query("createdAt"),
     order: Literal["asc", "desc"] = Query("desc")
@@ -159,13 +181,33 @@ def get_posts(
     for post in posts:
         if "createdAt" in post and post["createdAt"] is not None:
             post["createdAt"] = post["createdAt"].isoformat()
+=======
+def get_posts():
+    db = get_db_client()
+    docs = db.collection("posts").stream()
+    posts = []
 
-    return JSONResponse(content=posts, status_code=200)
+    for doc in docs:
+        raw_post = doc.to_dict() or {}
+        posts.append({
+            "id": doc.id,
+            **_to_json_safe(raw_post)
+        })
+>>>>>>> origin/main
+
+    approved_posts = [
+        post for post in posts
+        if post.get("moderation", {}).get("allowed") is True
+    ]
+
+    return JSONResponse(content=approved_posts, status_code=200)
+
 
 # -------------------------------
 # NEW: Mixed Random Feed Endpoint
 # -------------------------------
 @router.get("/feed")
+<<<<<<< HEAD
 def get_feed(
     limit: int = Query(20),
     user_id: str = Query("guest"),
@@ -173,6 +215,23 @@ def get_feed(
     sort_by: Optional[str] = Query(None),
     order: Literal["asc", "desc"] = Query("desc")
 ):
+=======
+def get_feed(request: Request):
+    """
+    Returns a mixed randomized feed from your collections.
+    Query params:
+      - limit
+      - user_id
+      - include_posts
+    """
+    db = get_db_client()
+
+    limit = int(request.query_params.get("limit", 20))
+    user_id = request.query_params.get("user_id", "guest")
+    include_posts = request.query_params.get("include_posts", "1") == "1"
+
+    # Stable "random" per user per day (so refresh doesn't reshuffle constantly)
+>>>>>>> origin/main
     stable_key = f"{user_id}-{date.today().isoformat()}".encode("utf-8")
     seed = int.from_bytes(hashlib.sha256(stable_key).digest()[:8], "big", signed=False)
 
@@ -196,9 +255,10 @@ def get_feed(
         page_size=limit,
         weights=weights,
         max_streak=2,
-        seed=seed
+        seed=seed,
     )
 
+<<<<<<< HEAD
     reverse = (order == "desc")
 
     if sort_by == "rating":
@@ -215,6 +275,9 @@ def get_feed(
             item["createdAt"] = item["createdAt"].isoformat()
 
     return JSONResponse(content=jsonable_encoder(mixed), status_code=200)
+=======
+    return JSONResponse(content=mixed, status_code=200)
+>>>>>>> origin/main
 
 
 # -------------------------------

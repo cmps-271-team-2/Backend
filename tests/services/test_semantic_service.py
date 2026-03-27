@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Any, cast
+
 import pytest
 
 from app.services import semantic_service as semantic
@@ -112,6 +114,20 @@ def test_semantic_service_vector_validation(monkeypatch):
     service = semantic.SemanticService()
     with pytest.raises(ValueError, match="must not be empty"):
         service.query([])
+
+
+def test_semantic_service_ignores_forbidden_default_namespace(monkeypatch):
+    monkeypatch.setenv("PINECONE_API_KEY", "pc-key")
+    monkeypatch.setenv("PINECONE_INDEX_NAME", "unitok-test")
+    monkeypatch.setenv("PINECONE_NAMESPACE", "__default__")
+    monkeypatch.setattr(semantic, "Pinecone", FakePinecone)
+
+    service = semantic.SemanticService()
+    service.upsert(_make_vector(), {"post": {"text": "x"}}, item_id="item-1")
+
+    service_any = cast(Any, service)
+    assert service_any._namespace is None
+    assert service_any._index.upserts[0][1] is None
 
 
 def test_metadata_encode_decode_roundtrip():
