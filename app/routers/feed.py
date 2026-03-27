@@ -1,15 +1,4 @@
 from collections import defaultdict, deque
-<<<<<<< HEAD
-import random
-import hashlib
-
-from fastapi import APIRouter, HTTPException, Request, Query
-from fastapi.responses import JSONResponse
-from fastapi.encoders import jsonable_encoder
-from pydantic import BaseModel
-from typing import Optional, Literal
-
-=======
 from datetime import date, datetime, timezone
 import hashlib
 import random
@@ -17,7 +6,6 @@ from typing import Any, cast
 
 from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
->>>>>>> origin/main
 
 from app.core.firestore import get_db
 from app.jobs.tasks import process_post_task
@@ -116,44 +104,6 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
 
 
 # -------------------------------
-<<<<<<< HEAD
-# Sorting Helper
-# -------------------------------
-def fetch_sorted_collection(collection_name, allowed_sort_fields, sort_by, order):
-    if sort_by not in allowed_sort_fields:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Invalid sort_by. Allowed fields: {allowed_sort_fields}"
-        )
-
-    if order not in ["asc", "desc"]:
-        raise HTTPException(
-            status_code=400,
-            detail="Invalid order. Use 'asc' or 'desc'"
-        )
-
-    direction = (
-        firestore.Query.ASCENDING
-        if order == "asc"
-        else firestore.Query.DESCENDING
-    )
-    docs = db.collection(collection_name).order_by(
-        sort_by, direction=direction
-    ).stream()
-
-    items = []
-    for doc in docs:
-        items.append({
-            "id": doc.id,
-            **(doc.to_dict() or {})
-        })
-
-    return items
-
-
-# -------------------------------
-=======
->>>>>>> origin/main
 # Routes
 # -------------------------------
 @router.get("/")
@@ -195,7 +145,6 @@ def get_cafeterias():
 
 
 @router.get("/posts")
-<<<<<<< HEAD
 def get_posts(
     sort_by: str = Query("createdAt"),
     order: Literal["asc", "desc"] = Query("desc")
@@ -210,18 +159,6 @@ def get_posts(
     for post in posts:
         if "createdAt" in post and post["createdAt"] is not None:
             post["createdAt"] = post["createdAt"].isoformat()
-=======
-def get_posts():
-    db = get_db_client()
-    docs = db.collection("posts").stream()
-    posts = []
-
-    for doc in docs:
-        posts.append({
-            "id": doc.id,
-            **(doc.to_dict() or {})
-        })
->>>>>>> origin/main
 
     return JSONResponse(content=posts, status_code=200)
 
@@ -229,7 +166,6 @@ def get_posts():
 # NEW: Mixed Random Feed Endpoint
 # -------------------------------
 @router.get("/feed")
-<<<<<<< HEAD
 def get_feed(
     limit: int = Query(20),
     user_id: str = Query("guest"),
@@ -237,23 +173,6 @@ def get_feed(
     sort_by: Optional[str] = Query(None),
     order: Literal["asc", "desc"] = Query("desc")
 ):
-=======
-def get_feed(request: Request):
-    """
-    Returns a mixed randomized feed from your collections.
-    Query params:
-      - limit
-      - user_id
-      - include_posts
-    """
-    db = get_db_client()
-
-    limit = int(request.query_params.get("limit", 20))
-    user_id = request.query_params.get("user_id", "guest")
-    include_posts = request.query_params.get("include_posts", "1") == "1"
-
-    # Stable "random" per user per day (so refresh doesn't reshuffle constantly)
->>>>>>> origin/main
     stable_key = f"{user_id}-{date.today().isoformat()}".encode("utf-8")
     seed = int.from_bytes(hashlib.sha256(stable_key).digest()[:8], "big", signed=False)
 
@@ -280,7 +199,6 @@ def get_feed(request: Request):
         seed=seed
     )
 
-<<<<<<< HEAD
     reverse = (order == "desc")
 
     if sort_by == "rating":
@@ -297,9 +215,6 @@ def get_feed(request: Request):
             item["createdAt"] = item["createdAt"].isoformat()
 
     return JSONResponse(content=jsonable_encoder(mixed), status_code=200)
-=======
-    return JSONResponse(content=mixed, status_code=200)
->>>>>>> origin/main
 
 
 # -------------------------------
@@ -354,17 +269,6 @@ async def create_post(request: Request):
 
     created_at = datetime.now(timezone.utc).isoformat()
     doc_ref = db.collection("posts").document()
-<<<<<<< HEAD
-    doc_ref.set({
-        "rating": data["rating"],
-        "text": data["text"],
-        "targetId": data["targetId"],
-        "targetType": data["targetType"],
-        "createdAt": firestore.SERVER_TIMESTAMP
-    })
-
-    return JSONResponse(content={"id": doc_ref.id}, status_code=201)
-=======
     doc_ref.set(
         {
             **data,
@@ -395,4 +299,3 @@ async def create_post(request: Request):
         },
         status_code=202,
     )
->>>>>>> origin/main
