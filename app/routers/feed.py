@@ -296,7 +296,10 @@ async def like_post(post_id: str, body: LikeRequest):
 
         new_prompt = (existing_prompt + "\n" + snippet).strip()
         if len(new_prompt) > _MAX_RECOMMENDATION_PROMPT_CHARS:
-            new_prompt = new_prompt[-_MAX_RECOMMENDATION_PROMPT_CHARS:]
+            lines = new_prompt.splitlines()
+            while lines and len("\n".join(lines)) > _MAX_RECOMMENDATION_PROMPT_CHARS:
+                lines.pop(0)
+            new_prompt = "\n".join(lines)
 
         user_ref.set({"recommendationPrompt": new_prompt}, merge=True)
 
