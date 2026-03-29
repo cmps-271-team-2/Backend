@@ -120,6 +120,6 @@ jobs:
         run: |
           ssh -p "$VPS_PORT" "$VPS_USER@$VPS_HOST" "
             cd $VPS_APP_PATH &&
-            docker compose -f infra/docker-compose.dev.yml down --remove-orphans &&
-            docker compose -f infra/docker-compose.dev.yml up -d --build --scale celery-worker=$CELERY_WORKER_SCALE --remove-orphans
+            docker compose -p backend-dev -f infra/docker-compose.dev.yml down --remove-orphans &&
+            docker compose -p backend-dev -f infra/docker-compose.dev.yml up -d --build --scale celery-worker=$CELERY_WORKER_SCALE --remove-orphans
           "
