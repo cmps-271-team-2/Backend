@@ -3,6 +3,7 @@ services:
     build:
       context: ..
       dockerfile: Dockerfile
+    image: backend:dev
     env_file:
       - ../.env
     environment:
@@ -28,6 +29,7 @@ services:
     build:
       context: ..
       dockerfile: Dockerfile
+    image: backend:dev
     env_file:
       - ../.env
     environment:

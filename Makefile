@@ -2,7 +2,7 @@
 
 PYTHON := $(shell if [ -x .venv/bin/python ]; then echo .venv/bin/python; else echo python3; fi)
 
-.PHONY: install run lint test clean vps-up vps-down
+.PHONY: install run lint test clean vps-up vps-down ssh
 
 install:
 	pip install -r requirements.txt
@@ -49,6 +49,10 @@ vps-down:
 	set -a; . ./.env; set +a; \
 	export VPS_HOST="$$VPS_HOST" VPS_USER="$$VPS_USER" SSH_KEY="$$SSH_KEY"; \
 	bash infra/vps-down.sh
+
+ssh:
+	set -a; . ./.env; set +a; \
+	ssh -i .ssh/unitok -p "$${VPS_PORT:-22}" "$$VPS_USER@$$VPS_HOST"
 
 clean:
 	rm -rf __pycache__
