@@ -6,12 +6,20 @@ from typing import Any, cast
 
 from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
+from pydantic import BaseModel
 
 from app.core.firestore import get_db
+from app.jobs.index_posts import fetch_relevant_posts
 from app.jobs.tasks import process_post_task
 
 
 router = APIRouter()
+
+_MAX_RECOMMENDATION_PROMPT_CHARS = 2000
+
+
+class LikeRequest(BaseModel):
+    user_id: str
 
 
 def get_db_client():
@@ -217,8 +225,20 @@ def get_feed(request: Request):
     items = profiles + cafeterias
 
     if include_posts:
-        post_docs = db.collection("posts").limit(100).stream()
-        posts = [{"id": d.id, "type": "post", **(d.to_dict() or {})} for d in post_docs]
+        recommendation_prompt: str | None = None
+        if user_id != "guest":
+            user_snapshot = db.collection("users").document(user_id).get()
+            if user_snapshot.exists:
+                user_data = user_snapshot.to_dict() or {}
+                recommendation_prompt = user_data.get("recommendationPrompt") or None
+
+        if recommendation_prompt:
+            semantic_posts = fetch_relevant_posts(recommendation_prompt, limit=limit)
+            posts: list[dict[str, Any]] = [{"type": "post", **_to_json_safe(p)} for p in semantic_posts]
+        else:
+            post_docs = db.collection("posts").limit(100).stream()
+            posts = [{"id": d.id, "type": "post", **_to_json_safe(d.to_dict() or {})} for d in post_docs]
+
         items += posts
 
     weights = {"profile": 3, "cafeteria": 2, "post": 2} if include_posts else {"profile": 3, "cafeteria": 2}
@@ -232,6 +252,55 @@ def get_feed(request: Request):
     )
 
     return JSONResponse(content=mixed, status_code=200)
+
+
+# -------------------------------
+# Like endpoint
+# -------------------------------
+@router.post("/posts/{post_id}/like")
+async def like_post(post_id: str, body: LikeRequest):
+    """
+    Toggle a like on a post for the given user.
+    Updates the user's recommendationPrompt in Firestore based on what they liked.
+    """
+    db = get_db_client()
+
+    post_ref = db.collection("posts").document(post_id)
+    post_snapshot = post_ref.get()
+    if not post_snapshot.exists:
+        return JSONResponse(content={"error": "Post not found"}, status_code=404)
+
+    post_data = post_snapshot.to_dict() or {}
+    liked_by: list[str] = list(post_data.get("likedBy") or [])
+
+    if body.user_id in liked_by:
+        liked_by.remove(body.user_id)
+        liked = False
+    else:
+        liked_by.append(body.user_id)
+        liked = True
+
+    post_ref.set({"likedBy": liked_by, "likes": len(liked_by)}, merge=True)
+
+    if liked:
+        target_type = str(post_data.get("targetType") or "")
+        target_id = str(post_data.get("targetId") or "")
+        text = str(post_data.get("text") or "")
+        snippet = f"{target_type} {target_id}: {text}".strip()
+
+        user_ref = db.collection("users").document(body.user_id)
+        user_snapshot = user_ref.get()
+        existing_prompt: str = ""
+        if user_snapshot.exists:
+            existing_prompt = (user_snapshot.to_dict() or {}).get("recommendationPrompt") or ""
+
+        new_prompt = (existing_prompt + "\n" + snippet).strip()
+        if len(new_prompt) > _MAX_RECOMMENDATION_PROMPT_CHARS:
+            new_prompt = new_prompt[-_MAX_RECOMMENDATION_PROMPT_CHARS:]
+
+        user_ref.set({"recommendationPrompt": new_prompt}, merge=True)
+
+    return JSONResponse(content={"liked": liked, "likes": len(liked_by)}, status_code=200)
 
 
 # -------------------------------
