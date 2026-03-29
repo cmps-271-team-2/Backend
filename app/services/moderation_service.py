@@ -28,6 +28,48 @@ class ModerationDecision:
         return asdict(self)
 
 
+_SYSTEM_PROMPT = """\
+You are a content moderation engine for AUB Social — a university platform where students
+post reviews about courses, professors, campus life, and cafeterias.
+
+Your sole task: evaluate a post payload against the provided moderation guidelines and
+return a single JSON object. No markdown fences, no prose, no extra keys.
+
+## Output schema
+{
+  "status":      "approved" | "rejected" | "review",
+  "allowed":     true | false,
+  "violations":  ["<short category label>", ...],
+  "explanation": "<one factual sentence, max 25 words>"
+}
+
+## Decision rules
+- approved  → content clearly complies with all guidelines; set allowed = true.
+- rejected  → content clearly violates one or more guidelines; set allowed = false.
+- review    → ambiguous, sarcastic, or context-dependent content; set allowed = false;
+              a human moderator will decide.
+- violations → empty array when status is "approved"; name the violated guideline
+               category (e.g. "harassment", "hate speech", "doxxing") otherwise.
+- explanation → state the specific concern plainly; do not moralize.
+
+## Absolute prohibitions — always reject
+  • Threats of violence or encouragement of self-harm
+  • Hate speech or content degrading protected characteristics
+  • Doxxing or disclosure of private personal information
+  • Explicit sexual content or sexual coercion
+  • Instructions for dangerous or illegal acts
+
+## Non-violations — never penalize
+  • Negative opinions or low ratings about courses, professors, or campus facilities
+  • Mild profanity when not directed at a specific person as abuse
+  • Criticism of institutional decisions or policies
+
+## Evaluation principles
+  1. Judge the post holistically; do not fixate on individual words out of context.
+  2. Prefer "review" over "rejected" whenever intent or context is genuinely ambiguous.
+  3. Protect users from targeted personal harm above all other considerations.
+"""
+
 _singleton: "ModerationService | None" = None
 
 
@@ -69,19 +111,17 @@ class ModerationService:
 
         payload = json.dumps(post_data, ensure_ascii=True, sort_keys=True)
         prompt = (
-            "You are a content moderation assistant for a university social app. "
-            "Evaluate posts against the provided guidelines and respond with valid JSON only. "
-            "Return an object with keys: status, allowed, violations, explanation. "
-            "Status must be one of approved, rejected, review. "
-            "Violations must be an array of short category strings. "
-            "Explanation must be one short sentence.\n\n"
-            "Guidelines:\n"
+            "## Moderation Guidelines\n"
             f"{self._guidelines}\n\n"
-            "Post payload:\n"
-            f"{payload}\n\n"
-            "Return JSON only."
+            "## Post Payload\n"
+            f"{payload}"
         )
-        response = _call_gemini(prompt=prompt, client=self._client, model=self._model_name)
+        response = _call_gemini(
+            prompt=prompt,
+            system_prompt=_SYSTEM_PROMPT,
+            client=self._client,
+            model=self._model_name,
+        )
         return _parse_decision(response=response, model=self._model_name)
 
 
@@ -122,12 +162,13 @@ def _parse_decision(response: str, model: str) -> ModerationDecision:
     )
 
 
-def _call_gemini(prompt: str, client: genai.Client, model: str) -> str:
+def _call_gemini(prompt: str, system_prompt: str, client: genai.Client, model: str) -> str:
     try:
         response = client.models.generate_content(
             model=model,
             contents=prompt,
             config=types.GenerateContentConfig(
+                system_instruction=system_prompt,
                 temperature=0.1,
                 response_mime_type="application/json",
             ),
