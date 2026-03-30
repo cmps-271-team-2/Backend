@@ -65,7 +65,7 @@ class PostReportRequest(BaseModel):
 
 
 class FavoriteRequest(BaseModel):
-    targetType: Literal["professor", "course", "spot"]
+    targetType: Literal["professor", "course", "spot", "post"]
     targetId: str
     targetName: Optional[str] = None
 
@@ -113,6 +113,8 @@ def _normalize_target_type_for_favorite(target_type: str) -> str:
         return "professor"
     if tt in {"course"}:
         return "course"
+    if tt in {"post"}:
+        return "post"
     return "spot"
 
 
@@ -428,9 +430,17 @@ def get_posts(
             else:
                 post["currentUserReaction"] = None
             post["isOwner"] = _is_post_owned_by_user(post, uid, email, display_name)
+            
+            # Check if post itself is favorited (post-level) OR if the course/professor/spot is favorited (course-level)
+            post_id = str(post.get("id") or "")
+            post_fav_key = f"post:{post_id}"
+            is_post_favorited = post_fav_key in favorite_keys
+            
             fav_target_type = _normalize_target_type_for_favorite(str(post.get("targetType") or ""))
             fav_key = f"{fav_target_type}:{str(post.get('targetId') or '').strip()}"
-            post["isFavorited"] = fav_key in favorite_keys
+            is_course_favorited = fav_key in favorite_keys
+            
+            post["isFavorited"] = is_post_favorited or is_course_favorited
     else:
         for post in posts:
             liked_by = [str(x) for x in (post.get("likedBy") or [])]
@@ -1082,7 +1092,7 @@ def add_favorite(
 
 @router.delete("/favorites")
 def remove_favorite(
-    targetType: Literal["professor", "course", "spot"] = Query(...),
+    targetType: Literal["professor", "course", "spot", "post"] = Query(...),
     targetId: str = Query(...),
     authorization: Optional[str] = Header(default=None),
 ):
