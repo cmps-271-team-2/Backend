@@ -3,6 +3,7 @@ services:
     build:
       context: ..
       dockerfile: Dockerfile
+    image: backend:dev
     env_file:
       - ../.env
     environment:
@@ -28,11 +29,11 @@ services:
     build:
       context: ..
       dockerfile: Dockerfile
+    image: backend:dev
     env_file:
       - ../.env
     environment:
       REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
-    command: celery -A app.jobs.celery_app.celery_app worker --loglevel=info --pool=threads --concurrency=3
     depends_on:
       redis:
         condition: service_healthy
