@@ -7,10 +7,7 @@ from typing import Any, Optional, Literal, cast
 from fastapi import APIRouter, Request, Query, HTTPException
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
-<<<<<<< HEAD
 from firebase_admin import firestore
-=======
->>>>>>> origin/main
 from pydantic import BaseModel
 
 from app.core.firestore import get_db
@@ -343,13 +340,6 @@ def get_feed(
     items = profiles + cafeterias + spots
 
     if include_posts:
-<<<<<<< HEAD
-        post_docs = db.collection("posts").limit(100).stream()
-        posts = [
-            {"id": d.id, "type": "post", **_to_json_safe(d.to_dict() or {})}
-            for d in post_docs
-        ]
-=======
         recommendation_prompt: str | None = None
         if user_id != "guest":
             user_snapshot = db.collection("users").document(user_id).get()
@@ -363,8 +353,6 @@ def get_feed(
         else:
             post_docs = db.collection("posts").limit(100).stream()
             posts = [{"id": d.id, "type": "post", **_to_json_safe(d.to_dict() or {})} for d in post_docs]
-
->>>>>>> origin/main
         items += posts
 
     if category:
@@ -406,8 +394,6 @@ def get_feed(
     return JSONResponse(content=jsonable_encoder(mixed), status_code=200)
 
 
-<<<<<<< HEAD
-=======
 # -------------------------------
 # Like endpoint
 # -------------------------------
@@ -463,7 +449,6 @@ async def like_post(post_id: str, body: LikeRequest):
 # -------------------------------
 # Create endpoints
 # -------------------------------
->>>>>>> origin/main
 @router.post("/profiles")
 async def create_profile(request: Request):
     db = get_db_client()
