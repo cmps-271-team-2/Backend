@@ -2,16 +2,28 @@ from collections import defaultdict, deque
 from datetime import date, datetime, timezone
 import hashlib
 import random
-from typing import Any, cast
+from typing import Any, Optional, Literal, cast
 
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, Query, HTTPException
+from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
+from firebase_admin import firestore
+from pydantic import BaseModel
 
 from app.core.firestore import get_db
 from app.jobs.tasks import process_post_task
 
-
 router = APIRouter()
+
+
+class SpotCreate(BaseModel):
+    name: str
+    description: str = ""
+    category: str
+    location: str
+    createdBy: str = "guest"
+    rating: int = 0
+    reviewCount: int = 0
 
 
 def get_db_client():
@@ -33,40 +45,69 @@ def _to_json_safe(value: Any) -> Any:
         return value
     return str(value)
 
-# -------------------------------
-# Feed Algorithm Helpers
-# -------------------------------
+
+def _serialize_doc(doc) -> dict:
+    return {
+        "id": doc.id,
+        **_to_json_safe(doc.to_dict() or {}),
+    }
+
+
+def fetch_sorted_collection(
+    collection_name: str,
+    allowed_sort_fields: list[str],
+    sort_by: str,
+    order: Literal["asc", "desc"],
+):
+    db = get_db_client()
+
+    if sort_by not in allowed_sort_fields:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid sort_by. Allowed fields: {allowed_sort_fields}",
+        )
+
+    if order not in ["asc", "desc"]:
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid order. Use 'asc' or 'desc'",
+        )
+
+    direction = (
+        firestore.Query.ASCENDING
+        if order == "asc"
+        else firestore.Query.DESCENDING
+    )
+
+    docs = db.collection(collection_name).order_by(
+        sort_by,
+        direction=direction,
+    ).stream()
+
+    return [_serialize_doc(doc) for doc in docs]
+
+
 def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None):
-    """
-    Mixed randomized feed:
-    - bucket by type
-    - shuffle each bucket
-    - weighted round-robin
-    - anti-streak rule
-    """
     if weights is None:
-        weights = {"profile": 1, "cafeteria": 1, "post": 1}
+        weights = {"profile": 1, "cafeteria": 1, "spot": 1, "post": 1}
 
     rng = random.Random(seed)
 
-    # 1) Bucket items by type
     buckets = defaultdict(list)
     for it in items:
         t = it.get("type")
         if t in weights:
             buckets[t].append(it)
 
-    # 2) Shuffle each bucket
     for t in buckets:
         rng.shuffle(buckets[t])
 
-    # Convert to queues
     queues = {t: deque(buckets.get(t, [])) for t in weights.keys()}
 
-    # 3) Build weighted pattern
     pattern = []
     for t, w in weights.items():
         pattern.extend([t] * max(0, int(w)))
+
     if not pattern:
         return []
 
@@ -93,6 +134,7 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
 
         types = list(weights.keys())
         rng.shuffle(types)
+
         for t in types:
             if ok(t):
                 return t
@@ -103,7 +145,6 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
 
         return None
 
-    # 4) Fill feed
     while len(feed) < page_size and any_left():
         preferred = pattern[i % len(pattern)]
         i += 1
@@ -124,9 +165,20 @@ def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None)
     return feed
 
 
-# -------------------------------
-# Routes
-# -------------------------------
+def _matches_search(item: dict, query: str) -> bool:
+    q = query.strip().lower()
+    return (
+        q in str(item.get("name", "")).lower()
+        or q in str(item.get("description", "")).lower()
+        or q in str(item.get("location", "")).lower()
+        or q in str(item.get("category", "")).lower()
+        or q in str(item.get("text", "")).lower()
+        or q in str(item.get("title", "")).lower()
+        or q in str(item.get("code", "")).lower()
+        or q in str(item.get("targetType", "")).lower()
+    )
+
+
 @router.get("/")
 def home():
     return {
@@ -136,119 +188,178 @@ def home():
 
 
 @router.get("/profiles")
-def get_profiles():
-    db = get_db_client()
-    docs = db.collection("profiles").stream()
-    profiles = []
-
-    for doc in docs:
-        profiles.append({
-            "id": doc.id,
-            **(doc.to_dict() or {}),
-        })
-
-    return JSONResponse(content=profiles, status_code=200)
+def get_profiles(
+    sort_by: str = Query("name"),
+    order: Literal["asc", "desc"] = Query("asc"),
+):
+    profiles = fetch_sorted_collection(
+        collection_name="profiles",
+        allowed_sort_fields=["name", "type"],
+        sort_by=sort_by,
+        order=order,
+    )
+    return JSONResponse(content=jsonable_encoder(profiles), status_code=200)
 
 
 @router.get("/cafeterias")
-def get_cafeterias():
-    db = get_db_client()
-    docs = db.collection("cafeterias").stream()
-    cafeterias = []
+def get_cafeterias(
+    sort_by: str = Query("name"),
+    order: Literal["asc", "desc"] = Query("asc"),
+):
+    cafeterias = fetch_sorted_collection(
+        collection_name="cafeterias",
+        allowed_sort_fields=["name"],
+        sort_by=sort_by,
+        order=order,
+    )
+    return JSONResponse(content=jsonable_encoder(cafeterias), status_code=200)
 
-    for doc in docs:
-        cafeterias.append({
-            "id": doc.id,
-            **(doc.to_dict() or {}),
-        })
 
-    return JSONResponse(content=cafeterias, status_code=200)
+@router.get("/courses")
+def get_courses(
+    sort_by: str = Query("code"),
+    order: Literal["asc", "desc"] = Query("asc"),
+):
+    courses = fetch_sorted_collection(
+        collection_name="courses",
+        allowed_sort_fields=[
+            "code",
+            "title",
+            "department",
+            "number",
+            "ratingAvg",
+            "ratingCount",
+        ],
+        sort_by=sort_by,
+        order=order,
+    )
+    return JSONResponse(content=jsonable_encoder(courses), status_code=200)
 
 
 @router.get("/posts")
-<<<<<<< HEAD
 def get_posts(
     sort_by: str = Query("createdAt"),
-    order: Literal["asc", "desc"] = Query("desc")
+    order: Literal["asc", "desc"] = Query("desc"),
 ):
     posts = fetch_sorted_collection(
         collection_name="posts",
         allowed_sort_fields=["rating", "createdAt", "targetType"],
         sort_by=sort_by,
-        order=order
+        order=order,
     )
+    return JSONResponse(content=jsonable_encoder(posts), status_code=200)
 
-    for post in posts:
-        if "createdAt" in post and post["createdAt"] is not None:
-            post["createdAt"] = post["createdAt"].isoformat()
-=======
-def get_posts():
+
+@router.get("/spots")
+def get_spots(
+    category: Optional[str] = Query(None),
+    search: Optional[str] = Query(None),
+    sort_by: Literal["name", "category", "location", "rating", "createdAt"] = Query("createdAt"),
+    order: Literal["asc", "desc"] = Query("desc"),
+):
     db = get_db_client()
-    docs = db.collection("posts").stream()
-    posts = []
+    docs = db.collection("spots").stream()
+    spots = []
 
     for doc in docs:
-        raw_post = doc.to_dict() or {}
-        posts.append({
+        spot = {
             "id": doc.id,
-            **_to_json_safe(raw_post)
-        })
->>>>>>> origin/main
+            "type": "spot",
+            **_to_json_safe(doc.to_dict() or {}),
+        }
+        spots.append(spot)
 
-    approved_posts = [
-        post for post in posts
-        if post.get("moderation", {}).get("allowed") is True
-    ]
+    if category:
+        category = category.strip().lower()
+        if category not in ["study", "food"]:
+            raise HTTPException(
+                status_code=400,
+                detail="category must be either 'study' or 'food'",
+            )
+        spots = [
+            s for s in spots
+            if str(s.get("category", "")).lower() == category
+        ]
 
-    return JSONResponse(content=approved_posts, status_code=200)
+    if search:
+        spots = [s for s in spots if _matches_search(s, search)]
+
+    reverse = (order == "desc")
+
+    if sort_by == "rating":
+        spots.sort(key=lambda x: x.get("rating", 0), reverse=reverse)
+    else:
+        spots.sort(key=lambda x: str(x.get(sort_by, "")), reverse=reverse)
+
+    return JSONResponse(content=jsonable_encoder(spots), status_code=200)
 
 
-# -------------------------------
-# NEW: Mixed Random Feed Endpoint
-# -------------------------------
 @router.get("/feed")
-<<<<<<< HEAD
 def get_feed(
     limit: int = Query(20),
     user_id: str = Query("guest"),
     include_posts: bool = Query(True),
     sort_by: Optional[str] = Query(None),
-    order: Literal["asc", "desc"] = Query("desc")
+    order: Literal["asc", "desc"] = Query("desc"),
+    search: Optional[str] = Query(None),
+    category: Optional[str] = Query(None),
 ):
-=======
-def get_feed(request: Request):
-    """
-    Returns a mixed randomized feed from your collections.
-    Query params:
-      - limit
-      - user_id
-      - include_posts
-    """
     db = get_db_client()
 
-    limit = int(request.query_params.get("limit", 20))
-    user_id = request.query_params.get("user_id", "guest")
-    include_posts = request.query_params.get("include_posts", "1") == "1"
-
-    # Stable "random" per user per day (so refresh doesn't reshuffle constantly)
->>>>>>> origin/main
     stable_key = f"{user_id}-{date.today().isoformat()}".encode("utf-8")
-    seed = int.from_bytes(hashlib.sha256(stable_key).digest()[:8], "big", signed=False)
+    seed = int.from_bytes(
+        hashlib.sha256(stable_key).digest()[:8],
+        "big",
+        signed=False,
+    )
 
     prof_docs = db.collection("profiles").limit(100).stream()
     cafe_docs = db.collection("cafeterias").limit(100).stream()
+    spot_docs = db.collection("spots").limit(100).stream()
 
-    profiles = [{"id": d.id, "type": "profile", **(d.to_dict() or {})} for d in prof_docs]
-    cafeterias = [{"id": d.id, "type": "cafeteria", **(d.to_dict() or {})} for d in cafe_docs]
+    profiles = [
+        {"id": d.id, "type": "profile", **_to_json_safe(d.to_dict() or {})}
+        for d in prof_docs
+    ]
+    cafeterias = [
+        {"id": d.id, "type": "cafeteria", **_to_json_safe(d.to_dict() or {})}
+        for d in cafe_docs
+    ]
+    spots = [
+        {"id": d.id, "type": "spot", **_to_json_safe(d.to_dict() or {})}
+        for d in spot_docs
+    ]
 
-    items = profiles + cafeterias
+    items = profiles + cafeterias + spots
 
     if include_posts:
         post_docs = db.collection("posts").limit(100).stream()
-        posts = [{"id": d.id, "type": "post", **(d.to_dict() or {})} for d in post_docs]
+        posts = [
+            {"id": d.id, "type": "post", **_to_json_safe(d.to_dict() or {})}
+            for d in post_docs
+        ]
         items += posts
 
-    weights = {"profile": 3, "cafeteria": 2, "post": 2} if include_posts else {"profile": 3, "cafeteria": 2}
+    if category:
+        category = category.strip().lower()
+        if category not in ["study", "food"]:
+            raise HTTPException(
+                status_code=400,
+                detail="category must be either 'study' or 'food'",
+            )
+        items = [
+            item for item in items
+            if str(item.get("category", "")).lower() == category
+        ]
+
+    if search:
+        items = [item for item in items if _matches_search(item, search)]
+
+    weights = (
+        {"profile": 3, "cafeteria": 2, "spot": 2, "post": 2}
+        if include_posts
+        else {"profile": 3, "cafeteria": 2, "spot": 2}
+    )
 
     mixed = build_mixed_feed(
         items,
@@ -258,41 +369,30 @@ def get_feed(request: Request):
         seed=seed,
     )
 
-<<<<<<< HEAD
     reverse = (order == "desc")
 
     if sort_by == "rating":
         mixed.sort(key=lambda x: x.get("rating", 0), reverse=reverse)
-
     elif sort_by == "createdAt":
-        mixed.sort(
-            key=lambda x: x.get("createdAt") or "",
-            reverse=reverse
-        )
-
-    for item in mixed:
-        if "createdAt" in item and item["createdAt"] is not None:
-            item["createdAt"] = item["createdAt"].isoformat()
+        mixed.sort(key=lambda x: str(x.get("createdAt") or ""), reverse=reverse)
 
     return JSONResponse(content=jsonable_encoder(mixed), status_code=200)
-=======
-    return JSONResponse(content=mixed, status_code=200)
->>>>>>> origin/main
 
 
-# -------------------------------
-# Create endpoints
-# -------------------------------
 @router.post("/profiles")
 async def create_profile(request: Request):
     db = get_db_client()
+
     try:
         data = await request.json()
     except Exception:
         data = None
 
     if not data or "type" not in data or "name" not in data:
-        return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
+        return JSONResponse(
+            content={"error": "Missing required fields"},
+            status_code=400,
+        )
 
     doc_ref = db.collection("profiles").document()
     doc_ref.set(data)
@@ -303,13 +403,17 @@ async def create_profile(request: Request):
 @router.post("/cafeterias")
 async def create_cafeteria(request: Request):
     db = get_db_client()
+
     try:
         data = await request.json()
     except Exception:
         data = None
 
     if not data or "name" not in data:
-        return JSONResponse(content={"error": "Missing required field: name"}, status_code=400)
+        return JSONResponse(
+            content={"error": "Missing required field: name"},
+            status_code=400,
+        )
 
     doc_ref = db.collection("cafeterias").document()
     doc_ref.set(data)
@@ -317,9 +421,39 @@ async def create_cafeteria(request: Request):
     return JSONResponse(content={"id": doc_ref.id}, status_code=201)
 
 
+@router.post("/spots")
+async def create_spot(data: SpotCreate):
+    db = get_db_client()
+
+    category = data.category.strip().lower()
+    if category not in ["study", "food"]:
+        return JSONResponse(
+            content={"error": "category must be either 'study' or 'food'"},
+            status_code=400,
+        )
+
+    doc_ref = db.collection("spots").document()
+    doc_ref.set({
+        "name": data.name,
+        "description": data.description,
+        "category": category,
+        "location": data.location,
+        "createdBy": data.createdBy,
+        "rating": data.rating,
+        "reviewCount": data.reviewCount,
+        "createdAt": datetime.now(timezone.utc),
+    })
+
+    return JSONResponse(
+        content={"id": doc_ref.id, "message": "Spot created successfully"},
+        status_code=201,
+    )
+
+
 @router.post("/posts")
 async def create_post(request: Request):
     db = get_db_client()
+
     try:
         data = await request.json()
     except Exception:
@@ -328,7 +462,10 @@ async def create_post(request: Request):
     required_fields = ["rating", "text", "targetId", "targetType"]
 
     if not data or not all(field in data for field in required_fields):
-        return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
+        return JSONResponse(
+            content={"error": "Missing required fields"},
+            status_code=400,
+        )
 
     created_at = datetime.now(timezone.utc).isoformat()
     doc_ref = db.collection("posts").document()
