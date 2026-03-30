@@ -60,6 +60,10 @@ class SpotReportRequest(BaseModel):
     text: str
 
 
+class PostReportRequest(BaseModel):
+    text: str
+
+
 class FavoriteRequest(BaseModel):
     targetType: Literal["professor", "course", "spot"]
     targetId: str
@@ -990,6 +994,41 @@ def report_spot(
     report_ref.set(
         {
             "spotId": spot_id,
+            "userId": uid,
+            "text": text,
+            "status": "pending",
+            "createdAt": now_iso,
+            "updatedAt": now_iso,
+        }
+    )
+
+    return {"ok": True, "id": report_ref.id, "message": "Report submitted."}
+
+
+@router.post("/posts/{post_id}/report")
+def report_post(
+    post_id: str,
+    body: PostReportRequest,
+    authorization: Optional[str] = Header(default=None),
+):
+    user = _get_current_user_required(authorization)
+    uid = str(user.get("uid") or "")
+    text = body.text.strip()
+    if not text:
+        raise HTTPException(status_code=400, detail="Report text cannot be empty.")
+    if len(text) > 2000:
+        raise HTTPException(status_code=400, detail="Report text is too long.")
+
+    db = get_db_client()
+    post_snapshot = db.collection("posts").document(post_id).get()
+    if not post_snapshot.exists:
+        raise HTTPException(status_code=404, detail="Post not found.")
+
+    now_iso = datetime.now(timezone.utc).isoformat()
+    report_ref = db.collection("post_reports").document()
+    report_ref.set(
+        {
+            "postId": post_id,
             "userId": uid,
             "text": text,
             "status": "pending",
