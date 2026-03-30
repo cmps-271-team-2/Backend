@@ -1124,10 +1124,24 @@ def get_my_favorites(
     professors = [item for item in items if str(item.get("targetType") or "") == "professor"]
     courses = [item for item in items if str(item.get("targetType") or "") == "course"]
     spots = [item for item in items if str(item.get("targetType") or "") == "spot"]
+    
+    # Fetch actual post data for post-level favorites
+    post_items = [item for item in items if str(item.get("targetType") or "") == "post"]
+    posts = []
+    for fav in post_items:
+        post_id = str(fav.get("targetId") or "")
+        if post_id:
+            post_doc = db.collection("posts").document(post_id).get()
+            if post_doc.exists:
+                post_data = _serialize_doc(post_doc)
+                # Add favorite metadata
+                post_data["_favoriteId"] = fav.get("id")
+                posts.append(post_data)
 
     return {
         "items": items,
         "professors": professors,
         "courses": courses,
         "spots": spots,
+        "posts": posts,
     }
