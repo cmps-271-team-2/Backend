@@ -1,6 +1,5 @@
-from app.core.firebase import db
+from app.core.firebase import get_db as firebase_get_db
 
 
 def get_db():
-    """Return the shared Firestore client."""
-    return db
+    return firebase_get_db()
