@@ -40,7 +40,8 @@ def verify_admin_password(plain_password: str) -> bool:
     # Support a PBKDF2-stored format: pbkdf2_sha256$iterations$salt_hex$hash_hex
     if stored.startswith("pbkdf2_sha256$"):
         try:
-            _, iter_s, salt_hex, hash_hex = stored.split("$", 3)[1:5]
+            parts = stored.split("$", 3)  # ["pbkdf2_sha256", iterations, salt_hex, hash_hex]
+            iter_s, salt_hex, hash_hex = parts[1], parts[2], parts[3]
             iterations = int(iter_s)
             salt = bytes.fromhex(salt_hex)
             expected = bytes.fromhex(hash_hex)
