@@ -1012,6 +1012,15 @@ def report_spot(
         }
     )
 
+    # Increment the reports counter on the spot/cafeteria document
+    spot_ref = db.collection("spots").document(spot_id)
+    if spot_ref.get().exists:
+        spot_ref.update({"reports": firestore.firestore.Increment(1)})
+    else:
+        cafe_ref = db.collection("cafeterias").document(spot_id)
+        if cafe_ref.get().exists:
+            cafe_ref.update({"reports": firestore.firestore.Increment(1)})
+
     return {"ok": True, "id": report_ref.id, "message": "Report submitted."}
 
 
@@ -1045,6 +1054,11 @@ def report_post(
             "createdAt": now_iso,
             "updatedAt": now_iso,
         }
+    )
+
+    # Increment the reports counter on the post document so the admin panel sees it
+    db.collection("posts").document(post_id).update(
+        {"reports": firestore.firestore.Increment(1)}
     )
 
     return {"ok": True, "id": report_ref.id, "message": "Report submitted."}
