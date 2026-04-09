@@ -115,7 +115,7 @@ jobs:
 
           GCP_GEMINI_API_KEY=\"$GCP_GEMINI_API_KEY\"
           GEMINI_MODEL=\"$GEMINI_MODEL\"
-          ADMIN_PASSWORD_HASH="$ADMIN_PASSWORD_HASH"          
+          ADMIN_PASSWORD_HASH=\"$ADMIN_PASSWORD_HASH\"
           EOF"
 
       - name: Deploy with Docker Compose
