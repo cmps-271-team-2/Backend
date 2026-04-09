@@ -3,7 +3,7 @@ from __future__ import annotations
 import random
 from datetime import datetime, timedelta, timezone
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Header
 from fastapi import HTTPException
 
 from app.services.firebase_service import get_firebase_service
@@ -26,7 +26,21 @@ from app.admin.dtos import (
     PagedResponseDTO,
 )
 
-router = APIRouter(tags=["admin"])
+from app.core.security import verify_admin_password
+
+
+def _require_admin(x_admin_password: str | None = Header(None, alias="X-Admin-Password")):
+    """FastAPI dependency that enforces the admin password header.
+
+    Clients must send `X-Admin-Password: <password>` on admin requests. The
+    provided password is checked against the bcrypt hash in
+    `ADMIN_PASSWORD_HASH` environment variable.
+    """
+    if not x_admin_password or not verify_admin_password(x_admin_password):
+        raise HTTPException(status_code=401, detail="Unauthorized: invalid admin password")
+
+
+router = APIRouter(tags=["admin"], dependencies=[Depends(_require_admin)])
 
 
 _jobs_rng = random.Random(20260222)
