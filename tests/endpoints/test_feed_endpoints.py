@@ -61,6 +61,9 @@ class FakeCollection:
     def limit(self, _n: int):
         return self
 
+    def order_by(self, _field, direction=None):
+        return self
+
     def document(self, doc_id: str | None = None):
         if doc_id is None:
             return self._doc_ref
@@ -180,3 +183,85 @@ def test_feed_uses_recommendation_prompt(monkeypatch):
     assert isinstance(payload, list)
     post_items = [item for item in payload if item.get("type") == "post"]
     assert any(p.get("id") == "sem-1" for p in post_items)
+
+
+def test_get_posts_excludes_non_indexed_posts(monkeypatch):
+    """GET /posts should only return posts that are indexed and approved."""
+    db = FakeDB()
+    approved_post = FakeDoc("po-approved", {
+        "text": "visible",
+        "createdAt": "2025-01-01",
+        "indexed": True,
+        "moderation": {"status": "approved", "allowed": True},
+    })
+    pending_post = FakeDoc("po-pending", {
+        "text": "hidden",
+        "createdAt": "2025-01-02",
+        "indexed": False,
+        "moderation": {"status": "pending", "allowed": False},
+    })
+    rejected_post = FakeDoc("po-rejected", {
+        "text": "rejected",
+        "createdAt": "2025-01-03",
+        "indexed": False,
+        "moderation": {"status": "rejected", "allowed": False},
+    })
+    db.collections["posts"] = FakeCollection(
+        docs=[approved_post, pending_post, rejected_post],
+        doc_ref=db.post_ref,
+    )
+
+    client = _client(monkeypatch, db)
+    response = client.get("/posts")
+    assert response.status_code == 200
+    payload = response.json()
+    assert len(payload) == 1
+    assert payload[0]["id"] == "po-approved"
+
+
+def test_feed_excludes_non_indexed_posts_in_fallback(monkeypatch):
+    """GET /feed fallback path (no recommendation prompt) should only return indexed+approved posts."""
+    db = FakeDB()
+    approved_post = FakeDoc("po-ok", {
+        "text": "visible",
+        "indexed": True,
+        "moderation": {"status": "approved", "allowed": True},
+    })
+    pending_post = FakeDoc("po-no", {
+        "text": "hidden",
+        "indexed": False,
+        "moderation": {"status": "pending", "allowed": False},
+    })
+    db.collections["posts"] = FakeCollection(
+        docs=[approved_post, pending_post],
+        doc_ref=db.post_ref,
+    )
+
+    client = _client(monkeypatch, db)
+    response = client.get("/feed?limit=20&user_id=guest&include_posts=true")
+    assert response.status_code == 200
+    payload = response.json()
+    post_items = [item for item in payload if item.get("type") == "post"]
+    assert len(post_items) == 1
+    assert post_items[0]["id"] == "po-ok"
+
+
+def test_feed_excludes_all_posts_when_none_indexed(monkeypatch):
+    """GET /feed should return no posts when all are pending/rejected."""
+    db = FakeDB()
+    pending_post = FakeDoc("po-pending", {
+        "text": "hidden",
+        "indexed": False,
+        "moderation": {"status": "pending", "allowed": False},
+    })
+    db.collections["posts"] = FakeCollection(
+        docs=[pending_post],
+        doc_ref=db.post_ref,
+    )
+
+    client = _client(monkeypatch, db)
+    response = client.get("/feed?limit=20&user_id=guest&include_posts=true")
+    assert response.status_code == 200
+    payload = response.json()
+    post_items = [item for item in payload if item.get("type") == "post"]
+    assert len(post_items) == 0

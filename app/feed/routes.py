@@ -32,6 +32,16 @@ def to_json_safe(value):
     return value
 
 
+def _is_post_visible(post: dict) -> bool:
+    """Return True only when a post has been indexed AND approved by moderation."""
+    if not post.get("indexed"):
+        return False
+    moderation = post.get("moderation") or {}
+    if isinstance(moderation, dict):
+        return str(moderation.get("status") or "").strip().lower() == "approved"
+    return False
+
+
 def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None):
     if weights is None:
         weights = {"profile": 1, "cafeteria": 1, "spot": 1, "post": 1}
@@ -199,12 +209,15 @@ def get_posts(
     sort_by: str = Query("createdAt"),
     order: Literal["asc", "desc"] = Query("desc")
 ):
-    posts = fetch_sorted_collection(
-        collection_name="posts",
-        allowed_sort_fields=["rating", "createdAt", "targetType"],
-        sort_by=sort_by,
-        order=order
-    )
+    posts = [
+        p for p in fetch_sorted_collection(
+            collection_name="posts",
+            allowed_sort_fields=["rating", "createdAt", "targetType"],
+            sort_by=sort_by,
+            order=order
+        )
+        if _is_post_visible(p)
+    ]
     return JSONResponse(content=jsonable_encoder(posts), status_code=200)
 
 
@@ -291,7 +304,11 @@ def get_feed(
 
     if include_posts:
         post_docs = db.collection("posts").limit(100).stream()
-        posts = [{"id": d.id, "type": "post", **to_json_safe(d.to_dict() or {})} for d in post_docs]
+        posts = [
+            {"id": d.id, "type": "post", **to_json_safe(d.to_dict() or {})}
+            for d in post_docs
+            if _is_post_visible(d.to_dict() or {})
+        ]
         items += posts
 
     if category:

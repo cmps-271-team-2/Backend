@@ -187,6 +187,16 @@ def _is_post_owned_by_user(post_data: dict[str, Any], uid: str, email: str, disp
     return False
 
 
+def _is_post_visible(post: dict) -> bool:
+    """Return True only when a post has been indexed AND approved by moderation."""
+    if not post.get("indexed"):
+        return False
+    moderation = post.get("moderation") or {}
+    if isinstance(moderation, dict):
+        return str(moderation.get("status") or "").strip().lower() == "approved"
+    return False
+
+
 def _to_json_safe(value: Any) -> Any:
     if isinstance(value, datetime):
         return value.isoformat()
@@ -399,12 +409,15 @@ def get_posts(
     order: Literal["asc", "desc"] = Query("desc"),
     authorization: Optional[str] = Header(default=None),
 ):
-    posts = fetch_sorted_collection(
-        collection_name="posts",
-        allowed_sort_fields=["rating", "createdAt", "targetType"],
-        sort_by=sort_by,
-        order=order,
-    )
+    posts = [
+        p for p in fetch_sorted_collection(
+            collection_name="posts",
+            allowed_sort_fields=["rating", "createdAt", "targetType"],
+            sort_by=sort_by,
+            order=order,
+        )
+        if _is_post_visible(p)
+    ]
 
     user = _get_current_user_optional(authorization)
     if user:
@@ -549,7 +562,11 @@ def get_feed(
             posts: list[dict[str, Any]] = [{"type": "post", **_to_json_safe(p)} for p in semantic_posts]
         else:
             post_docs = db.collection("posts").limit(100).stream()
-            posts = [{"id": d.id, "type": "post", **_to_json_safe(d.to_dict() or {})} for d in post_docs]
+            posts = [
+                {"id": d.id, "type": "post", **_to_json_safe(d.to_dict() or {})}
+                for d in post_docs
+                if _is_post_visible(d.to_dict() or {})
+            ]
         items += posts
 
     if category:
