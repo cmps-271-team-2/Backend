@@ -46,8 +46,13 @@ def verify_admin_password(plain_password: str) -> bool:
             salt = bytes.fromhex(salt_hex)
             expected = bytes.fromhex(hash_hex)
             derived = hashlib.pbkdf2_hmac("sha256", plain_password.encode("utf-8"), salt, iterations)
+            computed_hash = f"pbkdf2_sha256${iter_s}${salt_hex}${derived.hex()}"
+            print(f"[AdminAuth] stored hash : {stored}")
+            print(f"[AdminAuth] computed hash: {computed_hash}")
+            print(f"[AdminAuth] match: {hmac.compare_digest(derived, expected)}")
             return hmac.compare_digest(derived, expected)
-        except Exception:
+        except Exception as e:
+            print(f"[AdminAuth] PBKDF2 verify error: {e}")
             return False
 
     # Unknown format
