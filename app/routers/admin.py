@@ -26,17 +26,17 @@ from app.admin.dtos import (
     PagedResponseDTO,
 )
 
-from app.core.security import verify_admin_password
+from app.core.security import verify_admin_password, get_admin_hash
 
 
 def _require_admin(x_admin_password: str | None = Header(None, alias="X-Admin-Password")):
-    """FastAPI dependency that enforces the admin password header.
-
-    Clients must send `X-Admin-Password: <password>` on admin requests. The
-    provided password is checked against the bcrypt hash in
-    `ADMIN_PASSWORD_HASH` environment variable.
-    """
-    if not x_admin_password or not verify_admin_password(x_admin_password):
+    """FastAPI dependency that enforces the admin password header."""
+    if not get_admin_hash():
+        raise HTTPException(status_code=500, detail="Admin password not configured on server")
+    if not x_admin_password:
+        raise HTTPException(status_code=401, detail="Unauthorized: missing X-Admin-Password header")
+    ok, reason = verify_admin_password(x_admin_password)
+    if not ok:
         raise HTTPException(status_code=401, detail="Unauthorized: invalid admin password")
 
 
