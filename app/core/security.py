@@ -27,16 +27,16 @@ def verify_admin_password(plain_password: str) -> tuple[bool, str]:
         logger.error("[AdminAuth] ADMIN_PASSWORD_HASH is not set in environment — returning 500")
         return False, "not_configured"
 
-    # Support PBKDF2-stored format: pbkdf2_sha256$iterations$salt_hex$hash_hex
-    if stored.startswith("pbkdf2_sha256$"):
+    # Support PBKDF2-stored format: pbkdf2_sha256:iterations:salt_hex:hash_hex
+    if stored.startswith("pbkdf2_sha256:"):
         try:
-            parts = stored.split("$", 3)  # ["pbkdf2_sha256", iterations, salt_hex, hash_hex]
+            parts = stored.split(":", 3)  # ["pbkdf2_sha256", iterations, salt_hex, hash_hex]
             iter_s, salt_hex, hash_hex = parts[1], parts[2], parts[3]
             iterations = int(iter_s)
             salt = bytes.fromhex(salt_hex)
             expected = bytes.fromhex(hash_hex)
             derived = hashlib.pbkdf2_hmac("sha256", plain_password.encode("utf-8"), salt, iterations)
-            computed_hash = f"pbkdf2_sha256${iter_s}${salt_hex}${derived.hex()}"
+            computed_hash = f"pbkdf2_sha256:{iter_s}:{salt_hex}:{derived.hex()}"
             match = hmac.compare_digest(derived, expected)
             logger.info("[AdminAuth] stored hash : %s", stored)
             logger.info("[AdminAuth] computed hash: %s", computed_hash)
@@ -46,5 +46,5 @@ def verify_admin_password(plain_password: str) -> tuple[bool, str]:
             logger.error("[AdminAuth] PBKDF2 verify error: %s", e)
             return False, "invalid"
 
-    logger.error("[AdminAuth] Unknown hash format — must start with 'pbkdf2_sha256$'. Got: %s", stored[:20])
+    logger.error("[AdminAuth] Unknown hash format — must start with 'pbkdf2_sha256:'. Got: %s", stored[:20])
     return False, "not_configured"

@@ -21,7 +21,7 @@ def hash_password(pw: str) -> str:
     iterations = 200_000
     salt = secrets.token_bytes(16)
     derived = hashlib.pbkdf2_hmac("sha256", pw.encode("utf-8"), salt, iterations)
-    return f"pbkdf2_sha256${iterations}${salt.hex()}${derived.hex()}"
+    return f"pbkdf2_sha256:{iterations}:{salt.hex()}:{derived.hex()}"
 
 
 def main():
