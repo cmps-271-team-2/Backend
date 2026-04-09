@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate a bcrypt hash for an admin password.
+"""Generate a PBKDF2-SHA256 hash for an admin password.
 
 Usage:
   - Run without args to generate a random password and print the hash.
@@ -10,7 +10,7 @@ Do NOT commit the password or hash to source control; copy the hash to your
 """
 import sys
 import secrets
-import bcrypt
+import hashlib
 
 
 def generate_password(length: int = 12) -> str:
@@ -18,7 +18,10 @@ def generate_password(length: int = 12) -> str:
 
 
 def hash_password(pw: str) -> str:
-    return bcrypt.hashpw(pw.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
+    iterations = 200_000
+    salt = secrets.token_bytes(16)
+    derived = hashlib.pbkdf2_hmac("sha256", pw.encode("utf-8"), salt, iterations)
+    return f"pbkdf2_sha256${iterations}${salt.hex()}${derived.hex()}"
 
 
 def main():

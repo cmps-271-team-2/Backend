@@ -2,11 +2,6 @@ import secrets
 import os
 import logging
 from typing import Optional
-
-try:
-    import bcrypt
-except Exception:
-    bcrypt = None
 import hashlib
 import hmac
 
@@ -32,17 +27,7 @@ def verify_admin_password(plain_password: str) -> tuple[bool, str]:
         logger.error("[AdminAuth] ADMIN_PASSWORD_HASH is not set in environment — returning 500")
         return False, "not_configured"
 
-    # If bcrypt is available and the stored hash looks like bcrypt, use it.
-    if bcrypt and (stored.startswith("$2a$") or stored.startswith("$2b$") or stored.startswith("$2y$")):
-        try:
-            result = bcrypt.checkpw(plain_password.encode("utf-8"), stored.encode("utf-8"))
-            logger.info("[AdminAuth] bcrypt check result: %s", result)
-            return result, "ok" if result else "invalid"
-        except Exception as e:
-            logger.error("[AdminAuth] bcrypt error: %s", e)
-            return False, "invalid"
-
-    # Support a PBKDF2-stored format: pbkdf2_sha256$iterations$salt_hex$hash_hex
+    # Support PBKDF2-stored format: pbkdf2_sha256$iterations$salt_hex$hash_hex
     if stored.startswith("pbkdf2_sha256$"):
         try:
             parts = stored.split("$", 3)  # ["pbkdf2_sha256", iterations, salt_hex, hash_hex]
@@ -61,5 +46,5 @@ def verify_admin_password(plain_password: str) -> tuple[bool, str]:
             logger.error("[AdminAuth] PBKDF2 verify error: %s", e)
             return False, "invalid"
 
-    logger.error("[AdminAuth] Unknown hash format in ADMIN_PASSWORD_HASH")
+    logger.error("[AdminAuth] Unknown hash format — must start with 'pbkdf2_sha256$'. Got: %s", stored[:20])
     return False, "not_configured"
