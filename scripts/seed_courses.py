@@ -48,20 +48,23 @@ def seed_courses():
     for c in courses:
         code = c.get("code")
         subject = c.get("subject", "")
-        number = c.get("number", "")
+        course_number = c.get("course_number", "")
         title = c.get("title", "")
+        professors = c.get("professors", [])
 
         if not code:
             continue
 
-        doc_id = format_id(code)
+        # Prefer course_id from JSON, fallback to formatted code
+        doc_id = c.get("course_id") or format_id(code)
         ref = db.collection("courses").document(doc_id)
 
         batch.set(ref, {
             "code": code,
+            "subject": subject,
+            "course_number": course_number,
             "title": title,
-            "department": subject,
-            "number": number,
+            "professors": professors,
             "ratingAvg": 0,
             "ratingCount": 0
         }, merge=True)

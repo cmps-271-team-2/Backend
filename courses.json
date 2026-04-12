@@ -1,3222 +1,5814 @@
 [
   {
+    "course_id": "BIOC_255",
     "code": "BIOC 255",
     "subject": "BIOC",
-    "number": "255"
+    "course_number": "255",
+    "title": "Biochemistry for MLSP",
+    "professors": [],
+    "raw_line": "Biochemistry for MLSP - 23079 - BIOC 255 - 0"
   },
   {
+    "course_id": "BIOC_303A",
     "code": "BIOC 303A",
     "subject": "BIOC",
-    "number": "303A"
+    "course_number": "303A",
+    "title": "Molecular Biology of Cancer I",
+    "professors": [],
+    "raw_line": "Molecular Biology of Cancer I - 23186 - BIOC 303A - 0"
   },
   {
+    "course_id": "BIOC_303B",
     "code": "BIOC 303B",
     "subject": "BIOC",
-    "number": "303B"
+    "course_number": "303B",
+    "title": "Molecular Biology of Cancer II",
+    "professors": [],
+    "raw_line": "Molecular Biology of Cancer II - 23187 - BIOC 303B - 0"
   },
   {
+    "course_id": "BIOC_305A",
     "code": "BIOC 305A",
     "subject": "BIOC",
-    "number": "305A"
+    "course_number": "305A",
+    "title": "Biochemistry Research Seminar",
+    "professors": [],
+    "raw_line": "Biochemistry Research Seminar - 23188 - BIOC 305A - 0"
   },
   {
+    "course_id": "BIOC_305B",
     "code": "BIOC 305B",
     "subject": "BIOC",
-    "number": "305B"
+    "course_number": "305B",
+    "title": "Biochemistry Research Seminar",
+    "professors": [],
+    "raw_line": "Biochemistry Research Seminar - 23190 - BIOC 305B - 0"
   },
   {
+    "course_id": "BIOC_305C",
     "code": "BIOC 305C",
     "subject": "BIOC",
-    "number": "305C"
+    "course_number": "305C",
+    "title": "Biochemistry Research Seminar",
+    "professors": [],
+    "raw_line": "Biochemistry Research Seminar - 23191 - BIOC 305C - 0"
   },
   {
+    "course_id": "BIOC_306",
     "code": "BIOC 306",
     "subject": "BIOC",
-    "number": "306"
+    "course_number": "306",
+    "title": "Mediators in Vasc.Bio.& Inflam",
+    "professors": [],
+    "raw_line": "Mediators in Vasc.Bio.& Inflam - 23192 - BIOC 306 - 0"
   },
   {
+    "course_id": "BIOC_317H",
     "code": "BIOC 317H",
     "subject": "BIOC",
-    "number": "317H"
+    "course_number": "317H",
+    "title": "Sp.TP: Biochemical Toxicology",
+    "professors": [],
+    "raw_line": "Sp.TP: Biochemical Toxicology - 23196 - BIOC 317H - 0"
   },
   {
+    "course_id": "BIOC_323",
     "code": "BIOC 323",
     "subject": "BIOC",
-    "number": "323"
+    "course_number": "323",
+    "title": "Cellular Metabol.& Regulation",
+    "professors": [],
+    "raw_line": "Cellular Metabol.& Regulation - 23193 - BIOC 323 - 0"
   },
   {
+    "course_id": "BIOC_326B",
     "code": "BIOC 326B",
     "subject": "BIOC",
-    "number": "326B"
+    "course_number": "326B",
+    "title": "Bioinfot.Tools &Applin Genomic",
+    "professors": [],
+    "raw_line": "Bioinfot.Tools &Applin Genomic - 23195 - BIOC 326B - 0"
   },
   {
+    "course_id": "BIOC_330",
     "code": "BIOC 330",
     "subject": "BIOC",
-    "number": "330"
+    "course_number": "330",
+    "title": "TranslationalGenetics&Genomics",
+    "professors": [],
+    "raw_line": "TranslationalGenetics&Genomics - 23197 - BIOC 330 - 0"
   },
   {
+    "course_id": "BIOC_395A",
     "code": "BIOC 395A",
     "subject": "BIOC",
-    "number": "395A"
+    "course_number": "395A",
+    "title": "Comprehensive Exam",
+    "professors": [],
+    "raw_line": "Comprehensive Exam - 23198 - BIOC 395A - 0"
   },
   {
+    "course_id": "BIOC_399",
     "code": "BIOC 399",
     "subject": "BIOC",
-    "number": "399"
+    "course_number": "399",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 23199 - BIOC 399 - 0"
   },
   {
+    "course_id": "BIOC_399A",
     "code": "BIOC 399A",
     "subject": "BIOC",
-    "number": "399A"
+    "course_number": "399A",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 23200 - BIOC 399A - 0"
   },
   {
+    "course_id": "BIOC_399B",
     "code": "BIOC 399B",
     "subject": "BIOC",
-    "number": "399B"
+    "course_number": "399B",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 23201 - BIOC 399B - 0"
   },
   {
+    "course_id": "BIOC_399C",
     "code": "BIOC 399C",
     "subject": "BIOC",
-    "number": "399C"
+    "course_number": "399C",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 23202 - BIOC 399C - 0"
   },
   {
+    "course_id": "BIOL_101",
     "code": "BIOL 101",
     "subject": "BIOL",
-    "number": "101"
+    "course_number": "101",
+    "title": "Basic Concepts in Biology",
+    "professors": [],
+    "raw_line": "Basic Concepts in Biology - 20230 - BIOL 101 - 1"
   },
   {
+    "course_id": "BIOL_102",
     "code": "BIOL 102",
     "subject": "BIOL",
-    "number": "102"
+    "course_number": "102",
+    "title": "Basic Concepts in Biology II",
+    "professors": [],
+    "raw_line": "Basic Concepts in Biology II - 20231 - BIOL 102 - 1"
   },
   {
+    "course_id": "BIOL_104",
     "code": "BIOL 104",
     "subject": "BIOL",
-    "number": "104"
+    "course_number": "104",
+    "title": "Introduct.to Organismal Biolo.",
+    "professors": [],
+    "raw_line": "Introduct.to Organismal Biolo. - 20232 - BIOL 104 - 1"
   },
   {
+    "course_id": "BIOL_106",
     "code": "BIOL 106",
     "subject": "BIOL",
-    "number": "106"
+    "course_number": "106",
+    "title": "Contemp Issues in Biology",
+    "professors": [],
+    "raw_line": "Contemp Issues in Biology - 20233 - BIOL 106 - 1"
   },
   {
+    "course_id": "BIOL_200",
     "code": "BIOL 200",
     "subject": "BIOL",
-    "number": "200"
+    "course_number": "200",
+    "title": "Diversity of Life",
+    "professors": [],
+    "raw_line": "Diversity of Life - 20234 - BIOL 200 - B1"
   },
   {
+    "course_id": "BIOL_201",
     "code": "BIOL 201",
     "subject": "BIOL",
-    "number": "201"
+    "course_number": "201",
+    "title": "General Biology I",
+    "professors": [],
+    "raw_line": "General Biology I - 20237 - BIOL 201 - B1"
   },
   {
+    "course_id": "BIOL_202",
     "code": "BIOL 202",
     "subject": "BIOL",
-    "number": "202"
+    "course_number": "202",
+    "title": "General Biology II",
+    "professors": [],
+    "raw_line": "General Biology II - 20245 - BIOL 202 - B1"
   },
   {
+    "course_id": "BIOL_209",
     "code": "BIOL 209",
     "subject": "BIOL",
-    "number": "209"
+    "course_number": "209",
+    "title": "Concepts and Connections",
+    "professors": [],
+    "raw_line": "Concepts and Connections - 20265 - BIOL 209 - 1"
   },
   {
+    "course_id": "BIOL_210",
     "code": "BIOL 210",
     "subject": "BIOL",
-    "number": "210"
+    "course_number": "210",
+    "title": "Human Biology",
+    "professors": [],
+    "raw_line": "Human Biology - 20267 - BIOL 210 - 1"
   },
   {
+    "course_id": "BIOL_220",
     "code": "BIOL 220",
     "subject": "BIOL",
-    "number": "220"
+    "course_number": "220",
+    "title": "Introductory Biochemistry",
+    "professors": [],
+    "raw_line": "Introductory Biochemistry - 20269 - BIOL 220 - 1"
   },
   {
+    "course_id": "BIOL_223",
     "code": "BIOL 223",
     "subject": "BIOL",
-    "number": "223"
+    "course_number": "223",
+    "title": "Genetics",
+    "professors": [],
+    "raw_line": "Genetics - 20271 - BIOL 223 - B1"
   },
   {
+    "course_id": "BIOL_224",
     "code": "BIOL 224",
     "subject": "BIOL",
-    "number": "224"
+    "course_number": "224",
+    "title": "Microbiology",
+    "professors": [],
+    "raw_line": "Microbiology - 20280 - BIOL 224 - B1"
   },
   {
+    "course_id": "BIOL_240",
     "code": "BIOL 240",
     "subject": "BIOL",
-    "number": "240"
+    "course_number": "240",
+    "title": "Animal Behavior",
+    "professors": [],
+    "raw_line": "Animal Behavior - 20286 - BIOL 240 - 1"
   },
   {
+    "course_id": "BIOL_244",
     "code": "BIOL 244",
     "subject": "BIOL",
-    "number": "244"
+    "course_number": "244",
+    "title": "Introduction to Neurobiology",
+    "professors": [],
+    "raw_line": "Introduction to Neurobiology - 20287 - BIOL 244 - 1"
   },
   {
+    "course_id": "BIOL_244L",
     "code": "BIOL 244L",
     "subject": "BIOL",
-    "number": "244L"
+    "course_number": "244L",
+    "title": "Neurobiology Lab",
+    "professors": [],
+    "raw_line": "Neurobiology Lab - 20288 - BIOL 244L - B1"
   },
   {
+    "course_id": "BIOL_246",
     "code": "BIOL 246",
     "subject": "BIOL",
-    "number": "246"
+    "course_number": "246",
+    "title": "Marine Biology",
+    "professors": [],
+    "raw_line": "Marine Biology - 20289 - BIOL 246 - B1"
   },
   {
+    "course_id": "BIOL_250",
     "code": "BIOL 250",
     "subject": "BIOL",
-    "number": "250"
+    "course_number": "250",
+    "title": "Biosphere",
+    "professors": [],
+    "raw_line": "Biosphere - 20293 - BIOL 250 - 1"
   },
   {
+    "course_id": "BIOL_252",
     "code": "BIOL 252",
     "subject": "BIOL",
-    "number": "252"
+    "course_number": "252",
+    "title": "Ecology",
+    "professors": [],
+    "raw_line": "Ecology - 20294 - BIOL 252 - B1"
   },
   {
+    "course_id": "BIOL_254",
     "code": "BIOL 254",
     "subject": "BIOL",
-    "number": "254"
+    "course_number": "254",
+    "title": "Evolution",
+    "professors": [],
+    "raw_line": "Evolution - 20300 - BIOL 254 - 1"
   },
   {
+    "course_id": "BIOL_258",
     "code": "BIOL 258",
     "subject": "BIOL",
-    "number": "258"
+    "course_number": "258",
+    "title": "Introduction to Aquaculture",
+    "professors": [],
+    "raw_line": "Introduction to Aquaculture - 20301 - BIOL 258 - 1"
   },
   {
+    "course_id": "BIOL_260",
     "code": "BIOL 260",
     "subject": "BIOL",
-    "number": "260"
+    "course_number": "260",
+    "title": "Cell Biology",
+    "professors": [],
+    "raw_line": "Cell Biology - 20302 - BIOL 260 - B1"
   },
   {
+    "course_id": "BIOL_261",
     "code": "BIOL 261",
     "subject": "BIOL",
-    "number": "261"
+    "course_number": "261",
+    "title": "Biology of Cancer",
+    "professors": [],
+    "raw_line": "Biology of Cancer - 20308 - BIOL 261 - 1"
   },
   {
+    "course_id": "BIOL_263",
     "code": "BIOL 263",
     "subject": "BIOL",
-    "number": "263"
+    "course_number": "263",
+    "title": "Immunology",
+    "professors": [],
+    "raw_line": "Immunology - 20309 - BIOL 263 - 1"
   },
   {
+    "course_id": "BIOL_268",
     "code": "BIOL 268",
     "subject": "BIOL",
-    "number": "268"
+    "course_number": "268",
+    "title": "Introduction to Biotechnology",
+    "professors": [],
+    "raw_line": "Introduction to Biotechnology - 20310 - BIOL 268 - 1"
   },
   {
+    "course_id": "BIOL_270",
     "code": "BIOL 270",
     "subject": "BIOL",
-    "number": "270"
+    "course_number": "270",
+    "title": "Plant Physiology",
+    "professors": [],
+    "raw_line": "Plant Physiology - 20312 - BIOL 270 - B2"
   },
   {
+    "course_id": "BIOL_273",
     "code": "BIOL 273",
     "subject": "BIOL",
-    "number": "273"
+    "course_number": "273",
+    "title": "Economic Plants",
+    "professors": [],
+    "raw_line": "Economic Plants - 20317 - BIOL 273 - 1"
   },
   {
+    "course_id": "BIOL_281",
     "code": "BIOL 281",
     "subject": "BIOL",
-    "number": "281"
+    "course_number": "281",
+    "title": "Ichthyology",
+    "professors": [],
+    "raw_line": "Ichthyology - 20318 - BIOL 281 - 1"
   },
   {
+    "course_id": "BIOL_286",
     "code": "BIOL 286",
     "subject": "BIOL",
-    "number": "286"
+    "course_number": "286",
+    "title": "Entomology",
+    "professors": [],
+    "raw_line": "Entomology - 20319 - BIOL 286 - B1"
   },
   {
+    "course_id": "BIOL_291",
     "code": "BIOL 291",
     "subject": "BIOL",
-    "number": "291"
+    "course_number": "291",
+    "title": "Undergraduate Tutorial",
+    "professors": [],
+    "raw_line": "Undergraduate Tutorial - 20325 - BIOL 291 - 1"
   },
   {
+    "course_id": "BIOL_292",
     "code": "BIOL 292",
     "subject": "BIOL",
-    "number": "292"
+    "course_number": "292",
+    "title": "Undergraduate Tutorial",
+    "professors": [],
+    "raw_line": "Undergraduate Tutorial - 20337 - BIOL 292 - 1"
   },
   {
+    "course_id": "BIOL_293",
     "code": "BIOL 293",
     "subject": "BIOL",
-    "number": "293"
+    "course_number": "293",
+    "title": "Undergraduate Seminar",
+    "professors": [],
+    "raw_line": "Undergraduate Seminar - 20349 - BIOL 293 - 1"
   },
   {
+    "course_id": "BIOL_296",
     "code": "BIOL 296",
     "subject": "BIOL",
-    "number": "296"
+    "course_number": "296",
+    "title": "Exit Survey",
+    "professors": [],
+    "raw_line": "Exit Survey - 20360 - BIOL 296 - 1"
   },
   {
+    "course_id": "BIOL_315",
     "code": "BIOL 315",
     "subject": "BIOL",
-    "number": "315"
+    "course_number": "315",
+    "title": "Research Methods in Biology",
+    "professors": [],
+    "raw_line": "Research Methods in Biology - 20361 - BIOL 315 - 1"
   },
   {
+    "course_id": "BIOL_332",
     "code": "BIOL 332",
     "subject": "BIOL",
-    "number": "332"
+    "course_number": "332",
+    "title": "Advanced Cell Biology",
+    "professors": [],
+    "raw_line": "Advanced Cell Biology - 20362 - BIOL 332 - 1"
   },
   {
+    "course_id": "BIOL_390AC",
     "code": "BIOL 390AC",
     "subject": "BIOL",
-    "number": "390AC"
+    "course_number": "390AC",
+    "title": "Sp.Tp. Ichthyology",
+    "professors": [],
+    "raw_line": "Sp.Tp. Ichthyology - 23371 - BIOL 390AC - 1"
   },
   {
+    "course_id": "BIOL_390AI",
     "code": "BIOL 390AI",
     "subject": "BIOL",
-    "number": "390AI"
+    "course_number": "390AI",
+    "title": "ST. Biology of Cancer",
+    "professors": [],
+    "raw_line": "ST. Biology of Cancer - 23282 - BIOL 390AI - 1"
   },
   {
+    "course_id": "BIOL_390V",
     "code": "BIOL 390V",
     "subject": "BIOL",
-    "number": "390V"
+    "course_number": "390V",
+    "title": "Sp.Tp. Marine Biology",
+    "professors": [],
+    "raw_line": "Sp.Tp. Marine Biology - 23372 - BIOL 390V - 1"
   },
   {
+    "course_id": "BIOL_391",
     "code": "BIOL 391",
     "subject": "BIOL",
-    "number": "391"
+    "course_number": "391",
+    "title": "Tutorial",
+    "professors": [],
+    "raw_line": "Tutorial - 20363 - BIOL 391 - 1"
   },
   {
+    "course_id": "BIOL_392",
     "code": "BIOL 392",
     "subject": "BIOL",
-    "number": "392"
+    "course_number": "392",
+    "title": "Tutorial",
+    "professors": [],
+    "raw_line": "Tutorial - 20375 - BIOL 392 - 1"
   },
   {
+    "course_id": "BIOL_393",
     "code": "BIOL 393",
     "subject": "BIOL",
-    "number": "393"
+    "course_number": "393",
+    "title": "Seminar",
+    "professors": [],
+    "raw_line": "Seminar - 20387 - BIOL 393 - 1"
   },
   {
+    "course_id": "BIOL_395A",
     "code": "BIOL 395A",
     "subject": "BIOL",
-    "number": "395A"
+    "course_number": "395A",
+    "title": "Comprehensive Exam",
+    "professors": [],
+    "raw_line": "Comprehensive Exam - 20388 - BIOL 395A - 1"
   },
   {
+    "course_id": "BIOL_399",
     "code": "BIOL 399",
     "subject": "BIOL",
-    "number": "399"
+    "course_number": "399",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20389 - BIOL 399 - 1"
   },
   {
+    "course_id": "BIOL_399A",
     "code": "BIOL 399A",
     "subject": "BIOL",
-    "number": "399A"
+    "course_number": "399A",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20401 - BIOL 399A - 1"
   },
   {
+    "course_id": "BIOL_399B",
     "code": "BIOL 399B",
     "subject": "BIOL",
-    "number": "399B"
+    "course_number": "399B",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20413 - BIOL 399B - 1"
   },
   {
+    "course_id": "BIOL_399C",
     "code": "BIOL 399C",
     "subject": "BIOL",
-    "number": "399C"
+    "course_number": "399C",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20425 - BIOL 399C - 1"
   },
   {
+    "course_id": "BIOL_399D",
     "code": "BIOL 399D",
     "subject": "BIOL",
-    "number": "399D"
+    "course_number": "399D",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 23321 - BIOL 399D - 1"
   },
   {
+    "course_id": "BIOL_480",
     "code": "BIOL 480",
     "subject": "BIOL",
-    "number": "480"
+    "course_number": "480",
+    "title": "Qualifying Exam I:Compr.Exam",
+    "professors": [],
+    "raw_line": "Qualifying Exam I:Compr.Exam - 20437 - BIOL 480 - 1"
   },
   {
+    "course_id": "BIOL_481",
     "code": "BIOL 481",
     "subject": "BIOL",
-    "number": "481"
+    "course_number": "481",
+    "title": "Qual.Exam II:Def.Thesis Prop",
+    "professors": [],
+    "raw_line": "Qual.Exam II:Def.Thesis Prop - 20438 - BIOL 481 - 1"
   },
   {
+    "course_id": "BIOL_484",
     "code": "BIOL 484",
     "subject": "BIOL",
-    "number": "484"
+    "course_number": "484",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20439 - BIOL 484 - 1"
   },
   {
+    "course_id": "BIOL_484A",
     "code": "BIOL 484A",
     "subject": "BIOL",
-    "number": "484A"
+    "course_number": "484A",
+    "title": "PH.D Thesis",
+    "professors": [],
+    "raw_line": "PH.D Thesis - 20447 - BIOL 484A - 1"
   },
   {
+    "course_id": "BIOL_484B",
     "code": "BIOL 484B",
     "subject": "BIOL",
-    "number": "484B"
+    "course_number": "484B",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20455 - BIOL 484B - 1"
   },
   {
+    "course_id": "BIOL_484C",
     "code": "BIOL 484C",
     "subject": "BIOL",
-    "number": "484C"
+    "course_number": "484C",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20463 - BIOL 484C - 1"
   },
   {
+    "course_id": "BIOL_491",
     "code": "BIOL 491",
     "subject": "BIOL",
-    "number": "491"
+    "course_number": "491",
+    "title": "Tutorial",
+    "professors": [],
+    "raw_line": "Tutorial - 20471 - BIOL 491 - 1"
   },
   {
+    "course_id": "BIOL_493",
     "code": "BIOL 493",
     "subject": "BIOL",
-    "number": "493"
+    "course_number": "493",
+    "title": "CMBL Seminar",
+    "professors": [],
+    "raw_line": "CMBL Seminar - 20472 - BIOL 493 - 1"
   },
   {
+    "course_id": "BIOL_493A",
     "code": "BIOL 493A",
     "subject": "BIOL",
-    "number": "493A"
+    "course_number": "493A",
+    "title": "CMBL Seminar",
+    "professors": [],
+    "raw_line": "CMBL Seminar - 20473 - BIOL 493A - 1"
   },
   {
+    "course_id": "BIOL_494",
     "code": "BIOL 494",
     "subject": "BIOL",
-    "number": "494"
+    "course_number": "494",
+    "title": "CMBL Laboratory Rotation",
+    "professors": [],
+    "raw_line": "CMBL Laboratory Rotation - 20474 - BIOL 494 - 1"
   },
   {
+    "course_id": "BMEN_502",
     "code": "BMEN 502",
     "subject": "BMEN",
-    "number": "502"
+    "course_number": "502",
+    "title": "Bioengineering Design Capstone",
+    "professors": [],
+    "raw_line": "Bioengineering Design Capstone - 20475 - BMEN 502 - 1"
   },
   {
+    "course_id": "BMEN_603",
     "code": "BMEN 603",
     "subject": "BMEN",
-    "number": "603"
+    "course_number": "603",
+    "title": "Tissue Engineering",
+    "professors": [],
+    "raw_line": "Tissue Engineering - 20476 - BMEN 603 - 1"
   },
   {
+    "course_id": "BMEN_604",
     "code": "BMEN 604",
     "subject": "BMEN",
-    "number": "604"
+    "course_number": "604",
+    "title": "Eng'g of Drug Delivery Systems",
+    "professors": [],
+    "raw_line": "Eng'g of Drug Delivery Systems - 20477 - BMEN 604 - 1"
   },
   {
+    "course_id": "BMEN_606",
     "code": "BMEN 606",
     "subject": "BMEN",
-    "number": "606"
+    "course_number": "606",
+    "title": "Nanobiosensors",
+    "professors": [],
+    "raw_line": "Nanobiosensors - 20478 - BMEN 606 - 1"
   },
   {
+    "course_id": "BMEN_611",
     "code": "BMEN 611",
     "subject": "BMEN",
-    "number": "611"
+    "course_number": "611",
+    "title": "Comp.Modeling in Biomechanics",
+    "professors": [],
+    "raw_line": "Comp.Modeling in Biomechanics - 20479 - BMEN 611 - 1"
   },
   {
+    "course_id": "BMEN_671",
     "code": "BMEN 671",
     "subject": "BMEN",
-    "number": "671"
+    "course_number": "671",
+    "title": "PhD Lab Rotation",
+    "professors": [],
+    "raw_line": "PhD Lab Rotation - 20480 - BMEN 671 - 1"
   },
   {
+    "course_id": "BMEN_673L",
     "code": "BMEN 673L",
     "subject": "BMEN",
-    "number": "673L"
+    "course_number": "673L",
+    "title": "Biomedical Engineering Lab",
+    "professors": [],
+    "raw_line": "Biomedical Engineering Lab - 20481 - BMEN 673L - 1"
   },
   {
+    "course_id": "BMEN_675",
     "code": "BMEN 675",
     "subject": "BMEN",
-    "number": "675"
+    "course_number": "675",
+    "title": "Approved Experience",
+    "professors": [],
+    "raw_line": "Approved Experience - 23316 - BMEN 675 - 1"
   },
   {
+    "course_id": "BMEN_799",
     "code": "BMEN 799",
     "subject": "BMEN",
-    "number": "799"
+    "course_number": "799",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20482 - BMEN 799 - 1"
   },
   {
+    "course_id": "BMEN_799A",
     "code": "BMEN 799A",
     "subject": "BMEN",
-    "number": "799A"
+    "course_number": "799A",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20483 - BMEN 799A - 1"
   },
   {
+    "course_id": "BMEN_799B",
     "code": "BMEN 799B",
     "subject": "BMEN",
-    "number": "799B"
+    "course_number": "799B",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20484 - BMEN 799B - 1"
   },
   {
+    "course_id": "BMEN_799C",
     "code": "BMEN 799C",
     "subject": "BMEN",
-    "number": "799C"
+    "course_number": "799C",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20485 - BMEN 799C - 1"
   },
   {
+    "course_id": "BMEN_799D",
     "code": "BMEN 799D",
     "subject": "BMEN",
-    "number": "799D"
+    "course_number": "799D",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20486 - BMEN 799D - 1"
   },
   {
+    "course_id": "BMEN_799F",
     "code": "BMEN 799F",
     "subject": "BMEN",
-    "number": "799F"
+    "course_number": "799F",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 23278 - BMEN 799F - 1"
   },
   {
+    "course_id": "BMEN_799T",
     "code": "BMEN 799T",
     "subject": "BMEN",
-    "number": "799T"
+    "course_number": "799T",
+    "title": "MS Comprehensive Exam",
+    "professors": [],
+    "raw_line": "MS Comprehensive Exam - 20487 - BMEN 799T - 1"
   },
   {
+    "course_id": "BMEN_980",
     "code": "BMEN 980",
     "subject": "BMEN",
-    "number": "980"
+    "course_number": "980",
+    "title": "Qualifying Exam I:Compr.Exam",
+    "professors": [],
+    "raw_line": "Qualifying Exam I:Compr.Exam - 20488 - BMEN 980 - 1"
   },
   {
+    "course_id": "BMEN_981",
     "code": "BMEN 981",
     "subject": "BMEN",
-    "number": "981"
+    "course_number": "981",
+    "title": "Qualif.Exam II:Def.ThesisProp",
+    "professors": [],
+    "raw_line": "Qualif.Exam II:Def.ThesisProp - 20489 - BMEN 981 - 1"
   },
   {
+    "course_id": "BMEN_982",
     "code": "BMEN 982",
     "subject": "BMEN",
-    "number": "982"
+    "course_number": "982",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20490 - BMEN 982 - 1"
   },
   {
+    "course_id": "BMEN_982A",
     "code": "BMEN 982A",
     "subject": "BMEN",
-    "number": "982A"
+    "course_number": "982A",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20491 - BMEN 982A - 1"
   },
   {
+    "course_id": "BMEN_982B",
     "code": "BMEN 982B",
     "subject": "BMEN",
-    "number": "982B"
+    "course_number": "982B",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20492 - BMEN 982B - 1"
   },
   {
+    "course_id": "BMEN_982E",
     "code": "BMEN 982E",
     "subject": "BMEN",
-    "number": "982E"
+    "course_number": "982E",
+    "title": "PH.D Thesis",
+    "professors": [],
+    "raw_line": "PH.D Thesis - 20493 - BMEN 982E - 1"
   },
   {
+    "course_id": "BMEN_982F",
     "code": "BMEN 982F",
     "subject": "BMEN",
-    "number": "982F"
+    "course_number": "982F",
+    "title": "PH.D Thesis",
+    "professors": [],
+    "raw_line": "PH.D Thesis - 20494 - BMEN 982F - 1"
   },
   {
+    "course_id": "BMEN_982I",
     "code": "BMEN 982I",
     "subject": "BMEN",
-    "number": "982I"
+    "course_number": "982I",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 23586 - BMEN 982I - 1"
   },
   {
+    "course_id": "BMEN_983",
     "code": "BMEN 983",
     "subject": "BMEN",
-    "number": "983"
+    "course_number": "983",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20495 - BMEN 983 - 1"
   },
   {
+    "course_id": "BMEN_983E",
     "code": "BMEN 983E",
     "subject": "BMEN",
-    "number": "983E"
+    "course_number": "983E",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 23238 - BMEN 983E - 1"
   },
   {
+    "course_id": "BMEN_984",
     "code": "BMEN 984",
     "subject": "BMEN",
-    "number": "984"
+    "course_number": "984",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20496 - BMEN 984 - 1"
   },
   {
+    "course_id": "BMEN_986",
     "code": "BMEN 986",
     "subject": "BMEN",
-    "number": "986"
+    "course_number": "986",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20497 - BMEN 986 - 1"
   },
   {
+    "course_id": "BMEN_986B",
     "code": "BMEN 986B",
     "subject": "BMEN",
-    "number": "986B"
+    "course_number": "986B",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 23504 - BMEN 986B - 1"
   },
   {
+    "course_id": "BMEN_986C",
     "code": "BMEN 986C",
     "subject": "BMEN",
-    "number": "986C"
+    "course_number": "986C",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20498 - BMEN 986C - 1"
   },
   {
+    "course_id": "BMEN_986G",
     "code": "BMEN 986G",
     "subject": "BMEN",
-    "number": "986G"
+    "course_number": "986G",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20499 - BMEN 986G - 1"
   },
   {
+    "course_id": "BMEN_986I",
     "code": "BMEN 986I",
     "subject": "BMEN",
-    "number": "986I"
+    "course_number": "986I",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 23483 - BMEN 986I - 1"
   },
   {
+    "course_id": "BMEN_987",
     "code": "BMEN 987",
     "subject": "BMEN",
-    "number": "987"
+    "course_number": "987",
+    "title": "PhD Thesis Defense",
+    "professors": [],
+    "raw_line": "PhD Thesis Defense - 20500 - BMEN 987 - 1"
   },
   {
+    "course_id": "BUSS_101",
     "code": "BUSS 101",
     "subject": "BUSS",
-    "number": "101"
+    "course_number": "101",
+    "title": "Introduction to Business",
+    "professors": [],
+    "raw_line": "Introduction to Business - 20501 - BUSS 101 - 1"
   },
   {
+    "course_id": "BUSS_200",
     "code": "BUSS 200",
     "subject": "BUSS",
-    "number": "200"
+    "course_number": "200",
+    "title": "Business Statistics",
+    "professors": [],
+    "raw_line": "Business Statistics - 20502 - BUSS 200 - 1"
   },
   {
+    "course_id": "BUSS_211",
     "code": "BUSS 211",
     "subject": "BUSS",
-    "number": "211"
+    "course_number": "211",
+    "title": "Business Law",
+    "professors": [],
+    "raw_line": "Business Law - 20508 - BUSS 211 - 1"
   },
   {
+    "course_id": "BUSS_215",
     "code": "BUSS 215",
     "subject": "BUSS",
-    "number": "215"
+    "course_number": "215",
+    "title": "Business Ethics",
+    "professors": [],
+    "raw_line": "Business Ethics - 20515 - BUSS 215 - 1"
   },
   {
+    "course_id": "BUSS_220",
     "code": "BUSS 220",
     "subject": "BUSS",
-    "number": "220"
+    "course_number": "220",
+    "title": "Personal Financial Planning",
+    "professors": [],
+    "raw_line": "Personal Financial Planning - 20522 - BUSS 220 - 1"
   },
   {
+    "course_id": "BUSS_224",
     "code": "BUSS 224",
     "subject": "BUSS",
-    "number": "224"
+    "course_number": "224",
+    "title": "Business and Sustainability",
+    "professors": [],
+    "raw_line": "Business and Sustainability - 23215 - BUSS 224 - 1"
   },
   {
+    "course_id": "BUSS_239",
     "code": "BUSS 239",
     "subject": "BUSS",
-    "number": "239"
+    "course_number": "239",
+    "title": "Busines.Commun.Skills Workshop",
+    "professors": [],
+    "raw_line": "Busines.Commun.Skills Workshop - 20523 - BUSS 239 - 1"
   },
   {
+    "course_id": "BUSS_240",
     "code": "BUSS 240",
     "subject": "BUSS",
-    "number": "240"
+    "course_number": "240",
+    "title": "Strat.Career Planning Workshop",
+    "professors": [],
+    "raw_line": "Strat.Career Planning Workshop - 20532 - BUSS 240 - 1"
   },
   {
+    "course_id": "BUSS_245",
     "code": "BUSS 245",
     "subject": "BUSS",
-    "number": "245"
+    "course_number": "245",
+    "title": "Internship/Practicum",
+    "professors": [],
+    "raw_line": "Internship/Practicum - 20534 - BUSS 245 - 1"
   },
   {
+    "course_id": "BUSS_248",
     "code": "BUSS 248",
     "subject": "BUSS",
-    "number": "248"
+    "course_number": "248",
+    "title": "Developing Bus. Plans Workshop",
+    "professors": [],
+    "raw_line": "Developing Bus. Plans Workshop - 20535 - BUSS 248 - 1"
   },
   {
+    "course_id": "BUSS_249",
     "code": "BUSS 249",
     "subject": "BUSS",
-    "number": "249"
+    "course_number": "249",
+    "title": "Strategic Management",
+    "professors": [],
+    "raw_line": "Strategic Management - 20541 - BUSS 249 - 1"
   },
   {
+    "course_id": "BUSS_253A",
     "code": "BUSS 253A",
     "subject": "BUSS",
-    "number": "253A"
+    "course_number": "253A",
+    "title": "Think Smarter:Tools for Crit.R",
+    "professors": [],
+    "raw_line": "Think Smarter:Tools for Crit.R - 23484 - BUSS 253A - 1"
   },
   {
+    "course_id": "BUSS_255A",
     "code": "BUSS 255A",
     "subject": "BUSS",
-    "number": "255A"
+    "course_number": "255A",
+    "title": "CO-OP Education",
+    "professors": [],
+    "raw_line": "CO-OP Education - 23466 - BUSS 255A - 1"
   },
   {
+    "course_id": "BUSS_349",
     "code": "BUSS 349",
     "subject": "BUSS",
-    "number": "349"
+    "course_number": "349",
+    "title": "Adv.Sem.in Strategic Managem.",
+    "professors": [],
+    "raw_line": "Adv.Sem.in Strategic Managem. - 20547 - BUSS 349 - 1"
   },
   {
+    "course_id": "CHEN_201",
     "code": "CHEN 201",
     "subject": "CHEN",
-    "number": "201"
+    "course_number": "201",
+    "title": "Chemical Process Principles",
+    "professors": [],
+    "raw_line": "Chemical Process Principles - 20662 - CHEN 201 - 1"
   },
   {
+    "course_id": "CHEN_214",
     "code": "CHEN 214",
     "subject": "CHEN",
-    "number": "214"
+    "course_number": "214",
+    "title": "Thermodynamics I",
+    "professors": [],
+    "raw_line": "Thermodynamics I - 20664 - CHEN 214 - 1"
   },
   {
+    "course_id": "CHEN_312",
     "code": "CHEN 312",
     "subject": "CHEN",
-    "number": "312"
+    "course_number": "312",
+    "title": "Separation Processes",
+    "professors": [],
+    "raw_line": "Separation Processes - 20667 - CHEN 312 - 1"
   },
   {
+    "course_id": "CHEN_401",
     "code": "CHEN 401",
     "subject": "CHEN",
-    "number": "401"
+    "course_number": "401",
+    "title": "Final Year Project",
+    "professors": [],
+    "raw_line": "Final Year Project - 20669 - CHEN 401 - 1"
   },
   {
+    "course_id": "CHEN_410",
     "code": "CHEN 410",
     "subject": "CHEN",
-    "number": "410"
+    "course_number": "410",
+    "title": "Unit Operations Lab",
+    "professors": [],
+    "raw_line": "Unit Operations Lab - 20670 - CHEN 410 - 1"
   },
   {
+    "course_id": "CHEN_415",
     "code": "CHEN 415",
     "subject": "CHEN",
-    "number": "415"
+    "course_number": "415",
+    "title": "Mechanical Unit Operations",
+    "professors": [],
+    "raw_line": "Mechanical Unit Operations - 20673 - CHEN 415 - 1"
   },
   {
+    "course_id": "CHEN_417",
     "code": "CHEN 417",
     "subject": "CHEN",
-    "number": "417"
+    "course_number": "417",
+    "title": "Reaction Eng.g& Reactor Design",
+    "professors": [],
+    "raw_line": "Reaction Eng.g& Reactor Design - 23349 - CHEN 417 - 0"
   },
   {
+    "course_id": "CHEN_431",
     "code": "CHEN 431",
     "subject": "CHEN",
-    "number": "431"
+    "course_number": "431",
+    "title": "Materials Eng'g & Corrosion",
+    "professors": [],
+    "raw_line": "Materials Eng'g & Corrosion - 20675 - CHEN 431 - 1"
   },
   {
+    "course_id": "CHEN_451",
     "code": "CHEN 451",
     "subject": "CHEN",
-    "number": "451"
+    "course_number": "451",
+    "title": "Process Control",
+    "professors": [],
+    "raw_line": "Process Control - 20677 - CHEN 451 - 1"
   },
   {
+    "course_id": "CHEN_499",
     "code": "CHEN 499",
     "subject": "CHEN",
-    "number": "499"
+    "course_number": "499",
+    "title": "Undergraduate Research",
+    "professors": [],
+    "raw_line": "Undergraduate Research - 20680 - CHEN 499 - 1"
   },
   {
+    "course_id": "CHEN_500",
     "code": "CHEN 500",
     "subject": "CHEN",
-    "number": "500"
+    "course_number": "500",
+    "title": "Approved Experience",
+    "professors": [],
+    "raw_line": "Approved Experience - 23486 - CHEN 500 - 1"
   },
   {
+    "course_id": "CHEN_502",
     "code": "CHEN 502",
     "subject": "CHEN",
-    "number": "502"
+    "course_number": "502",
+    "title": "Final Year Project II",
+    "professors": [],
+    "raw_line": "Final Year Project II - 20681 - CHEN 502 - 1"
   },
   {
+    "course_id": "CHEN_541",
     "code": "CHEN 541",
     "subject": "CHEN",
-    "number": "541"
+    "course_number": "541",
+    "title": "Biochemical & Bioprocess Eng'g",
+    "professors": [],
+    "raw_line": "Biochemical & Bioprocess Eng'g - 20682 - CHEN 541 - 1"
   },
   {
+    "course_id": "CHEN_617",
     "code": "CHEN 617",
     "subject": "CHEN",
-    "number": "617"
+    "course_number": "617",
+    "title": "Chemi.Reactor Analysis &Design",
+    "professors": [],
+    "raw_line": "Chemi.Reactor Analysis &Design - 20684 - CHEN 617 - 1"
   },
   {
+    "course_id": "CHEN_630",
     "code": "CHEN 630",
     "subject": "CHEN",
-    "number": "630"
+    "course_number": "630",
+    "title": "Sustainable Biorefinery Proces",
+    "professors": [],
+    "raw_line": "Sustainable Biorefinery Proces - 20685 - CHEN 630 - 1"
   },
   {
+    "course_id": "CHEN_633",
     "code": "CHEN 633",
     "subject": "CHEN",
-    "number": "633"
+    "course_number": "633",
+    "title": "Life Cycle Assessm.in Ener.Sys",
+    "professors": [],
+    "raw_line": "Life Cycle Assessm.in Ener.Sys - 23246 - CHEN 633 - 1"
   },
   {
+    "course_id": "CHEN_673",
     "code": "CHEN 673",
     "subject": "CHEN",
-    "number": "673"
+    "course_number": "673",
+    "title": "Eng'g of Drug Delivery Systems",
+    "professors": [],
+    "raw_line": "Eng'g of Drug Delivery Systems - 20687 - CHEN 673 - 1"
   },
   {
+    "course_id": "CHEN_675",
     "code": "CHEN 675",
     "subject": "CHEN",
-    "number": "675"
+    "course_number": "675",
+    "title": "Tissue Engineering",
+    "professors": [],
+    "raw_line": "Tissue Engineering - 20688 - CHEN 675 - 1"
   },
   {
+    "course_id": "CHEN_796",
     "code": "CHEN 796",
     "subject": "CHEN",
-    "number": "796"
+    "course_number": "796",
+    "title": "Eng'g Literature Critique",
+    "professors": [],
+    "raw_line": "Eng'g Literature Critique - 23308 - CHEN 796 - 0"
   },
   {
+    "course_id": "CHEN_797",
     "code": "CHEN 797",
     "subject": "CHEN",
-    "number": "797"
+    "course_number": "797",
+    "title": "Seminar",
+    "professors": [],
+    "raw_line": "Seminar - 20689 - CHEN 797 - 1"
   },
   {
+    "course_id": "CHEN_798",
     "code": "CHEN 798",
     "subject": "CHEN",
-    "number": "798"
+    "course_number": "798",
+    "title": "Sp.Tp. in Chemical Eng'g I",
+    "professors": [],
+    "raw_line": "Sp.Tp. in Chemical Eng'g I - 20690 - CHEN 798 - 1"
   },
   {
+    "course_id": "CHEN_798B",
     "code": "CHEN 798B",
     "subject": "CHEN",
-    "number": "798B"
+    "course_number": "798B",
+    "title": "Sp.Topics in Chemical Eng'g II",
+    "professors": [],
+    "raw_line": "Sp.Topics in Chemical Eng'g II - 20692 - CHEN 798B - 1"
   },
   {
+    "course_id": "CHEN_799",
     "code": "CHEN 799",
     "subject": "CHEN",
-    "number": "799"
+    "course_number": "799",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20693 - CHEN 799 - 1"
   },
   {
+    "course_id": "CHEN_799A",
     "code": "CHEN 799A",
     "subject": "CHEN",
-    "number": "799A"
+    "course_number": "799A",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20694 - CHEN 799A - 1"
   },
   {
+    "course_id": "CHEN_799B",
     "code": "CHEN 799B",
     "subject": "CHEN",
-    "number": "799B"
+    "course_number": "799B",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20695 - CHEN 799B - 1"
   },
   {
+    "course_id": "CHEN_799C",
     "code": "CHEN 799C",
     "subject": "CHEN",
-    "number": "799C"
+    "course_number": "799C",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20696 - CHEN 799C - 1"
   },
   {
+    "course_id": "CHEN_799D",
     "code": "CHEN 799D",
     "subject": "CHEN",
-    "number": "799D"
+    "course_number": "799D",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20697 - CHEN 799D - 1"
   },
   {
+    "course_id": "CHEN_799E",
     "code": "CHEN 799E",
     "subject": "CHEN",
-    "number": "799E"
+    "course_number": "799E",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20698 - CHEN 799E - 1"
   },
   {
+    "course_id": "CHEN_799T",
     "code": "CHEN 799T",
     "subject": "CHEN",
-    "number": "799T"
+    "course_number": "799T",
+    "title": "Master's Comprehensive Exam",
+    "professors": [],
+    "raw_line": "Master's Comprehensive Exam - 20699 - CHEN 799T - 1"
   },
   {
+    "course_id": "CHEN_799TR",
     "code": "CHEN 799TR",
     "subject": "CHEN",
-    "number": "799TR"
+    "course_number": "799TR",
+    "title": "Master's Comprehensive Exam",
+    "professors": [],
+    "raw_line": "Master's Comprehensive Exam - 20700 - CHEN 799TR - 1"
   },
   {
+    "course_id": "CIVE_201",
     "code": "CIVE 201",
     "subject": "CIVE",
-    "number": "201"
+    "course_number": "201",
+    "title": "Eng'g Drawings & Tools",
+    "professors": [],
+    "raw_line": "Eng'g Drawings & Tools - 20729 - CIVE 201 - 1"
   },
   {
+    "course_id": "CIVE_210",
     "code": "CIVE 210",
     "subject": "CIVE",
-    "number": "210"
+    "course_number": "210",
+    "title": "Statics",
+    "professors": [],
+    "raw_line": "Statics - 20730 - CIVE 210 - 1"
   },
   {
+    "course_id": "CIVE_310",
     "code": "CIVE 310",
     "subject": "CIVE",
-    "number": "310"
+    "course_number": "310",
+    "title": "Mechanics of Materials",
+    "professors": [],
+    "raw_line": "Mechanics of Materials - 20734 - CIVE 310 - 1"
   },
   {
+    "course_id": "CIVE_311",
     "code": "CIVE 311",
     "subject": "CIVE",
-    "number": "311"
+    "course_number": "311",
+    "title": "Theory of Structures",
+    "professors": [],
+    "raw_line": "Theory of Structures - 20736 - CIVE 311 - 1"
   },
   {
+    "course_id": "CIVE_340",
     "code": "CIVE 340",
     "subject": "CIVE",
-    "number": "340"
+    "course_number": "340",
+    "title": "Fluid Mechanics & Laboratory",
+    "professors": [],
+    "raw_line": "Fluid Mechanics & Laboratory - 20738 - CIVE 340 - 1"
   },
   {
+    "course_id": "CIVE_370",
     "code": "CIVE 370",
     "subject": "CIVE",
-    "number": "370"
+    "course_number": "370",
+    "title": "Construct.Materials & Technol.",
+    "professors": [],
+    "raw_line": "Construct.Materials & Technol. - 20740 - CIVE 370 - 1"
   },
   {
+    "course_id": "CIVE_400",
     "code": "CIVE 400",
     "subject": "CIVE",
-    "number": "400"
+    "course_number": "400",
+    "title": "Approved Experience",
+    "professors": [],
+    "raw_line": "Approved Experience - 23584 - CIVE 400 - 1"
   },
   {
+    "course_id": "CIVE_402",
     "code": "CIVE 402",
     "subject": "CIVE",
-    "number": "402"
+    "course_number": "402",
+    "title": "Final Year Project II",
+    "professors": [],
+    "raw_line": "Final Year Project II - 20742 - CIVE 402 - 1"
   },
   {
+    "course_id": "CIVE_411",
     "code": "CIVE 411",
     "subject": "CIVE",
-    "number": "411"
+    "course_number": "411",
+    "title": "Indeterminat.Structural Analys",
+    "professors": [],
+    "raw_line": "Indeterminat.Structural Analys - 20743 - CIVE 411 - 1"
   },
   {
+    "course_id": "CIVE_413",
     "code": "CIVE 413",
     "subject": "CIVE",
-    "number": "413"
+    "course_number": "413",
+    "title": "Concrete Design I",
+    "professors": [],
+    "raw_line": "Concrete Design I - 20744 - CIVE 413 - 1"
   },
   {
+    "course_id": "CIVE_414",
     "code": "CIVE 414",
     "subject": "CIVE",
-    "number": "414"
+    "course_number": "414",
+    "title": "Concrete Design II",
+    "professors": [],
+    "raw_line": "Concrete Design II - 20745 - CIVE 414 - 1"
   },
   {
+    "course_id": "CIVE_421",
     "code": "CIVE 421",
     "subject": "CIVE",
-    "number": "421"
+    "course_number": "421",
+    "title": "Construction Management",
+    "professors": [],
+    "raw_line": "Construction Management - 20746 - CIVE 421 - 1"
   },
   {
+    "course_id": "CIVE_423",
     "code": "CIVE 423",
     "subject": "CIVE",
-    "number": "423"
+    "course_number": "423",
+    "title": "Construct.Planning & Schedul.",
+    "professors": [],
+    "raw_line": "Construct.Planning & Schedul. - 20747 - CIVE 423 - 1"
   },
   {
+    "course_id": "CIVE_430",
     "code": "CIVE 430",
     "subject": "CIVE",
-    "number": "430"
+    "course_number": "430",
+    "title": "Soil Mechanics & Laboratory",
+    "professors": [],
+    "raw_line": "Soil Mechanics & Laboratory - 20748 - CIVE 430 - 1"
   },
   {
+    "course_id": "CIVE_431",
     "code": "CIVE 431",
     "subject": "CIVE",
-    "number": "431"
+    "course_number": "431",
+    "title": "Foundation Engineering",
+    "professors": [],
+    "raw_line": "Foundation Engineering - 20750 - CIVE 431 - 1"
   },
   {
+    "course_id": "CIVE_440",
     "code": "CIVE 440",
     "subject": "CIVE",
-    "number": "440"
+    "course_number": "440",
+    "title": "Hydraulics & Laboratory",
+    "professors": [],
+    "raw_line": "Hydraulics & Laboratory - 20752 - CIVE 440 - 1"
   },
   {
+    "course_id": "CIVE_451",
     "code": "CIVE 451",
     "subject": "CIVE",
-    "number": "451"
+    "course_number": "451",
+    "title": "Contemporary Enviro Issues",
+    "professors": [],
+    "raw_line": "Contemporary Enviro Issues - 20753 - CIVE 451 - 1"
   },
   {
+    "course_id": "CIVE_460",
     "code": "CIVE 460",
     "subject": "CIVE",
-    "number": "460"
+    "course_number": "460",
+    "title": "Transportation Eng'g &Laborat.",
+    "professors": [],
+    "raw_line": "Transportation Eng'g &Laborat. - 20754 - CIVE 460 - 1"
   },
   {
+    "course_id": "CIVE_461",
     "code": "CIVE 461",
     "subject": "CIVE",
-    "number": "461"
+    "course_number": "461",
+    "title": "Highway Engineering",
+    "professors": [],
+    "raw_line": "Highway Engineering - 20755 - CIVE 461 - 1"
   },
   {
+    "course_id": "CIVE_522",
     "code": "CIVE 522",
     "subject": "CIVE",
-    "number": "522"
+    "course_number": "522",
+    "title": "Building Construct.&Estimating",
+    "professors": [],
+    "raw_line": "Building Construct.&Estimating - 20756 - CIVE 522 - 1"
   },
   {
+    "course_id": "CIVE_541",
     "code": "CIVE 541",
     "subject": "CIVE",
-    "number": "541"
+    "course_number": "541",
+    "title": "Engineering Hydrology",
+    "professors": [],
+    "raw_line": "Engineering Hydrology - 20758 - CIVE 541 - 1"
   },
   {
+    "course_id": "CIVE_550",
     "code": "CIVE 550",
     "subject": "CIVE",
-    "number": "550"
+    "course_number": "550",
+    "title": "Water Treatment &Laboratory",
+    "professors": [],
+    "raw_line": "Water Treatment &Laboratory - 20759 - CIVE 550 - 1"
   },
   {
+    "course_id": "CIVE_553",
     "code": "CIVE 553",
     "subject": "CIVE",
-    "number": "553"
+    "course_number": "553",
+    "title": "Environmental Biotechnology",
+    "professors": [],
+    "raw_line": "Environmental Biotechnology - 20760 - CIVE 553 - 1"
   },
   {
+    "course_id": "CIVE_555",
     "code": "CIVE 555",
     "subject": "CIVE",
-    "number": "555"
+    "course_number": "555",
+    "title": "Air Quality Management",
+    "professors": [],
+    "raw_line": "Air Quality Management - 20762 - CIVE 555 - 1"
   },
   {
+    "course_id": "CIVE_600",
     "code": "CIVE 600",
     "subject": "CIVE",
-    "number": "600"
+    "course_number": "600",
+    "title": "Seminar in Civil Engineering",
+    "professors": [],
+    "raw_line": "Seminar in Civil Engineering - 20764 - CIVE 600 - 1"
   },
   {
+    "course_id": "CIVE_602",
     "code": "CIVE 602",
     "subject": "CIVE",
-    "number": "602"
+    "course_number": "602",
+    "title": "Experim.Design &Statist.Meth.",
+    "professors": [],
+    "raw_line": "Experim.Design &Statist.Meth. - 20765 - CIVE 602 - 1"
   },
   {
+    "course_id": "CIVE_663",
     "code": "CIVE 663",
     "subject": "CIVE",
-    "number": "663"
+    "course_number": "663",
+    "title": "Transportation System Analysis",
+    "professors": [],
+    "raw_line": "Transportation System Analysis - 23074 - CIVE 663 - 1"
   },
   {
+    "course_id": "CIVE_670",
     "code": "CIVE 670",
     "subject": "CIVE",
-    "number": "670"
+    "course_number": "670",
+    "title": "Concrete Technology",
+    "professors": [],
+    "raw_line": "Concrete Technology - 20774 - CIVE 670 - 1"
   },
   {
+    "course_id": "CIVE_691A",
     "code": "CIVE 691A",
     "subject": "CIVE",
-    "number": "691A"
+    "course_number": "691A",
+    "title": "SP:Climate Change &Infra Resil",
+    "professors": [],
+    "raw_line": "SP:Climate Change &Infra Resil - 23044 - CIVE 691A - 1"
   },
   {
+    "course_id": "CIVE_691B",
     "code": "CIVE 691B",
     "subject": "CIVE",
-    "number": "691B"
+    "course_number": "691B",
+    "title": "Sp Top: Steel Structures",
+    "professors": [],
+    "raw_line": "Sp Top: Steel Structures - 23532 - CIVE 691B - 1"
   },
   {
+    "course_id": "CIVE_691C",
     "code": "CIVE 691C",
     "subject": "CIVE",
-    "number": "691C"
+    "course_number": "691C",
+    "title": "ST:Comp.Ass.of Bridge Des.Code",
+    "professors": [],
+    "raw_line": "ST:Comp.Ass.of Bridge Des.Code - 23530 - CIVE 691C - 1"
   },
   {
+    "course_id": "CIVE_723",
     "code": "CIVE 723",
     "subject": "CIVE",
-    "number": "723"
+    "course_number": "723",
+    "title": "Dispute Resolution on Projects",
+    "professors": [],
+    "raw_line": "Dispute Resolution on Projects - 20778 - CIVE 723 - 1"
   },
   {
+    "course_id": "CIVE_799",
     "code": "CIVE 799",
     "subject": "CIVE",
-    "number": "799"
+    "course_number": "799",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20779 - CIVE 799 - 1"
   },
   {
+    "course_id": "CIVE_799A",
     "code": "CIVE 799A",
     "subject": "CIVE",
-    "number": "799A"
+    "course_number": "799A",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20780 - CIVE 799A - 1"
   },
   {
+    "course_id": "CIVE_799B",
     "code": "CIVE 799B",
     "subject": "CIVE",
-    "number": "799B"
+    "course_number": "799B",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20781 - CIVE 799B - 1"
   },
   {
+    "course_id": "CIVE_799C",
     "code": "CIVE 799C",
     "subject": "CIVE",
-    "number": "799C"
+    "course_number": "799C",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20782 - CIVE 799C - 1"
   },
   {
+    "course_id": "CIVE_799D",
     "code": "CIVE 799D",
     "subject": "CIVE",
-    "number": "799D"
+    "course_number": "799D",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20783 - CIVE 799D - 1"
   },
   {
+    "course_id": "CIVE_799T",
     "code": "CIVE 799T",
     "subject": "CIVE",
-    "number": "799T"
+    "course_number": "799T",
+    "title": "Comprehensive Exam",
+    "professors": [],
+    "raw_line": "Comprehensive Exam - 20784 - CIVE 799T - 1"
   },
   {
+    "course_id": "CIVE_980",
     "code": "CIVE 980",
     "subject": "CIVE",
-    "number": "980"
+    "course_number": "980",
+    "title": "Qualifying Exam I:Compr.Exam",
+    "professors": [],
+    "raw_line": "Qualifying Exam I:Compr.Exam - 20785 - CIVE 980 - 1"
   },
   {
+    "course_id": "CIVE_981",
     "code": "CIVE 981",
     "subject": "CIVE",
-    "number": "981"
+    "course_number": "981",
+    "title": "Qualif.Exam II:Def.ThesisProp",
+    "professors": [],
+    "raw_line": "Qualif.Exam II:Def.ThesisProp - 20786 - CIVE 981 - 1"
   },
   {
+    "course_id": "CIVE_982",
     "code": "CIVE 982",
     "subject": "CIVE",
-    "number": "982"
+    "course_number": "982",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20787 - CIVE 982 - 1"
   },
   {
+    "course_id": "CIVE_982A",
     "code": "CIVE 982A",
     "subject": "CIVE",
-    "number": "982A"
+    "course_number": "982A",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20788 - CIVE 982A - 1"
   },
   {
+    "course_id": "CIVE_983",
     "code": "CIVE 983",
     "subject": "CIVE",
-    "number": "983"
+    "course_number": "983",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20789 - CIVE 983 - 1"
   },
   {
+    "course_id": "CIVE_983A",
     "code": "CIVE 983A",
     "subject": "CIVE",
-    "number": "983A"
+    "course_number": "983A",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20790 - CIVE 983A - 1"
   },
   {
+    "course_id": "CIVE_983B",
     "code": "CIVE 983B",
     "subject": "CIVE",
-    "number": "983B"
+    "course_number": "983B",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20791 - CIVE 983B - 1"
   },
   {
+    "course_id": "CIVE_984",
     "code": "CIVE 984",
     "subject": "CIVE",
-    "number": "984"
+    "course_number": "984",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20792 - CIVE 984 - 1"
   },
   {
+    "course_id": "CIVE_984A",
     "code": "CIVE 984A",
     "subject": "CIVE",
-    "number": "984A"
+    "course_number": "984A",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20793 - CIVE 984A - 1"
   },
   {
+    "course_id": "CIVE_984B",
     "code": "CIVE 984B",
     "subject": "CIVE",
-    "number": "984B"
+    "course_number": "984B",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20794 - CIVE 984B - 1"
   },
   {
+    "course_id": "CIVE_985",
     "code": "CIVE 985",
     "subject": "CIVE",
-    "number": "985"
+    "course_number": "985",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20795 - CIVE 985 - 1"
   },
   {
+    "course_id": "CIVE_986",
     "code": "CIVE 986",
     "subject": "CIVE",
-    "number": "986"
+    "course_number": "986",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 20796 - CIVE 986 - 1"
   },
   {
+    "course_id": "CIVE_987",
     "code": "CIVE 987",
     "subject": "CIVE",
-    "number": "987"
+    "course_number": "987",
+    "title": "PhD Thesis Defense",
+    "professors": [],
+    "raw_line": "PhD Thesis Defense - 20797 - CIVE 987 - 1"
   },
   {
+    "course_id": "CMPS_201",
     "code": "CMPS 201",
     "subject": "CMPS",
-    "number": "201"
+    "course_number": "201",
+    "title": "Introduction to Programming",
+    "professors": [],
+    "raw_line": "Introduction to Programming - 20798 - CMPS 201 - B1"
   },
   {
+    "course_id": "CMPS_202",
     "code": "CMPS 202",
     "subject": "CMPS",
-    "number": "202"
+    "course_number": "202",
+    "title": "Data Structures",
+    "professors": [],
+    "raw_line": "Data Structures - 20805 - CMPS 202 - B10"
   },
   {
+    "course_id": "CMPS_203",
     "code": "CMPS 203",
     "subject": "CMPS",
-    "number": "203"
+    "course_number": "203",
+    "title": "Programming for Everyone",
+    "professors": [],
+    "raw_line": "Programming for Everyone - 20820 - CMPS 203 - B1"
   },
   {
+    "course_id": "CMPS_207",
     "code": "CMPS 207",
     "subject": "CMPS",
-    "number": "207"
+    "course_number": "207",
+    "title": "Programming for Digital Art",
+    "professors": [],
+    "raw_line": "Programming for Digital Art - 20829 - CMPS 207 - B1"
   },
   {
+    "course_id": "CMPS_208",
     "code": "CMPS 208",
     "subject": "CMPS",
-    "number": "208"
+    "course_number": "208",
+    "title": "Computing for Business",
+    "professors": [],
+    "raw_line": "Computing for Business - 20833 - CMPS 208 - B10"
   },
   {
+    "course_id": "CMPS_209",
     "code": "CMPS 209",
     "subject": "CMPS",
-    "number": "209"
+    "course_number": "209",
+    "title": "Comp. & Prog. for Sciences",
+    "professors": [],
+    "raw_line": "Comp. & Prog. for Sciences - 20848 - CMPS 209 - B1"
   },
   {
+    "course_id": "CMPS_211",
     "code": "CMPS 211",
     "subject": "CMPS",
-    "number": "211"
+    "course_number": "211",
+    "title": "Discrete Structures",
+    "professors": [],
+    "raw_line": "Discrete Structures - 20852 - CMPS 211 - E1"
   },
   {
+    "course_id": "CMPS_214",
     "code": "CMPS 214",
     "subject": "CMPS",
-    "number": "214"
+    "course_number": "214",
+    "title": "Design &Analysis of Algorithms",
+    "professors": [],
+    "raw_line": "Design &Analysis of Algorithms - 20858 - CMPS 214 - E1"
   },
   {
+    "course_id": "CMPS_215",
     "code": "CMPS 215",
     "subject": "CMPS",
-    "number": "215"
+    "course_number": "215",
+    "title": "Theory of Computation",
+    "professors": [],
+    "raw_line": "Theory of Computation - 20864 - CMPS 215 - L1"
   },
   {
+    "course_id": "CMPS_221",
     "code": "CMPS 221",
     "subject": "CMPS",
-    "number": "221"
+    "course_number": "221",
+    "title": "Computer Organization & Design",
+    "professors": [],
+    "raw_line": "Computer Organization & Design - 20866 - CMPS 221 - 1"
   },
   {
+    "course_id": "CMPS_224",
     "code": "CMPS 224",
     "subject": "CMPS",
-    "number": "224"
+    "course_number": "224",
+    "title": "GPU Computing",
+    "professors": [],
+    "raw_line": "GPU Computing - 20867 - CMPS 224 - 1"
   },
   {
+    "course_id": "CMPS_231",
     "code": "CMPS 231",
     "subject": "CMPS",
-    "number": "231"
+    "course_number": "231",
+    "title": "Programming Languages",
+    "professors": [],
+    "raw_line": "Programming Languages - 20868 - CMPS 231 - 1"
   },
   {
+    "course_id": "CMPS_232",
     "code": "CMPS 232",
     "subject": "CMPS",
-    "number": "232"
+    "course_number": "232",
+    "title": "Compiler Construction",
+    "professors": [],
+    "raw_line": "Compiler Construction - 20870 - CMPS 232 - 1"
   },
   {
+    "course_id": "CMPS_240",
     "code": "CMPS 240",
     "subject": "CMPS",
-    "number": "240"
+    "course_number": "240",
+    "title": "Operating Systems",
+    "professors": [],
+    "raw_line": "Operating Systems - 20871 - CMPS 240 - 1"
   },
   {
+    "course_id": "CMPS_241",
     "code": "CMPS 241",
     "subject": "CMPS",
-    "number": "241"
+    "course_number": "241",
+    "title": "Systems Programming",
+    "professors": [],
+    "raw_line": "Systems Programming - 20873 - CMPS 241 - 1"
   },
   {
+    "course_id": "CMPS_242",
     "code": "CMPS 242",
     "subject": "CMPS",
-    "number": "242"
+    "course_number": "242",
+    "title": "Computer Networks",
+    "professors": [],
+    "raw_line": "Computer Networks - 20874 - CMPS 242 - 1"
   },
   {
+    "course_id": "CMPS_243",
     "code": "CMPS 243",
     "subject": "CMPS",
-    "number": "243"
+    "course_number": "243",
+    "title": "Computer &Information Security",
+    "professors": [],
+    "raw_line": "Computer &Information Security - 20875 - CMPS 243 - 1"
   },
   {
+    "course_id": "CMPS_244",
     "code": "CMPS 244",
     "subject": "CMPS",
-    "number": "244"
+    "course_number": "244",
+    "title": "Database Systems",
+    "professors": [],
+    "raw_line": "Database Systems - 20876 - CMPS 244 - 1"
   },
   {
+    "course_id": "CMPS_261",
     "code": "CMPS 261",
     "subject": "CMPS",
-    "number": "261"
+    "course_number": "261",
+    "title": "Machine Learning",
+    "professors": [],
+    "raw_line": "Machine Learning - 20880 - CMPS 261 - E1"
   },
   {
+    "course_id": "CMPS_262",
     "code": "CMPS 262",
     "subject": "CMPS",
-    "number": "262"
+    "course_number": "262",
+    "title": "Data Science",
+    "professors": [],
+    "raw_line": "Data Science - 20884 - CMPS 262 - 1"
   },
   {
+    "course_id": "CMPS_269",
     "code": "CMPS 269",
     "subject": "CMPS",
-    "number": "269"
+    "course_number": "269",
+    "title": "AI Ethics",
+    "professors": [],
+    "raw_line": "AI Ethics - 20885 - CMPS 269 - 1"
   },
   {
+    "course_id": "CMPS_271",
     "code": "CMPS 271",
     "subject": "CMPS",
-    "number": "271"
+    "course_number": "271",
+    "title": "Software Engineering",
+    "professors": [],
+    "raw_line": "Software Engineering - 20886 - CMPS 271 - 1"
   },
   {
+    "course_id": "CMPS_279",
     "code": "CMPS 279",
     "subject": "CMPS",
-    "number": "279"
+    "course_number": "279",
+    "title": "Mobile Application Development",
+    "professors": [],
+    "raw_line": "Mobile Application Development - 20890 - CMPS 279 - L1"
   },
   {
+    "course_id": "CMPS_288",
     "code": "CMPS 288",
     "subject": "CMPS",
-    "number": "288"
+    "course_number": "288",
+    "title": "Game Programming",
+    "professors": [],
+    "raw_line": "Game Programming - 20891 - CMPS 288 - 1"
   },
   {
+    "course_id": "CMPS_297AF",
     "code": "CMPS 297AF",
     "subject": "CMPS",
-    "number": "297AF"
+    "course_number": "297AF",
+    "title": "ST.Intro. to Bioinformatics",
+    "professors": [],
+    "raw_line": "ST.Intro. to Bioinformatics - 20892 - CMPS 297AF - 1"
   },
   {
+    "course_id": "CMPS_297U",
     "code": "CMPS 297U",
     "subject": "CMPS",
-    "number": "297U"
+    "course_number": "297U",
+    "title": "ST. Cloud Computing",
+    "professors": [],
+    "raw_line": "ST. Cloud Computing - 20893 - CMPS 297U - 1"
   },
   {
+    "course_id": "CMPS_297Z",
     "code": "CMPS 297Z",
     "subject": "CMPS",
-    "number": "297Z"
+    "course_number": "297Z",
+    "title": "ST.Optimization Non-Linear Pro",
+    "professors": [],
+    "raw_line": "ST.Optimization Non-Linear Pro - 20894 - CMPS 297Z - 1"
   },
   {
+    "course_id": "CMPS_299",
     "code": "CMPS 299",
     "subject": "CMPS",
-    "number": "299"
+    "course_number": "299",
+    "title": "Capstone Project",
+    "professors": [],
+    "raw_line": "Capstone Project - 20895 - CMPS 299 - 1"
   },
   {
+    "course_id": "CMPS_299A",
     "code": "CMPS 299A",
     "subject": "CMPS",
-    "number": "299A"
+    "course_number": "299A",
+    "title": "Capstone Project",
+    "professors": [],
+    "raw_line": "Capstone Project - 20908 - CMPS 299A - 1"
   },
   {
+    "course_id": "CMPS_299B",
     "code": "CMPS 299B",
     "subject": "CMPS",
-    "number": "299B"
+    "course_number": "299B",
+    "title": "Capstone Project",
+    "professors": [],
+    "raw_line": "Capstone Project - 20921 - CMPS 299B - 1"
   },
   {
+    "course_id": "CMPS_302",
     "code": "CMPS 302",
     "subject": "CMPS",
-    "number": "302"
+    "course_number": "302",
+    "title": "Computing Systems",
+    "professors": [],
+    "raw_line": "Computing Systems - 20934 - CMPS 302 - 9"
   },
   {
+    "course_id": "CMPS_324",
     "code": "CMPS 324",
     "subject": "CMPS",
-    "number": "324"
+    "course_number": "324",
+    "title": "GPU Computing",
+    "professors": [],
+    "raw_line": "GPU Computing - 20935 - CMPS 324 - 1"
   },
   {
+    "course_id": "CMPS_332",
     "code": "CMPS 332",
     "subject": "CMPS",
-    "number": "332"
+    "course_number": "332",
+    "title": "Compiler Construction",
+    "professors": [],
+    "raw_line": "Compiler Construction - 20936 - CMPS 332 - 1"
   },
   {
+    "course_id": "CMPS_351",
     "code": "CMPS 351",
     "subject": "CMPS",
-    "number": "351"
+    "course_number": "351",
+    "title": "Optimization&Nonlinear Problem",
+    "professors": [],
+    "raw_line": "Optimization&Nonlinear Problem - 20937 - CMPS 351 - 1"
   },
   {
+    "course_id": "CMPS_395A",
     "code": "CMPS 395A",
     "subject": "CMPS",
-    "number": "395A"
+    "course_number": "395A",
+    "title": "Comprehensive Exam",
+    "professors": [],
+    "raw_line": "Comprehensive Exam - 20939 - CMPS 395A - 1"
   },
   {
+    "course_id": "CMPS_396AK",
     "code": "CMPS 396AK",
     "subject": "CMPS",
-    "number": "396AK"
+    "course_number": "396AK",
+    "title": "ST.Reinforcement Learning",
+    "professors": [],
+    "raw_line": "ST.Reinforcement Learning - 20940 - CMPS 396AK - 1"
   },
   {
+    "course_id": "CMPS_398",
     "code": "CMPS 398",
     "subject": "CMPS",
-    "number": "398"
+    "course_number": "398",
+    "title": "MS Project",
+    "professors": [],
+    "raw_line": "MS Project - 20942 - CMPS 398 - 1"
   },
   {
+    "course_id": "CMPS_399",
     "code": "CMPS 399",
     "subject": "CMPS",
-    "number": "399"
+    "course_number": "399",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20943 - CMPS 399 - 1"
   },
   {
+    "course_id": "CMPS_399A",
     "code": "CMPS 399A",
     "subject": "CMPS",
-    "number": "399A"
+    "course_number": "399A",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20947 - CMPS 399A - 1"
   },
   {
+    "course_id": "CMPS_399B",
     "code": "CMPS 399B",
     "subject": "CMPS",
-    "number": "399B"
+    "course_number": "399B",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 23414 - CMPS 399B - 1"
   },
   {
+    "course_id": "CMPS_399C",
     "code": "CMPS 399C",
     "subject": "CMPS",
-    "number": "399C"
+    "course_number": "399C",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 20950 - CMPS 399C - 1"
   },
   {
+    "course_id": "ECON_102",
     "code": "ECON 102",
     "subject": "ECON",
-    "number": "102"
+    "course_number": "102",
+    "title": "Introduction to Macroecomics",
+    "professors": [],
+    "raw_line": "Introduction to Macroecomics - 20986 - ECON 102 - E1"
   },
   {
+    "course_id": "ECON_203",
     "code": "ECON 203",
     "subject": "ECON",
-    "number": "203"
+    "course_number": "203",
+    "title": "Survey of Economics",
+    "professors": [],
+    "raw_line": "Survey of Economics - 20990 - ECON 203 - 1"
   },
   {
+    "course_id": "ECON_211",
     "code": "ECON 211",
     "subject": "ECON",
-    "number": "211"
+    "course_number": "211",
+    "title": "Element. Microeconomic Theory",
+    "professors": [],
+    "raw_line": "Element. Microeconomic Theory - 20991 - ECON 211 - E1"
   },
   {
+    "course_id": "ECON_212",
     "code": "ECON 212",
     "subject": "ECON",
-    "number": "212"
+    "course_number": "212",
+    "title": "Element. Macroeconomic Theory",
+    "professors": [],
+    "raw_line": "Element. Macroeconomic Theory - 21009 - ECON 212 - E1"
   },
   {
+    "course_id": "ECON_213",
     "code": "ECON 213",
     "subject": "ECON",
-    "number": "213"
+    "course_number": "213",
+    "title": "Economic Statistics I",
+    "professors": [],
+    "raw_line": "Economic Statistics I - 23127 - ECON 213 - E1"
   },
   {
+    "course_id": "ECON_214",
     "code": "ECON 214",
     "subject": "ECON",
-    "number": "214"
+    "course_number": "214",
+    "title": "Econ Statistics & Econometrics",
+    "professors": [],
+    "raw_line": "Econ Statistics & Econometrics - 21031 - ECON 214 - E1"
   },
   {
+    "course_id": "ECON_215",
     "code": "ECON 215",
     "subject": "ECON",
-    "number": "215"
+    "course_number": "215",
+    "title": "Applied Econometrics",
+    "professors": [],
+    "raw_line": "Applied Econometrics - 21034 - ECON 215 - B1"
   },
   {
+    "course_id": "ECON_217",
     "code": "ECON 217",
     "subject": "ECON",
-    "number": "217"
+    "course_number": "217",
+    "title": "Intermediate Microeconomics",
+    "professors": [],
+    "raw_line": "Intermediate Microeconomics - 21036 - ECON 217 - 1"
   },
   {
+    "course_id": "ECON_221",
     "code": "ECON 221",
     "subject": "ECON",
-    "number": "221"
+    "course_number": "221",
+    "title": "History of Economic Thought",
+    "professors": [],
+    "raw_line": "History of Economic Thought - 21037 - ECON 221 - 1"
   },
   {
+    "course_id": "ECON_222",
     "code": "ECON 222",
     "subject": "ECON",
-    "number": "222"
+    "course_number": "222",
+    "title": "Labor Economics",
+    "professors": [],
+    "raw_line": "Labor Economics - 21038 - ECON 222 - 1"
   },
   {
+    "course_id": "ECON_227",
     "code": "ECON 227",
     "subject": "ECON",
-    "number": "227"
+    "course_number": "227",
+    "title": "Intermediate Macroeconomics",
+    "professors": [],
+    "raw_line": "Intermediate Macroeconomics - 21039 - ECON 227 - 1"
   },
   {
+    "course_id": "ECON_237",
     "code": "ECON 237",
     "subject": "ECON",
-    "number": "237"
+    "course_number": "237",
+    "title": "Economic Development I",
+    "professors": [],
+    "raw_line": "Economic Development I - 21040 - ECON 237 - 1"
   },
   {
+    "course_id": "ECON_241",
     "code": "ECON 241",
     "subject": "ECON",
-    "number": "241"
+    "course_number": "241",
+    "title": "Industrial Organization",
+    "professors": [],
+    "raw_line": "Industrial Organization - 21041 - ECON 241 - 1"
   },
   {
+    "course_id": "ECON_243",
     "code": "ECON 243",
     "subject": "ECON",
-    "number": "243"
+    "course_number": "243",
+    "title": "Int.to Game Th. &Econ.Behavior",
+    "professors": [],
+    "raw_line": "Int.to Game Th. &Econ.Behavior - 21042 - ECON 243 - 1"
   },
   {
+    "course_id": "ECON_306",
     "code": "ECON 306",
     "subject": "ECON",
-    "number": "306"
+    "course_number": "306",
+    "title": "Econometrics II",
+    "professors": [],
+    "raw_line": "Econometrics II - 21044 - ECON 306 - 1"
   },
   {
+    "course_id": "ECON_327",
     "code": "ECON 327",
     "subject": "ECON",
-    "number": "327"
+    "course_number": "327",
+    "title": "Macroeconomics",
+    "professors": [],
+    "raw_line": "Macroeconomics - 21045 - ECON 327 - 1"
   },
   {
+    "course_id": "ECON_395A",
     "code": "ECON 395A",
     "subject": "ECON",
-    "number": "395A"
+    "course_number": "395A",
+    "title": "Comprehensive Exam",
+    "professors": [],
+    "raw_line": "Comprehensive Exam - 21046 - ECON 395A - 1"
   },
   {
+    "course_id": "ECON_398",
     "code": "ECON 398",
     "subject": "ECON",
-    "number": "398"
+    "course_number": "398",
+    "title": "Project",
+    "professors": [],
+    "raw_line": "Project - 21047 - ECON 398 - 1"
   },
   {
+    "course_id": "ECON_398A",
     "code": "ECON 398A",
     "subject": "ECON",
-    "number": "398A"
+    "course_number": "398A",
+    "title": "Project",
+    "professors": [],
+    "raw_line": "Project - 21054 - ECON 398A - 1"
   },
   {
+    "course_id": "ECON_399",
     "code": "ECON 399",
     "subject": "ECON",
-    "number": "399"
+    "course_number": "399",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 21061 - ECON 399 - 1"
   },
   {
+    "course_id": "ECON_399A",
     "code": "ECON 399A",
     "subject": "ECON",
-    "number": "399A"
+    "course_number": "399A",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 21068 - ECON 399A - 1"
   },
   {
+    "course_id": "ECON_399B",
     "code": "ECON 399B",
     "subject": "ECON",
-    "number": "399B"
+    "course_number": "399B",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 21075 - ECON 399B - 1"
   },
   {
+    "course_id": "ECON_399C",
     "code": "ECON 399C",
     "subject": "ECON",
-    "number": "399C"
+    "course_number": "399C",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 21082 - ECON 399C - 1"
   },
   {
+    "course_id": "EECE_210",
     "code": "EECE 210",
     "subject": "EECE",
-    "number": "210"
+    "course_number": "210",
+    "title": "Electric Circuits",
+    "professors": [],
+    "raw_line": "Electric Circuits - 21186 - EECE 210 - 1"
   },
   {
+    "course_id": "EECE_230",
     "code": "EECE 230",
     "subject": "EECE",
-    "number": "230"
+    "course_number": "230",
+    "title": "Intro to Computation& Program.",
+    "professors": [],
+    "raw_line": "Intro to Computation& Program. - 21194 - EECE 230 - 1"
   },
   {
+    "course_id": "EECE_231",
     "code": "EECE 231",
     "subject": "EECE",
-    "number": "231"
+    "course_number": "231",
+    "title": "Int.to Computat.&Progr.w.Appl.",
+    "professors": [],
+    "raw_line": "Int.to Computat.&Progr.w.Appl. - 21205 - EECE 231 - 1"
   },
   {
+    "course_id": "EECE_290",
     "code": "EECE 290",
     "subject": "EECE",
-    "number": "290"
+    "course_number": "290",
+    "title": "Analog Signal Processing",
+    "professors": [],
+    "raw_line": "Analog Signal Processing - 21212 - EECE 290 - 1"
   },
   {
+    "course_id": "EECE_311",
     "code": "EECE 311",
     "subject": "EECE",
-    "number": "311"
+    "course_number": "311",
+    "title": "Electronic Circuits",
+    "professors": [],
+    "raw_line": "Electronic Circuits - 21217 - EECE 311 - 1"
   },
   {
+    "course_id": "EECE_321",
     "code": "EECE 321",
     "subject": "EECE",
-    "number": "321"
+    "course_number": "321",
+    "title": "Computer Organization",
+    "professors": [],
+    "raw_line": "Computer Organization - 21222 - EECE 321 - 1"
   },
   {
+    "course_id": "EECE_321L",
     "code": "EECE 321L",
     "subject": "EECE",
-    "number": "321L"
+    "course_number": "321L",
+    "title": "Computer Organization Laborat.",
+    "professors": [],
+    "raw_line": "Computer Organization Laborat. - 21228 - EECE 321L - 1"
   },
   {
+    "course_id": "EECE_330",
     "code": "EECE 330",
     "subject": "EECE",
-    "number": "330"
+    "course_number": "330",
+    "title": "Data Structures & Algorithms",
+    "professors": [],
+    "raw_line": "Data Structures & Algorithms - 21241 - EECE 330 - 1"
   },
   {
+    "course_id": "EECE_334",
     "code": "EECE 334",
     "subject": "EECE",
-    "number": "334"
+    "course_number": "334",
+    "title": "Program.Lang.Design&Implement.",
+    "professors": [],
+    "raw_line": "Program.Lang.Design&Implement. - 21245 - EECE 334 - 1"
   },
   {
+    "course_id": "EECE_338",
     "code": "EECE 338",
     "subject": "EECE",
-    "number": "338"
+    "course_number": "338",
+    "title": "Theory of Computation",
+    "professors": [],
+    "raw_line": "Theory of Computation - 21246 - EECE 338 - 1"
   },
   {
+    "course_id": "EECE_340",
     "code": "EECE 340",
     "subject": "EECE",
-    "number": "340"
+    "course_number": "340",
+    "title": "Signals and Systems",
+    "professors": [],
+    "raw_line": "Signals and Systems - 21247 - EECE 340 - 1"
   },
   {
+    "course_id": "EECE_350",
     "code": "EECE 350",
     "subject": "EECE",
-    "number": "350"
+    "course_number": "350",
+    "title": "Computer Networks",
+    "professors": [],
+    "raw_line": "Computer Networks - 21251 - EECE 350 - 1"
   },
   {
+    "course_id": "EECE_380",
     "code": "EECE 380",
     "subject": "EECE",
-    "number": "380"
+    "course_number": "380",
+    "title": "Engineering Electromagnetics",
+    "professors": [],
+    "raw_line": "Engineering Electromagnetics - 21255 - EECE 380 - 1"
   },
   {
+    "course_id": "EECE_407",
     "code": "EECE 407",
     "subject": "EECE",
-    "number": "407"
+    "course_number": "407",
+    "title": "Quantum Communication Networks",
+    "professors": [],
+    "raw_line": "Quantum Communication Networks - 21257 - EECE 407 - 1"
   },
   {
+    "course_id": "EECE_410L",
     "code": "EECE 410L",
     "subject": "EECE",
-    "number": "410L"
+    "course_number": "410L",
+    "title": "System Integration Laboratory",
+    "professors": [],
+    "raw_line": "System Integration Laboratory - 21258 - EECE 410L - 1"
   },
   {
+    "course_id": "EECE_412",
     "code": "EECE 412",
     "subject": "EECE",
-    "number": "412"
+    "course_number": "412",
+    "title": "Digital Integrated Circuits",
+    "professors": [],
+    "raw_line": "Digital Integrated Circuits - 21268 - EECE 412 - 1"
   },
   {
+    "course_id": "EECE_422",
     "code": "EECE 422",
     "subject": "EECE",
-    "number": "422"
+    "course_number": "422",
+    "title": "Parallel Comput.Arch.&Program",
+    "professors": [],
+    "raw_line": "Parallel Comput.Arch.&Program - 21269 - EECE 422 - 1"
   },
   {
+    "course_id": "EECE_430",
     "code": "EECE 430",
     "subject": "EECE",
-    "number": "430"
+    "course_number": "430",
+    "title": "Software Engineering",
+    "professors": [],
+    "raw_line": "Software Engineering - 21270 - EECE 430 - 1"
   },
   {
+    "course_id": "EECE_430L",
     "code": "EECE 430L",
     "subject": "EECE",
-    "number": "430L"
+    "course_number": "430L",
+    "title": "Web,Mobile, & Appl.Development",
+    "professors": [
+      "Mobile Web"
+    ],
+    "raw_line": "Web,Mobile, & Appl.Development - 21272 - EECE 430L - 1"
   },
   {
+    "course_id": "EECE_433",
     "code": "EECE 433",
     "subject": "EECE",
-    "number": "433"
+    "course_number": "433",
+    "title": "Database Systems",
+    "professors": [],
+    "raw_line": "Database Systems - 21275 - EECE 433 - 1"
   },
   {
+    "course_id": "EECE_435",
     "code": "EECE 435",
     "subject": "EECE",
-    "number": "435"
+    "course_number": "435",
+    "title": "Introd. to Quantum Computing",
+    "professors": [],
+    "raw_line": "Introd. to Quantum Computing - 21276 - EECE 435 - 1"
   },
   {
+    "course_id": "EECE_442",
     "code": "EECE 442",
     "subject": "EECE",
-    "number": "442"
+    "course_number": "442",
+    "title": "Communication Systems",
+    "professors": [],
+    "raw_line": "Communication Systems - 23373 - EECE 442 - 1"
   },
   {
+    "course_id": "EECE_442L",
     "code": "EECE 442L",
     "subject": "EECE",
-    "number": "442L"
+    "course_number": "442L",
+    "title": "Communications Laboratory",
+    "professors": [],
+    "raw_line": "Communications Laboratory - 21277 - EECE 442L - 1"
   },
   {
+    "course_id": "EECE_444",
     "code": "EECE 444",
     "subject": "EECE",
-    "number": "444"
+    "course_number": "444",
+    "title": "Stochastic Proc.,Detect.&Estim",
+    "professors": [],
+    "raw_line": "Stochastic Proc.,Detect.&Estim - 21279 - EECE 444 - 1"
   },
   {
+    "course_id": "EECE_451",
     "code": "EECE 451",
     "subject": "EECE",
-    "number": "451"
+    "course_number": "451",
+    "title": "Mobile Networks & Applications",
+    "professors": [],
+    "raw_line": "Mobile Networks & Applications - 21280 - EECE 451 - 1"
   },
   {
+    "course_id": "EECE_451L",
     "code": "EECE 451L",
     "subject": "EECE",
-    "number": "451L"
+    "course_number": "451L",
+    "title": "Internetworking Laboratory",
+    "professors": [],
+    "raw_line": "Internetworking Laboratory - 21282 - EECE 451L - 2"
   },
   {
+    "course_id": "EECE_455",
     "code": "EECE 455",
     "subject": "EECE",
-    "number": "455"
+    "course_number": "455",
+    "title": "Cryptography&Network Security",
+    "professors": [],
+    "raw_line": "Cryptography&Network Security - 21285 - EECE 455 - 1"
   },
   {
+    "course_id": "EECE_461",
     "code": "EECE 461",
     "subject": "EECE",
-    "number": "461"
+    "course_number": "461",
+    "title": "Instrumentation",
+    "professors": [],
+    "raw_line": "Instrumentation - 21288 - EECE 461 - 1"
   },
   {
+    "course_id": "EECE_462L",
     "code": "EECE 462L",
     "subject": "EECE",
-    "number": "462L"
+    "course_number": "462L",
+    "title": "Industrial Control Laboratory",
+    "professors": [],
+    "raw_line": "Industrial Control Laboratory - 21291 - EECE 462L - 1"
   },
   {
+    "course_id": "EECE_466",
     "code": "EECE 466",
     "subject": "EECE",
-    "number": "466"
+    "course_number": "466",
+    "title": "Intelligent Control Systems",
+    "professors": [],
+    "raw_line": "Intelligent Control Systems - 23036 - EECE 466 - 1"
   },
   {
+    "course_id": "EECE_470L",
     "code": "EECE 470L",
     "subject": "EECE",
-    "number": "470L"
+    "course_number": "470L",
+    "title": "Electric Machines Laboratory",
+    "professors": [],
+    "raw_line": "Electric Machines Laboratory - 21293 - EECE 470L - 1"
   },
   {
+    "course_id": "EECE_471L",
     "code": "EECE 471L",
     "subject": "EECE",
-    "number": "471L"
+    "course_number": "471L",
+    "title": "Power Systems Laboratory",
+    "professors": [],
+    "raw_line": "Power Systems Laboratory - 21294 - EECE 471L - 1"
   },
   {
+    "course_id": "EECE_473",
     "code": "EECE 473",
     "subject": "EECE",
-    "number": "473"
+    "course_number": "473",
+    "title": "Power Electronics",
+    "professors": [],
+    "raw_line": "Power Electronics - 21295 - EECE 473 - 1"
   },
   {
+    "course_id": "EECE_476",
     "code": "EECE 476",
     "subject": "EECE",
-    "number": "476"
+    "course_number": "476",
+    "title": "Power Syst.Des,Control &Protec",
+    "professors": [
+      "Control Des"
+    ],
+    "raw_line": "Power Syst.Des,Control &Protec - 21297 - EECE 476 - 1"
   },
   {
+    "course_id": "EECE_478",
     "code": "EECE 478",
     "subject": "EECE",
-    "number": "478"
+    "course_number": "478",
+    "title": "Adv.Power System Analysis",
+    "professors": [],
+    "raw_line": "Adv.Power System Analysis - 21298 - EECE 478 - 1"
   },
   {
+    "course_id": "EECE_480L",
     "code": "EECE 480L",
     "subject": "EECE",
-    "number": "480L"
+    "course_number": "480L",
+    "title": "Electromagn.&Radio Freq.Lab",
+    "professors": [],
+    "raw_line": "Electromagn.&Radio Freq.Lab - 21299 - EECE 480L - 1"
   },
   {
+    "course_id": "EECE_484",
     "code": "EECE 484",
     "subject": "EECE",
-    "number": "484"
+    "course_number": "484",
+    "title": "Microwave Engineering",
+    "professors": [],
+    "raw_line": "Microwave Engineering - 21300 - EECE 484 - 1"
   },
   {
+    "course_id": "EECE_490",
     "code": "EECE 490",
     "subject": "EECE",
-    "number": "490"
+    "course_number": "490",
+    "title": "Introduct.to Machine Learning",
+    "professors": [],
+    "raw_line": "Introduct.to Machine Learning - 21301 - EECE 490 - 1"
   },
   {
+    "course_id": "EECE_499",
     "code": "EECE 499",
     "subject": "EECE",
-    "number": "499"
+    "course_number": "499",
+    "title": "Undergraduate Research",
+    "professors": [],
+    "raw_line": "Undergraduate Research - 21304 - EECE 499 - 1"
   },
   {
+    "course_id": "EECE_500",
     "code": "EECE 500",
     "subject": "EECE",
-    "number": "500"
+    "course_number": "500",
+    "title": "Approved Experience",
+    "professors": [],
+    "raw_line": "Approved Experience - 23573 - EECE 500 - 1"
   },
   {
+    "course_id": "EECE_501",
     "code": "EECE 501",
     "subject": "EECE",
-    "number": "501"
+    "course_number": "501",
+    "title": "Final Year Project",
+    "professors": [],
+    "raw_line": "Final Year Project - 23090 - EECE 501 - 1"
   },
   {
+    "course_id": "EECE_502",
     "code": "EECE 502",
     "subject": "EECE",
-    "number": "502"
+    "course_number": "502",
+    "title": "Final Year Project",
+    "professors": [],
+    "raw_line": "Final Year Project - 21305 - EECE 502 - 1"
   },
   {
+    "course_id": "EECE_503F",
     "code": "EECE 503F",
     "subject": "EECE",
-    "number": "503F"
+    "course_number": "503F",
+    "title": "Sp.Tp.in Data Center in Eng'g",
+    "professors": [],
+    "raw_line": "Sp.Tp.in Data Center in Eng'g - 21306 - EECE 503F - 1"
   },
   {
+    "course_id": "EECE_503G",
     "code": "EECE 503G",
     "subject": "EECE",
-    "number": "503G"
+    "course_number": "503G",
+    "title": "Sp.Tp.in Ethical Hacking",
+    "professors": [],
+    "raw_line": "Sp.Tp.in Ethical Hacking - 21307 - EECE 503G - 1"
   },
   {
+    "course_id": "EECE_503H",
     "code": "EECE 503H",
     "subject": "EECE",
-    "number": "503H"
+    "course_number": "503H",
+    "title": "Health Information Systems",
+    "professors": [],
+    "raw_line": "Health Information Systems - 23315 - EECE 503H - 1"
   },
   {
+    "course_id": "EECE_503J",
     "code": "EECE 503J",
     "subject": "EECE",
-    "number": "503J"
+    "course_number": "503J",
+    "title": "Sp.Tp: Ethical Hacking II",
+    "professors": [],
+    "raw_line": "Sp.Tp: Ethical Hacking II - 21308 - EECE 503J - 1"
   },
   {
+    "course_id": "EECE_503N",
     "code": "EECE 503N",
     "subject": "EECE",
-    "number": "503N"
+    "course_number": "503N",
+    "title": "ST: AI in Industry",
+    "professors": [],
+    "raw_line": "ST: AI in Industry - 21309 - EECE 503N - 1"
   },
   {
+    "course_id": "EECE_503Q",
     "code": "EECE 503Q",
     "subject": "EECE",
-    "number": "503Q"
+    "course_number": "503Q",
+    "title": "ST:DevSecOps &Infra.Automation",
+    "professors": [],
+    "raw_line": "ST:DevSecOps &Infra.Automation - 21311 - EECE 503Q - 1"
   },
   {
+    "course_id": "EECE_503S",
     "code": "EECE 503S",
     "subject": "EECE",
-    "number": "503S"
+    "course_number": "503S",
+    "title": "Automat.,Data&Knowledge Intell",
+    "professors": [],
+    "raw_line": "Automat.,Data&Knowledge Intell - 23264 - EECE 503S - 1"
   },
   {
+    "course_id": "EECE_505",
     "code": "EECE 505",
     "subject": "EECE",
-    "number": "505"
+    "course_number": "505",
+    "title": "Final Year Project Accelerator",
+    "professors": [],
+    "raw_line": "Final Year Project Accelerator - 21312 - EECE 505 - 1"
   },
   {
+    "course_id": "EECE_606",
     "code": "EECE 606",
     "subject": "EECE",
-    "number": "606"
+    "course_number": "606",
+    "title": "Introd. to Quantum Computing",
+    "professors": [],
+    "raw_line": "Introd. to Quantum Computing - 21313 - EECE 606 - 1"
   },
   {
+    "course_id": "EECE_607",
     "code": "EECE 607",
     "subject": "EECE",
-    "number": "607"
+    "course_number": "607",
+    "title": "Quantum Communication Networks",
+    "professors": [],
+    "raw_line": "Quantum Communication Networks - 21314 - EECE 607 - 1"
   },
   {
+    "course_id": "EECE_608",
     "code": "EECE 608",
     "subject": "EECE",
-    "number": "608"
+    "course_number": "608",
+    "title": "Trustworthy Machine Learning",
+    "professors": [],
+    "raw_line": "Trustworthy Machine Learning - 23537 - EECE 608 - 3"
   },
   {
+    "course_id": "EECE_610",
     "code": "EECE 610",
     "subject": "EECE",
-    "number": "610"
+    "course_number": "610",
+    "title": "Intelligent Control Systems",
+    "professors": [],
+    "raw_line": "Intelligent Control Systems - 23037 - EECE 610 - 1"
   },
   {
+    "course_id": "EECE_612",
     "code": "EECE 612",
     "subject": "EECE",
-    "number": "612"
+    "course_number": "612",
+    "title": "Digital Integrated Circuits",
+    "professors": [],
+    "raw_line": "Digital Integrated Circuits - 21317 - EECE 612 - 1"
   },
   {
+    "course_id": "EECE_632",
     "code": "EECE 632",
     "subject": "EECE",
-    "number": "632"
+    "course_number": "632",
+    "title": "Cryptography&Network Security",
+    "professors": [],
+    "raw_line": "Cryptography&Network Security - 21318 - EECE 632 - 1"
   },
   {
+    "course_id": "EECE_644",
     "code": "EECE 644",
     "subject": "EECE",
-    "number": "644"
+    "course_number": "644",
+    "title": "Stoch.Proces,Detection &Estima",
+    "professors": [
+      "Detection Proces"
+    ],
+    "raw_line": "Stoch.Proces,Detection &Estima - 21320 - EECE 644 - 1"
   },
   {
+    "course_id": "EECE_655L",
     "code": "EECE 655L",
     "subject": "EECE",
-    "number": "655L"
+    "course_number": "655L",
+    "title": "Network & Compt.Security Lab.",
+    "professors": [],
+    "raw_line": "Network & Compt.Security Lab. - 21321 - EECE 655L - 1"
   },
   {
+    "course_id": "EECE_661",
     "code": "EECE 661",
     "subject": "EECE",
-    "number": "661"
+    "course_number": "661",
+    "title": "Robotics",
+    "professors": [],
+    "raw_line": "Robotics - 21322 - EECE 661 - 1"
   },
   {
+    "course_id": "EECE_671",
     "code": "EECE 671",
     "subject": "EECE",
-    "number": "671"
+    "course_number": "671",
+    "title": "Environm.Aspects of Energ.Syst",
+    "professors": [],
+    "raw_line": "Environm.Aspects of Energ.Syst - 21325 - EECE 671 - 1"
   },
   {
+    "course_id": "EECE_678",
     "code": "EECE 678",
     "subject": "EECE",
-    "number": "678"
+    "course_number": "678",
+    "title": "Advanced Power System Analysis",
+    "professors": [],
+    "raw_line": "Advanced Power System Analysis - 21327 - EECE 678 - 1"
   },
   {
+    "course_id": "EECE_684",
     "code": "EECE 684",
     "subject": "EECE",
-    "number": "684"
+    "course_number": "684",
+    "title": "Microwave Engineering",
+    "professors": [],
+    "raw_line": "Microwave Engineering - 21328 - EECE 684 - 1"
   },
   {
+    "course_id": "EECE_690",
     "code": "EECE 690",
     "subject": "EECE",
-    "number": "690"
+    "course_number": "690",
+    "title": "Introduct.to Machine Learning",
+    "professors": [],
+    "raw_line": "Introduct.to Machine Learning - 21329 - EECE 690 - 1"
   },
   {
+    "course_id": "EECE_693",
     "code": "EECE 693",
     "subject": "EECE",
-    "number": "693"
+    "course_number": "693",
+    "title": "Neural Networks",
+    "professors": [],
+    "raw_line": "Neural Networks - 21332 - EECE 693 - 1"
   },
   {
+    "course_id": "EECE_698",
     "code": "EECE 698",
     "subject": "EECE",
-    "number": "698"
+    "course_number": "698",
+    "title": "Autonomous Mobile Robotics",
+    "professors": [],
+    "raw_line": "Autonomous Mobile Robotics - 21334 - EECE 698 - 1"
   },
   {
+    "course_id": "EECE_796",
     "code": "EECE 796",
     "subject": "EECE",
-    "number": "796"
+    "course_number": "796",
+    "title": "Special Project",
+    "professors": [],
+    "raw_line": "Special Project - 21336 - EECE 796 - 1"
   },
   {
+    "course_id": "EECE_797",
     "code": "EECE 797",
     "subject": "EECE",
-    "number": "797"
+    "course_number": "797",
+    "title": "Seminar",
+    "professors": [],
+    "raw_line": "Seminar - 21337 - EECE 797 - 1"
   },
   {
+    "course_id": "EECE_798K",
     "code": "EECE 798K",
     "subject": "EECE",
-    "number": "798K"
+    "course_number": "798K",
+    "title": "ST:Data Driven Modl.in Sc.&Eng",
+    "professors": [],
+    "raw_line": "ST:Data Driven Modl.in Sc.&Eng - 21338 - EECE 798K - 1"
   },
   {
+    "course_id": "EECE_798N",
     "code": "EECE 798N",
     "subject": "EECE",
-    "number": "798N"
+    "course_number": "798N",
+    "title": "ST: AI in Industry",
+    "professors": [],
+    "raw_line": "ST: AI in Industry - 21340 - EECE 798N - 1"
   },
   {
+    "course_id": "EECE_798O",
     "code": "EECE 798O",
     "subject": "EECE",
-    "number": "798O"
+    "course_number": "798O",
+    "title": "Sp.Tp:Int.to Large Lang.Models",
+    "professors": [],
+    "raw_line": "Sp.Tp:Int.to Large Lang.Models - 21341 - EECE 798O - 1"
   },
   {
+    "course_id": "EECE_798T",
     "code": "EECE 798T",
     "subject": "EECE",
-    "number": "798T"
+    "course_number": "798T",
+    "title": "ST:DevSecOps &Infra.Automation",
+    "professors": [],
+    "raw_line": "ST:DevSecOps &Infra.Automation - 21343 - EECE 798T - 1"
   },
   {
+    "course_id": "EECE_798U",
     "code": "EECE 798U",
     "subject": "EECE",
-    "number": "798U"
+    "course_number": "798U",
+    "title": "Sp.Tp. in Ethical Hacking",
+    "professors": [],
+    "raw_line": "Sp.Tp. in Ethical Hacking - 21344 - EECE 798U - 1"
   },
   {
+    "course_id": "EECE_798X",
     "code": "EECE 798X",
     "subject": "EECE",
-    "number": "798X"
+    "course_number": "798X",
+    "title": "Sp.Tp.in Ethical Hacking II",
+    "professors": [],
+    "raw_line": "Sp.Tp.in Ethical Hacking II - 23172 - EECE 798X - 1"
   },
   {
+    "course_id": "EECE_798Y",
     "code": "EECE 798Y",
     "subject": "EECE",
-    "number": "798Y"
+    "course_number": "798Y",
+    "title": "Automat.,Data&Knowledge Intell",
+    "professors": [],
+    "raw_line": "Automat.,Data&Knowledge Intell - 23265 - EECE 798Y - 1"
   },
   {
+    "course_id": "EECE_799",
     "code": "EECE 799",
     "subject": "EECE",
-    "number": "799"
+    "course_number": "799",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 21346 - EECE 799 - 1"
   },
   {
+    "course_id": "EECE_799A",
     "code": "EECE 799A",
     "subject": "EECE",
-    "number": "799A"
+    "course_number": "799A",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 21347 - EECE 799A - 1"
   },
   {
+    "course_id": "EECE_799B",
     "code": "EECE 799B",
     "subject": "EECE",
-    "number": "799B"
+    "course_number": "799B",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 21348 - EECE 799B - 1"
   },
   {
+    "course_id": "EECE_799C",
     "code": "EECE 799C",
     "subject": "EECE",
-    "number": "799C"
+    "course_number": "799C",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 21349 - EECE 799C - 1"
   },
   {
+    "course_id": "EECE_799D",
     "code": "EECE 799D",
     "subject": "EECE",
-    "number": "799D"
+    "course_number": "799D",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 21350 - EECE 799D - 1"
   },
   {
+    "course_id": "EECE_799E",
     "code": "EECE 799E",
     "subject": "EECE",
-    "number": "799E"
+    "course_number": "799E",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 21351 - EECE 799E - 1"
   },
   {
+    "course_id": "EECE_799T",
     "code": "EECE 799T",
     "subject": "EECE",
-    "number": "799T"
+    "course_number": "799T",
+    "title": "Comprehensive Exam",
+    "professors": [],
+    "raw_line": "Comprehensive Exam - 21352 - EECE 799T - 1"
   },
   {
+    "course_id": "EECE_980",
     "code": "EECE 980",
     "subject": "EECE",
-    "number": "980"
+    "course_number": "980",
+    "title": "Qualifying Exam I:Compr.Exam",
+    "professors": [],
+    "raw_line": "Qualifying Exam I:Compr.Exam - 21353 - EECE 980 - 1"
   },
   {
+    "course_id": "EECE_981",
     "code": "EECE 981",
     "subject": "EECE",
-    "number": "981"
+    "course_number": "981",
+    "title": "Qualif.Exam II:Def.ThesisProp",
+    "professors": [],
+    "raw_line": "Qualif.Exam II:Def.ThesisProp - 21354 - EECE 981 - 1"
   },
   {
+    "course_id": "EECE_982",
     "code": "EECE 982",
     "subject": "EECE",
-    "number": "982"
+    "course_number": "982",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 21355 - EECE 982 - 1"
   },
   {
+    "course_id": "EECE_982A",
     "code": "EECE 982A",
     "subject": "EECE",
-    "number": "982A"
+    "course_number": "982A",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 21356 - EECE 982A - 1"
   },
   {
+    "course_id": "EECE_982B",
     "code": "EECE 982B",
     "subject": "EECE",
-    "number": "982B"
+    "course_number": "982B",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 21357 - EECE 982B - 1"
   },
   {
+    "course_id": "EECE_982C",
     "code": "EECE 982C",
     "subject": "EECE",
-    "number": "982C"
+    "course_number": "982C",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 21358 - EECE 982C - 1"
   },
   {
+    "course_id": "EECE_983",
     "code": "EECE 983",
     "subject": "EECE",
-    "number": "983"
+    "course_number": "983",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 21359 - EECE 983 - 1"
   },
   {
+    "course_id": "EECE_983A",
     "code": "EECE 983A",
     "subject": "EECE",
-    "number": "983A"
+    "course_number": "983A",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 21360 - EECE 983A - 1"
   },
   {
+    "course_id": "EECE_983B",
     "code": "EECE 983B",
     "subject": "EECE",
-    "number": "983B"
+    "course_number": "983B",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 21361 - EECE 983B - 1"
   },
   {
+    "course_id": "EECE_983C",
     "code": "EECE 983C",
     "subject": "EECE",
-    "number": "983C"
+    "course_number": "983C",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 21362 - EECE 983C - 1"
   },
   {
+    "course_id": "EECE_984",
     "code": "EECE 984",
     "subject": "EECE",
-    "number": "984"
+    "course_number": "984",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 21363 - EECE 984 - 1"
   },
   {
+    "course_id": "EECE_984A",
     "code": "EECE 984A",
     "subject": "EECE",
-    "number": "984A"
+    "course_number": "984A",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 21364 - EECE 984A - 1"
   },
   {
+    "course_id": "EECE_984B",
     "code": "EECE 984B",
     "subject": "EECE",
-    "number": "984B"
+    "course_number": "984B",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 21365 - EECE 984B - 1"
   },
   {
+    "course_id": "EECE_984C",
     "code": "EECE 984C",
     "subject": "EECE",
-    "number": "984C"
+    "course_number": "984C",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 21366 - EECE 984C - 1"
   },
   {
+    "course_id": "EECE_986",
     "code": "EECE 986",
     "subject": "EECE",
-    "number": "986"
+    "course_number": "986",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 21367 - EECE 986 - 1"
   },
   {
+    "course_id": "EECE_986A",
     "code": "EECE 986A",
     "subject": "EECE",
-    "number": "986A"
+    "course_number": "986A",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 21368 - EECE 986A - 1"
   },
   {
+    "course_id": "EECE_986B",
     "code": "EECE 986B",
     "subject": "EECE",
-    "number": "986B"
+    "course_number": "986B",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 21369 - EECE 986B - 1"
   },
   {
+    "course_id": "EECE_986C",
     "code": "EECE 986C",
     "subject": "EECE",
-    "number": "986C"
+    "course_number": "986C",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 21370 - EECE 986C - 1"
   },
   {
+    "course_id": "EECE_987",
     "code": "EECE 987",
     "subject": "EECE",
-    "number": "987"
+    "course_number": "987",
+    "title": "PhD Thesis Defense",
+    "professors": [],
+    "raw_line": "PhD Thesis Defense - 21371 - EECE 987 - 1"
   },
   {
+    "course_id": "FEAA_300",
     "code": "FEAA 300",
     "subject": "FEAA",
-    "number": "300"
+    "course_number": "300",
+    "title": "Functional Bio for Eng'g& Desg",
+    "professors": [],
+    "raw_line": "Functional Bio for Eng'g& Desg - 20002 - FEAA 300 - 1"
   },
   {
+    "course_id": "FEAA_400",
     "code": "FEAA 400",
     "subject": "FEAA",
-    "number": "400"
+    "course_number": "400",
+    "title": "Planetary Systems Thinking",
+    "professors": [],
+    "raw_line": "Planetary Systems Thinking - 21650 - FEAA 400 - 1"
   },
   {
+    "course_id": "FEAA_500",
     "code": "FEAA 500",
     "subject": "FEAA",
-    "number": "500"
+    "course_number": "500",
+    "title": "Cooperative Edu.&Experim.Learn",
+    "professors": [],
+    "raw_line": "Cooperative Edu.&Experim.Learn - 23406 - FEAA 500 - 1"
   },
   {
+    "course_id": "FEAA_502",
     "code": "FEAA 502",
     "subject": "FEAA",
-    "number": "502"
+    "course_number": "502",
+    "title": "FYP Accelerator II",
+    "professors": [],
+    "raw_line": "FYP Accelerator II - 21651 - FEAA 502 - 1"
   },
   {
+    "course_id": "FEAA_510",
     "code": "FEAA 510",
     "subject": "FEAA",
-    "number": "510"
+    "course_number": "510",
+    "title": "Design for Circularity",
+    "professors": [],
+    "raw_line": "Design for Circularity - 23059 - FEAA 510 - 1"
   },
   {
+    "course_id": "FINA_210",
     "code": "FINA 210",
     "subject": "FINA",
-    "number": "210"
+    "course_number": "210",
+    "title": "Business Finance",
+    "professors": [],
+    "raw_line": "Business Finance - 21652 - FINA 210 - 1"
   },
   {
+    "course_id": "FINA_211",
     "code": "FINA 211",
     "subject": "FINA",
-    "number": "211"
+    "course_number": "211",
+    "title": "Intro.to Finance for Engineers",
+    "professors": [],
+    "raw_line": "Intro.to Finance for Engineers - 21664 - FINA 211 - 1"
   },
   {
+    "course_id": "FINA_215",
     "code": "FINA 215",
     "subject": "FINA",
-    "number": "215"
+    "course_number": "215",
+    "title": "Financial Markets & Instituti.",
+    "professors": [],
+    "raw_line": "Financial Markets & Instituti. - 21665 - FINA 215 - 1"
   },
   {
+    "course_id": "FINA_218",
     "code": "FINA 218",
     "subject": "FINA",
-    "number": "218"
+    "course_number": "218",
+    "title": "Risk Managem.in Financ.Instit.",
+    "professors": [],
+    "raw_line": "Risk Managem.in Financ.Instit. - 21666 - FINA 218 - 1"
   },
   {
+    "course_id": "FINA_220",
     "code": "FINA 220",
     "subject": "FINA",
-    "number": "220"
+    "course_number": "220",
+    "title": "Investment Management",
+    "professors": [],
+    "raw_line": "Investment Management - 21667 - FINA 220 - 1"
   },
   {
+    "course_id": "FINA_222",
     "code": "FINA 222",
     "subject": "FINA",
-    "number": "222"
+    "course_number": "222",
+    "title": "Valuation Methods",
+    "professors": [],
+    "raw_line": "Valuation Methods - 21669 - FINA 222 - 1"
   },
   {
+    "course_id": "FINA_225",
     "code": "FINA 225",
     "subject": "FINA",
-    "number": "225"
+    "course_number": "225",
+    "title": "Commercial Bank Management",
+    "professors": [],
+    "raw_line": "Commercial Bank Management - 21671 - FINA 225 - 1"
   },
   {
+    "course_id": "FINA_230",
     "code": "FINA 230",
     "subject": "FINA",
-    "number": "230"
+    "course_number": "230",
+    "title": "International Financ.Managemt",
+    "professors": [],
+    "raw_line": "International Financ.Managemt - 21672 - FINA 230 - 1"
   },
   {
+    "course_id": "FINA_236",
     "code": "FINA 236",
     "subject": "FINA",
-    "number": "236"
+    "course_number": "236",
+    "title": "Entrepreneurial Finance",
+    "professors": [],
+    "raw_line": "Entrepreneurial Finance - 21674 - FINA 236 - 1"
   },
   {
+    "course_id": "FINA_240",
     "code": "FINA 240",
     "subject": "FINA",
-    "number": "240"
+    "course_number": "240",
+    "title": "Financial Modeling",
+    "professors": [],
+    "raw_line": "Financial Modeling - 21675 - FINA 240 - 1"
   },
   {
+    "course_id": "FINA_246",
     "code": "FINA 246",
     "subject": "FINA",
-    "number": "246"
+    "course_number": "246",
+    "title": "Corporate Finance",
+    "professors": [],
+    "raw_line": "Corporate Finance - 21676 - FINA 246 - 1"
   },
   {
+    "course_id": "FINA_249",
     "code": "FINA 249",
     "subject": "FINA",
-    "number": "249"
+    "course_number": "249",
+    "title": "Intr. to Sustainable Finance",
+    "professors": [],
+    "raw_line": "Intr. to Sustainable Finance - 21677 - FINA 249 - 1"
   },
   {
+    "course_id": "FINA_250V",
     "code": "FINA 250V",
     "subject": "FINA",
-    "number": "250V"
+    "course_number": "250V",
+    "title": "Project Finance",
+    "professors": [],
+    "raw_line": "Project Finance - 23073 - FINA 250V - 1"
   },
   {
+    "course_id": "FINA_253A",
     "code": "FINA 253A",
     "subject": "FINA",
-    "number": "253A"
+    "course_number": "253A",
+    "title": "Financial Markets Sim. WS",
+    "professors": [],
+    "raw_line": "Financial Markets Sim. WS - 23064 - FINA 253A - 1"
   },
   {
+    "course_id": "FINA_306",
     "code": "FINA 306",
     "subject": "FINA",
-    "number": "306"
+    "course_number": "306",
+    "title": "Intermediate Corporate Finance",
+    "professors": [],
+    "raw_line": "Intermediate Corporate Finance - 21678 - FINA 306 - 1"
   },
   {
+    "course_id": "GEOL_105",
     "code": "GEOL 105",
     "subject": "GEOL",
-    "number": "105"
+    "course_number": "105",
+    "title": "Life Resilience and Extinction",
+    "professors": [],
+    "raw_line": "Life Resilience and Extinction - 23034 - GEOL 105 - 1"
   },
   {
+    "course_id": "GEOL_106",
     "code": "GEOL 106",
     "subject": "GEOL",
-    "number": "106"
+    "course_number": "106",
+    "title": "Water and Climate",
+    "professors": [],
+    "raw_line": "Water and Climate - 21697 - GEOL 106 - 1"
   },
   {
+    "course_id": "GEOL_201",
     "code": "GEOL 201",
     "subject": "GEOL",
-    "number": "201"
+    "course_number": "201",
+    "title": "Physical Geology",
+    "professors": [],
+    "raw_line": "Physical Geology - 21698 - GEOL 201 - 1"
   },
   {
+    "course_id": "GEOL_203",
     "code": "GEOL 203",
     "subject": "GEOL",
-    "number": "203"
+    "course_number": "203",
+    "title": "Physical Geology Laboratory",
+    "professors": [],
+    "raw_line": "Physical Geology Laboratory - 21700 - GEOL 203 - 1"
   },
   {
+    "course_id": "GEOL_204",
     "code": "GEOL 204",
     "subject": "GEOL",
-    "number": "204"
+    "course_number": "204",
+    "title": "Dinosaurs and Life History",
+    "professors": [],
+    "raw_line": "Dinosaurs and Life History - 21701 - GEOL 204 - 1"
   },
   {
+    "course_id": "GEOL_213",
     "code": "GEOL 213",
     "subject": "GEOL",
-    "number": "213"
+    "course_number": "213",
+    "title": "Structural Geology",
+    "professors": [],
+    "raw_line": "Structural Geology - 21703 - GEOL 213 - 1"
   },
   {
+    "course_id": "GEOL_216",
     "code": "GEOL 216",
     "subject": "GEOL",
-    "number": "216"
+    "course_number": "216",
+    "title": "Mineralogy &Optical Mineralogy",
+    "professors": [],
+    "raw_line": "Mineralogy &Optical Mineralogy - 21704 - GEOL 216 - 1"
   },
   {
+    "course_id": "GEOL_216L",
     "code": "GEOL 216L",
     "subject": "GEOL",
-    "number": "216L"
+    "course_number": "216L",
+    "title": "Mineralogy &Optic.Mineral.Lab.",
+    "professors": [],
+    "raw_line": "Mineralogy &Optic.Mineral.Lab. - 21705 - GEOL 216L - 1"
   },
   {
+    "course_id": "GEOL_227",
     "code": "GEOL 227",
     "subject": "GEOL",
-    "number": "227"
+    "course_number": "227",
+    "title": "Alternate Energy & Climate",
+    "professors": [],
+    "raw_line": "Alternate Energy & Climate - 21706 - GEOL 227 - 1"
   },
   {
+    "course_id": "GEOL_290B",
     "code": "GEOL 290B",
     "subject": "GEOL",
-    "number": "290B"
+    "course_number": "290B",
+    "title": "ST. Climate & Human Societies",
+    "professors": [],
+    "raw_line": "ST. Climate & Human Societies - 21707 - GEOL 290B - 1"
   },
   {
+    "course_id": "GEOL_318",
     "code": "GEOL 318",
     "subject": "GEOL",
-    "number": "318"
+    "course_number": "318",
+    "title": "Hydrogeology",
+    "professors": [],
+    "raw_line": "Hydrogeology - 21708 - GEOL 318 - 1"
   },
   {
+    "course_id": "GEOL_320",
     "code": "GEOL 320",
     "subject": "GEOL",
-    "number": "320"
+    "course_number": "320",
+    "title": "Graduate Seminar",
+    "professors": [],
+    "raw_line": "Graduate Seminar - 21709 - GEOL 320 - 1"
   },
   {
+    "course_id": "GEOL_330AA",
     "code": "GEOL 330AA",
     "subject": "GEOL",
-    "number": "330AA"
+    "course_number": "330AA",
+    "title": "ST. Env. Policies & strategies",
+    "professors": [],
+    "raw_line": "ST. Env. Policies & strategies - 23305 - GEOL 330AA - 1"
   },
   {
+    "course_id": "INDE_301",
     "code": "INDE 301",
     "subject": "INDE",
-    "number": "301"
+    "course_number": "301",
+    "title": "Engineering Economy",
+    "professors": [],
+    "raw_line": "Engineering Economy - 21817 - INDE 301 - 1"
   },
   {
+    "course_id": "INDE_303",
     "code": "INDE 303",
     "subject": "INDE",
-    "number": "303"
+    "course_number": "303",
+    "title": "Operations Research II",
+    "professors": [],
+    "raw_line": "Operations Research II - 21823 - INDE 303 - 1"
   },
   {
+    "course_id": "INDE_320",
     "code": "INDE 320",
     "subject": "INDE",
-    "number": "320"
+    "course_number": "320",
+    "title": "Work Measurement &Methods Eng",
+    "professors": [],
+    "raw_line": "Work Measurement &Methods Eng - 21825 - INDE 320 - 1"
   },
   {
+    "course_id": "INDE_402",
     "code": "INDE 402",
     "subject": "INDE",
-    "number": "402"
+    "course_number": "402",
+    "title": "Facility Plann.&Material Handl",
+    "professors": [],
+    "raw_line": "Facility Plann.&Material Handl - 21827 - INDE 402 - 1"
   },
   {
+    "course_id": "INDE_410",
     "code": "INDE 410",
     "subject": "INDE",
-    "number": "410"
+    "course_number": "410",
+    "title": "Engineering Ethics",
+    "professors": [],
+    "raw_line": "Engineering Ethics - 21829 - INDE 410 - 1"
   },
   {
+    "course_id": "INDE_412",
     "code": "INDE 412",
     "subject": "INDE",
-    "number": "412"
+    "course_number": "412",
+    "title": "Engineering Entrepreneurship",
+    "professors": [],
+    "raw_line": "Engineering Entrepreneurship - 21837 - INDE 412 - 1"
   },
   {
+    "course_id": "INDE_430",
     "code": "INDE 430",
     "subject": "INDE",
-    "number": "430"
+    "course_number": "430",
+    "title": "Statistical Quality Control",
+    "professors": [],
+    "raw_line": "Statistical Quality Control - 21839 - INDE 430 - 1"
   },
   {
+    "course_id": "INDE_431",
     "code": "INDE 431",
     "subject": "INDE",
-    "number": "431"
+    "course_number": "431",
+    "title": "Product.Planning &Invent.Contr",
+    "professors": [],
+    "raw_line": "Product.Planning &Invent.Contr - 21841 - INDE 431 - 1"
   },
   {
+    "course_id": "INDE_502",
     "code": "INDE 502",
     "subject": "INDE",
-    "number": "502"
+    "course_number": "502",
+    "title": "Final Year Project II",
+    "professors": [],
+    "raw_line": "Final Year Project II - 21843 - INDE 502 - 1"
   },
   {
+    "course_id": "INDE_535",
     "code": "INDE 535",
     "subject": "INDE",
-    "number": "535"
+    "course_number": "535",
+    "title": "Data Analyt.for O.R.&Finan.Eng",
+    "professors": [],
+    "raw_line": "Data Analyt.for O.R.&Finan.Eng - 21845 - INDE 535 - 1"
   },
   {
+    "course_id": "MATH_100",
     "code": "MATH 100",
     "subject": "MATH",
-    "number": "100"
+    "course_number": "100",
+    "title": "College Algebra",
+    "professors": [],
+    "raw_line": "College Algebra - 21896 - MATH 100 - 1"
   },
   {
+    "course_id": "MATH_101",
     "code": "MATH 101",
     "subject": "MATH",
-    "number": "101"
+    "course_number": "101",
+    "title": "Calculus & Analytic Geometry I",
+    "professors": [],
+    "raw_line": "Calculus & Analytic Geometry I - 21898 - MATH 101 - E1"
   },
   {
+    "course_id": "MATH_101I",
     "code": "MATH 101I",
     "subject": "MATH",
-    "number": "101I"
+    "course_number": "101I",
+    "title": "Calculus &Analytic Geom. I-Int",
+    "professors": [],
+    "raw_line": "Calculus &Analytic Geom. I-Int - 21901 - MATH 101I - 1"
   },
   {
+    "course_id": "MATH_102",
     "code": "MATH 102",
     "subject": "MATH",
-    "number": "102"
+    "course_number": "102",
+    "title": "Calculus & Analytical Geom. II",
+    "professors": [],
+    "raw_line": "Calculus & Analytical Geom. II - 21902 - MATH 102 - E1"
   },
   {
+    "course_id": "MATH_201",
     "code": "MATH 201",
     "subject": "MATH",
-    "number": "201"
+    "course_number": "201",
+    "title": "Calculus & Analytical Geom.III",
+    "professors": [],
+    "raw_line": "Calculus & Analytical Geom.III - 21907 - MATH 201 - E1"
   },
   {
+    "course_id": "MATH_202",
     "code": "MATH 202",
     "subject": "MATH",
-    "number": "202"
+    "course_number": "202",
+    "title": "Differential Equations",
+    "professors": [],
+    "raw_line": "Differential Equations - 21915 - MATH 202 - E1"
   },
   {
+    "course_id": "MATH_203",
     "code": "MATH 203",
     "subject": "MATH",
-    "number": "203"
+    "course_number": "203",
+    "title": "Math for Social Sciences I",
+    "professors": [],
+    "raw_line": "Math for Social Sciences I - 21954 - MATH 203 - 1"
   },
   {
+    "course_id": "MATH_204",
     "code": "MATH 204",
     "subject": "MATH",
-    "number": "204"
+    "course_number": "204",
+    "title": "Math for Social Sciences II",
+    "professors": [],
+    "raw_line": "Math for Social Sciences II - 21956 - MATH 204 - 1"
   },
   {
+    "course_id": "MATH_210",
     "code": "MATH 210",
     "subject": "MATH",
-    "number": "210"
+    "course_number": "210",
+    "title": "Introduction to Analysis",
+    "professors": [],
+    "raw_line": "Introduction to Analysis - 21964 - MATH 210 - 1"
   },
   {
+    "course_id": "MATH_211",
     "code": "MATH 211",
     "subject": "MATH",
-    "number": "211"
+    "course_number": "211",
+    "title": "Discrete Mathematics",
+    "professors": [],
+    "raw_line": "Discrete Mathematics - 21966 - MATH 211 - E1"
   },
   {
+    "course_id": "MATH_212",
     "code": "MATH 212",
     "subject": "MATH",
-    "number": "212"
+    "course_number": "212",
+    "title": "Introd.Partial Different.Equat",
+    "professors": [],
+    "raw_line": "Introd.Partial Different.Equat - 21969 - MATH 212 - 2"
   },
   {
+    "course_id": "MATH_218",
     "code": "MATH 218",
     "subject": "MATH",
-    "number": "218"
+    "course_number": "218",
+    "title": "Elem Linear Algebra w Applica.",
+    "professors": [],
+    "raw_line": "Elem Linear Algebra w Applica. - 21972 - MATH 218 - E1"
   },
   {
+    "course_id": "MATH_219",
     "code": "MATH 219",
     "subject": "MATH",
-    "number": "219"
+    "course_number": "219",
+    "title": "Linear Algebra I",
+    "professors": [],
+    "raw_line": "Linear Algebra I - 21997 - MATH 219 - 1"
   },
   {
+    "course_id": "MATH_220",
     "code": "MATH 220",
     "subject": "MATH",
-    "number": "220"
+    "course_number": "220",
+    "title": "Linear Algebra II",
+    "professors": [],
+    "raw_line": "Linear Algebra II - 23245 - MATH 220 - 1"
   },
   {
+    "course_id": "MATH_223",
     "code": "MATH 223",
     "subject": "MATH",
-    "number": "223"
+    "course_number": "223",
+    "title": "Advanced Calculus",
+    "professors": [],
+    "raw_line": "Advanced Calculus - 21999 - MATH 223 - 1"
   },
   {
+    "course_id": "MATH_227",
     "code": "MATH 227",
     "subject": "MATH",
-    "number": "227"
+    "course_number": "227",
+    "title": "Intro to Complex Analysis",
+    "professors": [],
+    "raw_line": "Intro to Complex Analysis - 22000 - MATH 227 - 1"
   },
   {
+    "course_id": "MATH_251",
     "code": "MATH 251",
     "subject": "MATH",
-    "number": "251"
+    "course_number": "251",
+    "title": "Numerical Computing",
+    "professors": [],
+    "raw_line": "Numerical Computing - 22001 - MATH 251 - E1"
   },
   {
+    "course_id": "MATH_261",
     "code": "MATH 261",
     "subject": "MATH",
-    "number": "261"
+    "course_number": "261",
+    "title": "Number Theory",
+    "professors": [],
+    "raw_line": "Number Theory - 22012 - MATH 261 - 1"
   },
   {
+    "course_id": "MATH_272",
     "code": "MATH 272",
     "subject": "MATH",
-    "number": "272"
+    "course_number": "272",
+    "title": "Mathematical Interest Theory",
+    "professors": [],
+    "raw_line": "Mathematical Interest Theory - 22013 - MATH 272 - 1"
   },
   {
+    "course_id": "MATH_303",
     "code": "MATH 303",
     "subject": "MATH",
-    "number": "303"
+    "course_number": "303",
+    "title": "Measure and Integration",
+    "professors": [],
+    "raw_line": "Measure and Integration - 22014 - MATH 303 - 1"
   },
   {
+    "course_id": "MATH_309",
     "code": "MATH 309",
     "subject": "MATH",
-    "number": "309"
+    "course_number": "309",
+    "title": "Funct.Analys.&Partial Diff.Equ",
+    "professors": [],
+    "raw_line": "Funct.Analys.&Partial Diff.Equ - 22015 - MATH 309 - 1"
   },
   {
+    "course_id": "MATH_314",
     "code": "MATH 314",
     "subject": "MATH",
-    "number": "314"
+    "course_number": "314",
+    "title": "Algebraic Topology I",
+    "professors": [],
+    "raw_line": "Algebraic Topology I - 22016 - MATH 314 - 1"
   },
   {
+    "course_id": "MATH_344",
     "code": "MATH 344",
     "subject": "MATH",
-    "number": "344"
+    "course_number": "344",
+    "title": "Commutative Algebra",
+    "professors": [],
+    "raw_line": "Commutative Algebra - 23535 - MATH 344 - 1"
   },
   {
+    "course_id": "MATH_351",
     "code": "MATH 351",
     "subject": "MATH",
-    "number": "351"
+    "course_number": "351",
+    "title": "Optimization & Nonlinear Prob",
+    "professors": [],
+    "raw_line": "Optimization & Nonlinear Prob - 22018 - MATH 351 - 1"
   },
   {
+    "course_id": "MATH_360B",
     "code": "MATH 360B",
     "subject": "MATH",
-    "number": "360B"
+    "course_number": "360B",
+    "title": "ST. Topics in Stat. Learning",
+    "professors": [],
+    "raw_line": "ST. Topics in Stat. Learning - 22019 - MATH 360B - 1"
   },
   {
+    "course_id": "MATH_395A",
     "code": "MATH 395A",
     "subject": "MATH",
-    "number": "395A"
+    "course_number": "395A",
+    "title": "Comprehensive Exam",
+    "professors": [],
+    "raw_line": "Comprehensive Exam - 22020 - MATH 395A - 1"
   },
   {
+    "course_id": "MATH_399",
     "code": "MATH 399",
     "subject": "MATH",
-    "number": "399"
+    "course_number": "399",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 22021 - MATH 399 - 1"
   },
   {
+    "course_id": "MATH_399A",
     "code": "MATH 399A",
     "subject": "MATH",
-    "number": "399A"
+    "course_number": "399A",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 23274 - MATH 399A - 1"
   },
   {
+    "course_id": "MECH_201",
     "code": "MECH 201",
     "subject": "MECH",
-    "number": "201"
+    "course_number": "201",
+    "title": "Computer Aided Drawing &Design",
+    "professors": [],
+    "raw_line": "Computer Aided Drawing &Design - 22084 - MECH 201 - 1"
   },
   {
+    "course_id": "MECH_220",
     "code": "MECH 220",
     "subject": "MECH",
-    "number": "220"
+    "course_number": "220",
+    "title": "Engineering Graphics",
+    "professors": [],
+    "raw_line": "Engineering Graphics - 22088 - MECH 220 - 1"
   },
   {
+    "course_id": "MECH_230",
     "code": "MECH 230",
     "subject": "MECH",
-    "number": "230"
+    "course_number": "230",
+    "title": "Dynamics",
+    "professors": [],
+    "raw_line": "Dynamics - 22097 - MECH 230 - 1"
   },
   {
+    "course_id": "MECH_314",
     "code": "MECH 314",
     "subject": "MECH",
-    "number": "314"
+    "course_number": "314",
+    "title": "Intro. to Fluids Engineering",
+    "professors": [],
+    "raw_line": "Intro. to Fluids Engineering - 22103 - MECH 314 - 1"
   },
   {
+    "course_id": "MECH_320",
     "code": "MECH 320",
     "subject": "MECH",
-    "number": "320"
+    "course_number": "320",
+    "title": "Mechanics of Materials",
+    "professors": [],
+    "raw_line": "Mechanics of Materials - 22107 - MECH 320 - 1"
   },
   {
+    "course_id": "MECH_332",
     "code": "MECH 332",
     "subject": "MECH",
-    "number": "332"
+    "course_number": "332",
+    "title": "Mechanics of Machines",
+    "professors": [],
+    "raw_line": "Mechanics of Machines - 22111 - MECH 332 - 1"
   },
   {
+    "course_id": "MECH_340",
     "code": "MECH 340",
     "subject": "MECH",
-    "number": "340"
+    "course_number": "340",
+    "title": "Engineering Materials",
+    "professors": [],
+    "raw_line": "Engineering Materials - 22115 - MECH 340 - 1"
   },
   {
+    "course_id": "MECH_341",
     "code": "MECH 341",
     "subject": "MECH",
-    "number": "341"
+    "course_number": "341",
+    "title": "Materials Lab",
+    "professors": [],
+    "raw_line": "Materials Lab - 22116 - MECH 341 - 1"
   },
   {
+    "course_id": "MECH_410L",
     "code": "MECH 410L",
     "subject": "MECH",
-    "number": "410L"
+    "course_number": "410L",
+    "title": "Thermal/Fluid Systems Lab.",
+    "professors": [],
+    "raw_line": "Thermal/Fluid Systems Lab. - 22129 - MECH 410L - 2"
   },
   {
+    "course_id": "MECH_412",
     "code": "MECH 412",
     "subject": "MECH",
-    "number": "412"
+    "course_number": "412",
+    "title": "Heat Transfer",
+    "professors": [],
+    "raw_line": "Heat Transfer - 22134 - MECH 412 - 1"
   },
   {
+    "course_id": "MECH_421",
     "code": "MECH 421",
     "subject": "MECH",
-    "number": "421"
+    "course_number": "421",
+    "title": "Manufacturing Processes I",
+    "professors": [],
+    "raw_line": "Manufacturing Processes I - 22138 - MECH 421 - 1"
   },
   {
+    "course_id": "MECH_430",
     "code": "MECH 430",
     "subject": "MECH",
-    "number": "430"
+    "course_number": "430",
+    "title": "Process Instrumentat.& Measur.",
+    "professors": [],
+    "raw_line": "Process Instrumentat.& Measur. - 22146 - MECH 430 - 1"
   },
   {
+    "course_id": "MECH_432",
     "code": "MECH 432",
     "subject": "MECH",
-    "number": "432"
+    "course_number": "432",
+    "title": "Dynamic System Analysis",
+    "professors": [],
+    "raw_line": "Dynamic System Analysis - 22158 - MECH 432 - 1"
   },
   {
+    "course_id": "MECH_436",
     "code": "MECH 436",
     "subject": "MECH",
-    "number": "436"
+    "course_number": "436",
+    "title": "Control Systems",
+    "professors": [],
+    "raw_line": "Control Systems - 22159 - MECH 436 - 1"
   },
   {
+    "course_id": "MECH_499",
     "code": "MECH 499",
     "subject": "MECH",
-    "number": "499"
+    "course_number": "499",
+    "title": "Undergraduate Research",
+    "professors": [],
+    "raw_line": "Undergraduate Research - 22168 - MECH 499 - 1"
   },
   {
+    "course_id": "MECH_502",
     "code": "MECH 502",
     "subject": "MECH",
-    "number": "502"
+    "course_number": "502",
+    "title": "Final Year Project II",
+    "professors": [],
+    "raw_line": "Final Year Project II - 22173 - MECH 502 - 1"
   },
   {
+    "course_id": "MECH_521",
     "code": "MECH 521",
     "subject": "MECH",
-    "number": "521"
+    "course_number": "521",
+    "title": "Manufacturing Processes II",
+    "professors": [],
+    "raw_line": "Manufacturing Processes II - 22174 - MECH 521 - 1"
   },
   {
+    "course_id": "MECH_525",
     "code": "MECH 525",
     "subject": "MECH",
-    "number": "525"
+    "course_number": "525",
+    "title": "Product Design and Development",
+    "professors": [],
+    "raw_line": "Product Design and Development - 22176 - MECH 525 - 1"
   },
   {
+    "course_id": "MECH_536",
     "code": "MECH 536",
     "subject": "MECH",
-    "number": "536"
+    "course_number": "536",
+    "title": "Intelligent Control Systems",
+    "professors": [],
+    "raw_line": "Intelligent Control Systems - 23288 - MECH 536 - 1"
   },
   {
+    "course_id": "MECH_611",
     "code": "MECH 611",
     "subject": "MECH",
-    "number": "611"
+    "course_number": "611",
+    "title": "Comput.Modeling in Biomechanic",
+    "professors": [],
+    "raw_line": "Comput.Modeling in Biomechanic - 22178 - MECH 611 - 1"
   },
   {
+    "course_id": "MECH_617",
     "code": "MECH 617",
     "subject": "MECH",
-    "number": "617"
+    "course_number": "617",
+    "title": "Smart Materials & Structures",
+    "professors": [],
+    "raw_line": "Smart Materials & Structures - 22180 - MECH 617 - 1"
   },
   {
+    "course_id": "MECH_625",
     "code": "MECH 625",
     "subject": "MECH",
-    "number": "625"
+    "course_number": "625",
+    "title": "Fatigue of Materials",
+    "professors": [],
+    "raw_line": "Fatigue of Materials - 22182 - MECH 625 - 1"
   },
   {
+    "course_id": "MECH_641",
     "code": "MECH 641",
     "subject": "MECH",
-    "number": "641"
+    "course_number": "641",
+    "title": "Robotics",
+    "professors": [],
+    "raw_line": "Robotics - 22186 - MECH 641 - 1"
   },
   {
+    "course_id": "MECH_650",
     "code": "MECH 650",
     "subject": "MECH",
-    "number": "650"
+    "course_number": "650",
+    "title": "Autonomous Mobile Robotics",
+    "professors": [],
+    "raw_line": "Autonomous Mobile Robotics - 22188 - MECH 650 - 1"
   },
   {
+    "course_id": "MECH_651",
     "code": "MECH 651",
     "subject": "MECH",
-    "number": "651"
+    "course_number": "651",
+    "title": "Intelligent Control Systems",
+    "professors": [],
+    "raw_line": "Intelligent Control Systems - 23289 - MECH 651 - 2"
   },
   {
+    "course_id": "MECH_663",
     "code": "MECH 663",
     "subject": "MECH",
-    "number": "663"
+    "course_number": "663",
+    "title": "Computational Fluid Dynamics",
+    "professors": [],
+    "raw_line": "Computational Fluid Dynamics - 22190 - MECH 663 - 1"
   },
   {
+    "course_id": "MECH_674",
     "code": "MECH 674",
     "subject": "MECH",
-    "number": "674"
+    "course_number": "674",
+    "title": "Energy Economics and Policy",
+    "professors": [],
+    "raw_line": "Energy Economics and Policy - 22192 - MECH 674 - 1"
   },
   {
+    "course_id": "MECH_678",
     "code": "MECH 678",
     "subject": "MECH",
-    "number": "678"
+    "course_number": "678",
+    "title": "Solar Electricity",
+    "professors": [],
+    "raw_line": "Solar Electricity - 22194 - MECH 678 - 1"
   },
   {
+    "course_id": "MECH_796",
     "code": "MECH 796",
     "subject": "MECH",
-    "number": "796"
+    "course_number": "796",
+    "title": "Sp.Project in Mechanical Eng'g",
+    "professors": [],
+    "raw_line": "Sp.Project in Mechanical Eng'g - 22196 - MECH 796 - 1"
   },
   {
+    "course_id": "MECH_797",
     "code": "MECH 797",
     "subject": "MECH",
-    "number": "797"
+    "course_number": "797",
+    "title": "Seminar",
+    "professors": [],
+    "raw_line": "Seminar - 22200 - MECH 797 - 1"
   },
   {
+    "course_id": "MECH_798M",
     "code": "MECH 798M",
     "subject": "MECH",
-    "number": "798M"
+    "course_number": "798M",
+    "title": "SP.Data-Driven Modeling",
+    "professors": [],
+    "raw_line": "SP.Data-Driven Modeling - 22203 - MECH 798M - 1"
   },
   {
+    "course_id": "MECH_799",
     "code": "MECH 799",
     "subject": "MECH",
-    "number": "799"
+    "course_number": "799",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 22205 - MECH 799 - 1"
   },
   {
+    "course_id": "MECH_799A",
     "code": "MECH 799A",
     "subject": "MECH",
-    "number": "799A"
+    "course_number": "799A",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 22206 - MECH 799A - 1"
   },
   {
+    "course_id": "MECH_799T",
     "code": "MECH 799T",
     "subject": "MECH",
-    "number": "799T"
+    "course_number": "799T",
+    "title": "Master’s Comprehensive Exam",
+    "professors": [],
+    "raw_line": "Master’s Comprehensive Exam - 22209 - MECH 799T - 1"
   },
   {
+    "course_id": "MECH_799TR",
     "code": "MECH 799TR",
     "subject": "MECH",
-    "number": "799TR"
+    "course_number": "799TR",
+    "title": "Master’s Comprehensive Exam",
+    "professors": [],
+    "raw_line": "Master’s Comprehensive Exam - 22210 - MECH 799TR - 1"
   },
   {
+    "course_id": "MECH_980",
     "code": "MECH 980",
     "subject": "MECH",
-    "number": "980"
+    "course_number": "980",
+    "title": "Qualifying Exam I:Compr.Exam",
+    "professors": [],
+    "raw_line": "Qualifying Exam I:Compr.Exam - 22211 - MECH 980 - 1"
   },
   {
+    "course_id": "MECH_981",
     "code": "MECH 981",
     "subject": "MECH",
-    "number": "981"
+    "course_number": "981",
+    "title": "Qualif.Exam II:Def.ThesisProp",
+    "professors": [],
+    "raw_line": "Qualif.Exam II:Def.ThesisProp - 22212 - MECH 981 - 1"
   },
   {
+    "course_id": "MECH_982C",
     "code": "MECH 982C",
     "subject": "MECH",
-    "number": "982C"
+    "course_number": "982C",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 22216 - MECH 982C - 1"
   },
   {
+    "course_id": "MECH_983A",
     "code": "MECH 983A",
     "subject": "MECH",
-    "number": "983A"
+    "course_number": "983A",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 22219 - MECH 983A - 1"
   },
   {
+    "course_id": "MECH_983C",
     "code": "MECH 983C",
     "subject": "MECH",
-    "number": "983C"
+    "course_number": "983C",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 22221 - MECH 983C - 1"
   },
   {
+    "course_id": "MECH_984",
     "code": "MECH 984",
     "subject": "MECH",
-    "number": "984"
+    "course_number": "984",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 22223 - MECH 984 - 1"
   },
   {
+    "course_id": "MECH_984A",
     "code": "MECH 984A",
     "subject": "MECH",
-    "number": "984A"
+    "course_number": "984A",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 22224 - MECH 984A - 1"
   },
   {
+    "course_id": "MECH_986",
     "code": "MECH 986",
     "subject": "MECH",
-    "number": "986"
+    "course_number": "986",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 22228 - MECH 986 - 1"
   },
   {
+    "course_id": "MECH_987",
     "code": "MECH 987",
     "subject": "MECH",
-    "number": "987"
+    "course_number": "987",
+    "title": "PhD Thesis Defense",
+    "professors": [],
+    "raw_line": "PhD Thesis Defense - 22229 - MECH 987 - 1"
   },
   {
+    "course_id": "MNGT_215",
     "code": "MNGT 215",
     "subject": "MNGT",
-    "number": "215"
+    "course_number": "215",
+    "title": "Fundam.of Managmt.&Organ.Behav",
+    "professors": [],
+    "raw_line": "Fundam.of Managmt.&Organ.Behav - 22286 - MNGT 215 - 1"
   },
   {
+    "course_id": "MNGT_218",
     "code": "MNGT 218",
     "subject": "MNGT",
-    "number": "218"
+    "course_number": "218",
+    "title": "Adv.Top.in Organizati Behavior",
+    "professors": [],
+    "raw_line": "Adv.Top.in Organizati Behavior - 22294 - MNGT 218 - 1"
   },
   {
+    "course_id": "MNGT_220",
     "code": "MNGT 220",
     "subject": "MNGT",
-    "number": "220"
+    "course_number": "220",
+    "title": "Human Resource Management",
+    "professors": [],
+    "raw_line": "Human Resource Management - 22295 - MNGT 220 - 1"
   },
   {
+    "course_id": "MNGT_224",
     "code": "MNGT 224",
     "subject": "MNGT",
-    "number": "224"
+    "course_number": "224",
+    "title": "Leadership in Organizations",
+    "professors": [],
+    "raw_line": "Leadership in Organizations - 22296 - MNGT 224 - 1"
   },
   {
+    "course_id": "MNGT_235",
     "code": "MNGT 235",
     "subject": "MNGT",
-    "number": "235"
+    "course_number": "235",
+    "title": "Business Environ. of the Firm",
+    "professors": [],
+    "raw_line": "Business Environ. of the Firm - 22297 - MNGT 235 - 1"
   },
   {
+    "course_id": "MNGT_253A",
     "code": "MNGT 253A",
     "subject": "MNGT",
-    "number": "253A"
+    "course_number": "253A",
+    "title": "Negotiation Skills Workshop",
+    "professors": [],
+    "raw_line": "Negotiation Skills Workshop - 23071 - MNGT 253A - 1"
   },
   {
+    "course_id": "NFSC_123",
     "code": "NFSC 123",
     "subject": "NFSC",
-    "number": "123"
+    "course_number": "123",
+    "title": "Nutrition & Physical Activity",
+    "professors": [],
+    "raw_line": "Nutrition & Physical Activity - 22323 - NFSC 123 - 1"
   },
   {
+    "course_id": "NFSC_210",
     "code": "NFSC 210",
     "subject": "NFSC",
-    "number": "210"
+    "course_number": "210",
+    "title": "Statist.in Nutrtion &Food Scie",
+    "professors": [],
+    "raw_line": "Statist.in Nutrtion &Food Scie - 22324 - NFSC 210 - 1"
   },
   {
+    "course_id": "NFSC_220",
     "code": "NFSC 220",
     "subject": "NFSC",
-    "number": "220"
+    "course_number": "220",
+    "title": "Food & Nutrition Awareness",
+    "professors": [],
+    "raw_line": "Food & Nutrition Awareness - 22325 - NFSC 220 - 1"
   },
   {
+    "course_id": "NFSC_221",
     "code": "NFSC 221",
     "subject": "NFSC",
-    "number": "221"
+    "course_number": "221",
+    "title": "Basic Nutrition",
+    "professors": [],
+    "raw_line": "Basic Nutrition - 22326 - NFSC 221 - 1"
   },
   {
+    "course_id": "NFSC_223",
     "code": "NFSC 223",
     "subject": "NFSC",
-    "number": "223"
+    "course_number": "223",
+    "title": "Nutrition & Physical Activity",
+    "professors": [],
+    "raw_line": "Nutrition & Physical Activity - 22327 - NFSC 223 - 1"
   },
   {
+    "course_id": "NFSC_229",
     "code": "NFSC 229",
     "subject": "NFSC",
-    "number": "229"
+    "course_number": "229",
+    "title": "Menu Planning",
+    "professors": [],
+    "raw_line": "Menu Planning - 22328 - NFSC 229 - 1"
   },
   {
+    "course_id": "NFSC_252",
     "code": "NFSC 252",
     "subject": "NFSC",
-    "number": "252"
+    "course_number": "252",
+    "title": "Intr.to Food Processing",
+    "professors": [],
+    "raw_line": "Intr.to Food Processing - 22330 - NFSC 252 - 1"
   },
   {
+    "course_id": "NFSC_261",
     "code": "NFSC 261",
     "subject": "NFSC",
-    "number": "261"
+    "course_number": "261",
+    "title": "Introductory Biochemistry",
+    "professors": [],
+    "raw_line": "Introductory Biochemistry - 22331 - NFSC 261 - 1"
   },
   {
+    "course_id": "NFSC_265",
     "code": "NFSC 265",
     "subject": "NFSC",
-    "number": "265"
+    "course_number": "265",
+    "title": "Food Chemistry",
+    "professors": [],
+    "raw_line": "Food Chemistry - 22332 - NFSC 265 - 1"
   },
   {
+    "course_id": "NFSC_267",
     "code": "NFSC 267",
     "subject": "NFSC",
-    "number": "267"
+    "course_number": "267",
+    "title": "Food Analysis",
+    "professors": [],
+    "raw_line": "Food Analysis - 22333 - NFSC 267 - 1"
   },
   {
+    "course_id": "NFSC_272",
     "code": "NFSC 272",
     "subject": "NFSC",
-    "number": "272"
+    "course_number": "272",
+    "title": "Intr.to Food Service & Industr",
+    "professors": [],
+    "raw_line": "Intr.to Food Service & Industr - 22335 - NFSC 272 - 1"
   },
   {
+    "course_id": "NFSC_277",
     "code": "NFSC 277",
     "subject": "NFSC",
-    "number": "277"
+    "course_number": "277",
+    "title": "Food Microbiology I",
+    "professors": [],
+    "raw_line": "Food Microbiology I - 22336 - NFSC 277 - 1"
   },
   {
+    "course_id": "NFSC_281",
     "code": "NFSC 281",
     "subject": "NFSC",
-    "number": "281"
+    "course_number": "281",
+    "title": "Nut.in Life Cycle Lab for NTDT",
+    "professors": [],
+    "raw_line": "Nut.in Life Cycle Lab for NTDT - 22337 - NFSC 281 - 1"
   },
   {
+    "course_id": "NFSC_282",
     "code": "NFSC 282",
     "subject": "NFSC",
-    "number": "282"
+    "course_number": "282",
+    "title": "Food Quality Management",
+    "professors": [],
+    "raw_line": "Food Quality Management - 22339 - NFSC 282 - 1"
   },
   {
+    "course_id": "NFSC_285",
     "code": "NFSC 285",
     "subject": "NFSC",
-    "number": "285"
+    "course_number": "285",
+    "title": "Nutrition in the Life Cycle",
+    "professors": [],
+    "raw_line": "Nutrition in the Life Cycle - 22340 - NFSC 285 - 1"
   },
   {
+    "course_id": "NFSC_287",
     "code": "NFSC 287",
     "subject": "NFSC",
-    "number": "287"
+    "course_number": "287",
+    "title": "Food Processing",
+    "professors": [],
+    "raw_line": "Food Processing - 22341 - NFSC 287 - 1"
   },
   {
+    "course_id": "NFSC_289",
     "code": "NFSC 289",
     "subject": "NFSC",
-    "number": "289"
+    "course_number": "289",
+    "title": "Food Processing Laboratory",
+    "professors": [],
+    "raw_line": "Food Processing Laboratory - 22342 - NFSC 289 - 1"
   },
   {
+    "course_id": "NFSC_290",
     "code": "NFSC 290",
     "subject": "NFSC",
-    "number": "290"
+    "course_number": "290",
+    "title": "Food Service Management",
+    "professors": [],
+    "raw_line": "Food Service Management - 22344 - NFSC 290 - 1"
   },
   {
+    "course_id": "NFSC_293",
     "code": "NFSC 293",
     "subject": "NFSC",
-    "number": "293"
+    "course_number": "293",
+    "title": "Medical Nutrition Therapy II",
+    "professors": [],
+    "raw_line": "Medical Nutrition Therapy II - 22345 - NFSC 293 - 1"
   },
   {
+    "course_id": "NFSC_295",
     "code": "NFSC 295",
     "subject": "NFSC",
-    "number": "295"
+    "course_number": "295",
+    "title": "Med.Nutrit.Therapy Lab.II NTDT",
+    "professors": [],
+    "raw_line": "Med.Nutrit.Therapy Lab.II NTDT - 22346 - NFSC 295 - 1"
   },
   {
+    "course_id": "NFSC_296",
     "code": "NFSC 296",
     "subject": "NFSC",
-    "number": "296"
+    "course_number": "296",
+    "title": "Current Tp:Food Sc.& Nutrition",
+    "professors": [],
+    "raw_line": "Current Tp:Food Sc.& Nutrition - 22348 - NFSC 296 - 1"
   },
   {
+    "course_id": "NFSC_298I",
     "code": "NFSC 298I",
     "subject": "NFSC",
-    "number": "298I"
+    "course_number": "298I",
+    "title": "Dietetic Internship",
+    "professors": [],
+    "raw_line": "Dietetic Internship - 22349 - NFSC 298I - 1"
   },
   {
+    "course_id": "NFSC_298IA",
     "code": "NFSC 298IA",
     "subject": "NFSC",
-    "number": "298IA"
+    "course_number": "298IA",
+    "title": "Internship",
+    "professors": [],
+    "raw_line": "Internship - 22350 - NFSC 298IA - 1"
   },
   {
+    "course_id": "NFSC_299A",
     "code": "NFSC 299A",
     "subject": "NFSC",
-    "number": "299A"
+    "course_number": "299A",
+    "title": "Projects in Nutrition&Food Sc.",
+    "professors": [],
+    "raw_line": "Projects in Nutrition&Food Sc. - 22352 - NFSC 299A - 1"
   },
   {
+    "course_id": "NFSC_299B",
     "code": "NFSC 299B",
     "subject": "NFSC",
-    "number": "299B"
+    "course_number": "299B",
+    "title": "Projects in Nutrition&Food Sc.",
+    "professors": [],
+    "raw_line": "Projects in Nutrition&Food Sc. - 22353 - NFSC 299B - 1"
   },
   {
+    "course_id": "NFSC_301",
     "code": "NFSC 301",
     "subject": "NFSC",
-    "number": "301"
+    "course_number": "301",
+    "title": "Stat.Methods for Nutr.&Food Sc",
+    "professors": [],
+    "raw_line": "Stat.Methods for Nutr.&Food Sc - 22364 - NFSC 301 - 1"
   },
   {
+    "course_id": "NFSC_305",
     "code": "NFSC 305",
     "subject": "NFSC",
-    "number": "305"
+    "course_number": "305",
+    "title": "Sensory Evaluation of Food",
+    "professors": [],
+    "raw_line": "Sensory Evaluation of Food - 22365 - NFSC 305 - 1"
   },
   {
+    "course_id": "NFSC_306",
     "code": "NFSC 306",
     "subject": "NFSC",
-    "number": "306"
+    "course_number": "306",
+    "title": "Comm.Nutr:Research & Intervent",
+    "professors": [],
+    "raw_line": "Comm.Nutr:Research & Intervent - 22366 - NFSC 306 - 1"
   },
   {
+    "course_id": "NFSC_306A",
     "code": "NFSC 306A",
     "subject": "NFSC",
-    "number": "306A"
+    "course_number": "306A",
+    "title": "Community Nutrition",
+    "professors": [],
+    "raw_line": "Community Nutrition - 22367 - NFSC 306A - 1"
   },
   {
+    "course_id": "NFSC_306B",
     "code": "NFSC 306B",
     "subject": "NFSC",
-    "number": "306B"
+    "course_number": "306B",
+    "title": "Comm Nut:Research& Interven",
+    "professors": [],
+    "raw_line": "Comm Nut:Research& Interven - 23295 - NFSC 306B - 1"
   },
   {
+    "course_id": "NFSC_312",
     "code": "NFSC 312",
     "subject": "NFSC",
-    "number": "312"
+    "course_number": "312",
+    "title": "Sports Nutrition",
+    "professors": [],
+    "raw_line": "Sports Nutrition - 22368 - NFSC 312 - 1"
   },
   {
+    "course_id": "NFSC_314",
     "code": "NFSC 314",
     "subject": "NFSC",
-    "number": "314"
+    "course_number": "314",
+    "title": "Adv.Nutrition:Minerals",
+    "professors": [],
+    "raw_line": "Adv.Nutrition:Minerals - 22369 - NFSC 314 - 1"
   },
   {
+    "course_id": "NFSC_319",
     "code": "NFSC 319",
     "subject": "NFSC",
-    "number": "319"
+    "course_number": "319",
+    "title": "Ethics, Leadership & Entrepren",
+    "professors": [
+      "Leadership Ethics"
+    ],
+    "raw_line": "Ethics, Leadership & Entrepren - 23291 - NFSC 319 - 1"
   },
   {
+    "course_id": "NFSC_324",
     "code": "NFSC 324",
     "subject": "NFSC",
-    "number": "324"
+    "course_number": "324",
+    "title": "Adv.Nutrit.Principles & Pract.",
+    "professors": [],
+    "raw_line": "Adv.Nutrit.Principles & Pract. - 22370 - NFSC 324 - 1"
   },
   {
+    "course_id": "NFSC_326",
     "code": "NFSC 326",
     "subject": "NFSC",
-    "number": "326"
+    "course_number": "326",
+    "title": "Interprofessional Seminar",
+    "professors": [],
+    "raw_line": "Interprofessional Seminar - 23293 - NFSC 326 - 1"
   },
   {
+    "course_id": "NFSC_328",
     "code": "NFSC 328",
     "subject": "NFSC",
-    "number": "328"
+    "course_number": "328",
+    "title": "Advanced Clinical Dietetics",
+    "professors": [],
+    "raw_line": "Advanced Clinical Dietetics - 22371 - NFSC 328 - 1"
   },
   {
+    "course_id": "NFSC_371",
     "code": "NFSC 371",
     "subject": "NFSC",
-    "number": "371"
+    "course_number": "371",
+    "title": "Food Engineering",
+    "professors": [],
+    "raw_line": "Food Engineering - 22372 - NFSC 371 - 1"
   },
   {
+    "course_id": "NFSC_383",
     "code": "NFSC 383",
     "subject": "NFSC",
-    "number": "383"
+    "course_number": "383",
+    "title": "Nutrition Educat&Communication",
+    "professors": [],
+    "raw_line": "Nutrition Educat&Communication - 22373 - NFSC 383 - 1"
   },
   {
+    "course_id": "NFSC_384",
     "code": "NFSC 384",
     "subject": "NFSC",
-    "number": "384"
+    "course_number": "384",
+    "title": "Seminar in Clinical Dietetics",
+    "professors": [],
+    "raw_line": "Seminar in Clinical Dietetics - 23292 - NFSC 384 - 1"
   },
   {
+    "course_id": "NFSC_394",
     "code": "NFSC 394",
     "subject": "NFSC",
-    "number": "394"
+    "course_number": "394",
+    "title": "Internship",
+    "professors": [],
+    "raw_line": "Internship - 23503 - NFSC 394 - 1"
   },
   {
+    "course_id": "NFSC_395",
     "code": "NFSC 395",
     "subject": "NFSC",
-    "number": "395"
+    "course_number": "395",
+    "title": "Graduate Seminar in NFSC",
+    "professors": [],
+    "raw_line": "Graduate Seminar in NFSC - 22374 - NFSC 395 - 1"
   },
   {
+    "course_id": "NFSC_396",
     "code": "NFSC 396",
     "subject": "NFSC",
-    "number": "396"
+    "course_number": "396",
+    "title": "Comprehensive Exam",
+    "professors": [],
+    "raw_line": "Comprehensive Exam - 22379 - NFSC 396 - 5"
   },
   {
+    "course_id": "NFSC_397SA",
     "code": "NFSC 397SA",
     "subject": "NFSC",
-    "number": "397SA"
+    "course_number": "397SA",
+    "title": "Dietetics Practicum",
+    "professors": [],
+    "raw_line": "Dietetics Practicum - 22382 - NFSC 397SA - 1"
   },
   {
+    "course_id": "NFSC_398",
     "code": "NFSC 398",
     "subject": "NFSC",
-    "number": "398"
+    "course_number": "398",
+    "title": "Project",
+    "professors": [],
+    "raw_line": "Project - 23366 - NFSC 398 - 1"
   },
   {
+    "course_id": "NFSC_399",
     "code": "NFSC 399",
     "subject": "NFSC",
-    "number": "399"
+    "course_number": "399",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 22383 - NFSC 399 - 1"
   },
   {
+    "course_id": "NFSC_399A",
     "code": "NFSC 399A",
     "subject": "NFSC",
-    "number": "399A"
+    "course_number": "399A",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 22389 - NFSC 399A - 1"
   },
   {
+    "course_id": "NFSC_399B",
     "code": "NFSC 399B",
     "subject": "NFSC",
-    "number": "399B"
+    "course_number": "399B",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 22394 - NFSC 399B - 1"
   },
   {
+    "course_id": "NFSC_399D",
     "code": "NFSC 399D",
     "subject": "NFSC",
-    "number": "399D"
+    "course_number": "399D",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 23531 - NFSC 399D - 1"
   },
   {
+    "course_id": "NURS_200",
     "code": "NURS 200",
     "subject": "NURS",
-    "number": "200"
+    "course_number": "200",
+    "title": "Introduction to Nursing",
+    "professors": [],
+    "raw_line": "Introduction to Nursing - 22400 - NURS 200 - 1"
   },
   {
+    "course_id": "NURS_201",
     "code": "NURS 201",
     "subject": "NURS",
-    "number": "201"
+    "course_number": "201",
+    "title": "Introd.to Nursing Practice",
+    "professors": [],
+    "raw_line": "Introd.to Nursing Practice - 22401 - NURS 201 - 1"
   },
   {
+    "course_id": "NURS_202",
     "code": "NURS 202",
     "subject": "NURS",
-    "number": "202"
+    "course_number": "202",
+    "title": "Health Assessment",
+    "professors": [],
+    "raw_line": "Health Assessment - 22405 - NURS 202 - 1"
   },
   {
+    "course_id": "NURS_203",
     "code": "NURS 203",
     "subject": "NURS",
-    "number": "203"
+    "course_number": "203",
+    "title": "Biotatistics for Nurses",
+    "professors": [],
+    "raw_line": "Biotatistics for Nurses - 22408 - NURS 203 - E1"
   },
   {
+    "course_id": "NURS_210B",
     "code": "NURS 210B",
     "subject": "NURS",
-    "number": "210B"
+    "course_number": "210B",
+    "title": "Pathophysiology II",
+    "professors": [],
+    "raw_line": "Pathophysiology II - 22411 - NURS 210B - 1"
   },
   {
+    "course_id": "NURS_302",
     "code": "NURS 302",
     "subject": "NURS",
-    "number": "302"
+    "course_number": "302",
+    "title": "Nurs Care of Adults II,Th.&Pra",
+    "professors": [
+      "Th II"
+    ],
+    "raw_line": "Nurs Care of Adults II,Th.&Pra - 22412 - NURS 302 - 1"
   },
   {
+    "course_id": "NURS_306",
     "code": "NURS 306",
     "subject": "NURS",
-    "number": "306"
+    "course_number": "306",
+    "title": "Nurs.Care of Children, Th.&Pra",
+    "professors": [
+      "Th Children"
+    ],
+    "raw_line": "Nurs.Care of Children, Th.&Pra - 22415 - NURS 306 - 1"
   },
   {
+    "course_id": "NURS_402",
     "code": "NURS 402",
     "subject": "NURS",
-    "number": "402"
+    "course_number": "402",
+    "title": "Psy.Mental Health Nu,Th.&Prac",
+    "professors": [
+      "Th Nu"
+    ],
+    "raw_line": "Psy.Mental Health Nu,Th.&Prac - 22418 - NURS 402 - 1"
   },
   {
+    "course_id": "NURS_408",
     "code": "NURS 408",
     "subject": "NURS",
-    "number": "408"
+    "course_number": "408",
+    "title": "Community Health Nurses",
+    "professors": [],
+    "raw_line": "Community Health Nurses - 23253 - NURS 408 - 0"
   },
   {
+    "course_id": "NURS_410",
     "code": "NURS 410",
     "subject": "NURS",
-    "number": "410"
+    "course_number": "410",
+    "title": "Leadersh.&Mang.NU,Th.&Pract.",
+    "professors": [
+      "Th NU"
+    ],
+    "raw_line": "Leadersh.&Mang.NU,Th.&Pract. - 22421 - NURS 410 - 1"
   },
   {
+    "course_id": "NURS_411",
     "code": "NURS 411",
     "subject": "NURS",
-    "number": "411"
+    "course_number": "411",
+    "title": "Intensiv Prac.Area of Interest",
+    "professors": [],
+    "raw_line": "Intensiv Prac.Area of Interest - 22422 - NURS 411 - 1"
   },
   {
+    "course_id": "NURS_502",
     "code": "NURS 502",
     "subject": "NURS",
-    "number": "502"
+    "course_number": "502",
+    "title": "Advanced Nursing Research",
+    "professors": [],
+    "raw_line": "Advanced Nursing Research - 22423 - NURS 502 - 1"
   },
   {
+    "course_id": "NURS_503",
     "code": "NURS 503",
     "subject": "NURS",
-    "number": "503"
+    "course_number": "503",
+    "title": "Adv.Health Assessment",
+    "professors": [],
+    "raw_line": "Adv.Health Assessment - 22424 - NURS 503 - 1"
   },
   {
+    "course_id": "NURS_505B",
     "code": "NURS 505B",
     "subject": "NURS",
-    "number": "505B"
+    "course_number": "505B",
+    "title": "Ad.Prac.in Adult GerontologyII",
+    "professors": [],
+    "raw_line": "Ad.Prac.in Adult GerontologyII - 22426 - NURS 505B - 1"
   },
   {
+    "course_id": "NURS_506",
     "code": "NURS 506",
     "subject": "NURS",
-    "number": "506"
+    "course_number": "506",
+    "title": "Adv.Prac.in Adult Gerontol.III",
+    "professors": [],
+    "raw_line": "Adv.Prac.in Adult Gerontol.III - 22427 - NURS 506 - 1"
   },
   {
+    "course_id": "NURS_507",
     "code": "NURS 507",
     "subject": "NURS",
-    "number": "507"
+    "course_number": "507",
+    "title": "Essentials of Nurs. Adm.&Mangt",
+    "professors": [],
+    "raw_line": "Essentials of Nurs. Adm.&Mangt - 22428 - NURS 507 - 1"
   },
   {
+    "course_id": "NURS_508",
     "code": "NURS 508",
     "subject": "NURS",
-    "number": "508"
+    "course_number": "508",
+    "title": "Advan.Pract.in Nurs.Administ.",
+    "professors": [],
+    "raw_line": "Advan.Pract.in Nurs.Administ. - 22429 - NURS 508 - 1"
   },
   {
+    "course_id": "NURS_508D",
     "code": "NURS 508D",
     "subject": "NURS",
-    "number": "508D"
+    "course_number": "508D",
+    "title": "Nurs .Administration Residency",
+    "professors": [],
+    "raw_line": "Nurs .Administration Residency - 22430 - NURS 508D - 1"
   },
   {
+    "course_id": "NURS_518",
     "code": "NURS 518",
     "subject": "NURS",
-    "number": "518"
+    "course_number": "518",
+    "title": "Group & Family Psychotherapy",
+    "professors": [],
+    "raw_line": "Group & Family Psychotherapy - 22433 - NURS 518 - 1"
   },
   {
+    "course_id": "NURS_520",
     "code": "NURS 520",
     "subject": "NURS",
-    "number": "520"
+    "course_number": "520",
+    "title": "Managing Quality with Teams",
+    "professors": [],
+    "raw_line": "Managing Quality with Teams - 22434 - NURS 520 - 1"
   },
   {
+    "course_id": "NURS_522",
     "code": "NURS 522",
     "subject": "NURS",
-    "number": "522"
+    "course_number": "522",
+    "title": "Princ.&Pract. of Comm.Health.N",
+    "professors": [],
+    "raw_line": "Princ.&Pract. of Comm.Health.N - 22435 - NURS 522 - 1"
   },
   {
+    "course_id": "NURS_524",
     "code": "NURS 524",
     "subject": "NURS",
-    "number": "524"
+    "course_number": "524",
+    "title": "Cl.Res.in Pub.&Com.Health Care",
+    "professors": [],
+    "raw_line": "Cl.Res.in Pub.&Com.Health Care - 22436 - NURS 524 - 1"
   },
   {
+    "course_id": "NURS_525",
     "code": "NURS 525",
     "subject": "NURS",
-    "number": "525"
+    "course_number": "525",
+    "title": "Leadersh.Th.&App.for Nur.Manag",
+    "professors": [],
+    "raw_line": "Leadersh.Th.&App.for Nur.Manag - 22437 - NURS 525 - 1"
   },
   {
+    "course_id": "NURS_526",
     "code": "NURS 526",
     "subject": "NURS",
-    "number": "526"
+    "course_number": "526",
+    "title": "Comprehensive Exam",
+    "professors": [],
+    "raw_line": "Comprehensive Exam - 22438 - NURS 526 - 1"
   },
   {
+    "course_id": "NURS_534A",
     "code": "NURS 534A",
     "subject": "NURS",
-    "number": "534A"
+    "course_number": "534A",
+    "title": "Upd.&Innovat.in Neonat.&Ped.",
+    "professors": [],
+    "raw_line": "Upd.&Innovat.in Neonat.&Ped. - 22439 - NURS 534A - 1"
   },
   {
+    "course_id": "NURS_534B",
     "code": "NURS 534B",
     "subject": "NURS",
-    "number": "534B"
+    "course_number": "534B",
+    "title": "Upd.&Innovat.in Neonat.&Ped.",
+    "professors": [],
+    "raw_line": "Upd.&Innovat.in Neonat.&Ped. - 22440 - NURS 534B - 1"
   },
   {
+    "course_id": "NURS_535",
     "code": "NURS 535",
     "subject": "NURS",
-    "number": "535"
+    "course_number": "535",
+    "title": "Resid. Pediatric/Neonatal NURS",
+    "professors": [],
+    "raw_line": "Resid. Pediatric/Neonatal NURS - 23085 - NURS 535 - 0"
   },
   {
+    "course_id": "NURS_536",
     "code": "NURS 536",
     "subject": "NURS",
-    "number": "536"
+    "course_number": "536",
+    "title": "Intr.to Curric.Design &Clin.Ed",
+    "professors": [],
+    "raw_line": "Intr.to Curric.Design &Clin.Ed - 22441 - NURS 536 - 1"
   },
   {
+    "course_id": "NURS_537",
     "code": "NURS 537",
     "subject": "NURS",
-    "number": "537"
+    "course_number": "537",
+    "title": "Innovative Teaching & Learning",
+    "professors": [],
+    "raw_line": "Innovative Teaching & Learning - 22442 - NURS 537 - 1"
   },
   {
+    "course_id": "NURS_538",
     "code": "NURS 538",
     "subject": "NURS",
-    "number": "538"
+    "course_number": "538",
+    "title": "Asses.&Eval.Learn.&Compet.in N",
+    "professors": [],
+    "raw_line": "Asses.&Eval.Learn.&Compet.in N - 22443 - NURS 538 - 1"
   },
   {
+    "course_id": "NURS_598",
     "code": "NURS 598",
     "subject": "NURS",
-    "number": "598"
+    "course_number": "598",
+    "title": "Project",
+    "professors": [],
+    "raw_line": "Project - 23250 - NURS 598 - 0"
   },
   {
+    "course_id": "NURS_598A",
     "code": "NURS 598A",
     "subject": "NURS",
-    "number": "598A"
+    "course_number": "598A",
+    "title": "Project",
+    "professors": [],
+    "raw_line": "Project - 23247 - NURS 598A - 0"
   },
   {
+    "course_id": "NURS_598B",
     "code": "NURS 598B",
     "subject": "NURS",
-    "number": "598B"
+    "course_number": "598B",
+    "title": "Project",
+    "professors": [],
+    "raw_line": "Project - 23358 - NURS 598B - 0"
   },
   {
+    "course_id": "NURS_598C",
     "code": "NURS 598C",
     "subject": "NURS",
-    "number": "598C"
+    "course_number": "598C",
+    "title": "Project",
+    "professors": [],
+    "raw_line": "Project - 22454 - NURS 598C - 1"
   },
   {
+    "course_id": "NURS_599D",
     "code": "NURS 599D",
     "subject": "NURS",
-    "number": "599D"
+    "course_number": "599D",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 23335 - NURS 599D - 0"
   },
   {
+    "course_id": "NURS_602",
     "code": "NURS 602",
     "subject": "NURS",
-    "number": "602"
+    "course_number": "602",
+    "title": "Quantitative Research Designs",
+    "professors": [],
+    "raw_line": "Quantitative Research Designs - 22465 - NURS 602 - 1"
   },
   {
+    "course_id": "NURS_603",
     "code": "NURS 603",
     "subject": "NURS",
-    "number": "603"
+    "course_number": "603",
+    "title": "Ethical Iss.in Health Care Res",
+    "professors": [],
+    "raw_line": "Ethical Iss.in Health Care Res - 23257 - NURS 603 - 0"
   },
   {
+    "course_id": "NURS_604",
     "code": "NURS 604",
     "subject": "NURS",
-    "number": "604"
+    "course_number": "604",
+    "title": "Measurement in Health Research",
+    "professors": [],
+    "raw_line": "Measurement in Health Research - 22466 - NURS 604 - 1"
   },
   {
+    "course_id": "NURS_607",
     "code": "NURS 607",
     "subject": "NURS",
-    "number": "607"
+    "course_number": "607",
+    "title": "Multivari.Analysis&Causal Mod",
+    "professors": [],
+    "raw_line": "Multivari.Analysis&Causal Mod - 22467 - NURS 607 - 1"
   },
   {
+    "course_id": "NURS_608",
     "code": "NURS 608",
     "subject": "NURS",
-    "number": "608"
+    "course_number": "608",
+    "title": "Scholarship in Nursing",
+    "professors": [],
+    "raw_line": "Scholarship in Nursing - 22468 - NURS 608 - 1"
   },
   {
+    "course_id": "NURS_609",
     "code": "NURS 609",
     "subject": "NURS",
-    "number": "609"
+    "course_number": "609",
+    "title": "Research Seminar",
+    "professors": [],
+    "raw_line": "Research Seminar - 22469 - NURS 609 - 1"
   },
   {
+    "course_id": "NURS_610",
     "code": "NURS 610",
     "subject": "NURS",
-    "number": "610"
+    "course_number": "610",
+    "title": "Adv.Searching of Scient.Litera",
+    "professors": [],
+    "raw_line": "Adv.Searching of Scient.Litera - 22470 - NURS 610 - 1"
   },
   {
+    "course_id": "NURS_985",
     "code": "NURS 985",
     "subject": "NURS",
-    "number": "985"
+    "course_number": "985",
+    "title": "PHD Thesis",
+    "professors": [],
+    "raw_line": "PHD Thesis - 23508 - NURS 985 - 0"
   },
   {
+    "course_id": "NURS_986",
     "code": "NURS 986",
     "subject": "NURS",
-    "number": "986"
+    "course_number": "986",
+    "title": "PHD Thesis",
+    "professors": [],
+    "raw_line": "PHD Thesis - 22477 - NURS 986 - 1"
   },
   {
+    "course_id": "NURS_987",
     "code": "NURS 987",
     "subject": "NURS",
-    "number": "987"
+    "course_number": "987",
+    "title": "PHD Thesis Defense",
+    "professors": [],
+    "raw_line": "PHD Thesis Defense - 22478 - NURS 987 - 1"
   },
   {
+    "course_id": "PHYS_101",
     "code": "PHYS 101",
     "subject": "PHYS",
-    "number": "101"
+    "course_number": "101",
+    "title": "Introductory Physics I",
+    "professors": [],
+    "raw_line": "Introductory Physics I - 22609 - PHYS 101 - E1"
   },
   {
+    "course_id": "PHYS_101L",
     "code": "PHYS 101L",
     "subject": "PHYS",
-    "number": "101L"
+    "course_number": "101L",
+    "title": "Introd.Physics Laboratory I",
+    "professors": [],
+    "raw_line": "Introd.Physics Laboratory I - 22615 - PHYS 101L - B2"
   },
   {
+    "course_id": "PHYS_103",
     "code": "PHYS 103",
     "subject": "PHYS",
-    "number": "103"
+    "course_number": "103",
+    "title": "Physics for the Life Sciences",
+    "professors": [],
+    "raw_line": "Physics for the Life Sciences - 22622 - PHYS 103 - 1"
   },
   {
+    "course_id": "PHYS_103L",
     "code": "PHYS 103L",
     "subject": "PHYS",
-    "number": "103L"
+    "course_number": "103L",
+    "title": "Physics for Life Sciences Lab",
+    "professors": [],
+    "raw_line": "Physics for Life Sciences Lab - 22623 - PHYS 103L - B1"
   },
   {
+    "course_id": "PHYS_200",
     "code": "PHYS 200",
     "subject": "PHYS",
-    "number": "200"
+    "course_number": "200",
+    "title": "Understanding the Universe",
+    "professors": [],
+    "raw_line": "Understanding the Universe - 22625 - PHYS 200 - 1"
   },
   {
+    "course_id": "PHYS_205",
     "code": "PHYS 205",
     "subject": "PHYS",
-    "number": "205"
+    "course_number": "205",
+    "title": "Modern Physics for Life Sc.",
+    "professors": [],
+    "raw_line": "Modern Physics for Life Sc. - 22626 - PHYS 205 - E1"
   },
   {
+    "course_id": "PHYS_205L",
     "code": "PHYS 205L",
     "subject": "PHYS",
-    "number": "205L"
+    "course_number": "205L",
+    "title": "Modern Physics for Life Sc.Lab",
+    "professors": [],
+    "raw_line": "Modern Physics for Life Sc.Lab - 22631 - PHYS 205L - B1"
   },
   {
+    "course_id": "PHYS_206",
     "code": "PHYS 206",
     "subject": "PHYS",
-    "number": "206"
+    "course_number": "206",
+    "title": "Applied Physics for Life Scien",
+    "professors": [],
+    "raw_line": "Applied Physics for Life Scien - 22636 - PHYS 206 - E1"
   },
   {
+    "course_id": "PHYS_206L",
     "code": "PHYS 206L",
     "subject": "PHYS",
-    "number": "206L"
+    "course_number": "206L",
+    "title": "Applied.Phys.for Life Sc.Lab.",
+    "professors": [],
+    "raw_line": "Applied.Phys.for Life Sc.Lab. - 22639 - PHYS 206L - B1"
   },
   {
+    "course_id": "PHYS_210",
     "code": "PHYS 210",
     "subject": "PHYS",
-    "number": "210"
+    "course_number": "210",
+    "title": "Introductory Physics II",
+    "professors": [],
+    "raw_line": "Introductory Physics II - 22644 - PHYS 210 - E1"
   },
   {
+    "course_id": "PHYS_210L",
     "code": "PHYS 210L",
     "subject": "PHYS",
-    "number": "210L"
+    "course_number": "210L",
+    "title": "Introductory Phys.Lab.II.",
+    "professors": [],
+    "raw_line": "Introductory Phys.Lab.II. - 22652 - PHYS 210L - B1"
   },
   {
+    "course_id": "PHYS_211",
     "code": "PHYS 211",
     "subject": "PHYS",
-    "number": "211"
+    "course_number": "211",
+    "title": "Electricity & Magnetism",
+    "professors": [],
+    "raw_line": "Electricity & Magnetism - 22664 - PHYS 211 - E1"
   },
   {
+    "course_id": "PHYS_211L",
     "code": "PHYS 211L",
     "subject": "PHYS",
-    "number": "211L"
+    "course_number": "211L",
+    "title": "Electricity &Magnetism Lab.",
+    "professors": [],
+    "raw_line": "Electricity &Magnetism Lab. - 22667 - PHYS 211L - B1"
   },
   {
+    "course_id": "PHYS_212",
     "code": "PHYS 212",
     "subject": "PHYS",
-    "number": "212"
+    "course_number": "212",
+    "title": "Modern Physics",
+    "professors": [],
+    "raw_line": "Modern Physics - 22673 - PHYS 212 - 1"
   },
   {
+    "course_id": "PHYS_214",
     "code": "PHYS 214",
     "subject": "PHYS",
-    "number": "214"
+    "course_number": "214",
+    "title": "Intr.to Vibrations and Waves",
+    "professors": [],
+    "raw_line": "Intr.to Vibrations and Waves - 22674 - PHYS 214 - 1"
   },
   {
+    "course_id": "PHYS_220",
     "code": "PHYS 220",
     "subject": "PHYS",
-    "number": "220"
+    "course_number": "220",
+    "title": "Electromagnetic Theory",
+    "professors": [],
+    "raw_line": "Electromagnetic Theory - 22675 - PHYS 220 - 1"
   },
   {
+    "course_id": "PHYS_226",
     "code": "PHYS 226",
     "subject": "PHYS",
-    "number": "226"
+    "course_number": "226",
+    "title": "Solid State Physics",
+    "professors": [],
+    "raw_line": "Solid State Physics - 22676 - PHYS 226 - 1"
   },
   {
+    "course_id": "PHYS_236",
     "code": "PHYS 236",
     "subject": "PHYS",
-    "number": "236"
+    "course_number": "236",
+    "title": "Quantum Mechanics",
+    "professors": [],
+    "raw_line": "Quantum Mechanics - 22677 - PHYS 236 - 1"
   },
   {
+    "course_id": "PHYS_257L",
     "code": "PHYS 257L",
     "subject": "PHYS",
-    "number": "257L"
+    "course_number": "257L",
+    "title": "Advanced Laboratory",
+    "professors": [],
+    "raw_line": "Advanced Laboratory - 22678 - PHYS 257L - B1"
   },
   {
+    "course_id": "PHYS_299B",
     "code": "PHYS 299B",
     "subject": "PHYS",
-    "number": "299B"
+    "course_number": "299B",
+    "title": "Physics in Applications",
+    "professors": [],
+    "raw_line": "Physics in Applications - 22679 - PHYS 299B - 1"
   },
   {
+    "course_id": "PHYS_302",
     "code": "PHYS 302",
     "subject": "PHYS",
-    "number": "302"
+    "course_number": "302",
+    "title": "Statistical Mechanics",
+    "professors": [],
+    "raw_line": "Statistical Mechanics - 22680 - PHYS 302 - 1"
   },
   {
+    "course_id": "PHYS_305",
     "code": "PHYS 305",
     "subject": "PHYS",
-    "number": "305"
+    "course_number": "305",
+    "title": "Quantum Mechanics",
+    "professors": [],
+    "raw_line": "Quantum Mechanics - 22681 - PHYS 305 - 1"
   },
   {
+    "course_id": "PHYS_308",
     "code": "PHYS 308",
     "subject": "PHYS",
-    "number": "308"
+    "course_number": "308",
+    "title": "Advan.Math. Methods of Physics",
+    "professors": [],
+    "raw_line": "Advan.Math. Methods of Physics - 22682 - PHYS 308 - 1"
   },
   {
+    "course_id": "PHYS_310AA",
     "code": "PHYS 310AA",
     "subject": "PHYS",
-    "number": "310AA"
+    "course_number": "310AA",
+    "title": "ST. Magnetsm from Bulk to Nano",
+    "professors": [],
+    "raw_line": "ST. Magnetsm from Bulk to Nano - 22683 - PHYS 310AA - 1"
   },
   {
+    "course_id": "PHYS_391AL",
     "code": "PHYS 391AL",
     "subject": "PHYS",
-    "number": "391AL"
+    "course_number": "391AL",
+    "title": "Tut. Soft Matter Physics",
+    "professors": [],
+    "raw_line": "Tut. Soft Matter Physics - 23561 - PHYS 391AL - 1"
   },
   {
+    "course_id": "PHYS_395A",
     "code": "PHYS 395A",
     "subject": "PHYS",
-    "number": "395A"
+    "course_number": "395A",
+    "title": "Comprehensive Exam",
+    "professors": [],
+    "raw_line": "Comprehensive Exam - 22684 - PHYS 395A - 1"
   },
   {
+    "course_id": "PHYS_399",
     "code": "PHYS 399",
     "subject": "PHYS",
-    "number": "399"
+    "course_number": "399",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 22685 - PHYS 399 - 1"
   },
   {
+    "course_id": "PHYS_399A",
     "code": "PHYS 399A",
     "subject": "PHYS",
-    "number": "399A"
+    "course_number": "399A",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 22695 - PHYS 399A - 1"
   },
   {
+    "course_id": "PHYS_399B",
     "code": "PHYS 399B",
     "subject": "PHYS",
-    "number": "399B"
+    "course_number": "399B",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 22705 - PHYS 399B - 1"
   },
   {
+    "course_id": "PHYS_399C",
     "code": "PHYS 399C",
     "subject": "PHYS",
-    "number": "399C"
+    "course_number": "399C",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 22715 - PHYS 399C - 1"
   },
   {
+    "course_id": "PHYS_480",
     "code": "PHYS 480",
     "subject": "PHYS",
-    "number": "480"
+    "course_number": "480",
+    "title": "Qualifying Exam I:Compr.Exam",
+    "professors": [],
+    "raw_line": "Qualifying Exam I:Compr.Exam - 22725 - PHYS 480 - 1"
   },
   {
+    "course_id": "PHYS_481",
     "code": "PHYS 481",
     "subject": "PHYS",
-    "number": "481"
+    "course_number": "481",
+    "title": "Qualif.Exam II:Def.ThesisProp",
+    "professors": [],
+    "raw_line": "Qualif.Exam II:Def.ThesisProp - 22726 - PHYS 481 - 1"
   },
   {
+    "course_id": "PHYS_484",
     "code": "PHYS 484",
     "subject": "PHYS",
-    "number": "484"
+    "course_number": "484",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 22727 - PHYS 484 - 1"
   },
   {
+    "course_id": "PHYS_484A",
     "code": "PHYS 484A",
     "subject": "PHYS",
-    "number": "484A"
+    "course_number": "484A",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 22737 - PHYS 484A - 1"
   },
   {
+    "course_id": "PHYS_484B",
     "code": "PHYS 484B",
     "subject": "PHYS",
-    "number": "484B"
+    "course_number": "484B",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 22747 - PHYS 484B - 1"
   },
   {
+    "course_id": "PHYS_484C",
     "code": "PHYS 484C",
     "subject": "PHYS",
-    "number": "484C"
+    "course_number": "484C",
+    "title": "PhD Thesis",
+    "professors": [],
+    "raw_line": "PhD Thesis - 22757 - PHYS 484C - 1"
   },
   {
+    "course_id": "PSYC_101",
     "code": "PSYC 101",
     "subject": "PSYC",
-    "number": "101"
+    "course_number": "101",
+    "title": "Fresh.Int. to Psychologi.Sc.",
+    "professors": [],
+    "raw_line": "Fresh.Int. to Psychologi.Sc. - 22876 - PSYC 101 - 1"
   },
   {
+    "course_id": "PSYC_201",
     "code": "PSYC 201",
     "subject": "PSYC",
-    "number": "201"
+    "course_number": "201",
+    "title": "Int. to Psychological Science",
+    "professors": [],
+    "raw_line": "Int. to Psychological Science - 22877 - PSYC 201 - 1"
   },
   {
+    "course_id": "PSYC_212",
     "code": "PSYC 212",
     "subject": "PSYC",
-    "number": "212"
+    "course_number": "212",
+    "title": "Social Psychology",
+    "professors": [],
+    "raw_line": "Social Psychology - 22884 - PSYC 212 - 1"
   },
   {
+    "course_id": "PSYC_214",
     "code": "PSYC 214",
     "subject": "PSYC",
-    "number": "214"
+    "course_number": "214",
+    "title": "Adult Abnormal Psychology",
+    "professors": [],
+    "raw_line": "Adult Abnormal Psychology - 22885 - PSYC 214 - 1"
   },
   {
+    "course_id": "PSYC_216",
     "code": "PSYC 216",
     "subject": "PSYC",
-    "number": "216"
+    "course_number": "216",
+    "title": "Personality Psychology",
+    "professors": [],
+    "raw_line": "Personality Psychology - 22886 - PSYC 216 - 1"
   },
   {
+    "course_id": "PSYC_220",
     "code": "PSYC 220",
     "subject": "PSYC",
-    "number": "220"
+    "course_number": "220",
+    "title": "Psychol.of Learning & Behavior",
+    "professors": [],
+    "raw_line": "Psychol.of Learning & Behavior - 22887 - PSYC 220 - 1"
   },
   {
+    "course_id": "PSYC_222",
     "code": "PSYC 222",
     "subject": "PSYC",
-    "number": "222"
+    "course_number": "222",
+    "title": "Behavioral Neuroscience",
+    "professors": [],
+    "raw_line": "Behavioral Neuroscience - 22888 - PSYC 222 - 1"
   },
   {
+    "course_id": "PSYC_224",
     "code": "PSYC 224",
     "subject": "PSYC",
-    "number": "224"
+    "course_number": "224",
+    "title": "Sensation and Perception",
+    "professors": [],
+    "raw_line": "Sensation and Perception - 22889 - PSYC 224 - 1"
   },
   {
+    "course_id": "PSYC_226",
     "code": "PSYC 226",
     "subject": "PSYC",
-    "number": "226"
+    "course_number": "226",
+    "title": "Cognitive Psychology",
+    "professors": [],
+    "raw_line": "Cognitive Psychology - 22890 - PSYC 226 - 1"
   },
   {
+    "course_id": "PSYC_234",
     "code": "PSYC 234",
     "subject": "PSYC",
-    "number": "234"
+    "course_number": "234",
+    "title": "Positive Psychology",
+    "professors": [],
+    "raw_line": "Positive Psychology - 22891 - PSYC 234 - 1"
   },
   {
+    "course_id": "PSYC_236",
     "code": "PSYC 236",
     "subject": "PSYC",
-    "number": "236"
+    "course_number": "236",
+    "title": "Culture & Psychology",
+    "professors": [],
+    "raw_line": "Culture & Psychology - 22892 - PSYC 236 - 1"
   },
   {
+    "course_id": "PSYC_238",
     "code": "PSYC 238",
     "subject": "PSYC",
-    "number": "238"
+    "course_number": "238",
+    "title": "Applied Behavior Analysis",
+    "professors": [],
+    "raw_line": "Applied Behavior Analysis - 22893 - PSYC 238 - 1"
   },
   {
+    "course_id": "PSYC_280",
     "code": "PSYC 280",
     "subject": "PSYC",
-    "number": "280"
+    "course_number": "280",
+    "title": "History & Systems of Psychol.",
+    "professors": [],
+    "raw_line": "History & Systems of Psychol. - 22894 - PSYC 280 - 1"
   },
   {
+    "course_id": "PSYC_282",
     "code": "PSYC 282",
     "subject": "PSYC",
-    "number": "282"
+    "course_number": "282",
+    "title": "Research Design in Psychology",
+    "professors": [],
+    "raw_line": "Research Design in Psychology - 22895 - PSYC 282 - 1"
   },
   {
+    "course_id": "PSYC_284",
     "code": "PSYC 284",
     "subject": "PSYC",
-    "number": "284"
+    "course_number": "284",
+    "title": "Statistical Analysis in Psyc.",
+    "professors": [],
+    "raw_line": "Statistical Analysis in Psyc. - 22898 - PSYC 284 - 1"
   },
   {
+    "course_id": "PSYC_288",
     "code": "PSYC 288",
     "subject": "PSYC",
-    "number": "288"
+    "course_number": "288",
+    "title": "Undergrad.Sem.in Psychology",
+    "professors": [],
+    "raw_line": "Undergrad.Sem.in Psychology - 22900 - PSYC 288 - 1"
   },
   {
+    "course_id": "PSYC_302",
     "code": "PSYC 302",
     "subject": "PSYC",
-    "number": "302"
+    "course_number": "302",
+    "title": "Statistical Analysis in Psyc.",
+    "professors": [],
+    "raw_line": "Statistical Analysis in Psyc. - 22903 - PSYC 302 - 1"
   },
   {
+    "course_id": "PSYC_352",
     "code": "PSYC 352",
     "subject": "PSYC",
-    "number": "352"
+    "course_number": "352",
+    "title": "Adv. Psychopathology II",
+    "professors": [],
+    "raw_line": "Adv. Psychopathology II - 22904 - PSYC 352 - 1"
   },
   {
+    "course_id": "PSYC_356",
     "code": "PSYC 356",
     "subject": "PSYC",
-    "number": "356"
+    "course_number": "356",
+    "title": "Int.to Cognit.&Behavio.Interv.",
+    "professors": [],
+    "raw_line": "Int.to Cognit.&Behavio.Interv. - 22905 - PSYC 356 - 1"
   },
   {
+    "course_id": "PSYC_364A",
     "code": "PSYC 364A",
     "subject": "PSYC",
-    "number": "364A"
+    "course_number": "364A",
+    "title": "Advanced Clinical Practicum",
+    "professors": [],
+    "raw_line": "Advanced Clinical Practicum - 22906 - PSYC 364A - 1"
   },
   {
+    "course_id": "PSYC_364B",
     "code": "PSYC 364B",
     "subject": "PSYC",
-    "number": "364B"
+    "course_number": "364B",
+    "title": "Advanced Clinical Practicum",
+    "professors": [],
+    "raw_line": "Advanced Clinical Practicum - 22907 - PSYC 364B - 1"
   },
   {
+    "course_id": "PSYC_366",
     "code": "PSYC 366",
     "subject": "PSYC",
-    "number": "366"
+    "course_number": "366",
+    "title": "Int.to Psychodynamic Cl.Method",
+    "professors": [],
+    "raw_line": "Int.to Psychodynamic Cl.Method - 22908 - PSYC 366 - 1"
   },
   {
+    "course_id": "PSYC_395A",
     "code": "PSYC 395A",
     "subject": "PSYC",
-    "number": "395A"
+    "course_number": "395A",
+    "title": "Comprehensive Exam",
+    "professors": [],
+    "raw_line": "Comprehensive Exam - 22909 - PSYC 395A - 1"
   },
   {
+    "course_id": "PSYC_399D",
     "code": "PSYC 399D",
     "subject": "PSYC",
-    "number": "399D"
+    "course_number": "399D",
+    "title": "Thesis",
+    "professors": [],
+    "raw_line": "Thesis - 23583 - PSYC 399D - 1"
   },
   {
+    "course_id": "STAT_201",
     "code": "STAT 201",
     "subject": "STAT",
-    "number": "201"
+    "course_number": "201",
+    "title": "Elem.Statist.for the Social Sc",
+    "professors": [],
+    "raw_line": "Elem.Statist.for the Social Sc - 22989 - STAT 201 - 1"
   },
   {
+    "course_id": "STAT_210",
     "code": "STAT 210",
     "subject": "STAT",
-    "number": "210"
+    "course_number": "210",
+    "title": "Elem.Statist. for the Sciences",
+    "professors": [],
+    "raw_line": "Elem.Statist. for the Sciences - 22992 - STAT 210 - E1"
   },
   {
+    "course_id": "STAT_230",
     "code": "STAT 230",
     "subject": "STAT",
-    "number": "230"
+    "course_number": "230",
+    "title": "Introd. to Probab.& Random Var",
+    "professors": [],
+    "raw_line": "Introd. to Probab.& Random Var - 22996 - STAT 230 - E1"
   },
   {
+    "course_id": "STAT_231",
     "code": "STAT 231",
     "subject": "STAT",
-    "number": "231"
+    "course_number": "231",
+    "title": "Intr.Statistical Computing",
+    "professors": [],
+    "raw_line": "Intr.Statistical Computing - 23008 - STAT 231 - 1"
   },
   {
+    "course_id": "STAT_233",
     "code": "STAT 233",
     "subject": "STAT",
-    "number": "233"
+    "course_number": "233",
+    "title": "Adv.Probab.& Random Variables",
+    "professors": [],
+    "raw_line": "Adv.Probab.& Random Variables - 23009 - STAT 233 - 1"
   },
   {
+    "course_id": "STAT_235",
     "code": "STAT 235",
     "subject": "STAT",
-    "number": "235"
+    "course_number": "235",
+    "title": "Applied Regression Analysis",
+    "professors": [],
+    "raw_line": "Applied Regression Analysis - 23010 - STAT 235 - 1"
   },
   {
+    "course_id": "STAT_239",
     "code": "STAT 239",
     "subject": "STAT",
-    "number": "239"
+    "course_number": "239",
+    "title": "Statistical Learning",
+    "professors": [],
+    "raw_line": "Statistical Learning - 23012 - STAT 239 - 1"
   }
 ]
