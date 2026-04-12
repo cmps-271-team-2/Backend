@@ -198,6 +198,7 @@ def matches_search(item, query: str) -> bool:
         or q in str(item.get("text", "")).lower()
         or q in str(item.get("title", "")).lower()
         or q in str(item.get("code", "")).lower()
+        or q in str(item.get("department", "")).lower()
     )
 
 
@@ -310,6 +311,79 @@ def get_profiles(
     return JSONResponse(content=jsonable_encoder(profiles), status_code=200)
 
 
+@router.get("/professors")
+def get_professors(
+    search: Optional[str] = Query(None),
+    sort_by: Literal["name", "department"] = Query("name"),
+    order: Literal["asc", "desc"] = Query("asc")
+):
+    db = get_db_client()
+    docs = db.collection("professors").stream()
+
+    professors = []
+    for doc in docs:
+        professor = {
+            "id": doc.id,
+            "type": "profile",
+            **to_json_safe(doc.to_dict() or {})
+        }
+        professors.append(professor)
+
+    if search:
+        professors = [p for p in professors if matches_search(p, search)]
+
+    reverse = (order == "desc")
+    professors.sort(key=lambda x: str(x.get(sort_by, "")), reverse=reverse)
+
+    return JSONResponse(content=jsonable_encoder(professors), status_code=200)
+
+
+@router.get("/professors/{prof_id}")
+def get_professor_by_id(prof_id: str):
+    db = get_db_client()
+    doc = db.collection("professors").document(prof_id).get()
+
+    if not doc.exists:
+        raise HTTPException(status_code=404, detail="Professor not found")
+
+    professor = {
+        "id": doc.id,
+        "type": "profile",
+        **to_json_safe(doc.to_dict() or {})
+    }
+
+    return JSONResponse(content=jsonable_encoder(professor), status_code=200)
+
+
+@router.get("/professors/{prof_id}/posts")
+def get_professor_posts(
+    prof_id: str,
+    sort_by: Literal["createdAt", "rating"] = Query("createdAt"),
+    order: Literal["asc", "desc"] = Query("desc")
+):
+    db = get_db_client()
+
+    docs = db.collection("posts") \
+        .where("targetType", "==", "profile") \
+        .where("targetId", "==", prof_id) \
+        .stream()
+
+    posts = []
+    for doc in docs:
+        posts.append({
+            "id": doc.id,
+            **to_json_safe(doc.to_dict() or {})
+        })
+
+    reverse = (order == "desc")
+    if sort_by == "rating":
+        posts.sort(key=lambda x: x.get("rating", 0), reverse=reverse)
+    else:
+        posts.sort(key=lambda x: str(x.get("createdAt", "")), reverse=reverse)
+
+    return JSONResponse(content=jsonable_encoder(posts), status_code=200)
+
+
 @router.get("/cafeterias")
 def get_cafeterias(
     sort_by: str = Query("name"),
@@ -409,7 +483,7 @@ def get_feed(
     stable_key = f"{user_id}-{date.today().isoformat()}".encode("utf-8")
     seed = int.from_bytes(hashlib.sha256(stable_key).digest()[:8], "big", signed=False)
 
-    prof_docs = db.collection("profiles").limit(100).stream()
+    prof_docs = db.collection("professors").limit(100).stream()
     cafe_docs = db.collection("cafeterias").limit(100).stream()
     spot_docs = db.collection("spots").limit(100).stream()
 
