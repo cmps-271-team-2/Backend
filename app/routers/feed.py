@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Query, HTTPException
+from fastapi import APIRouter, Depends, Header, Query, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from firebase_admin import firestore
@@ -11,6 +11,7 @@ import hashlib
 from datetime import date, datetime, timezone
 
 from app.core.firestore import get_db
+from app.routers.auth import get_current_user
 
 router = APIRouter()
 
@@ -409,6 +410,23 @@ def get_posts(
         sort_by=sort_by,
         order=order
     )
+    return JSONResponse(content=jsonable_encoder(posts), status_code=200)
+
+
+@router.get("/posts/mine")
+def get_my_posts(current_user: dict = Depends(get_current_user)):
+    uid = current_user.get("uid", "")
+    db = get_db_client()
+    docs = db.collection("posts").where("userId", "==", uid).stream()
+    posts = [{"id": doc.id, **to_json_safe(doc.to_dict() or {})} for doc in docs]
+    if not posts:
+        # also try createdBy field as a fallback
+        docs2 = db.collection("posts").where("createdBy", "==", uid).stream()
+        seen_ids = {p["id"] for p in posts}
+        for doc in docs2:
+            if doc.id not in seen_ids:
+                posts.append({"id": doc.id, **to_json_safe(doc.to_dict() or {})})
+    posts.sort(key=lambda p: p.get("createdAt") or "", reverse=True)
     return JSONResponse(content=jsonable_encoder(posts), status_code=200)
 
 
