@@ -403,7 +403,8 @@ def get_cafeterias(
 @router.get("/posts")
 def get_posts(
     sort_by: str = Query("createdAt"),
-    order: Literal["asc", "desc"] = Query("desc")
+    order: Literal["asc", "desc"] = Query("desc"),
+    indexed_only: bool = Query(True),
 ):
     posts = fetch_sorted_collection(
         collection_name="posts",
@@ -411,6 +412,8 @@ def get_posts(
         sort_by=sort_by,
         order=order
     )
+    if indexed_only:
+        posts = [p for p in posts if p.get("indexed") is True]
     return JSONResponse(content=jsonable_encoder(posts), status_code=200)
 
 
