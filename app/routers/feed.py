@@ -11,6 +11,7 @@ import hashlib
 from datetime import date, datetime, timezone
 
 from app.core.firestore import get_db
+from app.core.firebase_admin import get_firebase_auth
 from app.jobs.tasks import process_post_task
 from app.routers.auth import get_current_user
 
@@ -55,6 +56,24 @@ class PostCreate(BaseModel):
     priceLevel: Optional[str] = None
 
 
+class ReactionRequest(BaseModel):
+    type: Literal["like", "dislike"]
+
+
+class FavoriteCreate(BaseModel):
+    targetType: Literal["professor", "course", "spot", "post"]
+    targetId: str
+    targetName: str
+
+
+class PostReportCreate(BaseModel):
+    text: str
+
+
+class SpotReportCreate(BaseModel):
+    text: str
+
+
 def get_db_client():
     return get_db()
 
@@ -75,6 +94,97 @@ def to_json_safe(value):
 
 def normalize_text(value: str) -> str:
     return " ".join(str(value).strip().lower().split())
+
+
+def _get_optional_uid(authorization: Optional[str]) -> Optional[str]:
+    if not authorization:
+        return None
+
+    parts = authorization.split(" ", 1)
+    if len(parts) != 2 or parts[0].lower() != "bearer":
+        return None
+
+    try:
+        decoded = get_firebase_auth().verify_id_token(parts[1].strip())
+    except Exception:
+        return None
+
+    uid = decoded.get("uid") if isinstance(decoded, dict) else None
+    if isinstance(uid, str) and uid.strip():
+        return uid.strip()
+    return None
+
+
+def _favorite_doc_id(user_id: str, target_type: str, target_id: str) -> str:
+    stable = f"{user_id}|{target_type}|{target_id}".encode("utf-8")
+    return hashlib.sha1(stable).hexdigest()
+
+
+def _get_user_post_metadata(db, uid: Optional[str], post_items: list[dict]) -> tuple[set[str], set[str], set[str]]:
+    if not uid or not post_items:
+        return set(), set(), set()
+
+    liked_ids: set[str] = set()
+    disliked_ids: set[str] = set()
+    for post in post_items:
+        post_id = str(post.get("id") or "").strip()
+        if not post_id:
+            continue
+
+        liked_by = post.get("likedBy") or []
+        disliked_by = post.get("dislikedBy") or []
+
+        if isinstance(liked_by, list) and uid in liked_by:
+            liked_ids.add(post_id)
+        if isinstance(disliked_by, list) and uid in disliked_by:
+            disliked_ids.add(post_id)
+
+    favorite_ids: set[str] = set()
+    favorite_docs = db.collection("favorites").where("userId", "==", uid).where("targetType", "==", "post").stream()
+    for doc in favorite_docs:
+        data = doc.to_dict() or {}
+        target_id = str(data.get("targetId") or "").strip()
+        if target_id:
+            favorite_ids.add(target_id)
+
+    return liked_ids, disliked_ids, favorite_ids
+
+
+def _attach_post_metadata(posts: list[dict], uid: Optional[str], liked_ids: set[str], disliked_ids: set[str], favorite_ids: set[str]) -> list[dict]:
+    next_posts: list[dict] = []
+    for post in posts:
+        post_id = str(post.get("id") or "").strip()
+        liked_by = post.get("likedBy")
+        disliked_by = post.get("dislikedBy")
+
+        likes = int(post.get("likes") or 0)
+        dislikes = int(post.get("dislikes") or 0)
+        if isinstance(liked_by, list):
+            likes = len(liked_by)
+        if isinstance(disliked_by, list):
+            dislikes = len(disliked_by)
+
+        current_user_reaction = None
+        if post_id and post_id in liked_ids:
+            current_user_reaction = "liked"
+        elif post_id and post_id in disliked_ids:
+            current_user_reaction = "disliked"
+
+        owner_uid = str(post.get("userId") or post.get("createdBy") or "").strip()
+        is_owner = bool(uid and owner_uid and uid == owner_uid)
+
+        next_posts.append(
+            {
+                **post,
+                "likes": likes,
+                "dislikes": dislikes,
+                "currentUserReaction": current_user_reaction,
+                "isFavorited": bool(post_id and post_id in favorite_ids),
+                "isOwner": is_owner,
+            }
+        )
+
+    return next_posts
 
 
 def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None):
@@ -405,6 +515,7 @@ def get_posts(
     sort_by: str = Query("createdAt"),
     order: Literal["asc", "desc"] = Query("desc"),
     indexed_only: bool = Query(True),
+    authorization: Optional[str] = Header(default=None),
 ):
     posts = fetch_sorted_collection(
         collection_name="posts",
@@ -414,6 +525,12 @@ def get_posts(
     )
     if indexed_only:
         posts = [p for p in posts if p.get("indexed") is True]
+
+    uid = _get_optional_uid(authorization)
+    db = get_db_client()
+    liked_ids, disliked_ids, favorite_ids = _get_user_post_metadata(db, uid, posts)
+    posts = _attach_post_metadata(posts, uid, liked_ids, disliked_ids, favorite_ids)
+
     return JSONResponse(content=jsonable_encoder(posts), status_code=200)
 
 
@@ -498,7 +615,8 @@ def get_feed(
     sort_by: Optional[str] = Query(None),
     order: Literal["asc", "desc"] = Query("desc"),
     search: Optional[str] = Query(None),
-    category: Optional[str] = Query(None)
+    category: Optional[str] = Query(None),
+    authorization: Optional[str] = Header(default=None),
 ):
     db = get_db_client()
 
@@ -518,6 +636,9 @@ def get_feed(
     if include_posts:
         post_docs = db.collection("posts").limit(100).stream()
         posts = [{"id": d.id, "type": "post", **to_json_safe(d.to_dict() or {})} for d in post_docs]
+        uid = _get_optional_uid(authorization)
+        liked_ids, disliked_ids, favorite_ids = _get_user_post_metadata(db, uid, posts)
+        posts = _attach_post_metadata(posts, uid, liked_ids, disliked_ids, favorite_ids)
         items += posts
 
     if category:
@@ -690,6 +811,10 @@ async def create_post(data: PostCreate):
         "targetId": target_id,
         "targetType": target_type,
         "createdBy": data.createdBy,
+        "likes": 0,
+        "dislikes": 0,
+        "likedBy": [],
+        "dislikedBy": [],
         "createdAt": datetime.now(timezone.utc).isoformat()
     })
 
@@ -706,4 +831,312 @@ async def create_post(data: PostCreate):
             "targetType": target_type
         },
         status_code=202
+    )
+
+
+@router.post("/posts/{post_id}/reaction")
+def set_post_reaction(post_id: str, body: ReactionRequest, current_user: dict = Depends(get_current_user)):
+    uid = str(current_user.get("uid") or "").strip()
+    if not uid:
+        raise HTTPException(status_code=401, detail="Invalid user.")
+
+    db = get_db_client()
+    post_ref = db.collection("posts").document(post_id)
+    snapshot = post_ref.get()
+    if not snapshot.exists:
+        raise HTTPException(status_code=404, detail="Post not found")
+
+    data = snapshot.to_dict() or {}
+    liked_by = {str(x) for x in (data.get("likedBy") or []) if str(x).strip()}
+    disliked_by = {str(x) for x in (data.get("dislikedBy") or []) if str(x).strip()}
+
+    if body.type == "like":
+        liked_by.add(uid)
+        disliked_by.discard(uid)
+    else:
+        disliked_by.add(uid)
+        liked_by.discard(uid)
+
+    likes = len(liked_by)
+    dislikes = len(disliked_by)
+    current_user_reaction = "liked" if uid in liked_by else "disliked" if uid in disliked_by else None
+
+    post_ref.set(
+        {
+            "likedBy": sorted(liked_by),
+            "dislikedBy": sorted(disliked_by),
+            "likes": likes,
+            "dislikes": dislikes,
+            "updatedAt": datetime.now(timezone.utc).isoformat(),
+        },
+        merge=True,
+    )
+
+    return JSONResponse(
+        content={
+            "ok": True,
+            "postId": post_id,
+            "currentUserReaction": current_user_reaction,
+            "likes": likes,
+            "dislikes": dislikes,
+        },
+        status_code=200,
+    )
+
+
+@router.delete("/posts/{post_id}/reaction")
+def clear_post_reaction(post_id: str, current_user: dict = Depends(get_current_user)):
+    uid = str(current_user.get("uid") or "").strip()
+    if not uid:
+        raise HTTPException(status_code=401, detail="Invalid user.")
+
+    db = get_db_client()
+    post_ref = db.collection("posts").document(post_id)
+    snapshot = post_ref.get()
+    if not snapshot.exists:
+        raise HTTPException(status_code=404, detail="Post not found")
+
+    data = snapshot.to_dict() or {}
+    liked_by = {str(x) for x in (data.get("likedBy") or []) if str(x).strip()}
+    disliked_by = {str(x) for x in (data.get("dislikedBy") or []) if str(x).strip()}
+    liked_by.discard(uid)
+    disliked_by.discard(uid)
+
+    likes = len(liked_by)
+    dislikes = len(disliked_by)
+
+    post_ref.set(
+        {
+            "likedBy": sorted(liked_by),
+            "dislikedBy": sorted(disliked_by),
+            "likes": likes,
+            "dislikes": dislikes,
+            "updatedAt": datetime.now(timezone.utc).isoformat(),
+        },
+        merge=True,
+    )
+
+    return JSONResponse(
+        content={
+            "ok": True,
+            "postId": post_id,
+            "currentUserReaction": None,
+            "likes": likes,
+            "dislikes": dislikes,
+        },
+        status_code=200,
+    )
+
+
+@router.put("/posts/{post_id}")
+def edit_post(post_id: str, payload: dict, current_user: dict = Depends(get_current_user)):
+    uid = str(current_user.get("uid") or "").strip()
+    if not uid:
+        raise HTTPException(status_code=401, detail="Invalid user.")
+
+    db = get_db_client()
+    post_ref = db.collection("posts").document(post_id)
+    snapshot = post_ref.get()
+    if not snapshot.exists:
+        raise HTTPException(status_code=404, detail="Post not found")
+
+    existing = snapshot.to_dict() or {}
+    owner_uid = str(existing.get("userId") or existing.get("createdBy") or "").strip()
+    if owner_uid and owner_uid != uid:
+        raise HTTPException(status_code=403, detail="You can only edit your own posts.")
+
+    allowed_fields = {
+        "text",
+        "rating",
+        "title",
+        "semesterTaken",
+        "attendanceMandatory",
+        "wouldRecommend",
+        "location",
+        "priceRange",
+        "bestTimeToGo",
+        "courseCode",
+        "courseName",
+        "professorName",
+        "spotName",
+        "department",
+        "attributes",
+    }
+    patch = {k: v for k, v in payload.items() if k in allowed_fields}
+    patch["updatedAt"] = datetime.now(timezone.utc).isoformat()
+    post_ref.set(patch, merge=True)
+
+    refreshed = post_ref.get().to_dict() or {}
+    refreshed["id"] = post_id
+    return JSONResponse(content={"ok": True, "post": to_json_safe(refreshed)}, status_code=200)
+
+
+@router.delete("/posts/{post_id}")
+def remove_post(post_id: str, current_user: dict = Depends(get_current_user)):
+    uid = str(current_user.get("uid") or "").strip()
+    if not uid:
+        raise HTTPException(status_code=401, detail="Invalid user.")
+
+    db = get_db_client()
+    post_ref = db.collection("posts").document(post_id)
+    snapshot = post_ref.get()
+    if not snapshot.exists:
+        raise HTTPException(status_code=404, detail="Post not found")
+
+    existing = snapshot.to_dict() or {}
+    owner_uid = str(existing.get("userId") or existing.get("createdBy") or "").strip()
+    if owner_uid and owner_uid != uid:
+        raise HTTPException(status_code=403, detail="You can only delete your own posts.")
+
+    post_ref.delete()
+
+    if str(existing.get("targetType") or "").strip().lower() == "spot":
+        target_id = str(existing.get("targetId") or "").strip()
+        if target_id:
+            update_spot_rating_summary(db, target_id)
+
+    return JSONResponse(content={"ok": True, "id": post_id}, status_code=200)
+
+
+@router.post("/posts/{post_id}/report")
+def report_post(post_id: str, body: PostReportCreate, current_user: dict = Depends(get_current_user)):
+    uid = str(current_user.get("uid") or "").strip()
+    if not uid:
+        raise HTTPException(status_code=401, detail="Invalid user.")
+
+    reason = body.text.strip()
+    if not reason:
+        raise HTTPException(status_code=400, detail="Report text cannot be empty.")
+
+    db = get_db_client()
+    report_ref = db.collection("reports").document()
+    report_ref.set(
+        {
+            "kind": "post",
+            "targetId": post_id,
+            "text": reason,
+            "reportedBy": uid,
+            "createdAt": datetime.now(timezone.utc).isoformat(),
+        }
+    )
+
+    return JSONResponse(content={"ok": True, "id": report_ref.id, "message": "Report submitted."}, status_code=201)
+
+
+@router.post("/spots/{spot_id}/report")
+def report_spot(spot_id: str, body: SpotReportCreate, current_user: dict = Depends(get_current_user)):
+    uid = str(current_user.get("uid") or "").strip()
+    if not uid:
+        raise HTTPException(status_code=401, detail="Invalid user.")
+
+    reason = body.text.strip()
+    if not reason:
+        raise HTTPException(status_code=400, detail="Report text cannot be empty.")
+
+    db = get_db_client()
+    report_ref = db.collection("reports").document()
+    report_ref.set(
+        {
+            "kind": "spot",
+            "targetId": spot_id,
+            "text": reason,
+            "reportedBy": uid,
+            "createdAt": datetime.now(timezone.utc).isoformat(),
+        }
+    )
+
+    return JSONResponse(content={"ok": True, "id": report_ref.id, "message": "Report submitted."}, status_code=201)
+
+
+@router.post("/favorites")
+def add_favorite(body: FavoriteCreate, current_user: dict = Depends(get_current_user)):
+    uid = str(current_user.get("uid") or "").strip()
+    if not uid:
+        raise HTTPException(status_code=401, detail="Invalid user.")
+
+    target_id = body.targetId.strip()
+    target_name = body.targetName.strip() or target_id
+    if not target_id:
+        raise HTTPException(status_code=400, detail="targetId is required.")
+
+    doc_id = _favorite_doc_id(uid, body.targetType, target_id)
+    db = get_db_client()
+    favorite_ref = db.collection("favorites").document(doc_id)
+    favorite_ref.set(
+        {
+            "userId": uid,
+            "targetType": body.targetType,
+            "targetId": target_id,
+            "targetName": target_name,
+            "createdAt": datetime.now(timezone.utc).isoformat(),
+        },
+        merge=True,
+    )
+
+    return JSONResponse(content={"ok": True}, status_code=200)
+
+
+@router.delete("/favorites")
+def remove_favorite(
+    targetType: Literal["professor", "course", "spot", "post"] = Query(...),
+    targetId: str = Query(...),
+    current_user: dict = Depends(get_current_user),
+):
+    uid = str(current_user.get("uid") or "").strip()
+    if not uid:
+        raise HTTPException(status_code=401, detail="Invalid user.")
+
+    target_id = targetId.strip()
+    if not target_id:
+        raise HTTPException(status_code=400, detail="targetId is required.")
+
+    doc_id = _favorite_doc_id(uid, targetType, target_id)
+    db = get_db_client()
+    db.collection("favorites").document(doc_id).delete()
+    return JSONResponse(content={"ok": True}, status_code=200)
+
+
+@router.get("/favorites/me")
+def get_my_favorites(current_user: dict = Depends(get_current_user)):
+    uid = str(current_user.get("uid") or "").strip()
+    if not uid:
+        raise HTTPException(status_code=401, detail="Invalid user.")
+
+    db = get_db_client()
+    docs = db.collection("favorites").where("userId", "==", uid).stream()
+
+    items: list[dict] = []
+    posts: list[dict] = []
+    professors: list[dict] = []
+    courses: list[dict] = []
+    spots: list[dict] = []
+
+    for doc in docs:
+        data = to_json_safe(doc.to_dict() or {})
+        item = {"id": doc.id, **data}
+        items.append(item)
+
+        target_type = str(item.get("targetType") or "").strip().lower()
+        if target_type == "professor":
+            professors.append(item)
+        elif target_type == "course":
+            courses.append(item)
+        elif target_type == "spot":
+            spots.append(item)
+        elif target_type == "post":
+            post_id = str(item.get("targetId") or "").strip()
+            if post_id:
+                post_snap = db.collection("posts").document(post_id).get()
+                if post_snap.exists:
+                    posts.append({"id": post_snap.id, **to_json_safe(post_snap.to_dict() or {})})
+
+    return JSONResponse(
+        content={
+            "items": items,
+            "professors": professors,
+            "courses": courses,
+            "spots": spots,
+            "posts": posts,
+        },
+        status_code=200,
     )
