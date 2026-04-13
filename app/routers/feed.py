@@ -41,6 +41,24 @@ class PostCreate(BaseModel):
     targetType: Literal["profile", "cafeteria", "course", "spot"]
     targetId: Optional[str] = None
     createdBy: str = "guest"
+    userId: Optional[str] = None
+    displayName: Optional[str] = None
+    major: Optional[str] = None
+    showDisplayName: Optional[bool] = None
+
+    title: Optional[str] = None
+    courseCode: Optional[str] = None
+    courseName: Optional[str] = None
+    professorName: Optional[str] = None
+    department: Optional[str] = None
+    semesterTaken: Optional[str] = None
+    location: Optional[str] = None
+    priceRange: Optional[str] = None
+    bestTimeToGo: Optional[str] = None
+    category: Optional[str] = None
+    attendanceMandatory: Optional[bool] = None
+    wouldRecommend: Optional[bool] = None
+    attributes: Optional[list[str]] = None
 
     targetName: Optional[str] = None
     targetCategory: Optional[str] = None
@@ -118,6 +136,31 @@ def _get_optional_uid(authorization: Optional[str]) -> Optional[str]:
 def _favorite_doc_id(user_id: str, target_type: str, target_id: str) -> str:
     stable = f"{user_id}|{target_type}|{target_id}".encode("utf-8")
     return hashlib.sha1(stable).hexdigest()
+
+
+def _resolve_post_author_fields(db, payload: PostCreate) -> dict:
+    uid = (payload.userId or payload.createdBy or "").strip()
+
+    display_name = (payload.displayName or "").strip() or "Student"
+    major = (payload.major or "").strip() or "Unknown Major"
+    show_display_name = bool(payload.showDisplayName is True)
+
+    if uid and uid.lower() != "guest":
+        user_snapshot = db.collection("users").document(uid).get()
+        if user_snapshot.exists:
+            user_data = user_snapshot.to_dict() or {}
+            next_name = str(user_data.get("displayName") or "").strip()
+            next_major = str(user_data.get("major") or "").strip()
+            display_name = next_name or display_name
+            major = next_major or major
+            show_display_name = bool(user_data.get("showDisplayName") is True)
+
+    return {
+        "userId": uid or payload.createdBy,
+        "displayName": display_name,
+        "major": major,
+        "showDisplayName": show_display_name,
+    }
 
 
 def _get_user_post_metadata(db, uid: Optional[str], post_items: list[dict]) -> tuple[set[str], set[str], set[str]]:
@@ -804,19 +847,46 @@ async def create_post(data: PostCreate):
                 status_code=400
             )
 
-    doc_ref = db.collection("posts").document()
-    doc_ref.set({
+    author_fields = _resolve_post_author_fields(db, data)
+
+    post_payload = {
         "rating": data.rating,
         "text": data.text,
         "targetId": target_id,
         "targetType": target_type,
         "createdBy": data.createdBy,
+        **author_fields,
         "likes": 0,
         "dislikes": 0,
         "likedBy": [],
         "dislikedBy": [],
         "createdAt": datetime.now(timezone.utc).isoformat()
-    })
+    }
+
+    optional_fields = {
+        "title": data.title,
+        "courseCode": data.courseCode,
+        "courseName": data.courseName,
+        "professorName": data.professorName,
+        "department": data.department,
+        "semesterTaken": data.semesterTaken,
+        "location": data.location,
+        "priceRange": data.priceRange,
+        "bestTimeToGo": data.bestTimeToGo,
+        "category": data.category,
+        "attendanceMandatory": data.attendanceMandatory,
+        "wouldRecommend": data.wouldRecommend,
+    }
+
+    for key, value in optional_fields.items():
+        if value is not None:
+            post_payload[key] = value
+
+    if data.attributes:
+        post_payload["attributes"] = [str(item).strip() for item in data.attributes if str(item).strip()]
+
+    doc_ref = db.collection("posts").document()
+    doc_ref.set(post_payload)
 
     if target_type == "spot":
         update_spot_rating_summary(db, target_id)
