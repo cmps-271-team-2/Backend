@@ -10,7 +10,6 @@ import hashlib
 from datetime import date, datetime, timezone
 
 from app.core.firebase_admin import get_firebase_auth
-from app.core.firebase_admin import init_firebase_admin
 from app.core.firestore import get_db
 
 router = APIRouter()
