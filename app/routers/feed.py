@@ -558,6 +558,7 @@ def get_posts(
     sort_by: str = Query("createdAt"),
     order: Literal["asc", "desc"] = Query("desc"),
     indexed_only: bool = Query(True),
+    search: Optional[str] = Query(None),
     authorization: Optional[str] = Header(default=None),
 ):
     posts = fetch_sorted_collection(
@@ -568,6 +569,9 @@ def get_posts(
     )
     if indexed_only:
         posts = [p for p in posts if p.get("indexed") is True]
+
+    if search:
+        posts = [p for p in posts if matches_search(p, search)]
 
     uid = _get_optional_uid(authorization)
     db = get_db_client()
