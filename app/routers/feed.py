@@ -4,7 +4,7 @@ from fastapi.encoders import jsonable_encoder
 from firebase_admin import firestore
 from pydantic import BaseModel
 
-from typing import Optional, Literal
+from typing import Any, Optional, Literal
 from collections import defaultdict, deque
 import random
 import hashlib
@@ -165,7 +165,6 @@ def _resolve_user_snapshot(db, request: Any, payload: dict[str, Any]) -> dict[st
 
 
 def _to_json_safe(value: Any) -> Any:
-def to_json_safe(value):
     if isinstance(value, datetime):
         return value.isoformat()
     if isinstance(value, date):
@@ -177,6 +176,10 @@ def to_json_safe(value):
     if isinstance(value, tuple):
         return [to_json_safe(v) for v in value]
     return value
+
+
+def to_json_safe(value: Any) -> Any:
+    return _to_json_safe(value)
 
 
 def normalize_text(value: str) -> str:
