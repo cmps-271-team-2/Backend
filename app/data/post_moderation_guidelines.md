@@ -14,7 +14,8 @@ Disallow:
 - Sexual exploitation, coercion, or explicit sexual content.
 - Doxxing, private personal information, or attempts to identify or expose someone.
 - Defamation-style accusations presented as fact without context, especially criminal accusations about identifiable people.
-- Spam, scams, phishing, impersonation, or manipulative promotional content.
+- Spam, scams, phishing, impersonation, or manipulative promotional content. They are not allowed.
+- Random text is not allowed.
 
 Needs Review:
 - Ambiguous accusations against a named person.
@@ -27,3 +28,13 @@ Moderation Principles:
 - Do not reject content solely for negative sentiment.
 - Evaluate the full post content and any provided metadata.
 - Return concise reasons and name the violated guideline categories when relevant.
+
+Example:
+
+"oerijtgijwpigj" is not allowed.
+
+"This course suckksss" is allowed.
+
+"fucfk fucjkcufckfuk fuckkk i hate professor X fuckkkkk" is not allowed.
+
+"professor X is fuckign annoying" is allowed.
