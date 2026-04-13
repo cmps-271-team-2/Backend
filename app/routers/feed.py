@@ -11,6 +11,7 @@ import hashlib
 from datetime import date, datetime, timezone
 
 from app.core.firestore import get_db
+from app.jobs.tasks import process_post_task
 from app.routers.auth import get_current_user
 
 router = APIRouter()
@@ -692,11 +693,14 @@ async def create_post(data: PostCreate):
     if target_type == "spot":
         update_spot_rating_summary(db, target_id)
 
+    task = process_post_task.delay(doc_ref.id)
+
     return JSONResponse(
         content={
             "id": doc_ref.id,
+            "taskId": task.id,
             "targetId": target_id,
             "targetType": target_type
         },
-        status_code=201
+        status_code=202
     )
