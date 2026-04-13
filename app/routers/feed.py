@@ -41,7 +41,7 @@ class SpotCreate(BaseModel):
 class PostCreate(BaseModel):
     rating: int
     text: str
-    targetType: Literal["profile", "cafeteria", "course", "spot"]
+    targetType: Literal["profile", "professor", "cafeteria", "course", "spot"]
     targetId: Optional[str] = None
     createdBy: str = "guest"
 
@@ -735,7 +735,7 @@ async def create_post(data: PostCreate):
     db = get_db_client()
 
     target_type = data.targetType.strip().lower()
-    if target_type not in ["profile", "cafeteria", "course", "spot"]:
+    if target_type not in ["profile", "professor", "cafeteria", "course", "spot"]:
         return JSONResponse(
             content={"error": "Invalid targetType"},
             status_code=400
