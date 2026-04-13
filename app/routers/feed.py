@@ -868,6 +868,7 @@ async def create_spot(data: SpotCreate):
             },
             "indexed": False,
         }
+    )
     spot_id, created = get_or_create_spot(
         db=db,
         name=data.name,
