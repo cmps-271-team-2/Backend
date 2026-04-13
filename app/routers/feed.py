@@ -8,6 +8,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
+from app.core.firebase_admin import get_firebase_auth
 from app.core.firestore import get_db
 from app.jobs.index_posts import fetch_relevant_posts
 from app.jobs.tasks import process_post_task
@@ -24,6 +25,74 @@ class LikeRequest(BaseModel):
 
 def get_db_client():
     return get_db()
+
+
+def _normalize_text(value: Any, fallback: str) -> str:
+    if isinstance(value, str):
+        trimmed = value.strip()
+        return trimmed or fallback
+
+    if value is None:
+        return fallback
+
+    trimmed = str(value).strip()
+    return trimmed or fallback
+
+
+def _get_authenticated_user(request: Any) -> dict[str, Any] | None:
+    headers = getattr(request, "headers", None)
+    if headers is None:
+        return None
+
+    try:
+        authorization = headers.get("authorization")
+    except Exception:
+        authorization = None
+
+    if not authorization:
+        return None
+
+    parts = authorization.split(" ", 1)
+    if len(parts) != 2 or parts[0].lower() != "bearer":
+        return None
+
+    try:
+        return get_firebase_auth().verify_id_token(parts[1].strip())
+    except Exception:
+        return None
+
+
+def _resolve_user_snapshot(db, request: Any, payload: dict[str, Any]) -> dict[str, Any]:
+    decoded_user = _get_authenticated_user(request) or {}
+    user_id = _normalize_text(decoded_user.get("uid") or payload.get("userId"), "")
+
+    user_ref = db.collection("users").document(user_id) if user_id else None
+    user_data: dict[str, Any] = {}
+    if user_ref is not None:
+        snapshot = user_ref.get()
+        if snapshot.exists:
+            user_data = snapshot.to_dict() or {}
+
+    display_name = _normalize_text(user_data.get("displayName"), "Student")
+    major = _normalize_text(user_data.get("major"), "Unknown Major")
+    show_display_name = bool(user_data.get("showDisplayName") is True)
+
+    if user_ref is not None:
+        user_ref.set(
+            {
+                "displayName": display_name,
+                "major": major,
+                "showDisplayName": show_display_name,
+            },
+            merge=True,
+        )
+
+    return {
+        "userId": user_id,
+        "displayName": display_name,
+        "major": major,
+        "showDisplayName": show_display_name,
+    }
 
 
 def _to_json_safe(value: Any) -> Any:
@@ -356,11 +425,17 @@ async def create_post(request: Request):
     if not data or not all(field in data for field in required_fields):
         return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
 
+    user_snapshot = _resolve_user_snapshot(db, request, cast(dict[str, Any], data))
+
     created_at = datetime.now(timezone.utc).isoformat()
     doc_ref = db.collection("posts").document()
     doc_ref.set(
         {
             **data,
+            "userId": user_snapshot["userId"],
+            "displayName": user_snapshot["displayName"],
+            "major": user_snapshot["major"],
+            "showDisplayName": user_snapshot["showDisplayName"],
             "createdAt": created_at,
             "moderation": {
                 "status": "pending",

@@ -8,6 +8,7 @@ from collections import defaultdict, deque
 import random
 from datetime import date
 
+from app.core.firebase_admin import get_firebase_auth
 from app.core.firebase_admin import init_firebase_admin
 from app.core.firestore import get_db
 
@@ -31,6 +32,74 @@ class PostCreate(BaseModel):
     text: str
     targetId: str
     targetType: str
+
+
+def _normalize_text(value, fallback: str) -> str:
+    if isinstance(value, str):
+        trimmed = value.strip()
+        return trimmed or fallback
+
+    if value is None:
+        return fallback
+
+    trimmed = str(value).strip()
+    return trimmed or fallback
+
+
+def _get_authenticated_user(request):
+    headers = getattr(request, "headers", None)
+    if headers is None:
+        return None
+
+    try:
+        authorization = headers.get("authorization")
+    except Exception:
+        authorization = None
+
+    if not authorization:
+        return None
+
+    parts = authorization.split(" ", 1)
+    if len(parts) != 2 or parts[0].lower() != "bearer":
+        return None
+
+    try:
+        return get_firebase_auth().verify_id_token(parts[1].strip())
+    except Exception:
+        return None
+
+
+def _resolve_user_snapshot(db_client, request, payload: dict) -> dict:
+    decoded_user = _get_authenticated_user(request) or {}
+    user_id = _normalize_text(decoded_user.get("uid") or payload.get("userId"), "")
+
+    user_ref = db_client.collection("users").document(user_id) if user_id else None
+    user_data = {}
+    if user_ref is not None:
+        snapshot = user_ref.get()
+        if snapshot.exists:
+            user_data = snapshot.to_dict() or {}
+
+    display_name = _normalize_text(user_data.get("displayName"), "Student")
+    major = _normalize_text(user_data.get("major"), "Unknown Major")
+    show_display_name = bool(user_data.get("showDisplayName") is True)
+
+    if user_ref is not None:
+        user_ref.set(
+            {
+                "displayName": display_name,
+                "major": major,
+                "showDisplayName": show_display_name,
+            },
+            merge=True,
+        )
+
+    return {
+        "userId": user_id,
+        "displayName": display_name,
+        "major": major,
+        "showDisplayName": show_display_name,
+    }
 
 
 def build_mixed_feed(items, page_size=20, weights=None, max_streak=2, seed=None):
@@ -308,12 +377,18 @@ async def create_post(request: Request):
     if not data or not all(field in data for field in required_fields):
         return JSONResponse(content={"error": "Missing required fields"}, status_code=400)
 
+    user_snapshot = _resolve_user_snapshot(db, request, data)
+
     doc_ref = db.collection("posts").document()
     doc_ref.set({
         "rating": data["rating"],
         "text": data["text"],
         "targetId": data["targetId"],
         "targetType": data["targetType"],
+        "userId": user_snapshot["userId"],
+        "displayName": user_snapshot["displayName"],
+        "major": user_snapshot["major"],
+        "showDisplayName": user_snapshot["showDisplayName"],
         "createdAt": firestore.SERVER_TIMESTAMP
     })
 
