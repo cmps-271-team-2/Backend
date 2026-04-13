@@ -17,6 +17,7 @@ jobs:
       VPS_APP_PATH: ${{ secrets.VPS_APP_PATH }}
       DEPLOY_ENV: prod
       CELERY_WORKER_SCALE: ${{ secrets.CELERY_WORKER_SCALE || '4' }}
+      ADMIN_PASSWORD_HASH: ${{ secrets.ADMIN_PASSWORD_HASH }}
 
       FRONTEND_ORIGINS: ${{ secrets.FRONTEND_ORIGINS }}
       OTP_EXP_MINUTES: ${{ secrets.OTP_EXP_MINUTES }}
@@ -114,6 +115,7 @@ jobs:
 
           GCP_GEMINI_API_KEY=\"$GCP_GEMINI_API_KEY\"
           GEMINI_MODEL=\"$GEMINI_MODEL\"
+          ADMIN_PASSWORD_HASH=\"$ADMIN_PASSWORD_HASH\"
           EOF"
 
       - name: Deploy with Docker Compose

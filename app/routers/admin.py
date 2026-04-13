@@ -3,7 +3,7 @@ from __future__ import annotations
 import random
 from datetime import datetime, timedelta, timezone
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Header
 from fastapi import HTTPException
 
 from app.services.firebase_service import get_firebase_service
@@ -26,7 +26,21 @@ from app.admin.dtos import (
     PagedResponseDTO,
 )
 
-router = APIRouter(tags=["admin"])
+from app.core.security import verify_admin_password, get_admin_hash
+
+
+def _require_admin(x_admin_password: str | None = Header(None, alias="X-Admin-Password")):
+    """FastAPI dependency that enforces the admin password header."""
+    if not get_admin_hash():
+        raise HTTPException(status_code=500, detail="Admin password not configured on server")
+    if not x_admin_password:
+        raise HTTPException(status_code=401, detail="Unauthorized: missing X-Admin-Password header")
+    ok, reason = verify_admin_password(x_admin_password)
+    if not ok:
+        raise HTTPException(status_code=401, detail="Unauthorized: invalid admin password")
+
+
+router = APIRouter(tags=["admin"], dependencies=[Depends(_require_admin)])
 
 
 _jobs_rng = random.Random(20260222)
