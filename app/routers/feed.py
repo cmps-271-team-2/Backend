@@ -850,29 +850,6 @@ async def create_spot(data: SpotCreate):
         "priceLevel": data.priceLevel,
     }
 
-    user_snapshot = _resolve_user_snapshot(db, request, cast(dict[str, Any], data))
-
-    created_at = datetime.now(timezone.utc).isoformat()
-    doc_ref = db.collection("posts").document()
-    doc_ref.set(
-        {
-            **data,
-            "userId": user_snapshot["userId"],
-            "displayName": user_snapshot["displayName"],
-            "major": user_snapshot["major"],
-            "showDisplayName": user_snapshot["showDisplayName"],
-            "createdAt": created_at,
-            "moderation": {
-                "status": "pending",
-                "allowed": False,
-                "violations": [],
-                "explanation": "Moderation pending.",
-                "model": None,
-                "checkedAt": None,
-            },
-            "indexed": False,
-        }
-    )
     spot_id, created = get_or_create_spot(
         db=db,
         name=data.name,
