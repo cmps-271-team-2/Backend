@@ -426,6 +426,10 @@ def matches_search(item, query: str) -> bool:
         or q in str(item.get("title", "")).lower()
         or q in str(item.get("code", "")).lower()
         or q in str(item.get("department", "")).lower()
+        or q in str(item.get("courseCode", "")).lower()
+        or q in str(item.get("courseName", "")).lower()
+        or q in str(item.get("professorName", "")).lower()
+        or q in str(item.get("targetName", "")).lower()
     )
 
 
